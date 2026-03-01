@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Log</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-tertiary: #2a2a2a;
+      --bg-card: #333;
+      --text-primary: #fff;
+      --text-secondary: #aaa;
+      --text-muted: #666;
+      --accent: #4caf50;
+      --accent-hover: #5cb85c;
+      --danger: #f44336;
+      --today: #ff9800;
+      --border: #444;
+      --guitar: #e91e63;
+      --piano: #3f51b5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      margin-bottom: 20px;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .header-actions { display: flex; gap: 10px; }
+
+    .btn {
+      background: var(--bg-tertiary);
+      border: none;
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--bg-card); }
+    .btn-primary { background: var(--accent); }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-sm { padding: 6px 10px; font-size: 12px; }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .tab {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 10px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .tab:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+    .tab.active { background: var(--accent); color: var(--text-primary); }
+    .tab.guitar.active { background: var(--guitar); }
+    .tab.piano.active { background: var(--piano); }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 16px 20px;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-value.guitar { color: var(--guitar); }
+    .stat-value.piano { color: var(--piano); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Calendar */
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .calendar-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .calendar-nav-btn {
+      background: var(--bg-tertiary);
+      border: none;
+      color: var(--text-primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .calendar-nav-btn:hover { background: var(--bg-card); }
+
+    .calendar-month {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .calendar-weekday {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 8px 0;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      min-height: 60px;
+    }
+
+    .calendar-day:hover { background: var(--bg-tertiary); }
+    .calendar-day.empty { background: transparent; cursor: default; }
+    .calendar-day.today { border: 2px solid var(--today); }
+    .calendar-day.has-practice { background: var(--bg-tertiary); }
+    .calendar-day.has-practice.guitar { border-left: 3px solid var(--guitar); }
+    .calendar-day.has-practice.piano { border-left: 3px solid var(--piano); }
+
+    .calendar-day-num {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .calendar-day.today .calendar-day-num { color: var(--today); }
+
+    .calendar-day-duration {
+      font-size: 10px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .calendar-day.guitar .calendar-day-duration { color: var(--guitar); }
+    .calendar-day.piano .calendar-day-duration { color: var(--piano); }
+
+    /* Practice List */
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .practice-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .practice-item.guitar { border-left: 3px solid var(--guitar); }
+    .practice-item.piano { border-left: 3px solid var(--piano); }
+
+    .practice-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      min-width: 60px;
+    }
+
+    .practice-content { flex: 1; }
+
+    .practice-duration {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .practice-item.guitar .practice-duration { color: var(--guitar); }
+    .practice-item.piano .practice-duration { color: var(--piano); }
+
+    .practice-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .practice-progress {
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--bg-tertiary);
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-top: 6px;
+    }
+
+    .practice-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.show { display: flex; }
+
+    .modal {
+      background: var(--bg-secondary);
+      border-radius: 14px;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .modal-title { font-size: 16px; font-weight: 600; }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .form-group { margin-bottom: 12px; }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-textarea { min-height: 80px; resize: vertical; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      padding: 12px 18px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 1001;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { border-left: 4px solid var(--accent); }
+    .toast.error { border-left: 4px solid var(--danger); }
+
+    .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+
+    /* Quick add */
+    .quick-add {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .quick-add-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .quick-add-input {
+      flex: 1;
+      min-width: 80px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    .quick-add-input:focus { outline: none; border-color: var(--accent); }
+
+    /* Contribution graph */
+    .contrib-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .contrib-day {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: var(--bg-tertiary);
+    }
+
+    .contrib-day.level-1 { background: rgba(76, 175, 80, 0.3); }
+    .contrib-day.level-2 { background: rgba(76, 175, 80, 0.5); }
+    .contrib-day.level-3 { background: rgba(76, 175, 80, 0.7); }
+    .contrib-day.level-4 { background: var(--accent); }
+
+    .contrib-day.guitar.level-1 { background: rgba(233, 30, 99, 0.3); }
+    .contrib-day.guitar.level-2 { background: rgba(233, 30, 99, 0.5); }
+    .contrib-day.guitar.level-3 { background: rgba(233, 30, 99, 0.7); }
+    .contrib-day.guitar.level-4 { background: var(--guitar); }
+
+    .contrib-day.piano.level-1 { background: rgba(63, 81, 181, 0.3); }
+    .contrib-day.piano.level-2 { background: rgba(63, 81, 181, 0.5); }
+    .contrib-day.piano.level-3 { background: rgba(63, 81, 181, 0.7); }
+    .contrib-day.piano.level-4 { background: var(--piano); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-title">
+        <span>Practice Log</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="btn-refresh">Reload</button>
+        <button class="btn" id="btn-settings">Settings</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab guitar active" data-instrument="guitar">Guitar</button>
+      <button class="tab piano" data-instrument="piano">Piano</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" id="stats-row"></div>
+
+    <!-- Contribution Graph -->
+    <div id="contrib-graph"></div>
+
+    <!-- Quick Add -->
+    <div class="quick-add">
+      <div class="quick-add-row">
+        <input type="number" class="quick-add-input" id="quick-duration" placeholder="Duration (min)" min="1" style="max-width:120px;">
+        <input type="text" class="quick-add-input" id="quick-content" placeholder="What did you practice?">
+        <button class="btn btn-primary" id="quick-add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="calendar-header">
+      <div class="calendar-nav">
+        <button class="calendar-nav-btn" id="prev-month">&lt;</button>
+        <span class="calendar-month" id="calendar-month"></span>
+        <button class="calendar-nav-btn" id="next-month">&gt;</button>
+      </div>
+      <button class="btn btn-sm" id="today-btn">Today</button>
+    </div>
+
+    <div class="calendar-grid" id="calendar-grid"></div>
+
+    <!-- Recent Practice -->
+    <div class="section-title">Recent Practice</div>
+    <div class="practice-list" id="practice-list"></div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Edit Practice</div>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Settings</div>
+        <button class="modal-close" id="settings-close">&times;</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">GitHub Personal Access Token</label>
+        <input type="password" class="form-input" id="settings-token" placeholder="ghp_...">
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+          <a href="https://github.com/settings/tokens/new" target="_blank" style="color: var(--accent);">Create token</a> (requires repo permission)
+        </div>
+      </div>
+      <div style="margin-top: 16px;">
+        <button class="btn btn-primary" id="settings-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
