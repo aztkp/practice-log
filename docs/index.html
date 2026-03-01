@@ -21,6 +21,7 @@
       --border: #444;
       --guitar: #e91e63;
       --piano: #3f51b5;
+      --english: #00bcd4;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -93,6 +94,7 @@
     .tab.active { background: var(--accent); color: var(--text-primary); }
     .tab.guitar.active { background: var(--guitar); }
     .tab.piano.active { background: var(--piano); }
+    .tab.english.active { background: var(--english); }
 
     /* Stats */
     .stats-row {
@@ -118,6 +120,7 @@
 
     .stat-value.guitar { color: var(--guitar); }
     .stat-value.piano { color: var(--piano); }
+    .stat-value.english { color: var(--english); }
 
     .stat-label {
       font-size: 12px;
@@ -190,6 +193,7 @@
     .calendar-day.has-practice { background: var(--bg-tertiary); }
     .calendar-day.has-practice.guitar { border-left: 3px solid var(--guitar); }
     .calendar-day.has-practice.piano { border-left: 3px solid var(--piano); }
+    .calendar-day.has-practice.english { border-left: 3px solid var(--english); }
 
     .calendar-day-num {
       font-size: 14px;
@@ -206,6 +210,7 @@
 
     .calendar-day.guitar .calendar-day-duration { color: var(--guitar); }
     .calendar-day.piano .calendar-day-duration { color: var(--piano); }
+    .calendar-day.english .calendar-day-duration { color: var(--english); }
 
     /* Practice List */
     .section-title {
@@ -234,6 +239,7 @@
 
     .practice-item.guitar { border-left: 3px solid var(--guitar); }
     .practice-item.piano { border-left: 3px solid var(--piano); }
+    .practice-item.english { border-left: 3px solid var(--english); }
 
     .practice-date {
       font-size: 13px;
@@ -253,6 +259,7 @@
 
     .practice-item.guitar .practice-duration { color: var(--guitar); }
     .practice-item.piano .practice-duration { color: var(--piano); }
+    .practice-item.english .practice-duration { color: var(--english); }
 
     .practice-text {
       font-size: 13px;
@@ -418,6 +425,11 @@
     .contrib-day.piano.level-2 { background: rgba(63, 81, 181, 0.5); }
     .contrib-day.piano.level-3 { background: rgba(63, 81, 181, 0.7); }
     .contrib-day.piano.level-4 { background: var(--piano); }
+
+    .contrib-day.english.level-1 { background: rgba(0, 188, 212, 0.3); }
+    .contrib-day.english.level-2 { background: rgba(0, 188, 212, 0.5); }
+    .contrib-day.english.level-3 { background: rgba(0, 188, 212, 0.7); }
+    .contrib-day.english.level-4 { background: var(--english); }
   </style>
 </head>
 <body>
@@ -432,10 +444,7 @@
       </div>
     </header>
 
-    <div class="tabs">
-      <button class="tab guitar active" data-instrument="guitar">Guitar</button>
-      <button class="tab piano" data-instrument="piano">Piano</button>
-    </div>
+    <div class="tabs" id="tabs"></div>
 
     <!-- Stats -->
     <div class="stats-row" id="stats-row"></div>

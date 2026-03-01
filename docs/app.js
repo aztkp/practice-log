@@ -5,6 +5,13 @@
   const GITHUB_REPO = 'aztkp/practice-log';
   const STORAGE_KEY = 'practice_log_token';
 
+  // Categories configuration - add new categories here
+  const CATEGORIES = [
+    { id: 'guitar', label: 'Guitar', emoji: '🎸' },
+    { id: 'piano', label: 'Piano', emoji: '🎹' },
+    { id: 'english', label: 'English', emoji: '📚' }
+  ];
+
   let practiceData = null;
   let dataSha = null;
   let currentInstrument = 'guitar';
@@ -63,8 +70,10 @@
       const data = await res.json();
       dataSha = data.sha;
       practiceData = JSON.parse(b64decode(data.content));
-      if (!practiceData.guitar) practiceData.guitar = [];
-      if (!practiceData.piano) practiceData.piano = [];
+      // Initialize all categories
+      CATEGORIES.forEach(cat => {
+        if (!practiceData[cat.id]) practiceData[cat.id] = [];
+      });
       return practiceData;
     } catch (e) {
       showToast('Failed to load data', 'error');
@@ -484,6 +493,27 @@
     renderAll();
   }
 
+  // Render Tabs
+  function renderTabs() {
+    const container = document.getElementById('tabs');
+    if (!container) return;
+
+    container.innerHTML = CATEGORIES.map((cat, i) => `
+      <button class="tab ${cat.id} ${i === 0 ? 'active' : ''}" data-instrument="${cat.id}">
+        ${cat.emoji} ${cat.label}
+      </button>
+    `).join('');
+
+    container.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentInstrument = tab.dataset.instrument;
+        renderAll();
+      });
+    });
+  }
+
   // Render All
   function renderAll() {
     renderStats();
@@ -494,15 +524,8 @@
 
   // Init
   async function init() {
-    // Instrument tabs
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentInstrument = tab.dataset.instrument;
-        renderAll();
-      });
-    });
+    // Render tabs
+    renderTabs();
 
     // Calendar navigation
     document.getElementById('prev-month')?.addEventListener('click', () => {
