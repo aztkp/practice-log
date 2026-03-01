@@ -14,7 +14,7 @@
 
   let practiceData = null;
   let dataSha = null;
-  let currentInstrument = 'guitar';
+  let currentCategory = 'guitar';
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
 
@@ -70,9 +70,13 @@
       const data = await res.json();
       dataSha = data.sha;
       practiceData = JSON.parse(b64decode(data.content));
-      // Initialize all categories
+
+      // Initialize structure
+      if (!practiceData.plans) practiceData.plans = {};
+      if (!practiceData.records) practiceData.records = {};
       CATEGORIES.forEach(cat => {
-        if (!practiceData[cat.id]) practiceData[cat.id] = [];
+        if (!practiceData.plans[cat.id]) practiceData.plans[cat.id] = [];
+        if (!practiceData.records[cat.id]) practiceData.records[cat.id] = [];
       });
       return practiceData;
     } catch (e) {
@@ -144,46 +148,52 @@
     }
   }
 
+  // Get record for a specific date
+  function getRecord(dateKey) {
+    const records = practiceData.records[currentCategory] || [];
+    return records.find(r => r.date === dateKey);
+  }
+
   // Stats
   function renderStats() {
     if (!practiceData) return;
 
-    const items = practiceData[currentInstrument] || [];
+    const records = practiceData.records[currentCategory] || [];
+    const plans = practiceData.plans[currentCategory] || [];
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth();
 
-    let monthTotal = 0;
     let monthDays = 0;
-    let yearTotal = 0;
-    const monthDaysSet = new Set();
+    let monthChecks = 0;
+    let yearDays = 0;
 
-    items.forEach(item => {
-      const d = new Date(item.date);
+    records.forEach(record => {
+      const d = new Date(record.date);
+      const checks = (record.completed || []).length;
       if (d.getFullYear() === year) {
-        yearTotal += item.duration || 0;
-        if (d.getMonth() === month) {
-          monthTotal += item.duration || 0;
-          monthDaysSet.add(item.date);
+        if (checks > 0) yearDays++;
+        if (d.getMonth() === month && checks > 0) {
+          monthDays++;
+          monthChecks += checks;
         }
       }
     });
-    monthDays = monthDaysSet.size;
 
     const statsRow = document.getElementById('stats-row');
     if (statsRow) {
       statsRow.innerHTML = `
         <div class="stat-card">
-          <div class="stat-value ${currentInstrument}">${monthTotal}</div>
-          <div class="stat-label">${month + 1}Monthly time (min)</div>
+          <div class="stat-value ${currentCategory}">${monthDays}</div>
+          <div class="stat-label">${month + 1}月の練習日数</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value ${currentInstrument}">${monthDays}</div>
-          <div class="stat-label">${month + 1}Monthly days</div>
+          <div class="stat-value ${currentCategory}">${monthChecks}</div>
+          <div class="stat-label">${month + 1}月の完了項目</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value ${currentInstrument}">${Math.round(yearTotal / 60)}</div>
-          <div class="stat-label">${year}Yearly time (h)</div>
+          <div class="stat-value ${currentCategory}">${plans.length}</div>
+          <div class="stat-label">プラン数</div>
         </div>
       `;
     }
@@ -196,32 +206,33 @@
     const container = document.getElementById('contrib-graph');
     if (!container) return;
 
-    const items = practiceData[currentInstrument] || [];
-    const durationByDate = {};
+    const records = practiceData.records[currentCategory] || [];
+    const plans = practiceData.plans[currentCategory] || [];
+    const checksByDate = {};
 
-    items.forEach(item => {
-      durationByDate[item.date] = (durationByDate[item.date] || 0) + (item.duration || 0);
+    records.forEach(record => {
+      checksByDate[record.date] = (record.completed || []).length;
     });
 
-    // Last 90 days
+    const maxChecks = plans.length || 1;
     const days = [];
     const today = new Date();
     for (let i = 89; i >= 0; i--) {
       const d = new Date(today);
       d.setDate(d.getDate() - i);
       const key = getDateKey(d);
-      const duration = durationByDate[key] || 0;
+      const checks = checksByDate[key] || 0;
       let level = 0;
-      if (duration > 0) level = 1;
-      if (duration >= 30) level = 2;
-      if (duration >= 60) level = 3;
-      if (duration >= 90) level = 4;
-      days.push({ key, duration, level });
+      if (checks > 0) level = 1;
+      if (checks >= maxChecks * 0.5) level = 2;
+      if (checks >= maxChecks * 0.75) level = 3;
+      if (checks >= maxChecks) level = 4;
+      days.push({ key, checks, level });
     }
 
     container.innerHTML = `
       <div class="contrib-row">
-        ${days.map(d => `<div class="contrib-day ${currentInstrument} level-${d.level}" title="${d.key}: ${d.duration}min"></div>`).join('')}
+        ${days.map(d => `<div class="contrib-day ${currentCategory} level-${d.level}" title="${d.key}: ${d.checks}項目"></div>`).join('')}
       </div>
     `;
   }
@@ -236,10 +247,10 @@
 
     monthEl.textContent = `${currentYear}/${currentMonth + 1}`;
 
-    const items = practiceData[currentInstrument] || [];
-    const durationByDate = {};
-    items.forEach(item => {
-      durationByDate[item.date] = (durationByDate[item.date] || 0) + (item.duration || 0);
+    const records = practiceData.records[currentCategory] || [];
+    const checksByDate = {};
+    records.forEach(record => {
+      checksByDate[record.date] = (record.completed || []).length;
     });
 
     const firstDay = new Date(currentYear, currentMonth, 1);
@@ -251,29 +262,26 @@
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let html = weekdays.map(w => `<div class="calendar-weekday">${w}</div>`).join('');
 
-    // Empty cells before first day
     for (let i = 0; i < startDayOfWeek; i++) {
       html += '<div class="calendar-day empty"></div>';
     }
 
-    // Days
     for (let day = 1; day <= daysInMonth; day++) {
       const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const duration = durationByDate[dateKey] || 0;
+      const checks = checksByDate[dateKey] || 0;
       const isToday = dateKey === todayKey;
-      const hasPractice = duration > 0;
+      const hasPractice = checks > 0;
 
       html += `
-        <div class="calendar-day ${isToday ? 'today' : ''} ${hasPractice ? 'has-practice ' + currentInstrument : ''}" data-date="${dateKey}">
+        <div class="calendar-day ${isToday ? 'today' : ''} ${hasPractice ? 'has-practice ' + currentCategory : ''}" data-date="${dateKey}">
           <span class="calendar-day-num">${day}</span>
-          ${hasPractice ? `<span class="calendar-day-duration">${duration}m</span>` : ''}
+          ${hasPractice ? `<span class="calendar-day-duration">${checks}✓</span>` : ''}
         </div>
       `;
     }
 
     gridEl.innerHTML = html;
 
-    // Attach click events
     gridEl.querySelectorAll('.calendar-day:not(.empty)').forEach(dayEl => {
       dayEl.addEventListener('click', () => {
         openDayModal(dayEl.dataset.date);
@@ -281,137 +289,142 @@
     });
   }
 
-  // Practice List
-  function renderPracticeList() {
+  // Today's Checklist
+  function renderTodayChecklist() {
+    if (!practiceData) return;
+
+    const container = document.getElementById('today-checklist');
+    if (!container) return;
+
+    const plans = practiceData.plans[currentCategory] || [];
+    const todayKey = getTodayKey();
+    const record = getRecord(todayKey) || { date: todayKey, completed: [] };
+    const completed = record.completed || [];
+
+    if (plans.length === 0) {
+      container.innerHTML = `
+        <div class="empty">
+          プランがありません。<br>
+          <button class="btn btn-primary" id="add-first-plan" style="margin-top:12px;">プランを追加</button>
+        </div>
+      `;
+      document.getElementById('add-first-plan')?.addEventListener('click', openPlansModal);
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="checklist">
+        ${plans.map(plan => `
+          <label class="checklist-item">
+            <input type="checkbox" ${completed.includes(plan) ? 'checked' : ''} data-plan="${plan}">
+            <span class="checkmark"></span>
+            <span class="checklist-label">${plan}</span>
+          </label>
+        `).join('')}
+      </div>
+    `;
+
+    container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', async () => {
+        const plan = cb.dataset.plan;
+        let records = practiceData.records[currentCategory];
+        let record = records.find(r => r.date === todayKey);
+
+        if (!record) {
+          record = { date: todayKey, completed: [] };
+          records.push(record);
+        }
+
+        if (cb.checked) {
+          if (!record.completed.includes(plan)) {
+            record.completed.push(plan);
+          }
+        } else {
+          record.completed = record.completed.filter(p => p !== plan);
+        }
+
+        await saveData();
+        renderStats();
+        renderContribGraph();
+        renderCalendar();
+      });
+    });
+  }
+
+  // Recent Records
+  function renderRecentRecords() {
     if (!practiceData) return;
 
     const container = document.getElementById('practice-list');
     if (!container) return;
 
-    const items = (practiceData[currentInstrument] || [])
-      .map((item, idx) => ({ ...item, idx }))
+    const records = (practiceData.records[currentCategory] || [])
+      .filter(r => (r.completed || []).length > 0)
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 10);
+      .slice(0, 7);
 
-    if (items.length === 0) {
-      container.innerHTML = '<div class="empty">No practice records yet</div>';
+    if (records.length === 0) {
+      container.innerHTML = '<div class="empty">まだ記録がありません</div>';
       return;
     }
 
-    container.innerHTML = items.map(item => `
-      <div class="practice-item ${currentInstrument}">
-        <div class="practice-date">${formatDate(item.date)}</div>
+    container.innerHTML = records.map(record => `
+      <div class="practice-item ${currentCategory}">
+        <div class="practice-date">${formatDate(record.date)}</div>
         <div class="practice-content">
-          <div class="practice-duration">${item.duration} min</div>
-          ${item.content ? `<div class="practice-text">${item.content}</div>` : ''}
-          ${item.progress ? `<div class="practice-progress">${item.progress}</div>` : ''}
-        </div>
-        <div class="practice-actions">
-          <button class="btn btn-sm" data-idx="${item.idx}" data-action="edit">Edit</button>
-          <button class="btn btn-sm" data-idx="${item.idx}" data-action="delete">Delete</button>
+          <div class="practice-checks">${(record.completed || []).map(p => `<span class="check-tag">✓ ${p}</span>`).join('')}</div>
         </div>
       </div>
     `).join('');
-
-    container.querySelectorAll('[data-action="edit"]').forEach(btn => {
-      btn.addEventListener('click', () => openEditModal(parseInt(btn.dataset.idx)));
-    });
-
-    container.querySelectorAll('[data-action="delete"]').forEach(btn => {
-      btn.addEventListener('click', () => deleteItem(parseInt(btn.dataset.idx)));
-    });
   }
 
-  // Day Modal
+  // Day Modal (for past dates)
   function openDayModal(dateKey) {
     const modal = document.getElementById('edit-modal');
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
-    const items = (practiceData[currentInstrument] || [])
-      .map((item, idx) => ({ ...item, idx }))
-      .filter(item => item.date === dateKey);
+    const plans = practiceData.plans[currentCategory] || [];
+    const record = getRecord(dateKey) || { date: dateKey, completed: [] };
+    const completed = record.completed || [];
 
     title.textContent = formatDate(dateKey);
 
-    let html = '';
-
-    if (items.length > 0) {
-      html += '<div style="margin-bottom:16px;">';
-      items.forEach(item => {
-        html += `
-          <div class="practice-item ${currentInstrument}" style="margin-bottom:8px;">
-            <div class="practice-content" style="flex:1;">
-              <div class="practice-duration">${item.duration} min</div>
-              ${item.content ? `<div class="practice-text">${item.content}</div>` : ''}
-              ${item.progress ? `<div class="practice-progress">${item.progress}</div>` : ''}
-            </div>
-            <div class="practice-actions">
-              <button class="btn btn-sm" data-idx="${item.idx}" data-action="edit-item">Edit</button>
-              <button class="btn btn-sm" data-idx="${item.idx}" data-action="delete-item">Delete</button>
-            </div>
-          </div>
-        `;
-      });
-      html += '</div>';
+    if (plans.length === 0) {
+      content.innerHTML = '<div class="empty">プランがありません</div>';
+      modal.classList.add('show');
+      return;
     }
 
-    html += `
-      <div class="section-title">Add Practice</div>
-      <div class="form-group">
-        <label class="form-label">Duration (min)</label>
-        <input type="number" class="form-input" id="add-duration" min="1" value="30">
+    content.innerHTML = `
+      <div class="checklist">
+        ${plans.map(plan => `
+          <label class="checklist-item">
+            <input type="checkbox" ${completed.includes(plan) ? 'checked' : ''} data-plan="${plan}">
+            <span class="checkmark"></span>
+            <span class="checklist-label">${plan}</span>
+          </label>
+        `).join('')}
       </div>
-      <div class="form-group">
-        <label class="form-label">Content</label>
-        <input type="text" class="form-input" id="add-content" placeholder="What did you practice?">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Progress / Notes</label>
-        <textarea class="form-textarea" id="add-progress" placeholder="Progress or notes..."></textarea>
-      </div>
-      <button class="btn btn-primary" id="add-save" style="width:100%;margin-top:12px;">Add</button>
+      <button class="btn btn-primary" id="save-day" style="width:100%;margin-top:16px;">保存</button>
     `;
 
-    content.innerHTML = html;
     modal.classList.add('show');
 
-    // Edit/delete existing items
-    content.querySelectorAll('[data-action="edit-item"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        modal.classList.remove('show');
-        openEditModal(parseInt(btn.dataset.idx));
+    document.getElementById('save-day').addEventListener('click', async () => {
+      const newCompleted = [];
+      content.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+        newCompleted.push(cb.dataset.plan);
       });
-    });
 
-    content.querySelectorAll('[data-action="delete-item"]').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const idx = parseInt(btn.dataset.idx);
-        if (!confirm('Delete this practice record?')) return;
-        practiceData[currentInstrument].splice(idx, 1);
-        await saveData();
-        modal.classList.remove('show');
-        renderAll();
-      });
-    });
+      let records = practiceData.records[currentCategory];
+      let existingRecord = records.find(r => r.date === dateKey);
 
-    // Add new
-    document.getElementById('add-save').addEventListener('click', async () => {
-      const duration = parseInt(document.getElementById('add-duration').value) || 0;
-      const contentVal = document.getElementById('add-content').value.trim();
-      const progress = document.getElementById('add-progress').value.trim();
-
-      if (duration <= 0) {
-        showToast('Please enter duration', 'error');
-        return;
+      if (existingRecord) {
+        existingRecord.completed = newCompleted;
+      } else if (newCompleted.length > 0) {
+        records.push({ date: dateKey, completed: newCompleted });
       }
-
-      practiceData[currentInstrument].push({
-        date: dateKey,
-        duration,
-        content: contentVal || undefined,
-        progress: progress || undefined
-      });
 
       await saveData();
       modal.classList.remove('show');
@@ -419,78 +432,64 @@
     });
   }
 
-  // Edit Modal
-  function openEditModal(idx) {
-    const item = practiceData[currentInstrument][idx];
-    if (!item) return;
-
+  // Plans Modal
+  function openPlansModal() {
     const modal = document.getElementById('edit-modal');
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
-    title.textContent = 'Edit Practice';
+    const plans = practiceData.plans[currentCategory] || [];
+    const cat = CATEGORIES.find(c => c.id === currentCategory);
+
+    title.textContent = `${cat.emoji} ${cat.label} プラン`;
 
     content.innerHTML = `
-      <div class="form-group">
-        <label class="form-label">Date</label>
-        <input type="date" class="form-input" id="edit-date" value="${item.date}">
+      <div class="plans-list" id="plans-list">
+        ${plans.map((plan, i) => `
+          <div class="plan-item">
+            <span class="plan-name">${plan}</span>
+            <button class="btn btn-sm btn-delete" data-idx="${i}">×</button>
+          </div>
+        `).join('')}
       </div>
-      <div class="form-group">
-        <label class="form-label">Duration (min)</label>
-        <input type="number" class="form-input" id="edit-duration" min="1" value="${item.duration || 30}">
+      <div class="add-plan-row">
+        <input type="text" class="form-input" id="new-plan" placeholder="新しいプランを追加...">
+        <button class="btn btn-primary" id="add-plan-btn">追加</button>
       </div>
-      <div class="form-group">
-        <label class="form-label">Content</label>
-        <input type="text" class="form-input" id="edit-content" value="${item.content || ''}">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Progress / Notes</label>
-        <textarea class="form-textarea" id="edit-progress">${item.progress || ''}</textarea>
-      </div>
-      <button class="btn btn-primary" id="edit-save" style="width:100%;margin-top:12px;">Save</button>
     `;
 
     modal.classList.add('show');
 
-    document.getElementById('edit-save').addEventListener('click', async () => {
-      item.date = document.getElementById('edit-date').value;
-      item.duration = parseInt(document.getElementById('edit-duration').value) || 30;
-      item.content = document.getElementById('edit-content').value.trim() || undefined;
-      item.progress = document.getElementById('edit-progress').value.trim() || undefined;
+    // Delete plan
+    content.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const idx = parseInt(btn.dataset.idx);
+        const planName = plans[idx];
+        if (!confirm(`「${planName}」を削除しますか？`)) return;
 
+        practiceData.plans[currentCategory].splice(idx, 1);
+        await saveData();
+        openPlansModal(); // Refresh modal
+        renderAll();
+      });
+    });
+
+    // Add plan
+    const addPlan = async () => {
+      const input = document.getElementById('new-plan');
+      const name = input.value.trim();
+      if (!name) return;
+
+      practiceData.plans[currentCategory].push(name);
       await saveData();
-      modal.classList.remove('show');
+      openPlansModal(); // Refresh modal
       renderAll();
+    };
+
+    document.getElementById('add-plan-btn').addEventListener('click', addPlan);
+    document.getElementById('new-plan').addEventListener('keypress', e => {
+      if (e.key === 'Enter') addPlan();
     });
-  }
-
-  async function deleteItem(idx) {
-    if (!confirm('Delete this practice record?')) return;
-    practiceData[currentInstrument].splice(idx, 1);
-    await saveData();
-    renderAll();
-  }
-
-  // Quick Add
-  async function quickAdd() {
-    const duration = parseInt(document.getElementById('quick-duration').value) || 0;
-    const content = document.getElementById('quick-content').value.trim();
-
-    if (duration <= 0) {
-      showToast('Please enter duration', 'error');
-      return;
-    }
-
-    practiceData[currentInstrument].push({
-      date: getTodayKey(),
-      duration,
-      content: content || undefined
-    });
-
-    await saveData();
-    document.getElementById('quick-duration').value = '';
-    document.getElementById('quick-content').value = '';
-    renderAll();
   }
 
   // Render Tabs
@@ -499,7 +498,7 @@
     if (!container) return;
 
     container.innerHTML = CATEGORIES.map((cat, i) => `
-      <button class="tab ${cat.id} ${i === 0 ? 'active' : ''}" data-instrument="${cat.id}">
+      <button class="tab ${cat.id} ${i === 0 ? 'active' : ''}" data-category="${cat.id}">
         ${cat.emoji} ${cat.label}
       </button>
     `).join('');
@@ -508,7 +507,7 @@
       tab.addEventListener('click', () => {
         container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        currentInstrument = tab.dataset.instrument;
+        currentCategory = tab.dataset.category;
         renderAll();
       });
     });
@@ -518,13 +517,13 @@
   function renderAll() {
     renderStats();
     renderContribGraph();
+    renderTodayChecklist();
     renderCalendar();
-    renderPracticeList();
+    renderRecentRecords();
   }
 
   // Init
   async function init() {
-    // Render tabs
     renderTabs();
 
     // Calendar navigation
@@ -553,14 +552,8 @@
       renderCalendar();
     });
 
-    // Quick add
-    document.getElementById('quick-add-btn')?.addEventListener('click', quickAdd);
-    document.getElementById('quick-duration')?.addEventListener('keypress', e => {
-      if (e.key === 'Enter') quickAdd();
-    });
-    document.getElementById('quick-content')?.addEventListener('keypress', e => {
-      if (e.key === 'Enter') quickAdd();
-    });
+    // Plans button
+    document.getElementById('btn-plans')?.addEventListener('click', openPlansModal);
 
     // Modals
     document.getElementById('modal-close')?.addEventListener('click', () => {
@@ -593,7 +586,6 @@
     // Refresh
     document.getElementById('btn-refresh')?.addEventListener('click', loadData);
 
-    // Load
     await loadData();
   }
 

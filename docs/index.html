@@ -69,6 +69,8 @@
     .btn-primary { background: var(--accent); }
     .btn-primary:hover { background: var(--accent-hover); }
     .btn-sm { padding: 6px 10px; font-size: 12px; }
+    .btn-delete { background: var(--danger); color: #fff; }
+    .btn-delete:hover { background: #d32f2f; }
 
     /* Tabs */
     .tabs {
@@ -109,7 +111,7 @@
       border-radius: 10px;
       padding: 16px 20px;
       flex: 1;
-      min-width: 120px;
+      min-width: 100px;
     }
 
     .stat-value {
@@ -184,7 +186,7 @@
       cursor: pointer;
       transition: all 0.2s;
       position: relative;
-      min-height: 60px;
+      min-height: 50px;
     }
 
     .calendar-day:hover { background: var(--bg-tertiary); }
@@ -212,7 +214,7 @@
     .calendar-day.piano .calendar-day-duration { color: var(--piano); }
     .calendar-day.english .calendar-day-duration { color: var(--english); }
 
-    /* Practice List */
+    /* Section Title */
     .section-title {
       font-size: 16px;
       font-weight: 600;
@@ -222,6 +224,81 @@
       gap: 8px;
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    /* Checklist */
+    .today-section {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .checklist-item:hover {
+      background: var(--bg-card);
+    }
+
+    .checklist-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .checklist-item input:checked + .checkmark {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .checklist-item input:checked + .checkmark::after {
+      content: '✓';
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .checklist-label {
+      font-size: 14px;
+      flex: 1;
+    }
+
+    .checklist-item input:checked ~ .checklist-label {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    /* Practice List */
     .practice-list {
       display: flex;
       flex-direction: column;
@@ -245,40 +322,53 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--text-secondary);
-      min-width: 60px;
+      min-width: 50px;
     }
 
     .practice-content { flex: 1; }
 
-    .practice-duration {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .practice-item.guitar .practice-duration { color: var(--guitar); }
-    .practice-item.piano .practice-duration { color: var(--piano); }
-    .practice-item.english .practice-duration { color: var(--english); }
-
-    .practice-text {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-bottom: 4px;
-    }
-
-    .practice-progress {
-      font-size: 12px;
-      color: var(--accent);
-      background: var(--bg-tertiary);
-      padding: 6px 10px;
-      border-radius: 6px;
-      margin-top: 6px;
-    }
-
-    .practice-actions {
+    .practice-checks {
       display: flex;
-      gap: 4px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .check-tag {
+      font-size: 12px;
+      background: var(--bg-tertiary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* Plans list in modal */
+    .plans-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .plan-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+    }
+
+    .plan-name {
+      font-size: 14px;
+    }
+
+    .add-plan-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .add-plan-row .form-input {
+      flex: 1;
     }
 
     /* Modal */
@@ -345,8 +435,6 @@
       border-color: var(--accent);
     }
 
-    .form-textarea { min-height: 80px; resize: vertical; }
-
     /* Toast */
     .toast {
       position: fixed;
@@ -368,33 +456,6 @@
     .toast.error { border-left: 4px solid var(--danger); }
 
     .empty { text-align: center; padding: 40px; color: var(--text-muted); }
-
-    /* Quick add */
-    .quick-add {
-      background: var(--bg-secondary);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-    }
-
-    .quick-add-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .quick-add-input {
-      flex: 1;
-      min-width: 80px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
-      color: var(--text-primary);
-      font-size: 14px;
-    }
-
-    .quick-add-input:focus { outline: none; border-color: var(--accent); }
 
     /* Contribution graph */
     .contrib-row {
@@ -439,6 +500,7 @@
         <span>Practice Log</span>
       </div>
       <div class="header-actions">
+        <button class="btn" id="btn-plans">Plans</button>
         <button class="btn" id="btn-refresh">Reload</button>
         <button class="btn" id="btn-settings">Settings</button>
       </div>
@@ -452,13 +514,12 @@
     <!-- Contribution Graph -->
     <div id="contrib-graph"></div>
 
-    <!-- Quick Add -->
-    <div class="quick-add">
-      <div class="quick-add-row">
-        <input type="number" class="quick-add-input" id="quick-duration" placeholder="Duration (min)" min="1" style="max-width:120px;">
-        <input type="text" class="quick-add-input" id="quick-content" placeholder="What did you practice?">
-        <button class="btn btn-primary" id="quick-add-btn">Add</button>
+    <!-- Today's Checklist -->
+    <div class="today-section">
+      <div class="section-header">
+        <div class="section-title">Today</div>
       </div>
+      <div id="today-checklist"></div>
     </div>
 
     <!-- Calendar -->
@@ -473,8 +534,8 @@
 
     <div class="calendar-grid" id="calendar-grid"></div>
 
-    <!-- Recent Practice -->
-    <div class="section-title">Recent Practice</div>
+    <!-- Recent Records -->
+    <div class="section-title">Recent</div>
     <div class="practice-list" id="practice-list"></div>
   </div>
 
@@ -482,7 +543,7 @@
   <div class="modal-overlay" id="edit-modal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Edit Practice</div>
+        <div class="modal-title">Edit</div>
         <button class="modal-close" id="modal-close">&times;</button>
       </div>
       <div id="modal-content"></div>

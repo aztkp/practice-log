@@ -1,5 +1,12 @@
 {
-  "guitar": [],
-  "piano": [],
-  "english": []
+  "plans": {
+    "guitar": [],
+    "piano": [],
+    "english": []
+  },
+  "records": {
+    "guitar": [],
+    "piano": [],
+    "english": []
+  }
 }
