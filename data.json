@@ -1,6 +1,8 @@
 {
   "plans": {
-    "guitar": [],
+    "guitar": [
+      "英会話 Quick Response"
+    ],
     "piano": [],
     "english": [
       "英会話 Quick Response"
@@ -24,6 +26,8 @@
   "english": {
     "phrases": [],
     "vocabulary": [],
-    "presentations": []
+    "presentations": [],
+    "textbooks": [],
+    "studyRecords": []
   }
 }
