@@ -491,6 +491,279 @@
     .contrib-day.english.level-2 { background: rgba(0, 188, 212, 0.5); }
     .contrib-day.english.level-3 { background: rgba(0, 188, 212, 0.7); }
     .contrib-day.english.level-4 { background: var(--english); }
+
+    /* English Sub-tabs */
+    .sub-tabs {
+      display: none;
+      gap: 4px;
+      margin-bottom: 20px;
+      padding: 8px;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+    }
+
+    .sub-tabs.show { display: flex; flex-wrap: wrap; }
+
+    .sub-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .sub-tab:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+    .sub-tab.active { background: var(--english); color: var(--text-primary); }
+
+    /* English feature sections */
+    .english-section { display: none; }
+    .english-section.show { display: block; }
+
+    /* Flashcard */
+    .flashcard-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .flashcard {
+      width: 100%;
+      max-width: 400px;
+      min-height: 200px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .flashcard:hover { transform: scale(1.02); }
+    .flashcard.flipped { background: var(--bg-tertiary); }
+
+    .flashcard-text {
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .flashcard-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    .flashcard-category {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 11px;
+      background: var(--bg-card);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--text-secondary);
+    }
+
+    .flashcard-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .flashcard-progress {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Vocabulary list */
+    .vocab-search {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .vocab-search .form-input { flex: 1; }
+
+    .vocab-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vocab-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .vocab-word {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--english);
+      min-width: 120px;
+    }
+
+    .vocab-content { flex: 1; }
+
+    .vocab-meaning {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .vocab-example {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .vocab-category-tag {
+      font-size: 11px;
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .vocab-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* Presentation */
+    .presentation-timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .timer-display {
+      font-size: 64px;
+      font-weight: 300;
+      font-family: 'SF Mono', Monaco, monospace;
+      color: var(--english);
+      margin-bottom: 20px;
+    }
+
+    .timer-target {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .timer-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+
+    .recording-indicator {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .recording-indicator.show { display: flex; }
+
+    .recording-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--danger);
+      border-radius: 50%;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .presentation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .presentation-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .presentation-item:hover { background: var(--bg-tertiary); }
+    .presentation-item.active { border-left: 3px solid var(--english); }
+
+    .presentation-title { font-size: 14px; font-weight: 500; }
+
+    .presentation-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Quiz mode */
+    .quiz-container {
+      padding: 20px;
+    }
+
+    .quiz-question {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .quiz-prompt {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-input {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .quiz-result {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .quiz-result.correct { color: var(--accent); }
+    .quiz-result.incorrect { color: var(--danger); }
+
+    .quiz-score {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
   </style>
 </head>
 <body>
@@ -507,6 +780,14 @@
     </header>
 
     <div class="tabs" id="tabs"></div>
+
+    <!-- English Sub-tabs (only shown when english category is selected) -->
+    <div class="sub-tabs" id="english-subtabs">
+      <button class="sub-tab active" data-subtab="records">📊 記録</button>
+      <button class="sub-tab" data-subtab="phrases">📝 フレーズ暗記</button>
+      <button class="sub-tab" data-subtab="vocabulary">📖 単語帳</button>
+      <button class="sub-tab" data-subtab="presentation">🎤 発表練習</button>
+    </div>
 
     <!-- Stats -->
     <div class="stats-row" id="stats-row"></div>
@@ -535,8 +816,94 @@
     <div class="calendar-grid" id="calendar-grid"></div>
 
     <!-- Recent Records -->
-    <div class="section-title">Recent</div>
+    <div class="section-title" id="recent-title">Recent</div>
     <div class="practice-list" id="practice-list"></div>
+
+    <!-- English: Phrases Section -->
+    <div class="english-section" id="phrases-section">
+      <div class="section-header">
+        <div class="section-title">📝 フレーズ暗記</div>
+        <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ 追加</button>
+      </div>
+      <div class="flashcard-container" id="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-category" id="flashcard-category"></div>
+          <div class="flashcard-text" id="flashcard-text">フレーズを追加してください</div>
+          <div class="flashcard-hint" id="flashcard-hint">クリックして裏返す</div>
+        </div>
+        <div class="flashcard-controls">
+          <button class="btn" id="prev-card">◀ 前</button>
+          <button class="btn btn-primary" id="shuffle-cards">🔀 シャッフル</button>
+          <button class="btn" id="next-card">次 ▶</button>
+        </div>
+        <div class="flashcard-progress" id="flashcard-progress"></div>
+      </div>
+      <div class="section-title" style="margin-top: 24px;">フレーズ一覧</div>
+      <div class="vocab-list" id="phrases-list"></div>
+    </div>
+
+    <!-- English: Vocabulary Section -->
+    <div class="english-section" id="vocabulary-section">
+      <div class="section-header">
+        <div class="section-title">📖 単語帳</div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-sm" id="vocab-quiz-btn">クイズ</button>
+          <button class="btn btn-primary btn-sm" id="add-vocab-btn">+ 追加</button>
+        </div>
+      </div>
+      <div class="vocab-search">
+        <input type="text" class="form-input" id="vocab-search" placeholder="検索...">
+        <select class="form-select" id="vocab-filter" style="width: auto;">
+          <option value="">全て</option>
+          <option value="noun">名詞</option>
+          <option value="verb">動詞</option>
+          <option value="adjective">形容詞</option>
+          <option value="adverb">副詞</option>
+          <option value="phrase">フレーズ</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+      <div class="vocab-list" id="vocab-list"></div>
+      <!-- Quiz Mode -->
+      <div class="quiz-container" id="vocab-quiz" style="display: none;">
+        <div class="quiz-question">
+          <div class="quiz-prompt" id="quiz-prompt"></div>
+          <input type="text" class="form-input quiz-input" id="quiz-answer" placeholder="答えを入力...">
+          <div class="quiz-result" id="quiz-result"></div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 12px;">
+          <button class="btn" id="quiz-skip">スキップ</button>
+          <button class="btn btn-primary" id="quiz-check">確認</button>
+          <button class="btn" id="quiz-exit">終了</button>
+        </div>
+        <div class="quiz-score" id="quiz-score"></div>
+      </div>
+    </div>
+
+    <!-- English: Presentation Section -->
+    <div class="english-section" id="presentation-section">
+      <div class="section-header">
+        <div class="section-title">🎤 発表練習</div>
+        <button class="btn btn-primary btn-sm" id="add-presentation-btn">+ テーマ追加</button>
+      </div>
+      <div class="presentation-timer">
+        <div class="timer-display" id="timer-display">00:00</div>
+        <div class="timer-target" id="timer-target">目標: -</div>
+        <div class="timer-controls">
+          <button class="btn timer-btn" id="timer-start">▶</button>
+          <button class="btn timer-btn" id="timer-stop" disabled>■</button>
+          <button class="btn timer-btn" id="timer-record">🎤</button>
+        </div>
+        <div class="recording-indicator" id="recording-indicator">
+          <span class="recording-dot"></span>
+          <span>録音中...</span>
+        </div>
+      </div>
+      <div class="section-title">テーマ一覧</div>
+      <div class="presentation-list" id="presentation-list"></div>
+      <div class="section-title" style="margin-top: 20px;">最近の練習</div>
+      <div class="practice-list" id="presentation-records"></div>
+    </div>
   </div>
 
   <!-- Edit Modal -->
