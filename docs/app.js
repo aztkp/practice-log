@@ -43,6 +43,8 @@
   let selectedChapter = null;
   let phraseFilterTextbook = '';
   let phraseFilterChapter = '';
+  let phraseFilterMastery = '';
+  let phraseSearchQuery = '';
 
   // Utils
   function b64decode(str) {
@@ -718,7 +720,7 @@
     const pronunciationSection = document.getElementById('pronunciation-section');
     const dictationSection = document.getElementById('dictation-section');
 
-    // Hide all sections first
+    // Hide all sections first (hide Today section for English)
     [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
       if (el) el.style.display = 'none';
     });
@@ -730,7 +732,7 @@
     document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
     document.querySelector(`.sub-tab[data-subtab="${subtab}"]`)?.classList.add('active');
 
-    // Show relevant section
+    // Show relevant section (English tabs don't show Today/Calendar)
     if (subtab === 'phrases') {
       phrasesSection?.classList.add('show');
       renderPhrases();
@@ -768,6 +770,17 @@
 
     // Apply filters
     let filteredPhrases = phrases;
+
+    // Search filter
+    if (phraseSearchQuery) {
+      const query = phraseSearchQuery.toLowerCase();
+      filteredPhrases = filteredPhrases.filter(p =>
+        p.japanese.toLowerCase().includes(query) ||
+        p.english.toLowerCase().includes(query)
+      );
+    }
+
+    // Textbook filter
     if (phraseFilterTextbook) {
       if (phraseFilterTextbook === 'free') {
         filteredPhrases = filteredPhrases.filter(p => !p.textbookId);
@@ -775,8 +788,21 @@
         filteredPhrases = filteredPhrases.filter(p => p.textbookId === phraseFilterTextbook);
       }
     }
+
+    // Chapter filter
     if (phraseFilterChapter) {
       filteredPhrases = filteredPhrases.filter(p => p.chapter === phraseFilterChapter);
+    }
+
+    // Mastery filter
+    if (phraseFilterMastery) {
+      if (phraseFilterMastery === 'weak') {
+        filteredPhrases = filteredPhrases.filter(p => (p.masteryLevel || 0) <= 2);
+      } else if (phraseFilterMastery === 'learning') {
+        filteredPhrases = filteredPhrases.filter(p => (p.masteryLevel || 0) >= 3 && (p.masteryLevel || 0) <= 4);
+      } else if (phraseFilterMastery === 'mastered') {
+        filteredPhrases = filteredPhrases.filter(p => (p.masteryLevel || 0) >= 5);
+      }
     }
 
     renderPhrasesList(filteredPhrases);
@@ -841,22 +867,29 @@
     const streak = calculateStreak();
     const monthlyCount = calculateMonthlyPhraseCount();
     const masteryRate = calculateMasteryRate();
+    const phrases = practiceData.english.phrases || [];
+    const weakCount = phrases.filter(p => (p.masteryLevel || 0) <= 2).length;
 
     container.innerHTML = `
       <div class="phrase-stat-badge">
         <span class="stat-icon">🔥</span>
         <span class="stat-num">${streak}</span>
-        <span class="stat-text">日連続</span>
+        <span class="stat-text">Streak</span>
       </div>
       <div class="phrase-stat-badge">
         <span class="stat-icon">📚</span>
-        <span class="stat-num">${monthlyCount}</span>
-        <span class="stat-text">今月</span>
+        <span class="stat-num">${phrases.length}</span>
+        <span class="stat-text">Total</span>
+      </div>
+      <div class="phrase-stat-badge">
+        <span class="stat-icon">💪</span>
+        <span class="stat-num">${weakCount}</span>
+        <span class="stat-text">Weak</span>
       </div>
       <div class="phrase-stat-badge">
         <span class="stat-icon">⭐</span>
         <span class="stat-num">${masteryRate}%</span>
-        <span class="stat-text">習熟率</span>
+        <span class="stat-text">Mastered</span>
       </div>
     `;
   }
@@ -1794,22 +1827,43 @@
       return;
     }
 
-    container.innerHTML = materials.map((mat, i) => `
-      <div class="material-item">
-        <div class="material-info">
-          <div class="material-name">${mat.name}</div>
-          <div class="material-meta">
-            ${mat.url ? `<a href="${mat.url}" target="_blank" class="material-link">Open Link ↗</a>` : ''}
-            ${mat.notes ? `<span style="margin-left: 8px;">${mat.notes}</span>` : ''}
+    // Sort: active first, then by name
+    const sorted = [...materials].sort((a, b) => {
+      if (a.active && !b.active) return -1;
+      if (!a.active && b.active) return 1;
+      return a.name.localeCompare(b.name);
+    });
+
+    container.innerHTML = sorted.map((mat) => {
+      const realIndex = materials.findIndex(m => m.id === mat.id);
+      return `
+        <div class="material-item ${mat.active ? 'active' : ''}">
+          <div class="material-status" onclick="toggleMaterialActive('${type}', ${realIndex})" title="Toggle active">
+            ${mat.active ? '🔥' : '○'}
+          </div>
+          <div class="material-info">
+            <div class="material-name">${mat.name}</div>
+            <div class="material-meta">
+              ${mat.url ? `<a href="${mat.url}" target="_blank" class="material-link">Open ↗</a>` : ''}
+              ${mat.notes ? `<span style="margin-left: 8px; color: var(--text-muted);">${mat.notes}</span>` : ''}
+            </div>
+          </div>
+          <div class="vocab-actions">
+            <button class="btn btn-sm" onclick="editMaterial('${type}', ${realIndex})">Edit</button>
+            <button class="btn btn-sm btn-delete" onclick="deleteMaterial('${type}', ${realIndex})">×</button>
           </div>
         </div>
-        <div class="vocab-actions">
-          <button class="btn btn-sm" onclick="editMaterial('${type}', ${i})">Edit</button>
-          <button class="btn btn-sm btn-delete" onclick="deleteMaterial('${type}', ${i})">×</button>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
+
+  // Toggle material active status
+  window.toggleMaterialActive = async function(type, index) {
+    const material = practiceData.english[type][index];
+    material.active = !material.active;
+    await saveData();
+    renderMaterials(type);
+  };
 
   function openMaterialModal(type, material = null, index = -1) {
     const modal = document.getElementById('edit-modal');
@@ -2471,6 +2525,10 @@
     document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openMaterialModal('pronunciation'));
     document.getElementById('add-dictation-btn')?.addEventListener('click', () => openMaterialModal('dictation'));
 
+    document.getElementById('phrase-search')?.addEventListener('input', (e) => {
+      phraseSearchQuery = e.target.value;
+      renderPhrases();
+    });
     document.getElementById('phrase-filter-textbook')?.addEventListener('change', (e) => {
       phraseFilterTextbook = e.target.value;
       phraseFilterChapter = '';
@@ -2479,6 +2537,14 @@
     document.getElementById('phrase-filter-chapter')?.addEventListener('change', (e) => {
       phraseFilterChapter = e.target.value;
       renderPhrases();
+    });
+    document.getElementById('phrase-filter-mastery')?.addEventListener('change', (e) => {
+      phraseFilterMastery = e.target.value;
+      renderPhrases();
+    });
+    document.getElementById('quick-study-btn')?.addEventListener('click', () => {
+      // Quick study: weak phrases, random, 10 questions
+      startStudyMode('weak', '', '', '10');
     });
 
     document.getElementById('flashcard')?.addEventListener('click', () => {

@@ -565,8 +565,29 @@
       border-radius: 10px;
       padding: 14px;
       display: flex;
-      justify-content: space-between;
+      gap: 12px;
       align-items: center;
+    }
+
+    .material-item.active {
+      border-left: 3px solid var(--english);
+    }
+
+    .material-status {
+      font-size: 18px;
+      cursor: pointer;
+      width: 28px;
+      text-align: center;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .material-status:hover {
+      opacity: 1;
+    }
+
+    .material-item.active .material-status {
+      opacity: 1;
     }
 
     .material-info {
@@ -954,16 +975,27 @@
       font-size: 13px;
     }
 
-    /* Phrase filters */
+    /* Phrase search and filters */
+    .phrase-search {
+      margin-bottom: 8px;
+    }
+
+    .phrase-search .form-input {
+      font-size: 13px;
+    }
+
     .phrase-filters {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .phrase-filters .form-select {
-      font-size: 13px;
-      padding: 8px 10px;
+      font-size: 12px;
+      padding: 6px 8px;
+      flex: 1;
+      min-width: 100px;
     }
 
     /* Phrase source label */
@@ -1351,6 +1383,7 @@
       <div class="section-header">
         <div class="section-title">📝 Phrases</div>
         <div style="display: flex; gap: 8px;">
+          <button class="btn" id="quick-study-btn" title="Study weak phrases">⚡ Quick</button>
           <button class="btn btn-primary" id="start-study-btn">▶ Study</button>
         </div>
       </div>
@@ -1386,16 +1419,25 @@
       <div class="section-header" style="margin-top: 20px;">
         <div class="section-title">Phrase List</div>
         <div style="display: flex; gap: 6px;">
-          <button class="btn btn-sm" id="bulk-add-phrase-btn">Bulk Add</button>
+          <button class="btn btn-sm" id="bulk-add-phrase-btn">Bulk</button>
           <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ Add</button>
         </div>
       </div>
+      <div class="phrase-search">
+        <input type="text" class="form-input" id="phrase-search" placeholder="Search phrases...">
+      </div>
       <div class="phrase-filters">
-        <select class="form-select" id="phrase-filter-textbook" style="flex: 1;">
-          <option value="">All</option>
+        <select class="form-select" id="phrase-filter-textbook">
+          <option value="">All Textbooks</option>
         </select>
-        <select class="form-select" id="phrase-filter-chapter" style="flex: 1;" disabled>
-          <option value="">All</option>
+        <select class="form-select" id="phrase-filter-chapter" disabled>
+          <option value="">All Chapters</option>
+        </select>
+        <select class="form-select" id="phrase-filter-mastery">
+          <option value="">All Levels</option>
+          <option value="weak">Weak (★0-2)</option>
+          <option value="learning">Learning (★3-4)</option>
+          <option value="mastered">Mastered (★5)</option>
         </select>
       </div>
       <div class="vocab-list" id="phrases-list"></div>
