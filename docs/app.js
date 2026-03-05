@@ -406,7 +406,7 @@
           const isDone = completed.includes(plan);
           return `
             <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}">
-              <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
+              <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '✓' : '-'}</span>
               <span class="status-label">${plan}</span>
             </div>
           `;
@@ -448,24 +448,56 @@
     const container = document.getElementById('practice-list');
     if (!container) return;
 
-    const records = (practiceData.records[currentCategory] || [])
-      .filter(r => (r.completed || []).length > 0)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 7);
+    // Combine records from all categories
+    const allRecords = [];
+    CATEGORIES.forEach(cat => {
+      const records = practiceData.records[cat.id] || [];
+      records.forEach(record => {
+        if ((record.completed || []).length > 0) {
+          allRecords.push({
+            ...record,
+            categoryId: cat.id,
+            categoryEmoji: cat.emoji
+          });
+        }
+      });
+    });
 
-    if (records.length === 0) {
+    allRecords.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const recentRecords = allRecords.slice(0, 10);
+
+    if (recentRecords.length === 0) {
       container.innerHTML = '<div class="empty">まだ記録がありません</div>';
       return;
     }
 
-    container.innerHTML = records.map(record => `
-      <div class="practice-item ${currentCategory}">
-        <div class="practice-date">${formatDate(record.date)}</div>
+    container.innerHTML = recentRecords.map(record => `
+      <div class="practice-item">
+        <div class="practice-date">${record.categoryEmoji} ${formatDate(record.date)}</div>
         <div class="practice-content">
           <div class="practice-checks">${(record.completed || []).map(p => `<span class="check-tag">✓ ${p}</span>`).join('')}</div>
         </div>
+        <button class="btn btn-sm btn-delete record-delete" data-date="${record.date}" data-category="${record.categoryId}">×</button>
       </div>
     `).join('');
+
+    // Add delete handlers
+    container.querySelectorAll('.record-delete').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const date = btn.dataset.date;
+        const catId = btn.dataset.category;
+        if (!confirm(`${formatDate(date)}の記録を削除しますか？`)) return;
+
+        const records = practiceData.records[catId];
+        const idx = records.findIndex(r => r.date === date);
+        if (idx >= 0) {
+          records.splice(idx, 1);
+          await saveData();
+          renderAll();
+        }
+      });
+    });
   }
 
   // Day Modal (for past dates) - shows all categories
@@ -502,7 +534,7 @@
                 const isDone = completed.includes(plan);
                 return `
                   <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}" data-category="${cat.id}">
-                    <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
+                    <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '✓' : '-'}</span>
                     <span class="status-label">${plan}</span>
                   </div>
                 `;
