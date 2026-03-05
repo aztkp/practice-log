@@ -923,11 +923,11 @@
         phrases
           .filter(p => p.textbookId === phraseFilterTextbook && p.chapter)
           .map(p => p.chapter)
-      )].sort();
+      )].sort((a, b) => Number(a) - Number(b));
 
       chapterSelect.innerHTML = `
         <option value="">すべて</option>
-        ${chapters.map(ch => `<option value="${ch}" ${phraseFilterChapter === ch ? 'selected' : ''}>${ch}</option>`).join('')}
+        ${chapters.map(ch => `<option value="${ch}" ${phraseFilterChapter === ch ? 'selected' : ''}>Ch.${ch}</option>`).join('')}
       `;
       chapterSelect.disabled = chapters.length === 0;
     } else {
@@ -995,9 +995,9 @@
       // Build source label
       let sourceLabel = '';
       if (textbook) {
-        sourceLabel = textbook.name + (phrase.chapter ? ` - ${phrase.chapter}` : '');
+        sourceLabel = textbook.name + (phrase.chapter ? ` - Ch.${phrase.chapter}` : '');
       } else if (phrase.chapter) {
-        sourceLabel = phrase.chapter;
+        sourceLabel = `Ch.${phrase.chapter}`;
       }
 
       return `
@@ -1170,7 +1170,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">チャプター</label>
-        <input type="text" class="form-input" id="phrase-chapter" value="${phrase?.chapter || ''}" placeholder="例: Chapter 1, Unit 3">
+        <input type="number" class="form-input" id="phrase-chapter" value="${phrase?.chapter || ''}" placeholder="1" min="1">
       </div>
       <div class="form-group">
         <label class="form-label">日本語</label>
@@ -1326,12 +1326,12 @@
           phrases
             .filter(p => p.textbookId === textbookId && p.chapter)
             .map(p => p.chapter)
-        )].sort();
+        )].sort((a, b) => Number(a) - Number(b));
 
         if (chapters.length > 0) {
           chapterSelect.innerHTML = `
             <option value="">すべて</option>
-            ${chapters.map(ch => `<option value="${ch}">${ch}</option>`).join('')}
+            ${chapters.map(ch => `<option value="${ch}">Ch.${ch}</option>`).join('')}
           `;
           chapterSelect.disabled = false;
         } else {
@@ -1465,7 +1465,7 @@
 
     let modeTitle = '暗記モード';
     if (studyMode === 'chapter' && textbook) {
-      modeTitle = textbook.name + (phrase.chapter ? ` - ${phrase.chapter}` : '');
+      modeTitle = textbook.name + (phrase.chapter ? ` - Ch.${phrase.chapter}` : '');
     } else if (studyMode === 'weak') {
       modeTitle = '苦手優先モード';
     } else if (studyMode === 'random') {
