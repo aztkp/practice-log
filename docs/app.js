@@ -1255,6 +1255,104 @@
     });
   }
 
+  // Bulk phrase add modal
+  function openBulkPhraseModal() {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    const textbooks = practiceData.english.textbooks || [];
+
+    title.textContent = 'フレーズ一括追加';
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">教材</label>
+        <select class="form-select" id="bulk-textbook">
+          <option value="">自由入力</option>
+          ${textbooks.map(tb => `<option value="${tb.id}">${tb.name}</option>`).join('')}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">チャプター</label>
+        <input type="number" class="form-input" id="bulk-chapter" placeholder="1" min="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">フレーズ（1行に1フレーズ、日本語と英語をタブか | で区切る）</label>
+        <textarea class="form-textarea" id="bulk-phrases" rows="10" placeholder="彼は会議に遅刻した|He was late for the meeting
+それは私には関係ない|It's none of my business
+できるだけ早く|as soon as possible"></textarea>
+      </div>
+      <div class="bulk-preview" id="bulk-preview"></div>
+      <button class="btn btn-primary" id="save-bulk" style="width:100%;margin-top:16px;">追加</button>
+    `;
+
+    modal.classList.add('show');
+
+    const updatePreview = () => {
+      const text = document.getElementById('bulk-phrases').value;
+      const lines = text.split('\n').filter(line => line.trim());
+      const parsed = lines.map(line => {
+        const parts = line.split(/\t|\|/);
+        if (parts.length >= 2) {
+          return { jp: parts[0].trim(), en: parts[1].trim(), valid: true };
+        }
+        return { text: line, valid: false };
+      });
+
+      const validCount = parsed.filter(p => p.valid).length;
+      const invalidCount = parsed.filter(p => !p.valid).length;
+
+      let previewHtml = `<span style="color: var(--accent);">${validCount}件</span> 追加可能`;
+      if (invalidCount > 0) {
+        previewHtml += ` / <span style="color: var(--danger);">${invalidCount}件</span> 形式エラー`;
+      }
+      document.getElementById('bulk-preview').innerHTML = previewHtml;
+    };
+
+    document.getElementById('bulk-phrases').addEventListener('input', updatePreview);
+
+    document.getElementById('save-bulk').addEventListener('click', async () => {
+      const textbookId = document.getElementById('bulk-textbook').value || null;
+      const chapter = document.getElementById('bulk-chapter').value || null;
+      const text = document.getElementById('bulk-phrases').value;
+
+      const lines = text.split('\n').filter(line => line.trim());
+      const newPhrases = [];
+
+      lines.forEach(line => {
+        const parts = line.split(/\t|\|/);
+        if (parts.length >= 2) {
+          newPhrases.push({
+            id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+            japanese: parts[0].trim(),
+            english: parts[1].trim(),
+            textbookId,
+            chapter,
+            masteryLevel: 0,
+            lastStudied: null,
+            studyCount: 0,
+            createdAt: getTodayKey()
+          });
+        }
+      });
+
+      if (newPhrases.length === 0) {
+        showToast('追加できるフレーズがありません', 'error');
+        return;
+      }
+
+      practiceData.english.phrases.push(...newPhrases);
+      await saveData();
+      modal.classList.remove('show');
+      shuffledPhrases = [...practiceData.english.phrases];
+      currentPhraseIndex = 0;
+      isCardFlipped = false;
+      renderPhrases();
+      showToast(`${newPhrases.length}件のフレーズを追加しました`);
+    });
+  }
+
   // Global functions for phrase management
   window.editPhrase = function(index) {
     const phrase = practiceData.english.phrases[index];
@@ -2267,6 +2365,7 @@
 
     // English: Phrases
     document.getElementById('add-phrase-btn')?.addEventListener('click', () => openPhraseModal());
+    document.getElementById('bulk-add-phrase-btn')?.addEventListener('click', openBulkPhraseModal);
     document.getElementById('manage-textbooks-btn')?.addEventListener('click', openTextbookModal);
     document.getElementById('start-study-btn')?.addEventListener('click', openStudyModeModal);
     document.getElementById('phrase-filter-textbook')?.addEventListener('change', (e) => {

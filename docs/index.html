@@ -465,6 +465,17 @@
       border-color: var(--accent);
     }
 
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .bulk-preview {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 8px 0;
+    }
+
     /* Toast */
     .toast {
       position: fixed;
@@ -1329,7 +1340,10 @@
       <!-- Phrase list with filters -->
       <div class="section-header" style="margin-top: 20px;">
         <div class="section-title">フレーズ一覧</div>
-        <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ 追加</button>
+        <div style="display: flex; gap: 6px;">
+          <button class="btn btn-sm" id="bulk-add-phrase-btn">一括追加</button>
+          <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ 追加</button>
+        </div>
       </div>
       <div class="phrase-filters">
         <select class="form-select" id="phrase-filter-textbook" style="flex: 1;">
