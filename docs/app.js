@@ -7,14 +7,14 @@
 
   // Categories configuration - add new categories here
   const CATEGORIES = [
+    { id: 'english', label: 'English', emoji: '📚' },
     { id: 'guitar', label: 'Guitar', emoji: '🎸' },
-    { id: 'piano', label: 'Piano', emoji: '🎹' },
-    { id: 'english', label: 'English', emoji: '📚' }
+    { id: 'piano', label: 'Piano', emoji: '🎹' }
   ];
 
   let practiceData = null;
   let dataSha = null;
-  let currentCategory = 'guitar';
+  let currentCategory = 'english';
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth();
 
@@ -245,22 +245,34 @@
     }
   }
 
-  // Contribution Graph
+  // Contribution Graph (shared across all categories)
   function renderContribGraph() {
     if (!practiceData) return;
 
     const container = document.getElementById('contrib-graph');
     if (!container) return;
 
-    const records = practiceData.records[currentCategory] || [];
-    const plans = practiceData.plans[currentCategory] || [];
+    // Combine records from all categories
     const checksByDate = {};
+    let totalPlans = 0;
 
-    records.forEach(record => {
-      checksByDate[record.date] = (record.completed || []).length;
+    CATEGORIES.forEach(cat => {
+      const records = practiceData.records[cat.id] || [];
+      let plans;
+      if (cat.id === 'english') {
+        plans = (practiceData.english.textbooks || []).map(tb => tb.name);
+      } else {
+        plans = practiceData.plans[cat.id] || [];
+      }
+      totalPlans += plans.length;
+
+      records.forEach(record => {
+        const count = (record.completed || []).length;
+        checksByDate[record.date] = (checksByDate[record.date] || 0) + count;
+      });
     });
 
-    const maxChecks = plans.length || 1;
+    const maxChecks = totalPlans || 1;
     const days = [];
     const today = new Date();
     for (let i = 89; i >= 0; i--) {
@@ -270,20 +282,20 @@
       const checks = checksByDate[key] || 0;
       let level = 0;
       if (checks > 0) level = 1;
-      if (checks >= maxChecks * 0.5) level = 2;
-      if (checks >= maxChecks * 0.75) level = 3;
+      if (checks >= maxChecks * 0.33) level = 2;
+      if (checks >= maxChecks * 0.66) level = 3;
       if (checks >= maxChecks) level = 4;
       days.push({ key, checks, level });
     }
 
     container.innerHTML = `
       <div class="contrib-row">
-        ${days.map(d => `<div class="contrib-day ${currentCategory} level-${d.level}" title="${d.key}: ${d.checks}項目"></div>`).join('')}
+        ${days.map(d => `<div class="contrib-day level-${d.level}" title="${d.key}: ${d.checks}項目"></div>`).join('')}
       </div>
     `;
   }
 
-  // Calendar
+  // Calendar (shared across all categories)
   function renderCalendar() {
     if (!practiceData) return;
 
@@ -293,10 +305,20 @@
 
     monthEl.textContent = `${currentYear}/${currentMonth + 1}`;
 
-    const records = practiceData.records[currentCategory] || [];
+    // Combine records from all categories
     const checksByDate = {};
-    records.forEach(record => {
-      checksByDate[record.date] = (record.completed || []).length;
+    const categoryByDate = {}; // Track which categories practiced each day
+
+    CATEGORIES.forEach(cat => {
+      const records = practiceData.records[cat.id] || [];
+      records.forEach(record => {
+        const count = (record.completed || []).length;
+        if (count > 0) {
+          checksByDate[record.date] = (checksByDate[record.date] || 0) + count;
+          if (!categoryByDate[record.date]) categoryByDate[record.date] = [];
+          categoryByDate[record.date].push(cat.id);
+        }
+      });
     });
 
     const firstDay = new Date(currentYear, currentMonth, 1);
@@ -317,11 +339,13 @@
       const checks = checksByDate[dateKey] || 0;
       const isToday = dateKey === todayKey;
       const hasPractice = checks > 0;
+      const categories = categoryByDate[dateKey] || [];
 
       html += `
-        <div class="calendar-day ${isToday ? 'today' : ''} ${hasPractice ? 'has-practice ' + currentCategory : ''}" data-date="${dateKey}">
+        <div class="calendar-day ${isToday ? 'today' : ''} ${hasPractice ? 'has-practice' : ''}" data-date="${dateKey}">
           <span class="calendar-day-num">${day}</span>
           ${hasPractice ? `<span class="calendar-day-duration">${checks}✓</span>` : ''}
+          ${hasPractice ? `<div class="calendar-day-cats">${categories.map(c => CATEGORIES.find(cat => cat.id === c)?.emoji || '').join('')}</div>` : ''}
         </div>
       `;
     }
@@ -444,56 +468,61 @@
     `).join('');
   }
 
-  // Day Modal (for past dates)
+  // Day Modal (for past dates) - shows all categories
   function openDayModal(dateKey) {
     const modal = document.getElementById('edit-modal');
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
-    // For English category, use textbooks as plans
-    let plans;
-    if (currentCategory === 'english') {
-      const textbooks = practiceData.english.textbooks || [];
-      plans = textbooks.map(tb => tb.name);
-    } else {
-      plans = practiceData.plans[currentCategory] || [];
-    }
-
-    const record = getRecord(dateKey) || { date: dateKey, completed: [] };
-    const completed = record.completed || [];
-
     title.textContent = formatDate(dateKey);
 
-    if (plans.length === 0) {
-      content.innerHTML = currentCategory === 'english'
-        ? '<div class="empty">教材がありません</div>'
-        : '<div class="empty">プランがありません</div>';
-      modal.classList.add('show');
-      return;
-    }
-
     const renderModalContent = () => {
-      const currentRecord = getRecord(dateKey) || { date: dateKey, completed: [] };
-      const currentCompleted = currentRecord.completed || [];
+      let html = '';
 
-      content.innerHTML = `
-        <div class="status-list">
-          ${plans.map(plan => {
-            const isDone = currentCompleted.includes(plan);
-            return `
-              <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}">
-                <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
-                <span class="status-label">${plan}</span>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      `;
+      CATEGORIES.forEach(cat => {
+        let plans;
+        if (cat.id === 'english') {
+          const textbooks = practiceData.english.textbooks || [];
+          plans = textbooks.map(tb => tb.name);
+        } else {
+          plans = practiceData.plans[cat.id] || [];
+        }
+
+        if (plans.length === 0) return;
+
+        const records = practiceData.records[cat.id] || [];
+        const record = records.find(r => r.date === dateKey) || { date: dateKey, completed: [] };
+        const completed = record.completed || [];
+
+        html += `
+          <div class="modal-category-section">
+            <div class="modal-category-title">${cat.emoji} ${cat.label}</div>
+            <div class="status-list">
+              ${plans.map(plan => {
+                const isDone = completed.includes(plan);
+                return `
+                  <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}" data-category="${cat.id}">
+                    <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
+                    <span class="status-label">${plan}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      if (!html) {
+        html = '<div class="empty">プランがありません</div>';
+      }
+
+      content.innerHTML = html;
 
       content.querySelectorAll('.status-item').forEach(item => {
         item.addEventListener('click', async () => {
           const plan = item.dataset.plan;
-          let records = practiceData.records[currentCategory];
+          const catId = item.dataset.category;
+          let records = practiceData.records[catId];
           let record = records.find(r => r.date === dateKey);
 
           if (!record) {
