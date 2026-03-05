@@ -33,6 +33,17 @@
   let currentQuizIndex = 0;
   let quizScore = { correct: 0, total: 0 };
 
+  // Phrase study mode state
+  let studyMode = null; // 'chapter', 'random', 'weak'
+  let studyPhrases = [];
+  let studyIndex = 0;
+  let studyResults = []; // { phraseId, result: 'ok' | 'partial' | 'ng' }
+  let studyStartTime = null;
+  let selectedTextbookId = null;
+  let selectedChapter = null;
+  let phraseFilterTextbook = '';
+  let phraseFilterChapter = '';
+
   // Utils
   function b64decode(str) {
     const binary = atob(str.replace(/\n/g, ''));
@@ -99,6 +110,19 @@
       if (!practiceData.english.phrases) practiceData.english.phrases = [];
       if (!practiceData.english.vocabulary) practiceData.english.vocabulary = [];
       if (!practiceData.english.presentations) practiceData.english.presentations = [];
+      if (!practiceData.english.textbooks) practiceData.english.textbooks = [];
+      if (!practiceData.english.studyRecords) practiceData.english.studyRecords = [];
+
+      // Migrate existing phrases to include new fields
+      practiceData.english.phrases = practiceData.english.phrases.map(phrase => ({
+        ...phrase,
+        textbookId: phrase.textbookId || null,
+        chapter: phrase.chapter || null,
+        masteryLevel: phrase.masteryLevel ?? 0,
+        lastStudied: phrase.lastStudied || null,
+        studyCount: phrase.studyCount || 0,
+        createdAt: phrase.createdAt || new Date().toISOString().split('T')[0]
+      }));
 
       return practiceData;
     } catch (e) {
@@ -318,37 +342,57 @@
     const container = document.getElementById('today-checklist');
     if (!container) return;
 
-    const plans = practiceData.plans[currentCategory] || [];
+    // For English category, use textbooks as plans
+    let plans;
+    if (currentCategory === 'english') {
+      const textbooks = practiceData.english.textbooks || [];
+      plans = textbooks.map(tb => tb.name);
+    } else {
+      plans = practiceData.plans[currentCategory] || [];
+    }
+
     const todayKey = getTodayKey();
     const record = getRecord(todayKey) || { date: todayKey, completed: [] };
     const completed = record.completed || [];
 
     if (plans.length === 0) {
-      container.innerHTML = `
-        <div class="empty">
-          プランがありません。<br>
-          <button class="btn btn-primary" id="add-first-plan" style="margin-top:12px;">プランを追加</button>
-        </div>
-      `;
-      document.getElementById('add-first-plan')?.addEventListener('click', openPlansModal);
+      if (currentCategory === 'english') {
+        container.innerHTML = `
+          <div class="empty">
+            教材がありません。<br>
+            <button class="btn btn-primary" id="add-first-textbook" style="margin-top:12px;">教材を追加</button>
+          </div>
+        `;
+        document.getElementById('add-first-textbook')?.addEventListener('click', openTextbookModal);
+      } else {
+        container.innerHTML = `
+          <div class="empty">
+            プランがありません。<br>
+            <button class="btn btn-primary" id="add-first-plan" style="margin-top:12px;">プランを追加</button>
+          </div>
+        `;
+        document.getElementById('add-first-plan')?.addEventListener('click', openPlansModal);
+      }
       return;
     }
 
     container.innerHTML = `
-      <div class="checklist">
-        ${plans.map(plan => `
-          <label class="checklist-item">
-            <input type="checkbox" ${completed.includes(plan) ? 'checked' : ''} data-plan="${plan}">
-            <span class="checkmark"></span>
-            <span class="checklist-label">${plan}</span>
-          </label>
-        `).join('')}
+      <div class="status-list">
+        ${plans.map(plan => {
+          const isDone = completed.includes(plan);
+          return `
+            <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}">
+              <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
+              <span class="status-label">${plan}</span>
+            </div>
+          `;
+        }).join('')}
       </div>
     `;
 
-    container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      cb.addEventListener('change', async () => {
-        const plan = cb.dataset.plan;
+    container.querySelectorAll('.status-item').forEach(item => {
+      item.addEventListener('click', async () => {
+        const plan = item.dataset.plan;
         let records = practiceData.records[currentCategory];
         let record = records.find(r => r.date === todayKey);
 
@@ -357,18 +401,18 @@
           records.push(record);
         }
 
-        if (cb.checked) {
-          if (!record.completed.includes(plan)) {
-            record.completed.push(plan);
-          }
-        } else {
+        const isDone = record.completed.includes(plan);
+        if (isDone) {
           record.completed = record.completed.filter(p => p !== plan);
+        } else {
+          record.completed.push(plan);
         }
 
         await saveData();
         renderStats();
         renderContribGraph();
         renderCalendar();
+        renderTodayChecklist();
       });
     });
   }
@@ -406,52 +450,73 @@
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
-    const plans = practiceData.plans[currentCategory] || [];
+    // For English category, use textbooks as plans
+    let plans;
+    if (currentCategory === 'english') {
+      const textbooks = practiceData.english.textbooks || [];
+      plans = textbooks.map(tb => tb.name);
+    } else {
+      plans = practiceData.plans[currentCategory] || [];
+    }
+
     const record = getRecord(dateKey) || { date: dateKey, completed: [] };
     const completed = record.completed || [];
 
     title.textContent = formatDate(dateKey);
 
     if (plans.length === 0) {
-      content.innerHTML = '<div class="empty">プランがありません</div>';
+      content.innerHTML = currentCategory === 'english'
+        ? '<div class="empty">教材がありません</div>'
+        : '<div class="empty">プランがありません</div>';
       modal.classList.add('show');
       return;
     }
 
-    content.innerHTML = `
-      <div class="checklist">
-        ${plans.map(plan => `
-          <label class="checklist-item">
-            <input type="checkbox" ${completed.includes(plan) ? 'checked' : ''} data-plan="${plan}">
-            <span class="checkmark"></span>
-            <span class="checklist-label">${plan}</span>
-          </label>
-        `).join('')}
-      </div>
-      <button class="btn btn-primary" id="save-day" style="width:100%;margin-top:16px;">保存</button>
-    `;
+    const renderModalContent = () => {
+      const currentRecord = getRecord(dateKey) || { date: dateKey, completed: [] };
+      const currentCompleted = currentRecord.completed || [];
+
+      content.innerHTML = `
+        <div class="status-list">
+          ${plans.map(plan => {
+            const isDone = currentCompleted.includes(plan);
+            return `
+              <div class="status-item ${isDone ? 'done' : ''}" data-plan="${plan}">
+                <span class="status-badge ${isDone ? 'done' : 'pending'}">${isDone ? '完了' : '進行中'}</span>
+                <span class="status-label">${plan}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      content.querySelectorAll('.status-item').forEach(item => {
+        item.addEventListener('click', async () => {
+          const plan = item.dataset.plan;
+          let records = practiceData.records[currentCategory];
+          let record = records.find(r => r.date === dateKey);
+
+          if (!record) {
+            record = { date: dateKey, completed: [] };
+            records.push(record);
+          }
+
+          const isDone = record.completed.includes(plan);
+          if (isDone) {
+            record.completed = record.completed.filter(p => p !== plan);
+          } else {
+            record.completed.push(plan);
+          }
+
+          await saveData();
+          renderModalContent();
+          renderAll();
+        });
+      });
+    };
 
     modal.classList.add('show');
-
-    document.getElementById('save-day').addEventListener('click', async () => {
-      const newCompleted = [];
-      content.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-        newCompleted.push(cb.dataset.plan);
-      });
-
-      let records = practiceData.records[currentCategory];
-      let existingRecord = records.find(r => r.date === dateKey);
-
-      if (existingRecord) {
-        existingRecord.completed = newCompleted;
-      } else if (newCompleted.length > 0) {
-        records.push({ date: dateKey, completed: newCompleted });
-      }
-
-      await saveData();
-      modal.classList.remove('show');
-      renderAll();
-    });
+    renderModalContent();
   }
 
   // Plans Modal
@@ -549,6 +614,7 @@
     const calendarGrid = document.getElementById('calendar-grid');
     const recentTitle = document.getElementById('recent-title');
     const practiceList = document.getElementById('practice-list');
+    const plansBtn = document.getElementById('btn-plans');
 
     // English sections
     const phrasesSection = document.getElementById('phrases-section');
@@ -557,9 +623,11 @@
 
     if (currentCategory === 'english') {
       subtabs?.classList.add('show');
+      if (plansBtn) plansBtn.textContent = '教材';
       showEnglishSubtab(currentEnglishSubtab);
     } else {
       subtabs?.classList.remove('show');
+      if (plansBtn) plansBtn.textContent = 'Plans';
       // Show standard practice log UI
       statsRow.style.display = '';
       contribGraph.style.display = '';
@@ -636,8 +704,208 @@
     if (!practiceData) return;
 
     const phrases = practiceData.english.phrases || [];
-    renderFlashcard();
-    renderPhrasesList(phrases);
+    renderPhraseStats();
+    renderPhraseHeatmap();
+    renderTextbookList();
+    renderPhraseFilters();
+
+    // Apply filters
+    let filteredPhrases = phrases;
+    if (phraseFilterTextbook) {
+      if (phraseFilterTextbook === 'free') {
+        filteredPhrases = filteredPhrases.filter(p => !p.textbookId);
+      } else {
+        filteredPhrases = filteredPhrases.filter(p => p.textbookId === phraseFilterTextbook);
+      }
+    }
+    if (phraseFilterChapter) {
+      filteredPhrases = filteredPhrases.filter(p => p.chapter === phraseFilterChapter);
+    }
+
+    renderPhrasesList(filteredPhrases);
+  }
+
+  // Calculate streak days
+  function calculateStreak() {
+    const records = practiceData.english.studyRecords || [];
+    if (records.length === 0) return 0;
+
+    const dates = [...new Set(records.map(r => r.date))].sort().reverse();
+    let streak = 0;
+    const today = getTodayKey();
+    const yesterday = getDateKey(new Date(Date.now() - 86400000));
+
+    // Check if studied today or yesterday
+    if (dates[0] !== today && dates[0] !== yesterday) return 0;
+
+    let checkDate = dates[0] === today ? new Date() : new Date(Date.now() - 86400000);
+
+    for (const dateStr of dates) {
+      const expectedDate = getDateKey(checkDate);
+      if (dateStr === expectedDate) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else if (dateStr < expectedDate) {
+        break;
+      }
+    }
+
+    return streak;
+  }
+
+  // Calculate monthly phrase count
+  function calculateMonthlyPhraseCount() {
+    const records = practiceData.english.studyRecords || [];
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+
+    return records
+      .filter(r => {
+        const d = new Date(r.date);
+        return d.getFullYear() === year && d.getMonth() === month;
+      })
+      .reduce((sum, r) => sum + (r.phraseCount || 0), 0);
+  }
+
+  // Calculate mastery rate
+  function calculateMasteryRate() {
+    const phrases = practiceData.english.phrases || [];
+    if (phrases.length === 0) return 0;
+
+    const masteredCount = phrases.filter(p => (p.masteryLevel || 0) >= 4).length;
+    return Math.round((masteredCount / phrases.length) * 100);
+  }
+
+  function renderPhraseStats() {
+    const container = document.getElementById('phrase-stats');
+    if (!container) return;
+
+    const streak = calculateStreak();
+    const monthlyCount = calculateMonthlyPhraseCount();
+    const masteryRate = calculateMasteryRate();
+
+    container.innerHTML = `
+      <div class="phrase-stat-badge">
+        <span class="stat-icon">🔥</span>
+        <span class="stat-num">${streak}</span>
+        <span class="stat-text">日連続</span>
+      </div>
+      <div class="phrase-stat-badge">
+        <span class="stat-icon">📚</span>
+        <span class="stat-num">${monthlyCount}</span>
+        <span class="stat-text">今月</span>
+      </div>
+      <div class="phrase-stat-badge">
+        <span class="stat-icon">⭐</span>
+        <span class="stat-num">${masteryRate}%</span>
+        <span class="stat-text">習熟率</span>
+      </div>
+    `;
+  }
+
+  function renderPhraseHeatmap() {
+    const container = document.getElementById('phrase-heatmap');
+    if (!container) return;
+
+    const records = practiceData.english.studyRecords || [];
+
+    // Build phrase count by date
+    const countByDate = {};
+    records.forEach(rec => {
+      if (!countByDate[rec.date]) countByDate[rec.date] = 0;
+      countByDate[rec.date] += rec.phraseCount || 0;
+    });
+
+    // Find max for scaling
+    const maxCount = Math.max(...Object.values(countByDate), 1);
+
+    // Generate last 90 days
+    const days = [];
+    const today = new Date();
+    for (let i = 89; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const key = getDateKey(d);
+      const count = countByDate[key] || 0;
+
+      let level = 0;
+      if (count > 0) level = 1;
+      if (count >= maxCount * 0.33) level = 2;
+      if (count >= maxCount * 0.66) level = 3;
+      if (count >= maxCount) level = 4;
+
+      days.push({ key, count, level });
+    }
+
+    container.innerHTML = days.map(d =>
+      `<div class="phrase-heatmap-day level-${d.level}" title="${d.key}: ${d.count}フレーズ"></div>`
+    ).join('');
+  }
+
+  function renderTextbookList() {
+    const container = document.getElementById('textbook-list');
+    if (!container) return;
+
+    const textbooks = practiceData.english.textbooks || [];
+    const phrases = practiceData.english.phrases || [];
+
+    // Count phrases per textbook
+    const freePhraseCount = phrases.filter(p => !p.textbookId).length;
+
+    container.innerHTML = `
+      ${textbooks.map(tb => {
+        const count = phrases.filter(p => p.textbookId === tb.id).length;
+        return `
+          <div class="textbook-item" data-id="${tb.id}">
+            <span class="textbook-name">${tb.name}</span>
+            <span class="textbook-count">(${count})</span>
+          </div>
+        `;
+      }).join('')}
+      ${freePhraseCount > 0 ? `
+        <div class="textbook-item" data-id="free">
+          <span class="textbook-name">自由入力</span>
+          <span class="textbook-count">(${freePhraseCount})</span>
+        </div>
+      ` : ''}
+    `;
+  }
+
+  function renderPhraseFilters() {
+    const textbookSelect = document.getElementById('phrase-filter-textbook');
+    const chapterSelect = document.getElementById('phrase-filter-chapter');
+    if (!textbookSelect || !chapterSelect) return;
+
+    const textbooks = practiceData.english.textbooks || [];
+    const phrases = practiceData.english.phrases || [];
+
+    // Update textbook filter options
+    textbookSelect.innerHTML = `
+      <option value="">すべて</option>
+      ${textbooks.map(tb => `<option value="${tb.id}" ${phraseFilterTextbook === tb.id ? 'selected' : ''}>${tb.name}</option>`).join('')}
+      <option value="free" ${phraseFilterTextbook === 'free' ? 'selected' : ''}>自由入力</option>
+    `;
+
+    // Update chapter filter based on selected textbook
+    if (phraseFilterTextbook && phraseFilterTextbook !== 'free') {
+      // Get unique chapters from phrases for this textbook
+      const chapters = [...new Set(
+        phrases
+          .filter(p => p.textbookId === phraseFilterTextbook && p.chapter)
+          .map(p => p.chapter)
+      )].sort();
+
+      chapterSelect.innerHTML = `
+        <option value="">すべて</option>
+        ${chapters.map(ch => `<option value="${ch}" ${phraseFilterChapter === ch ? 'selected' : ''}>${ch}</option>`).join('')}
+      `;
+      chapterSelect.disabled = chapters.length === 0;
+    } else {
+      chapterSelect.innerHTML = '<option value="">すべて</option>';
+      chapterSelect.disabled = true;
+      phraseFilterChapter = '';
+    }
   }
 
   function renderFlashcard() {
@@ -686,20 +954,163 @@
       return;
     }
 
-    container.innerHTML = phrases.map((phrase, i) => `
-      <div class="vocab-item">
-        <div class="vocab-content">
-          <div class="vocab-meaning">${phrase.japanese}</div>
-          <div class="vocab-example">${phrase.english}</div>
+    const allPhrases = practiceData.english.phrases || [];
+    const textbooks = practiceData.english.textbooks || [];
+
+    container.innerHTML = phrases.map((phrase) => {
+      const realIndex = allPhrases.findIndex(p => p.id === phrase.id);
+      const textbook = textbooks.find(tb => tb.id === phrase.textbookId);
+      const masteryLevel = phrase.masteryLevel || 0;
+      const masteryStars = '★'.repeat(masteryLevel) + '☆'.repeat(5 - masteryLevel);
+
+      // Build source label
+      let sourceLabel = '';
+      if (textbook) {
+        sourceLabel = textbook.name + (phrase.chapter ? ` - ${phrase.chapter}` : '');
+      } else if (phrase.chapter) {
+        sourceLabel = phrase.chapter;
+      }
+
+      return `
+        <div class="vocab-item">
+          <div class="phrase-mastery" title="習熟度: ${masteryLevel}/5">${masteryStars}</div>
+          <div class="vocab-content">
+            <div class="vocab-meaning">${phrase.japanese}</div>
+            <div class="vocab-example">${phrase.english}</div>
+            ${sourceLabel ? `<div class="phrase-source">${sourceLabel}</div>` : ''}
+          </div>
+          <div class="vocab-actions">
+            <button class="btn btn-sm" onclick="editPhrase(${realIndex})">編集</button>
+            <button class="btn btn-sm btn-delete" onclick="deletePhrase(${realIndex})">×</button>
+          </div>
         </div>
-        <span class="vocab-category-tag">${phrase.category || '-'}</span>
-        <div class="vocab-actions">
-          <button class="btn btn-sm" onclick="editPhrase(${i})">編集</button>
-          <button class="btn btn-sm btn-delete" onclick="deletePhrase(${i})">×</button>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
+
+  // Textbook management modal
+  function openTextbookModal() {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    const textbooks = practiceData.english.textbooks || [];
+    const phrases = practiceData.english.phrases || [];
+
+    title.textContent = '教材を管理';
+
+    content.innerHTML = `
+      <div class="textbooks-manage-list" id="textbooks-manage-list">
+        ${textbooks.map((tb, i) => {
+          const phraseCount = phrases.filter(p => p.textbookId === tb.id).length;
+          return `
+            <div class="textbook-manage-item">
+              <div class="textbook-manage-info">
+                <span class="textbook-manage-name">${tb.name}</span>
+                <span class="textbook-manage-chapters">${phraseCount}件のフレーズ</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="btn btn-sm" onclick="editTextbook(${i})">編集</button>
+                <button class="btn btn-sm btn-delete" onclick="deleteTextbook(${i})">×</button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+        ${textbooks.length === 0 ? '<div class="empty">教材がありません</div>' : ''}
+      </div>
+      <div class="add-plan-row" style="margin-top: 16px;">
+        <input type="text" class="form-input" id="new-textbook-name" placeholder="新しい教材名...">
+        <button class="btn btn-primary" id="add-textbook-btn">追加</button>
+      </div>
+    `;
+
+    modal.classList.add('show');
+
+    document.getElementById('add-textbook-btn').addEventListener('click', addTextbook);
+    document.getElementById('new-textbook-name').addEventListener('keypress', e => {
+      if (e.key === 'Enter') addTextbook();
+    });
+  }
+
+  async function addTextbook() {
+    const input = document.getElementById('new-textbook-name');
+    const name = input.value.trim();
+    if (!name) return;
+
+    const newTextbook = {
+      id: Date.now().toString(),
+      name,
+      createdAt: getTodayKey()
+    };
+
+    practiceData.english.textbooks.push(newTextbook);
+    await saveData();
+    openTextbookModal(); // Refresh modal
+    renderPhrases();
+  }
+
+  function openEditTextbookModal(textbook, index) {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    title.textContent = '教材名を編集';
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">教材名</label>
+        <input type="text" class="form-input" id="edit-textbook-name" value="${textbook.name}">
+      </div>
+      <button class="btn btn-primary" id="save-textbook" style="width:100%;margin-top:16px;">保存</button>
+    `;
+
+    modal.classList.add('show');
+
+    document.getElementById('save-textbook').addEventListener('click', async () => {
+      const name = document.getElementById('edit-textbook-name').value.trim();
+      if (!name) {
+        showToast('教材名を入力してください', 'error');
+        return;
+      }
+
+      textbook.name = name;
+      practiceData.english.textbooks[index] = textbook;
+      await saveData();
+      modal.classList.remove('show');
+      renderPhrases();
+    });
+  }
+
+  // Global functions for textbook management
+  window.editTextbook = function(index) {
+    const textbook = practiceData.english.textbooks[index];
+    openEditTextbookModal(textbook, index);
+  };
+
+  window.deleteTextbook = async function(index) {
+    const textbook = practiceData.english.textbooks[index];
+    const phraseCount = (practiceData.english.phrases || []).filter(p => p.textbookId === textbook.id).length;
+
+    let msg = `「${textbook.name}」を削除しますか？`;
+    if (phraseCount > 0) {
+      msg += `\n\n※ この教材に関連する${phraseCount}件のフレーズは「自由入力」として残ります。`;
+    }
+
+    if (!confirm(msg)) return;
+
+    // Update phrases to remove textbook reference
+    practiceData.english.phrases = practiceData.english.phrases.map(p => {
+      if (p.textbookId === textbook.id) {
+        return { ...p, textbookId: null };
+      }
+      return p;
+    });
+
+    practiceData.english.textbooks.splice(index, 1);
+    await saveData();
+    openTextbookModal();
+    renderPhrases();
+  };
 
   function shuffleArray(array) {
     const arr = [...array];
@@ -715,9 +1126,23 @@
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
+    const textbooks = practiceData.english.textbooks || [];
+    const selectedTextbook = textbooks.find(tb => tb.id === phrase?.textbookId);
+
     title.textContent = phrase ? 'フレーズを編集' : 'フレーズを追加';
 
     content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">教材</label>
+        <select class="form-select" id="phrase-textbook">
+          <option value="">自由入力</option>
+          ${textbooks.map(tb => `<option value="${tb.id}" ${phrase?.textbookId === tb.id ? 'selected' : ''}>${tb.name}</option>`).join('')}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">チャプター</label>
+        <input type="text" class="form-input" id="phrase-chapter" value="${phrase?.chapter || ''}" placeholder="例: Chapter 1, Unit 3">
+      </div>
       <div class="form-group">
         <label class="form-label">日本語</label>
         <input type="text" class="form-input" id="phrase-japanese" value="${phrase?.japanese || ''}" placeholder="日本語フレーズ">
@@ -725,16 +1150,6 @@
       <div class="form-group">
         <label class="form-label">English</label>
         <input type="text" class="form-input" id="phrase-english" value="${phrase?.english || ''}" placeholder="English phrase">
-      </div>
-      <div class="form-group">
-        <label class="form-label">カテゴリ</label>
-        <select class="form-select" id="phrase-category">
-          <option value="">なし</option>
-          <option value="ビジネス" ${phrase?.category === 'ビジネス' ? 'selected' : ''}>ビジネス</option>
-          <option value="日常" ${phrase?.category === '日常' ? 'selected' : ''}>日常</option>
-          <option value="旅行" ${phrase?.category === '旅行' ? 'selected' : ''}>旅行</option>
-          <option value="技術" ${phrase?.category === '技術' ? 'selected' : ''}>技術</option>
-        </select>
       </div>
       <button class="btn btn-primary" id="save-phrase" style="width:100%;margin-top:16px;">保存</button>
     `;
@@ -744,7 +1159,8 @@
     document.getElementById('save-phrase').addEventListener('click', async () => {
       const japanese = document.getElementById('phrase-japanese').value.trim();
       const english = document.getElementById('phrase-english').value.trim();
-      const category = document.getElementById('phrase-category').value;
+      const textbookId = document.getElementById('phrase-textbook').value || null;
+      const chapter = document.getElementById('phrase-chapter').value.trim() || null;
 
       if (!japanese || !english) {
         showToast('日本語と英語を入力してください', 'error');
@@ -755,7 +1171,12 @@
         id: phrase?.id || Date.now().toString(),
         japanese,
         english,
-        category
+        textbookId,
+        chapter,
+        masteryLevel: phrase?.masteryLevel || 0,
+        lastStudied: phrase?.lastStudied || null,
+        studyCount: phrase?.studyCount || 0,
+        createdAt: phrase?.createdAt || getTodayKey()
       };
 
       if (index >= 0) {
@@ -790,6 +1211,419 @@
     isCardFlipped = false;
     renderPhrases();
   };
+
+  // ==================== STUDY MODE FUNCTIONS ====================
+
+  function openStudyModeModal() {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    const textbooks = practiceData.english.textbooks || [];
+    const phrases = practiceData.english.phrases || [];
+
+    title.textContent = '暗記モード設定';
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">学習モード</label>
+        <div class="study-mode-options">
+          <label class="study-mode-option selected" data-mode="chapter">
+            <input type="radio" name="study-mode" value="chapter" checked>
+            <span class="study-mode-icon">📖</span>
+            <div class="study-mode-info">
+              <div class="study-mode-name">チャプター別</div>
+              <div class="study-mode-desc">特定の教材・チャプターから出題</div>
+            </div>
+          </label>
+          <label class="study-mode-option" data-mode="random">
+            <input type="radio" name="study-mode" value="random">
+            <span class="study-mode-icon">🔀</span>
+            <div class="study-mode-info">
+              <div class="study-mode-name">ランダム</div>
+              <div class="study-mode-desc">全てのフレーズからランダム出題</div>
+            </div>
+          </label>
+          <label class="study-mode-option" data-mode="weak">
+            <input type="radio" name="study-mode" value="weak">
+            <span class="study-mode-icon">💪</span>
+            <div class="study-mode-info">
+              <div class="study-mode-name">苦手優先</div>
+              <div class="study-mode-desc">習熟度が低いものを優先</div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="form-group" id="textbook-select-group">
+        <label class="form-label">教材</label>
+        <select class="form-select" id="study-textbook">
+          <option value="">すべて</option>
+          ${textbooks.map(tb => `<option value="${tb.id}">${tb.name}</option>`).join('')}
+          <option value="free">自由入力</option>
+        </select>
+      </div>
+      <div class="form-group" id="chapter-select-group">
+        <label class="form-label">チャプター</label>
+        <select class="form-select" id="study-chapter" disabled>
+          <option value="">すべて</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">出題数</label>
+        <select class="form-select" id="study-count">
+          <option value="10">10問</option>
+          <option value="20">20問</option>
+          <option value="30">30問</option>
+          <option value="50">50問</option>
+          <option value="all">すべて</option>
+        </select>
+      </div>
+      <div class="study-preview" id="study-preview">
+        対象フレーズ: ${phrases.length}件
+      </div>
+      <button class="btn btn-primary" id="start-study" style="width:100%;margin-top:16px;">開始</button>
+    `;
+
+    modal.classList.add('show');
+
+    // Update chapter options when textbook changes
+    const updateChapterOptions = () => {
+      const textbookId = document.getElementById('study-textbook').value;
+      const chapterSelect = document.getElementById('study-chapter');
+
+      if (textbookId && textbookId !== 'free') {
+        // Get unique chapters from phrases for this textbook
+        const chapters = [...new Set(
+          phrases
+            .filter(p => p.textbookId === textbookId && p.chapter)
+            .map(p => p.chapter)
+        )].sort();
+
+        if (chapters.length > 0) {
+          chapterSelect.innerHTML = `
+            <option value="">すべて</option>
+            ${chapters.map(ch => `<option value="${ch}">${ch}</option>`).join('')}
+          `;
+          chapterSelect.disabled = false;
+        } else {
+          chapterSelect.innerHTML = '<option value="">すべて</option>';
+          chapterSelect.disabled = true;
+        }
+      } else {
+        chapterSelect.innerHTML = '<option value="">すべて</option>';
+        chapterSelect.disabled = true;
+      }
+      updatePreview();
+    };
+
+    // Update preview count
+    const updatePreview = () => {
+      const mode = document.querySelector('input[name="study-mode"]:checked').value;
+      const textbookId = document.getElementById('study-textbook').value;
+      const chapter = document.getElementById('study-chapter').value;
+
+      let filtered = [...phrases];
+
+      if (mode === 'chapter') {
+        if (textbookId === 'free') {
+          filtered = filtered.filter(p => !p.textbookId);
+        } else if (textbookId) {
+          filtered = filtered.filter(p => p.textbookId === textbookId);
+          if (chapter) {
+            filtered = filtered.filter(p => p.chapter === chapter);
+          }
+        }
+      } else if (mode === 'weak') {
+        filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
+        filtered.sort((a, b) => (a.masteryLevel || 0) - (b.masteryLevel || 0));
+      }
+
+      document.getElementById('study-preview').textContent = `対象フレーズ: ${filtered.length}件`;
+    };
+
+    // Mode selection
+    content.querySelectorAll('.study-mode-option').forEach(option => {
+      option.addEventListener('click', () => {
+        content.querySelectorAll('.study-mode-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+
+        const mode = option.dataset.mode;
+        const textbookGroup = document.getElementById('textbook-select-group');
+        const chapterGroup = document.getElementById('chapter-select-group');
+
+        if (mode === 'chapter') {
+          textbookGroup.style.display = '';
+          chapterGroup.style.display = '';
+        } else {
+          textbookGroup.style.display = 'none';
+          chapterGroup.style.display = 'none';
+        }
+
+        updatePreview();
+      });
+    });
+
+    document.getElementById('study-textbook').addEventListener('change', updateChapterOptions);
+    document.getElementById('study-chapter').addEventListener('change', updatePreview);
+
+    document.getElementById('start-study').addEventListener('click', () => {
+      const mode = document.querySelector('input[name="study-mode"]:checked').value;
+      const textbookId = document.getElementById('study-textbook').value;
+      const chapter = document.getElementById('study-chapter').value;
+      const countValue = document.getElementById('study-count').value;
+
+      startStudyMode(mode, textbookId, chapter, countValue);
+      modal.classList.remove('show');
+    });
+  }
+
+  function startStudyMode(mode, textbookId, chapter, countValue) {
+    const phrases = practiceData.english.phrases || [];
+    let filtered = [...phrases];
+
+    // Apply filters based on mode
+    if (mode === 'chapter') {
+      if (textbookId === 'free') {
+        filtered = filtered.filter(p => !p.textbookId);
+      } else if (textbookId) {
+        filtered = filtered.filter(p => p.textbookId === textbookId);
+        if (chapter) {
+          filtered = filtered.filter(p => p.chapter === chapter);
+        }
+      }
+    } else if (mode === 'weak') {
+      filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
+      filtered.sort((a, b) => (a.masteryLevel || 0) - (b.masteryLevel || 0));
+    }
+
+    if (filtered.length === 0) {
+      showToast('対象のフレーズがありません', 'error');
+      return;
+    }
+
+    // Apply count limit
+    let count = countValue === 'all' ? filtered.length : parseInt(countValue);
+    count = Math.min(count, filtered.length);
+
+    // Shuffle and slice
+    if (mode !== 'weak') {
+      filtered = shuffleArray(filtered);
+    }
+    filtered = filtered.slice(0, count);
+
+    // Set study state
+    studyMode = mode;
+    studyPhrases = filtered;
+    studyIndex = 0;
+    studyResults = [];
+    studyStartTime = Date.now();
+    selectedTextbookId = textbookId;
+    selectedChapter = chapter;
+
+    // Show study mode UI
+    renderStudyMode();
+  }
+
+  function renderStudyMode() {
+    const container = document.getElementById('study-mode-container');
+    if (!container) return;
+
+    const phrase = studyPhrases[studyIndex];
+    const progress = ((studyIndex) / studyPhrases.length) * 100;
+    const textbook = practiceData.english.textbooks?.find(tb => tb.id === phrase?.textbookId);
+    const isFlipped = isCardFlipped;
+
+    let modeTitle = '暗記モード';
+    if (studyMode === 'chapter' && textbook) {
+      modeTitle = textbook.name + (phrase.chapter ? ` - ${phrase.chapter}` : '');
+    } else if (studyMode === 'weak') {
+      modeTitle = '苦手優先モード';
+    } else if (studyMode === 'random') {
+      modeTitle = 'ランダムモード';
+    }
+
+    container.innerHTML = `
+      <div class="study-header">
+        <div class="study-title">${modeTitle}</div>
+        <button class="btn btn-sm" id="exit-study">✕ 終了</button>
+      </div>
+      <div class="study-progress-bar">
+        <div class="study-progress-fill" style="width: ${progress}%"></div>
+      </div>
+      <div class="study-card-container">
+        <div class="study-card ${isFlipped ? 'flipped' : ''}" id="study-card">
+          <div class="study-card-text">${isFlipped ? phrase.english : phrase.japanese}</div>
+          <div class="study-card-hint">${isFlipped ? 'タップして日本語を見る' : 'タップして英語を見る'}</div>
+          <div class="study-card-meta">${studyIndex + 1} / ${studyPhrases.length}</div>
+        </div>
+        <div class="study-buttons">
+          <button class="btn study-btn ng" id="study-ng">✗ 覚えてない</button>
+          <button class="btn study-btn partial" id="study-partial">△ 曖昧</button>
+          <button class="btn study-btn ok" id="study-ok">○ OK</button>
+        </div>
+      </div>
+    `;
+
+    container.style.display = 'block';
+
+    // Event listeners
+    document.getElementById('study-card').addEventListener('click', () => {
+      isCardFlipped = !isCardFlipped;
+      renderStudyMode();
+    });
+
+    document.getElementById('study-ng').addEventListener('click', () => submitStudyAnswer('ng'));
+    document.getElementById('study-partial').addEventListener('click', () => submitStudyAnswer('partial'));
+    document.getElementById('study-ok').addEventListener('click', () => submitStudyAnswer('ok'));
+    document.getElementById('exit-study').addEventListener('click', exitStudyMode);
+  }
+
+  async function submitStudyAnswer(result) {
+    const phrase = studyPhrases[studyIndex];
+
+    // Record result
+    studyResults.push({
+      phraseId: phrase.id,
+      result
+    });
+
+    // Update phrase mastery
+    const phraseIndex = practiceData.english.phrases.findIndex(p => p.id === phrase.id);
+    if (phraseIndex >= 0) {
+      const p = practiceData.english.phrases[phraseIndex];
+      let masteryDelta = 0;
+      if (result === 'ok') masteryDelta = 1;
+      else if (result === 'partial') masteryDelta = 0;
+      else if (result === 'ng') masteryDelta = -1;
+
+      p.masteryLevel = Math.max(0, Math.min(5, (p.masteryLevel || 0) + masteryDelta));
+      p.lastStudied = getTodayKey();
+      p.studyCount = (p.studyCount || 0) + 1;
+    }
+
+    // Move to next or show results
+    studyIndex++;
+    isCardFlipped = false;
+
+    if (studyIndex >= studyPhrases.length) {
+      await finishStudyMode();
+    } else {
+      renderStudyMode();
+    }
+  }
+
+  async function finishStudyMode() {
+    const duration = Math.round((Date.now() - studyStartTime) / 1000);
+
+    // Count results
+    const okCount = studyResults.filter(r => r.result === 'ok').length;
+    const partialCount = studyResults.filter(r => r.result === 'partial').length;
+    const ngCount = studyResults.filter(r => r.result === 'ng').length;
+
+    // Save study record
+    const record = {
+      id: Date.now().toString(),
+      date: getTodayKey(),
+      mode: studyMode,
+      textbookId: selectedTextbookId || null,
+      chapter: selectedChapter || null,
+      phraseCount: studyPhrases.length,
+      correctCount: okCount,
+      duration
+    };
+
+    practiceData.english.studyRecords.push(record);
+    await saveData();
+
+    // Show results
+    renderStudyResults(okCount, partialCount, ngCount, duration);
+  }
+
+  function renderStudyResults(okCount, partialCount, ngCount, duration) {
+    const container = document.getElementById('study-mode-container');
+    if (!container) return;
+
+    const total = studyPhrases.length;
+    const percentage = Math.round((okCount / total) * 100);
+
+    // Get phrases that need review (ng and partial)
+    const reviewPhrases = studyResults
+      .filter(r => r.result !== 'ok')
+      .map(r => {
+        const phrase = studyPhrases.find(p => p.id === r.phraseId);
+        return { ...phrase, result: r.result };
+      });
+
+    container.innerHTML = `
+      <div class="study-header">
+        <div class="study-title">学習完了</div>
+        <button class="btn btn-sm" id="close-results">✕ 閉じる</button>
+      </div>
+      <div class="study-result">
+        <div class="study-result-header">
+          <div class="study-result-score">${percentage}%</div>
+          <div class="study-result-label">${total}問中 ${okCount}問正解</div>
+        </div>
+        <div class="study-result-stats">
+          <div class="study-result-stat">
+            <div class="study-result-stat-value ok">${okCount}</div>
+            <div class="study-result-stat-label">覚えた</div>
+          </div>
+          <div class="study-result-stat">
+            <div class="study-result-stat-value partial">${partialCount}</div>
+            <div class="study-result-stat-label">曖昧</div>
+          </div>
+          <div class="study-result-stat">
+            <div class="study-result-stat-value ng">${ngCount}</div>
+            <div class="study-result-stat-label">覚えてない</div>
+          </div>
+        </div>
+        <div class="study-result-label" style="text-align: center; margin-bottom: 20px;">
+          学習時間: ${Math.floor(duration / 60)}分${duration % 60}秒
+        </div>
+        ${reviewPhrases.length > 0 ? `
+          <div class="section-title">復習リスト</div>
+          <div class="study-result-list">
+            ${reviewPhrases.map(p => `
+              <div class="study-result-item">
+                <span class="study-result-icon">${p.result === 'ng' ? '✗' : '△'}</span>
+                <div class="study-result-content">
+                  <div class="study-result-jp">${p.japanese}</div>
+                  <div class="study-result-en">${p.english}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+        <button class="btn btn-primary" id="study-again" style="width:100%;margin-top:20px;">もう一度学習</button>
+      </div>
+    `;
+
+    document.getElementById('close-results').addEventListener('click', exitStudyMode);
+    document.getElementById('study-again').addEventListener('click', () => {
+      exitStudyMode();
+      openStudyModeModal();
+    });
+  }
+
+  function exitStudyMode() {
+    const container = document.getElementById('study-mode-container');
+    if (container) {
+      container.style.display = 'none';
+    }
+
+    // Reset state
+    studyMode = null;
+    studyPhrases = [];
+    studyIndex = 0;
+    studyResults = [];
+    studyStartTime = null;
+    isCardFlipped = false;
+
+    // Refresh phrases display
+    renderPhrases();
+  }
 
   // ==================== VOCABULARY FUNCTIONS ====================
 
@@ -1330,8 +2164,14 @@
       renderCalendar();
     });
 
-    // Plans button
-    document.getElementById('btn-plans')?.addEventListener('click', openPlansModal);
+    // Plans button (opens textbook modal for English category)
+    document.getElementById('btn-plans')?.addEventListener('click', () => {
+      if (currentCategory === 'english') {
+        openTextbookModal();
+      } else {
+        openPlansModal();
+      }
+    });
 
     // Modals
     document.getElementById('modal-close')?.addEventListener('click', () => {
@@ -1366,6 +2206,17 @@
 
     // English: Phrases
     document.getElementById('add-phrase-btn')?.addEventListener('click', () => openPhraseModal());
+    document.getElementById('manage-textbooks-btn')?.addEventListener('click', openTextbookModal);
+    document.getElementById('start-study-btn')?.addEventListener('click', openStudyModeModal);
+    document.getElementById('phrase-filter-textbook')?.addEventListener('change', (e) => {
+      phraseFilterTextbook = e.target.value;
+      phraseFilterChapter = '';
+      renderPhrases();
+    });
+    document.getElementById('phrase-filter-chapter')?.addEventListener('change', (e) => {
+      phraseFilterChapter = e.target.value;
+      renderPhrases();
+    });
 
     document.getElementById('flashcard')?.addEventListener('click', () => {
       isCardFlipped = !isCardFlipped;

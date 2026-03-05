@@ -231,7 +231,7 @@
       margin-bottom: 12px;
     }
 
-    /* Checklist */
+    /* Today Section */
     .today-section {
       background: var(--bg-secondary);
       border-radius: 12px;
@@ -239,13 +239,14 @@
       margin-bottom: 20px;
     }
 
-    .checklist {
+    /* Status List */
+    .status-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .checklist-item {
+    .status-item {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -253,49 +254,44 @@
       background: var(--bg-tertiary);
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
-    .checklist-item:hover {
+    .status-item:hover {
       background: var(--bg-card);
     }
 
-    .checklist-item input[type="checkbox"] {
-      display: none;
+    .status-item.done {
+      opacity: 0.6;
     }
 
-    .checkmark {
-      width: 24px;
-      height: 24px;
-      border: 2px solid var(--border);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      flex-shrink: 0;
+    .status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      min-width: 50px;
+      text-align: center;
     }
 
-    .checklist-item input:checked + .checkmark {
+    .status-badge.pending {
+      background: var(--today);
+      color: #000;
+    }
+
+    .status-badge.done {
       background: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .checklist-item input:checked + .checkmark::after {
-      content: '✓';
       color: #fff;
-      font-size: 14px;
-      font-weight: bold;
     }
 
-    .checklist-label {
+    .status-label {
       font-size: 14px;
       flex: 1;
     }
 
-    .checklist-item input:checked ~ .checklist-label {
-      color: var(--text-muted);
+    .status-item.done .status-label {
       text-decoration: line-through;
+      color: var(--text-muted);
     }
 
     /* Practice List */
@@ -356,6 +352,15 @@
       padding: 10px 12px;
       background: var(--bg-tertiary);
       border-radius: 8px;
+    }
+
+    .plan-item .btn-delete {
+      opacity: 0.7;
+      padding: 4px 10px;
+    }
+
+    .plan-item .btn-delete:hover {
+      opacity: 1;
     }
 
     .plan-name {
@@ -764,6 +769,462 @@
       color: var(--text-muted);
       margin-top: 16px;
     }
+
+    /* Phrase stats badges */
+    .phrase-stats {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .phrase-stat-badge {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .phrase-stat-badge .stat-icon {
+      font-size: 20px;
+    }
+
+    .phrase-stat-badge .stat-num {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--english);
+    }
+
+    .phrase-stat-badge .stat-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Textbook section */
+    .textbook-section {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .textbook-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .textbook-item {
+      background: var(--bg-tertiary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .textbook-item:hover {
+      background: var(--bg-card);
+    }
+
+    .textbook-count {
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    /* Textbook management modal */
+    .textbooks-manage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .textbook-manage-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+    }
+
+    .textbook-manage-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .textbook-manage-name {
+      font-size: 14px;
+    }
+
+    .textbook-manage-chapters {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Chapter items in modal */
+    .chapters-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .chapter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    /* Phrase filters */
+    .phrase-filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .phrase-filters .form-select {
+      font-size: 13px;
+      padding: 8px 10px;
+    }
+
+    /* Phrase source label */
+    .phrase-source {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Phrase mastery stars */
+    .phrase-mastery {
+      font-size: 11px;
+      color: var(--english);
+      min-width: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Study mode */
+    .study-mode-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-primary);
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .study-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .study-title {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .study-progress-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--bg-tertiary);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .study-progress-fill {
+      height: 100%;
+      background: var(--english);
+      transition: width 0.3s;
+    }
+
+    .study-card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: calc(100vh - 120px);
+      justify-content: center;
+    }
+
+    .study-card {
+      width: 100%;
+      max-width: 400px;
+      min-height: 220px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      margin-bottom: 30px;
+    }
+
+    .study-card:hover {
+      transform: scale(1.02);
+    }
+
+    .study-card.flipped {
+      background: var(--bg-tertiary);
+    }
+
+    .study-card-text {
+      font-size: 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .study-card-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+
+    .study-card-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .study-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .study-btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      min-width: 90px;
+    }
+
+    .study-btn.ng {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .study-btn.partial {
+      background: var(--today);
+      color: #fff;
+    }
+
+    .study-btn.ok {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Study result screen */
+    .study-result {
+      padding: 30px 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .study-result-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .study-result-score {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--english);
+      margin-bottom: 8px;
+    }
+
+    .study-result-label {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .study-result-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .study-result-stat {
+      text-align: center;
+    }
+
+    .study-result-stat-value {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .study-result-stat-value.ok { color: var(--accent); }
+    .study-result-stat-value.partial { color: var(--today); }
+    .study-result-stat-value.ng { color: var(--danger); }
+
+    .study-result-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .study-result-list {
+      margin-top: 20px;
+    }
+
+    .study-result-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .study-result-icon {
+      font-size: 16px;
+    }
+
+    .study-result-content {
+      flex: 1;
+    }
+
+    .study-result-jp {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .study-result-en {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Study start modal options */
+    .study-mode-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .study-mode-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg-tertiary);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .study-mode-option:hover {
+      background: var(--bg-card);
+    }
+
+    .study-mode-option.selected {
+      border: 2px solid var(--english);
+    }
+
+    .study-mode-option input[type="radio"] {
+      display: none;
+    }
+
+    .study-mode-icon {
+      font-size: 20px;
+    }
+
+    .study-mode-info {
+      flex: 1;
+    }
+
+    .study-mode-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .study-mode-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Phrase heatmap */
+    .phrase-heatmap-section {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .phrase-heatmap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .phrase-heatmap-day {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: var(--bg-tertiary);
+    }
+
+    .phrase-heatmap-day.level-1 { background: rgba(0, 188, 212, 0.25); }
+    .phrase-heatmap-day.level-2 { background: rgba(0, 188, 212, 0.45); }
+    .phrase-heatmap-day.level-3 { background: rgba(0, 188, 212, 0.65); }
+    .phrase-heatmap-day.level-4 { background: var(--english); }
+
+    .phrase-heatmap-legend {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .legend-box {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background: var(--bg-tertiary);
+    }
+
+    .legend-box.level-0 { background: var(--bg-tertiary); }
+    .legend-box.level-1 { background: rgba(0, 188, 212, 0.25); }
+    .legend-box.level-2 { background: rgba(0, 188, 212, 0.45); }
+    .legend-box.level-3 { background: rgba(0, 188, 212, 0.65); }
+    .legend-box.level-4 { background: var(--english); }
+
+    .legend-text {
+      margin: 0 2px;
+    }
+
+    /* Study preview in modal */
+    .study-preview {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 12px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -823,23 +1284,55 @@
     <div class="english-section" id="phrases-section">
       <div class="section-header">
         <div class="section-title">📝 フレーズ暗記</div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-primary" id="start-study-btn">▶ 暗記モード</button>
+        </div>
+      </div>
+
+      <!-- Stats badges -->
+      <div class="phrase-stats" id="phrase-stats"></div>
+
+      <!-- Heatmap calendar -->
+      <div class="phrase-heatmap-section">
+        <div class="section-title" style="font-size: 14px; margin-bottom: 8px;">学習カレンダー</div>
+        <div class="phrase-heatmap" id="phrase-heatmap"></div>
+        <div class="phrase-heatmap-legend">
+          <span class="legend-text">少</span>
+          <span class="legend-box level-0"></span>
+          <span class="legend-box level-1"></span>
+          <span class="legend-box level-2"></span>
+          <span class="legend-box level-3"></span>
+          <span class="legend-box level-4"></span>
+          <span class="legend-text">多</span>
+        </div>
+      </div>
+
+      <!-- Textbook list -->
+      <div class="textbook-section">
+        <div class="section-header" style="margin-bottom: 8px;">
+          <div class="section-title" style="font-size: 14px;">教材</div>
+          <button class="btn btn-sm" id="manage-textbooks-btn">管理</button>
+        </div>
+        <div class="textbook-list" id="textbook-list"></div>
+      </div>
+
+      <!-- Phrase list with filters -->
+      <div class="section-header" style="margin-top: 20px;">
+        <div class="section-title">フレーズ一覧</div>
         <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ 追加</button>
       </div>
-      <div class="flashcard-container" id="flashcard-container">
-        <div class="flashcard" id="flashcard">
-          <div class="flashcard-category" id="flashcard-category"></div>
-          <div class="flashcard-text" id="flashcard-text">フレーズを追加してください</div>
-          <div class="flashcard-hint" id="flashcard-hint">クリックして裏返す</div>
-        </div>
-        <div class="flashcard-controls">
-          <button class="btn" id="prev-card">◀ 前</button>
-          <button class="btn btn-primary" id="shuffle-cards">🔀 シャッフル</button>
-          <button class="btn" id="next-card">次 ▶</button>
-        </div>
-        <div class="flashcard-progress" id="flashcard-progress"></div>
+      <div class="phrase-filters">
+        <select class="form-select" id="phrase-filter-textbook" style="flex: 1;">
+          <option value="">すべて</option>
+        </select>
+        <select class="form-select" id="phrase-filter-chapter" style="flex: 1;" disabled>
+          <option value="">すべて</option>
+        </select>
       </div>
-      <div class="section-title" style="margin-top: 24px;">フレーズ一覧</div>
       <div class="vocab-list" id="phrases-list"></div>
+
+      <!-- Study mode container (hidden by default) -->
+      <div class="study-mode-container" id="study-mode-container" style="display: none;"></div>
     </div>
 
     <!-- English: Vocabulary Section -->
