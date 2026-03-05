@@ -548,6 +548,52 @@
     .english-section { display: none; }
     .english-section.show { display: block; }
 
+    .section-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .material-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .material-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .material-info {
+      flex: 1;
+    }
+
+    .material-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .material-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .material-link {
+      color: var(--english);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .material-link:hover {
+      text-decoration: underline;
+    }
+
     /* Flashcard */
     .flashcard-container {
       display: flex;
@@ -1265,10 +1311,9 @@
 
     <!-- English Sub-tabs (only shown when english category is selected) -->
     <div class="sub-tabs" id="english-subtabs">
-      <button class="sub-tab active" data-subtab="records">📊 記録</button>
-      <button class="sub-tab" data-subtab="phrases">📝 フレーズ暗記</button>
-      <button class="sub-tab" data-subtab="vocabulary">📖 単語帳</button>
-      <button class="sub-tab" data-subtab="presentation">🎤 発表練習</button>
+      <button class="sub-tab active" data-subtab="phrases">📝 Phrases</button>
+      <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
+      <button class="sub-tab" data-subtab="dictation">👂 Dictation</button>
     </div>
 
     <!-- Stats -->
@@ -1304,9 +1349,9 @@
     <!-- English: Phrases Section -->
     <div class="english-section" id="phrases-section">
       <div class="section-header">
-        <div class="section-title">📝 フレーズ暗記</div>
+        <div class="section-title">📝 Phrases</div>
         <div style="display: flex; gap: 8px;">
-          <button class="btn btn-primary" id="start-study-btn">▶ 暗記モード</button>
+          <button class="btn btn-primary" id="start-study-btn">▶ Study</button>
         </div>
       </div>
 
@@ -1315,42 +1360,42 @@
 
       <!-- Heatmap calendar -->
       <div class="phrase-heatmap-section">
-        <div class="section-title" style="font-size: 14px; margin-bottom: 8px;">学習カレンダー</div>
+        <div class="section-title" style="font-size: 14px; margin-bottom: 8px;">Study Calendar</div>
         <div class="phrase-heatmap" id="phrase-heatmap"></div>
         <div class="phrase-heatmap-legend">
-          <span class="legend-text">少</span>
+          <span class="legend-text">Less</span>
           <span class="legend-box level-0"></span>
           <span class="legend-box level-1"></span>
           <span class="legend-box level-2"></span>
           <span class="legend-box level-3"></span>
           <span class="legend-box level-4"></span>
-          <span class="legend-text">多</span>
+          <span class="legend-text">More</span>
         </div>
       </div>
 
       <!-- Textbook list -->
       <div class="textbook-section">
         <div class="section-header" style="margin-bottom: 8px;">
-          <div class="section-title" style="font-size: 14px;">教材</div>
-          <button class="btn btn-sm" id="manage-textbooks-btn">管理</button>
+          <div class="section-title" style="font-size: 14px;">Textbooks</div>
+          <button class="btn btn-sm" id="manage-textbooks-btn">Manage</button>
         </div>
         <div class="textbook-list" id="textbook-list"></div>
       </div>
 
       <!-- Phrase list with filters -->
       <div class="section-header" style="margin-top: 20px;">
-        <div class="section-title">フレーズ一覧</div>
+        <div class="section-title">Phrase List</div>
         <div style="display: flex; gap: 6px;">
-          <button class="btn btn-sm" id="bulk-add-phrase-btn">一括追加</button>
-          <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ 追加</button>
+          <button class="btn btn-sm" id="bulk-add-phrase-btn">Bulk Add</button>
+          <button class="btn btn-primary btn-sm" id="add-phrase-btn">+ Add</button>
         </div>
       </div>
       <div class="phrase-filters">
         <select class="form-select" id="phrase-filter-textbook" style="flex: 1;">
-          <option value="">すべて</option>
+          <option value="">All</option>
         </select>
         <select class="form-select" id="phrase-filter-chapter" style="flex: 1;" disabled>
-          <option value="">すべて</option>
+          <option value="">All</option>
         </select>
       </div>
       <div class="vocab-list" id="phrases-list"></div>
@@ -1359,67 +1404,24 @@
       <div class="study-mode-container" id="study-mode-container" style="display: none;"></div>
     </div>
 
-    <!-- English: Vocabulary Section -->
-    <div class="english-section" id="vocabulary-section">
+    <!-- English: Pronunciation Section -->
+    <div class="english-section" id="pronunciation-section">
       <div class="section-header">
-        <div class="section-title">📖 単語帳</div>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn btn-sm" id="vocab-quiz-btn">クイズ</button>
-          <button class="btn btn-primary btn-sm" id="add-vocab-btn">+ 追加</button>
-        </div>
+        <div class="section-title">🎤 Pronunciation</div>
+        <button class="btn btn-primary btn-sm" id="add-pronunciation-btn">+ Add</button>
       </div>
-      <div class="vocab-search">
-        <input type="text" class="form-input" id="vocab-search" placeholder="検索...">
-        <select class="form-select" id="vocab-filter" style="width: auto;">
-          <option value="">全て</option>
-          <option value="noun">名詞</option>
-          <option value="verb">動詞</option>
-          <option value="adjective">形容詞</option>
-          <option value="adverb">副詞</option>
-          <option value="phrase">フレーズ</option>
-          <option value="other">その他</option>
-        </select>
-      </div>
-      <div class="vocab-list" id="vocab-list"></div>
-      <!-- Quiz Mode -->
-      <div class="quiz-container" id="vocab-quiz" style="display: none;">
-        <div class="quiz-question">
-          <div class="quiz-prompt" id="quiz-prompt"></div>
-          <input type="text" class="form-input quiz-input" id="quiz-answer" placeholder="答えを入力...">
-          <div class="quiz-result" id="quiz-result"></div>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 12px;">
-          <button class="btn" id="quiz-skip">スキップ</button>
-          <button class="btn btn-primary" id="quiz-check">確認</button>
-          <button class="btn" id="quiz-exit">終了</button>
-        </div>
-        <div class="quiz-score" id="quiz-score"></div>
-      </div>
+      <p class="section-desc">Track your pronunciation practice with YouTube videos, apps, etc.</p>
+      <div class="material-list" id="pronunciation-list"></div>
     </div>
 
-    <!-- English: Presentation Section -->
-    <div class="english-section" id="presentation-section">
+    <!-- English: Dictation Section -->
+    <div class="english-section" id="dictation-section">
       <div class="section-header">
-        <div class="section-title">🎤 発表練習</div>
-        <button class="btn btn-primary btn-sm" id="add-presentation-btn">+ テーマ追加</button>
+        <div class="section-title">👂 Dictation</div>
+        <button class="btn btn-primary btn-sm" id="add-dictation-btn">+ Add</button>
       </div>
-      <div class="presentation-timer">
-        <div class="timer-display" id="timer-display">00:00</div>
-        <div class="timer-target" id="timer-target">目標: -</div>
-        <div class="timer-controls">
-          <button class="btn timer-btn" id="timer-start">▶</button>
-          <button class="btn timer-btn" id="timer-stop" disabled>■</button>
-          <button class="btn timer-btn" id="timer-record">🎤</button>
-        </div>
-        <div class="recording-indicator" id="recording-indicator">
-          <span class="recording-dot"></span>
-          <span>録音中...</span>
-        </div>
-      </div>
-      <div class="section-title">テーマ一覧</div>
-      <div class="presentation-list" id="presentation-list"></div>
-      <div class="section-title" style="margin-top: 20px;">最近の練習</div>
-      <div class="practice-list" id="presentation-records"></div>
+      <p class="section-desc">Track your dictation practice with podcasts, videos, etc.</p>
+      <div class="material-list" id="dictation-list"></div>
     </div>
   </div>
 

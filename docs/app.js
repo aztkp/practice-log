@@ -19,7 +19,7 @@
   let currentMonth = new Date().getMonth();
 
   // English learning state
-  let currentEnglishSubtab = 'records';
+  let currentEnglishSubtab = 'phrases';
   let currentPhraseIndex = 0;
   let shuffledPhrases = [];
   let isCardFlipped = false;
@@ -108,10 +108,10 @@
       // Initialize English learning data
       if (!practiceData.english) practiceData.english = {};
       if (!practiceData.english.phrases) practiceData.english.phrases = [];
-      if (!practiceData.english.vocabulary) practiceData.english.vocabulary = [];
-      if (!practiceData.english.presentations) practiceData.english.presentations = [];
       if (!practiceData.english.textbooks) practiceData.english.textbooks = [];
       if (!practiceData.english.studyRecords) practiceData.english.studyRecords = [];
+      if (!practiceData.english.pronunciation) practiceData.english.pronunciation = [];
+      if (!practiceData.english.dictation) practiceData.english.dictation = [];
 
       // Migrate existing phrases to include new fields
       practiceData.english.phrases = practiceData.english.phrases.map(phrase => ({
@@ -698,8 +698,8 @@
       recentTitle.style.display = '';
       practiceList.style.display = '';
       phrasesSection?.classList.remove('show');
-      vocabSection?.classList.remove('show');
-      presentationSection?.classList.remove('show');
+      document.getElementById('pronunciation-section')?.classList.remove('show');
+      document.getElementById('dictation-section')?.classList.remove('show');
     }
   }
 
@@ -715,35 +715,31 @@
     const recentTitle = document.getElementById('recent-title');
     const practiceList = document.getElementById('practice-list');
     const phrasesSection = document.getElementById('phrases-section');
-    const vocabSection = document.getElementById('vocabulary-section');
-    const presentationSection = document.getElementById('presentation-section');
+    const pronunciationSection = document.getElementById('pronunciation-section');
+    const dictationSection = document.getElementById('dictation-section');
 
     // Hide all sections first
     [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
       if (el) el.style.display = 'none';
     });
     phrasesSection?.classList.remove('show');
-    vocabSection?.classList.remove('show');
-    presentationSection?.classList.remove('show');
+    pronunciationSection?.classList.remove('show');
+    dictationSection?.classList.remove('show');
 
     // Update subtab active state
     document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
     document.querySelector(`.sub-tab[data-subtab="${subtab}"]`)?.classList.add('active');
 
     // Show relevant section
-    if (subtab === 'records') {
-      [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
-        if (el) el.style.display = '';
-      });
-    } else if (subtab === 'phrases') {
+    if (subtab === 'phrases') {
       phrasesSection?.classList.add('show');
       renderPhrases();
-    } else if (subtab === 'vocabulary') {
-      vocabSection?.classList.add('show');
-      renderVocabulary();
-    } else if (subtab === 'presentation') {
-      presentationSection?.classList.add('show');
-      renderPresentations();
+    } else if (subtab === 'pronunciation') {
+      pronunciationSection?.classList.add('show');
+      renderMaterials('pronunciation');
+    } else if (subtab === 'dictation') {
+      dictationSection?.classList.add('show');
+      renderMaterials('dictation');
     }
   }
 
@@ -1784,6 +1780,108 @@
     renderPhrases();
   }
 
+  // ==================== MATERIALS FUNCTIONS (Pronunciation/Dictation) ====================
+
+  function renderMaterials(type) {
+    if (!practiceData) return;
+
+    const materials = practiceData.english[type] || [];
+    const container = document.getElementById(`${type}-list`);
+    if (!container) return;
+
+    if (materials.length === 0) {
+      container.innerHTML = '<div class="empty">No materials yet. Add your first one!</div>';
+      return;
+    }
+
+    container.innerHTML = materials.map((mat, i) => `
+      <div class="material-item">
+        <div class="material-info">
+          <div class="material-name">${mat.name}</div>
+          <div class="material-meta">
+            ${mat.url ? `<a href="${mat.url}" target="_blank" class="material-link">Open Link ↗</a>` : ''}
+            ${mat.notes ? `<span style="margin-left: 8px;">${mat.notes}</span>` : ''}
+          </div>
+        </div>
+        <div class="vocab-actions">
+          <button class="btn btn-sm" onclick="editMaterial('${type}', ${i})">Edit</button>
+          <button class="btn btn-sm btn-delete" onclick="deleteMaterial('${type}', ${i})">×</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openMaterialModal(type, material = null, index = -1) {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    const typeLabel = type === 'pronunciation' ? 'Pronunciation' : 'Dictation';
+    title.textContent = material ? `Edit ${typeLabel} Material` : `Add ${typeLabel} Material`;
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" id="material-name" value="${material?.name || ''}" placeholder="e.g., Rachel's English - TH Sound">
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL (optional)</label>
+        <input type="url" class="form-input" id="material-url" value="${material?.url || ''}" placeholder="https://youtube.com/...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes (optional)</label>
+        <input type="text" class="form-input" id="material-notes" value="${material?.notes || ''}" placeholder="e.g., Focus on tongue position">
+      </div>
+      <button class="btn btn-primary" id="save-material" style="width:100%;margin-top:16px;">Save</button>
+    `;
+
+    modal.classList.add('show');
+
+    document.getElementById('save-material').addEventListener('click', async () => {
+      const name = document.getElementById('material-name').value.trim();
+      const url = document.getElementById('material-url').value.trim();
+      const notes = document.getElementById('material-notes').value.trim();
+
+      if (!name) {
+        showToast('Please enter a name', 'error');
+        return;
+      }
+
+      const newMaterial = {
+        id: material?.id || Date.now().toString(),
+        name,
+        url: url || null,
+        notes: notes || null,
+        createdAt: material?.createdAt || getTodayKey()
+      };
+
+      if (index >= 0) {
+        practiceData.english[type][index] = newMaterial;
+      } else {
+        practiceData.english[type].push(newMaterial);
+      }
+
+      await saveData();
+      modal.classList.remove('show');
+      renderMaterials(type);
+    });
+  }
+
+  // Global functions for material management
+  window.editMaterial = function(type, index) {
+    const material = practiceData.english[type][index];
+    openMaterialModal(type, material, index);
+  };
+
+  window.deleteMaterial = async function(type, index) {
+    const material = practiceData.english[type][index];
+    if (!confirm(`Delete "${material.name}"?`)) return;
+
+    practiceData.english[type].splice(index, 1);
+    await saveData();
+    renderMaterials(type);
+  };
+
   // ==================== VOCABULARY FUNCTIONS ====================
 
   function renderVocabulary() {
@@ -2368,6 +2466,11 @@
     document.getElementById('bulk-add-phrase-btn')?.addEventListener('click', openBulkPhraseModal);
     document.getElementById('manage-textbooks-btn')?.addEventListener('click', openTextbookModal);
     document.getElementById('start-study-btn')?.addEventListener('click', openStudyModeModal);
+
+    // English: Pronunciation & Dictation
+    document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openMaterialModal('pronunciation'));
+    document.getElementById('add-dictation-btn')?.addEventListener('click', () => openMaterialModal('dictation'));
+
     document.getElementById('phrase-filter-textbook')?.addEventListener('change', (e) => {
       phraseFilterTextbook = e.target.value;
       phraseFilterChapter = '';
