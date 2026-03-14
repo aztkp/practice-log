@@ -105,6 +105,94 @@
         "lastStudied": null,
         "studyCount": 0,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "177348037071087jfaqagq",
+        "japanese": "ジェフが入館するのをまだ見ていません",
+        "english": "I haven't seen Jeff enter the building yet.",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710s57p04za0",
+        "japanese": "カズオが戻ってくるのをもう見ましたか",
+        "english": "Have you seen Kazuo come back yet?",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "17734803707109jqz1dtwk",
+        "japanese": "ベルを押した時、鳴ったのが聞こえました",
+        "english": "I heard the bell ring when I pushed it.",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710hcysj50tj",
+        "japanese": "テーブルが動くのを感じたので、修理する必要があると思います",
+        "english": "I felt the table move, so I think we need to get it fixed.",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710lk6qwccwi",
+        "japanese": "私は数人が部屋に入ってきたのに気づきました",
+        "english": "I have noticed a few people entering the room",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710emxwxo0uk",
+        "japanese": "遅れについてお客様が苦情を言っているのを聞きました",
+        "english": "Have you listened to any customers complaining about the delay?",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710crtuv09ot",
+        "japanese": "この問題に関して、誰であっても自分を責めてしまうところを見たくありません",
+        "english": "I don't want to see anybody blaming themselves for this problem.",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480370710ghyspyz0b",
+        "japanese": "先月試作品が製造されているのを見ました",
+        "english": "We looked at the prototype being built last month.",
+        "textbookId": null,
+        "chapter": "56",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
