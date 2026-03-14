@@ -571,6 +571,86 @@
         "lastStudied": "2026-03-14",
         "studyCount": 2,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000001ch54a",
+        "japanese": "このミスから次へと進むことが重要です",
+        "english": "It is important for us to move on from this mistake.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000002ch54b",
+        "japanese": "今この機会をとらえることがきわめて重要です",
+        "english": "It is vital that we take this opportunity now.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000003ch54c",
+        "japanese": "この仕事を進めるべきかどうかは現時点では定かではありません",
+        "english": "It is uncertain whether we should proceed with this job at this time.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000004ch54d",
+        "japanese": "現段階で私たちが正しかったか否かは決められません",
+        "english": "It can't be decided at this stage whether we were correct or not.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000005ch54e",
+        "japanese": "私が賛成しかねるのは、予算なのです",
+        "english": "It is the budget that I cannot agree with.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000006ch54f",
+        "japanese": "私はほかでもなく最新の数字によって、新しい契約をすることに決めたのです",
+        "english": "It was the latest figures that made me decide on the new contract.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000007ch54g",
+        "japanese": "この誤解を引き起こしたのは、コミュニケーションの問題です",
+        "english": "It was the problems with communication that created this misunderstanding.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000008ch54h",
+        "japanese": "その部門を閉鎖したのは、財政上の危機が理由です",
+        "english": "It was because of the financial crisis that we closed that section.",
+        "textbookId": "1772684232735",
+        "chapter": "54",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
