@@ -1304,6 +1304,36 @@
       color: var(--text-muted);
     }
 
+    /* Chapter chips */
+    .chapter-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 0;
+    }
+
+    .chapter-chip {
+      background: var(--bg-tertiary);
+      border: 2px solid transparent;
+      color: var(--text-secondary);
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .chapter-chip:hover {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    .chapter-chip.selected {
+      background: var(--english);
+      color: var(--text-primary);
+      border-color: var(--english);
+    }
+
     /* Phrase heatmap */
     .phrase-heatmap-section {
       background: var(--bg-secondary);

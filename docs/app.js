@@ -45,7 +45,7 @@
   // Remember last study settings
   let lastStudyMode = 'chapter';
   let lastStudyTextbook = '';
-  let lastStudyChapter = '';
+  let lastStudyChapters = []; // array of selected chapters
   let lastStudyCount = 'all';
   let lastQuestionStyle = 'japanese';
   let phraseFilterTextbook = '';
@@ -1577,10 +1577,8 @@ as soon as possible"></textarea>
         </select>
       </div>
       <div class="form-group" id="chapter-select-group" style="${lastStudyMode !== 'chapter' ? 'display:none' : ''}">
-        <label class="form-label">チャプター</label>
-        <select class="form-select" id="study-chapter" disabled>
-          <option value="">すべて</option>
-        </select>
+        <label class="form-label">チャプター <span style="font-size:11px;color:var(--text-muted);">(複数選択可)</span></label>
+        <div id="chapter-chips" style="display:flex;flex-wrap:wrap;gap:8px;min-height:36px;"></div>
       </div>
       <div class="form-group">
         <label class="form-label">出題数</label>
@@ -1621,10 +1619,13 @@ as soon as possible"></textarea>
 
     modal.classList.add('show');
 
-    // Update chapter options when textbook changes
-    const updateChapterOptions = (selectChapter = '') => {
+    // Track selected chapters
+    let selectedChapters = [...lastStudyChapters];
+
+    // Update chapter chips when textbook changes
+    const updateChapterChips = () => {
       const textbookId = document.getElementById('study-textbook').value;
-      const chapterSelect = document.getElementById('study-chapter');
+      const chipsContainer = document.getElementById('chapter-chips');
 
       if (textbookId && textbookId !== 'free') {
         // Get unique chapters from phrases for this textbook
@@ -1635,32 +1636,55 @@ as soon as possible"></textarea>
         )].sort((a, b) => Number(a) - Number(b));
 
         if (chapters.length > 0) {
-          chapterSelect.innerHTML = `
-            <option value="">すべて</option>
-            ${chapters.map(ch => `<option value="${ch}" ${selectChapter === ch ? 'selected' : ''}>Ch.${ch}</option>`).join('')}
+          chipsContainer.innerHTML = `
+            <button type="button" class="chapter-chip ${selectedChapters.length === 0 ? 'selected' : ''}" data-chapter="all">すべて</button>
+            ${chapters.map(ch => `<button type="button" class="chapter-chip ${selectedChapters.includes(ch) ? 'selected' : ''}" data-chapter="${ch}">Ch.${ch}</button>`).join('')}
           `;
-          chapterSelect.disabled = false;
+
+          // Add click handlers
+          chipsContainer.querySelectorAll('.chapter-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+              const chapter = chip.dataset.chapter;
+              if (chapter === 'all') {
+                selectedChapters = [];
+                chipsContainer.querySelectorAll('.chapter-chip').forEach(c => c.classList.remove('selected'));
+                chip.classList.add('selected');
+              } else {
+                // Remove 'all' selection
+                chipsContainer.querySelector('[data-chapter="all"]')?.classList.remove('selected');
+                // Toggle this chapter
+                if (selectedChapters.includes(chapter)) {
+                  selectedChapters = selectedChapters.filter(c => c !== chapter);
+                  chip.classList.remove('selected');
+                  // If none selected, select 'all'
+                  if (selectedChapters.length === 0) {
+                    chipsContainer.querySelector('[data-chapter="all"]')?.classList.add('selected');
+                  }
+                } else {
+                  selectedChapters.push(chapter);
+                  chip.classList.add('selected');
+                }
+              }
+              updatePreview();
+            });
+          });
         } else {
-          chapterSelect.innerHTML = '<option value="">すべて</option>';
-          chapterSelect.disabled = true;
+          chipsContainer.innerHTML = '<span style="color:var(--text-muted);font-size:13px;">チャプターなし</span>';
         }
       } else {
-        chapterSelect.innerHTML = '<option value="">すべて</option>';
-        chapterSelect.disabled = true;
+        chipsContainer.innerHTML = '';
+        selectedChapters = [];
       }
       updatePreview();
     };
 
-    // Initialize chapter dropdown with saved value
-    if (lastStudyTextbook && lastStudyTextbook !== 'free') {
-      updateChapterOptions(lastStudyChapter);
-    }
+    // Initialize chapter chips
+    updateChapterChips();
 
     // Update preview count
     const updatePreview = () => {
       const mode = document.querySelector('input[name="study-mode"]:checked').value;
       const textbookId = document.getElementById('study-textbook').value;
-      const chapter = document.getElementById('study-chapter').value;
 
       let filtered = [...phrases];
 
@@ -1669,8 +1693,8 @@ as soon as possible"></textarea>
           filtered = filtered.filter(p => !p.textbookId);
         } else if (textbookId) {
           filtered = filtered.filter(p => p.textbookId === textbookId);
-          if (chapter) {
-            filtered = filtered.filter(p => p.chapter === chapter);
+          if (selectedChapters.length > 0) {
+            filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
           }
         }
       } else if (mode === 'weak') {
@@ -1705,8 +1729,10 @@ as soon as possible"></textarea>
       });
     });
 
-    document.getElementById('study-textbook').addEventListener('change', updateChapterOptions);
-    document.getElementById('study-chapter').addEventListener('change', updatePreview);
+    document.getElementById('study-textbook').addEventListener('change', () => {
+      selectedChapters = [];
+      updateChapterChips();
+    });
 
     // Question style option listeners (situation/japanese)
     content.querySelectorAll('.study-mode-option[data-style]').forEach(option => {
@@ -1721,20 +1747,20 @@ as soon as possible"></textarea>
     document.getElementById('start-study').addEventListener('click', () => {
       const mode = document.querySelector('input[name="study-mode"]:checked').value;
       const textbookId = document.getElementById('study-textbook').value;
-      const chapter = document.getElementById('study-chapter').value;
+      const chapters = [...selectedChapters];
       const countValue = document.getElementById('study-count').value;
       const style = document.querySelector('input[name="question-style"]:checked').value;
 
-      startStudyMode(mode, textbookId, chapter, countValue, style);
+      startStudyMode(mode, textbookId, chapters, countValue, style);
       modal.classList.remove('show');
     });
   }
 
-  function startStudyMode(mode, textbookId, chapter, countValue, style = 'japanese') {
+  function startStudyMode(mode, textbookId, chapters, countValue, style = 'japanese') {
     // Save settings for next time
     lastStudyMode = mode;
     lastStudyTextbook = textbookId;
-    lastStudyChapter = chapter;
+    lastStudyChapters = Array.isArray(chapters) ? chapters : [];
     lastStudyCount = countValue;
     lastQuestionStyle = style;
     questionStyle = style;
@@ -1748,8 +1774,8 @@ as soon as possible"></textarea>
         filtered = filtered.filter(p => !p.textbookId);
       } else if (textbookId) {
         filtered = filtered.filter(p => p.textbookId === textbookId);
-        if (chapter) {
-          filtered = filtered.filter(p => p.chapter === chapter);
+        if (chapters && chapters.length > 0) {
+          filtered = filtered.filter(p => chapters.includes(p.chapter));
         }
       }
     } else if (mode === 'weak') {
@@ -1779,7 +1805,7 @@ as soon as possible"></textarea>
     studyResults = [];
     studyStartTime = Date.now();
     selectedTextbookId = textbookId;
-    selectedChapter = chapter;
+    selectedChapter = chapters.length > 0 ? chapters.join(',') : null;
 
     // Show motivational toast
     const startMessages = [
