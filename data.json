@@ -193,6 +193,94 @@
         "lastStudied": null,
         "studyCount": 0,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738lbamb5kky",
+        "japanese": "金曜日までに彼らにサンプルを返却させなければなりませんね",
+        "english": "We sould make them return the samples by Friday.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "17734806727388lsr8iu2x",
+        "japanese": "すぐに担当者にデータを確認させます",
+        "english": "I'll make the person in charge check the data immediately.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738ekd3mreg2",
+        "japanese": "我々はアメリカのオフィスにデータを確認してもらうつもりです",
+        "english": "We're going to have the US office check the data.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738qg9rocfsu",
+        "japanese": "ドッズさんが戻ったら、私に電話させてください",
+        "english": "Please have Mr.Dodds call me when he gets back.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738z0hgn0sz1",
+        "japanese": "前もってお客様にいくつかのサンプルを試食してもらうつもりですか",
+        "english": "Are you going to let the clients taste some samples beforehand?",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738difllr5du",
+        "japanese": "XY社に当社の部品を製造してもらうことに決定しました",
+        "english": "We7ve decided to let XY Company manufacture the parts for us.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "17734806727386hydo8hzp",
+        "japanese": "片付けを手伝いますよ",
+        "english": "I'll help you clean up.",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773480672738eigu387gb",
+        "japanese": "もう新しい装置を稼働させていますか",
+        "english": "Have you got the new equipment to work yet?",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
