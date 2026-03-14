@@ -2104,25 +2104,71 @@ as soon as possible"></textarea>
 
   // ==================== PHONEME PRONUNCIATION FUNCTIONS ====================
 
-  // Preset phonemes that Japanese speakers often struggle with
-  const PHONEME_PRESETS = [
-    { phoneme: '/θ/', name: 'th (voiceless)', examples: ['think', 'three', 'bath'] },
-    { phoneme: '/ð/', name: 'th (voiced)', examples: ['this', 'that', 'the'] },
-    { phoneme: '/æ/', name: 'a (cat)', examples: ['cat', 'hat', 'map'] },
-    { phoneme: '/ɑː/', name: 'a (father)', examples: ['father', 'hot', 'cop'] },
-    { phoneme: '/ʌ/', name: 'u (cup)', examples: ['cup', 'but', 'love'] },
-    { phoneme: '/ɜːr/', name: 'er (bird)', examples: ['bird', 'word', 'learn'] },
-    { phoneme: '/r/', name: 'r', examples: ['red', 'right', 'car'] },
-    { phoneme: '/l/', name: 'l', examples: ['light', 'ball', 'feel'] },
-    { phoneme: '/v/', name: 'v', examples: ['very', 'love', 'have'] },
-    { phoneme: '/f/', name: 'f', examples: ['fish', 'life', 'office'] },
-    { phoneme: '/w/', name: 'w', examples: ['water', 'we', 'away'] },
-    { phoneme: '/ŋ/', name: 'ng', examples: ['sing', 'ring', 'long'] },
-    { phoneme: '/ʃ/', name: 'sh', examples: ['she', 'show', 'fish'] },
-    { phoneme: '/ʒ/', name: 'zh (vision)', examples: ['vision', 'measure', 'pleasure'] },
-    { phoneme: '/dʒ/', name: 'j', examples: ['job', 'judge', 'age'] },
-    { phoneme: '/tʃ/', name: 'ch', examples: ['church', 'watch', 'much'] },
-  ];
+  // Complete 48 phonemes: 24 vowels + 24 consonants
+  // Based on https://hatuonpls.com/minikouza/hatsuon/
+  const PHONEME_PRESETS = {
+    vowels: [
+      // Short vowels (7)
+      { phoneme: '/ɑ/', name: 'ɑ (hot)', examples: ['hot', 'pot', 'stop'] },
+      { phoneme: '/æ/', name: 'æ (cat)', examples: ['cat', 'hat', 'map'] },
+      { phoneme: '/ʌ/', name: 'ʌ (cup)', examples: ['cup', 'but', 'sun'] },
+      { phoneme: '/ə/', name: 'ə (about)', examples: ['about', 'sofa', 'banana'] },
+      { phoneme: '/ɪ/', name: 'ɪ (sit)', examples: ['sit', 'bit', 'hit'] },
+      { phoneme: '/ʊ/', name: 'ʊ (look)', examples: ['look', 'book', 'put'] },
+      { phoneme: '/e/', name: 'e (bed)', examples: ['bed', 'best', 'egg'] },
+      // Long vowels (5)
+      { phoneme: '/iː/', name: 'iː (eat)', examples: ['eat', 'see', 'feet'] },
+      { phoneme: '/uː/', name: 'uː (soon)', examples: ['soon', 'too', 'food'] },
+      { phoneme: '/ɔː/', name: 'ɔː (walk)', examples: ['walk', 'call', 'law'] },
+      { phoneme: '/ɜː/', name: 'ɜː (bird)', examples: ['bird', 'word', 'learn'] },
+      { phoneme: '/ɑː/', name: 'ɑː (star)', examples: ['star', 'car', 'far'] },
+      // Diphthongs (6)
+      { phoneme: '/aɪ/', name: 'aɪ (my)', examples: ['my', 'nice', 'time'] },
+      { phoneme: '/eɪ/', name: 'eɪ (day)', examples: ['day', 'may', 'say'] },
+      { phoneme: '/ɔɪ/', name: 'ɔɪ (boy)', examples: ['boy', 'oil', 'coin'] },
+      { phoneme: '/aʊ/', name: 'aʊ (now)', examples: ['now', 'how', 'out'] },
+      { phoneme: '/oʊ/', name: 'oʊ (go)', examples: ['go', 'know', 'show'] },
+      { phoneme: '/ju/', name: 'ju (use)', examples: ['use', 'new', 'few'] },
+      // R-colored vowels (6)
+      { phoneme: '/ɑːr/', name: 'ɑːr (car)', examples: ['car', 'star', 'far'] },
+      { phoneme: '/ɔːr/', name: 'ɔːr (door)', examples: ['door', 'more', 'floor'] },
+      { phoneme: '/ɜːr/', name: 'ɜːr (word)', examples: ['word', 'work', 'first'] },
+      { phoneme: '/ɪr/', name: 'ɪr (near)', examples: ['near', 'hear', 'beer'] },
+      { phoneme: '/ʊr/', name: 'ʊr (tour)', examples: ['tour', 'poor', 'sure'] },
+      { phoneme: '/er/', name: 'er (care)', examples: ['care', 'where', 'air'] },
+    ],
+    consonants: [
+      // Plosives (6)
+      { phoneme: '/p/', name: 'p', examples: ['pen', 'stop', 'top'] },
+      { phoneme: '/b/', name: 'b', examples: ['bad', 'cab', 'big'] },
+      { phoneme: '/t/', name: 't', examples: ['ten', 'top', 'cat'] },
+      { phoneme: '/d/', name: 'd', examples: ['day', 'did', 'bad'] },
+      { phoneme: '/k/', name: 'k', examples: ['cat', 'back', 'kick'] },
+      { phoneme: '/g/', name: 'g', examples: ['got', 'big', 'go'] },
+      // Fricatives (9)
+      { phoneme: '/f/', name: 'f', examples: ['fish', 'life', 'fat'] },
+      { phoneme: '/v/', name: 'v', examples: ['very', 'love', 'have'] },
+      { phoneme: '/θ/', name: 'θ (think)', examples: ['think', 'three', 'bath'] },
+      { phoneme: '/ð/', name: 'ð (this)', examples: ['this', 'that', 'the'] },
+      { phoneme: '/s/', name: 's', examples: ['see', 'bus', 'miss'] },
+      { phoneme: '/z/', name: 'z', examples: ['zoo', 'buzz', 'is'] },
+      { phoneme: '/ʃ/', name: 'ʃ (she)', examples: ['she', 'show', 'fish'] },
+      { phoneme: '/ʒ/', name: 'ʒ (vision)', examples: ['vision', 'measure', 'pleasure'] },
+      { phoneme: '/h/', name: 'h', examples: ['hat', 'hot', 'who'] },
+      // Affricates (2)
+      { phoneme: '/tʃ/', name: 'tʃ (church)', examples: ['church', 'watch', 'much'] },
+      { phoneme: '/dʒ/', name: 'dʒ (judge)', examples: ['judge', 'job', 'age'] },
+      // Nasals (3)
+      { phoneme: '/m/', name: 'm', examples: ['man', 'mom', 'swim'] },
+      { phoneme: '/n/', name: 'n', examples: ['no', 'sun', 'win'] },
+      { phoneme: '/ŋ/', name: 'ŋ (sing)', examples: ['sing', 'ring', 'long'] },
+      // Approximants (4)
+      { phoneme: '/l/', name: 'l', examples: ['light', 'ball', 'feel'] },
+      { phoneme: '/r/', name: 'r', examples: ['red', 'right', 'car'] },
+      { phoneme: '/w/', name: 'w', examples: ['water', 'we', 'away'] },
+      { phoneme: '/j/', name: 'j (yes)', examples: ['yes', 'you', 'yellow'] },
+    ]
+  };
 
   function getYouGlishUrl(word) {
     return `https://youglish.com/pronounce/${encodeURIComponent(word)}/english`;
@@ -2136,19 +2182,25 @@ as soon as possible"></textarea>
     const progressContainer = document.getElementById('phoneme-progress');
     if (!container) return;
 
+    // Categorize phonemes
+    const vowels = phonemes.filter(p => p.category === 'vowel');
+    const consonants = phonemes.filter(p => p.category === 'consonant');
+    const uncategorized = phonemes.filter(p => !p.category);
+
     // Render progress bar
     if (progressContainer && phonemes.length > 0) {
-      const mastered = phonemes.filter(p => p.masteryLevel >= 3).length;
-      const practicing = phonemes.filter(p => p.masteryLevel >= 1 && p.masteryLevel < 3).length;
-      const percentage = Math.round((mastered / phonemes.length) * 100);
+      const vowelMastered = vowels.filter(p => p.masteryLevel >= 3).length;
+      const consonantMastered = consonants.filter(p => p.masteryLevel >= 3).length;
+      const totalMastered = phonemes.filter(p => p.masteryLevel >= 3).length;
+      const percentage = Math.round((totalMastered / phonemes.length) * 100);
 
       progressContainer.innerHTML = `
         <div class="phoneme-progress-bar">
           <div class="phoneme-progress-fill" style="width: ${percentage}%"></div>
         </div>
         <div class="phoneme-progress-text">
-          <span>🎯 ${mastered}/${phonemes.length} mastered</span>
-          <span>🔥 ${practicing} practicing</span>
+          <span>🎯 ${totalMastered}/${phonemes.length} 習得</span>
+          <span>母音 ${vowelMastered}/${vowels.length} ・ 子音 ${consonantMastered}/${consonants.length}</span>
         </div>
       `;
     } else if (progressContainer) {
@@ -2160,15 +2212,15 @@ as soon as possible"></textarea>
       return;
     }
 
-    // Sort: by mastery level (lower first), then by last practiced (older first)
-    const sorted = [...phonemes].sort((a, b) => {
+    // Sort function: by mastery level (lower first), then by last practiced (older first)
+    const sortPhonemes = (arr) => [...arr].sort((a, b) => {
       if (a.masteryLevel !== b.masteryLevel) return a.masteryLevel - b.masteryLevel;
       if (!a.lastPracticed) return -1;
       if (!b.lastPracticed) return 1;
       return a.lastPracticed.localeCompare(b.lastPracticed);
     });
 
-    container.innerHTML = sorted.map((p) => {
+    const renderCard = (p) => {
       const realIndex = phonemes.findIndex(ph => ph.id === p.id);
       const masteryClass = `mastery-${p.masteryLevel || 0}`;
       const masteryLabels = ['未学習', '練習中', '定着中', '習得'];
@@ -2197,32 +2249,94 @@ as soon as possible"></textarea>
           </div>
         </div>
       `;
-    }).join('');
+    };
+
+    let html = '';
+
+    if (vowels.length > 0) {
+      html += `
+        <div class="phoneme-category-header">🔊 母音 (${vowels.length})</div>
+        <div class="phoneme-grid">
+          ${sortPhonemes(vowels).map(renderCard).join('')}
+        </div>
+      `;
+    }
+
+    if (consonants.length > 0) {
+      html += `
+        <div class="phoneme-category-header">🗣️ 子音 (${consonants.length})</div>
+        <div class="phoneme-grid">
+          ${sortPhonemes(consonants).map(renderCard).join('')}
+        </div>
+      `;
+    }
+
+    if (uncategorized.length > 0) {
+      html += `
+        <div class="phoneme-category-header">📝 その他 (${uncategorized.length})</div>
+        <div class="phoneme-grid">
+          ${sortPhonemes(uncategorized).map(renderCard).join('')}
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
   }
 
   function openPhonemeModal(phoneme = null, index = -1) {
     const modal = document.getElementById('edit-modal');
+    const modalBox = modal.querySelector('.modal');
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
     title.textContent = phoneme ? '音素を編集' : '音素を追加';
 
     const existingPhonemes = (practiceData.english.pronunciation || []).map(p => p.phoneme);
-    const availablePresets = PHONEME_PRESETS.filter(p =>
+
+    // Filter available presets
+    const availableVowels = PHONEME_PRESETS.vowels.filter(p =>
       phoneme || !existingPhonemes.includes(p.phoneme)
     );
+    const availableConsonants = PHONEME_PRESETS.consonants.filter(p =>
+      phoneme || !existingPhonemes.includes(p.phoneme)
+    );
+    const hasPresets = availableVowels.length > 0 || availableConsonants.length > 0;
+
+    // Use wide modal for preset selection
+    if (!phoneme && hasPresets) {
+      modalBox.classList.add('wide');
+    }
 
     content.innerHTML = `
-      ${!phoneme && availablePresets.length > 0 ? `
+      ${!phoneme && hasPresets ? `
         <div class="form-group">
-          <label class="form-label">プリセットから選択</label>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="form-label" style="margin:0;">母音 (${availableVowels.length}/24)</label>
+            <button class="btn btn-sm" id="add-all-vowels">全て追加</button>
+          </div>
           <div class="phoneme-preset-grid">
-            ${availablePresets.map((p, i) => `
-              <div class="phoneme-preset" data-preset="${i}">
+            ${availableVowels.map((p, i) => `
+              <div class="phoneme-preset" data-type="vowel" data-preset="${i}">
                 <div class="phoneme-preset-symbol">${p.phoneme}</div>
                 <div class="phoneme-preset-name">${p.name}</div>
               </div>
             `).join('')}
+            ${availableVowels.length === 0 ? '<div style="color:var(--text-muted);font-size:12px;">全て追加済み</div>' : ''}
+          </div>
+        </div>
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="form-label" style="margin:0;">子音 (${availableConsonants.length}/24)</label>
+            <button class="btn btn-sm" id="add-all-consonants">全て追加</button>
+          </div>
+          <div class="phoneme-preset-grid">
+            ${availableConsonants.map((p, i) => `
+              <div class="phoneme-preset" data-type="consonant" data-preset="${i}">
+                <div class="phoneme-preset-symbol">${p.phoneme}</div>
+                <div class="phoneme-preset-name">${p.name}</div>
+              </div>
+            `).join('')}
+            ${availableConsonants.length === 0 ? '<div style="color:var(--text-muted);font-size:12px;">全て追加済み</div>' : ''}
           </div>
         </div>
         <div style="text-align: center; color: var(--text-muted); margin: 12px 0;">または手動入力</div>
@@ -2267,11 +2381,61 @@ as soon as possible"></textarea>
       el.addEventListener('click', () => {
         content.querySelectorAll('.phoneme-preset').forEach(p => p.classList.remove('selected'));
         el.classList.add('selected');
-        const preset = availablePresets[parseInt(el.dataset.preset)];
+        const type = el.dataset.type;
+        const presetIdx = parseInt(el.dataset.preset);
+        const preset = type === 'vowel' ? availableVowels[presetIdx] : availableConsonants[presetIdx];
         document.getElementById('phoneme-symbol').value = preset.phoneme;
         document.getElementById('phoneme-name').value = preset.name;
         document.getElementById('phoneme-examples').value = preset.examples.join(', ');
       });
+    });
+
+    // Add all vowels
+    document.getElementById('add-all-vowels')?.addEventListener('click', async () => {
+      for (const preset of availableVowels) {
+        const newPhoneme = {
+          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+          phoneme: preset.phoneme,
+          name: preset.name,
+          examples: preset.examples,
+          notes: null,
+          masteryLevel: 0,
+          practiceCount: 0,
+          lastPracticed: null,
+          createdAt: getTodayKey(),
+          category: 'vowel'
+        };
+        practiceData.english.pronunciation.push(newPhoneme);
+      }
+      await saveData();
+      modal.classList.remove('show');
+      modalBox.classList.remove('wide');
+      renderPronunciation();
+      showToast(`母音${availableVowels.length}個を追加しました`, 'success');
+    });
+
+    // Add all consonants
+    document.getElementById('add-all-consonants')?.addEventListener('click', async () => {
+      for (const preset of availableConsonants) {
+        const newPhoneme = {
+          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+          phoneme: preset.phoneme,
+          name: preset.name,
+          examples: preset.examples,
+          notes: null,
+          masteryLevel: 0,
+          practiceCount: 0,
+          lastPracticed: null,
+          createdAt: getTodayKey(),
+          category: 'consonant'
+        };
+        practiceData.english.pronunciation.push(newPhoneme);
+      }
+      await saveData();
+      modal.classList.remove('show');
+      modalBox.classList.remove('wide');
+      renderPronunciation();
+      showToast(`子音${availableConsonants.length}個を追加しました`, 'success');
     });
 
     // Save handler
@@ -2298,7 +2462,8 @@ as soon as possible"></textarea>
         masteryLevel: masteryEl ? parseInt(masteryEl.value) : (phoneme?.masteryLevel || 0),
         practiceCount: phoneme?.practiceCount || 0,
         lastPracticed: phoneme?.lastPracticed || null,
-        createdAt: phoneme?.createdAt || getTodayKey()
+        createdAt: phoneme?.createdAt || getTodayKey(),
+        category: phoneme?.category || null
       };
 
       if (index >= 0) {
@@ -2309,6 +2474,7 @@ as soon as possible"></textarea>
 
       await saveData();
       modal.classList.remove('show');
+      modalBox.classList.remove('wide');
       renderPronunciation();
     });
 
@@ -2319,6 +2485,7 @@ as soon as possible"></textarea>
         practiceData.english.pronunciation.splice(index, 1);
         await saveData();
         modal.classList.remove('show');
+        modalBox.classList.remove('wide');
         renderPronunciation();
       });
     }
