@@ -1126,30 +1126,6 @@
     ],
     "pronunciation": [
       {
-        "id": "1773487450444",
-        "phoneme": "/r/",
-        "name": "r",
-        "examples": [
-          "red",
-          "right",
-          "car"
-        ],
-        "notes": null,
-        "practicedWords": [
-          {
-            "word": "right",
-            "date": "2026-03-14"
-          },
-          {
-            "word": "order",
-            "date": "2026-03-14"
-          }
-        ],
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": null
-      },
-      {
         "id": "1773496251729",
         "phoneme": "/l/",
         "name": "l",
