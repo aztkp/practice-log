@@ -217,9 +217,9 @@
         "situation": "期限付きの対応を指示する時",
         "textbookId": "1772684232735",
         "chapter": "55",
-        "masteryLevel": 0,
+        "masteryLevel": 1,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -229,9 +229,9 @@
         "situation": "部下に指示を出すことを伝える時",
         "textbookId": "1772684232735",
         "chapter": "55",
-        "masteryLevel": 0,
+        "masteryLevel": 1,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -243,7 +243,7 @@
         "chapter": "55",
         "masteryLevel": 0,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -255,7 +255,7 @@
         "chapter": "55",
         "masteryLevel": 0,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -267,7 +267,7 @@
         "chapter": "55",
         "masteryLevel": 0,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -279,7 +279,7 @@
         "chapter": "55",
         "masteryLevel": 0,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -289,9 +289,9 @@
         "situation": "手伝いを申し出る時",
         "textbookId": "1772684232735",
         "chapter": "55",
-        "masteryLevel": 0,
+        "masteryLevel": 1,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       },
       {
@@ -303,7 +303,7 @@
         "chapter": "55",
         "masteryLevel": 0,
         "lastStudied": "2026-03-14",
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14"
       }
     ],
@@ -351,6 +351,16 @@
         "phraseCount": 8,
         "correctCount": 0,
         "duration": 208
+      },
+      {
+        "id": "1773482269323",
+        "date": "2026-03-14",
+        "mode": "chapter",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "phraseCount": 8,
+        "correctCount": 3,
+        "duration": 136
       }
     ],
     "pronunciation": [],
