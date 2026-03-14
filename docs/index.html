@@ -878,6 +878,131 @@
       margin-bottom: 16px;
     }
 
+    /* Piano Section */
+    .piano-section {
+      display: none;
+    }
+
+    .piano-section.show {
+      display: block;
+    }
+
+    .piano-textbook {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .piano-textbook-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .piano-textbook-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .piano-textbook-progress {
+      margin-bottom: 12px;
+    }
+
+    .piano-progress-bar {
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .piano-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--piano), #7c4dff);
+      transition: width 0.3s;
+    }
+
+    .piano-progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .piano-piece-input {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .piano-piece-input .form-input {
+      flex: 1;
+    }
+
+    .piano-pieces-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .piano-piece-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .piano-piece-item:last-child {
+      border-bottom: none;
+    }
+
+    .piano-piece-item.completed {
+      opacity: 0.6;
+    }
+
+    .piano-piece-check {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .piano-piece-item.completed .piano-piece-check {
+      background: var(--piano);
+      border-color: var(--piano);
+      color: white;
+    }
+
+    .piano-piece-name {
+      flex: 1;
+    }
+
+    .piano-piece-rating {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .piano-piece-rating.A { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+    .piano-piece-rating.B { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
+    .piano-piece-rating.C { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+    .piano-piece-rating.D { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+
+    .piano-piece-date {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 8px;
+    }
+
     /* Flashcard */
     .flashcard-container {
       display: flex;
@@ -1796,6 +1921,15 @@
       </div>
       <p class="section-desc">Track your dictation practice with podcasts, videos, etc.</p>
       <div class="material-list" id="dictation-list"></div>
+    </div>
+
+    <!-- Piano Section -->
+    <div class="piano-section" id="piano-section">
+      <div class="section-header">
+        <div class="section-title">🎹 教材</div>
+        <button class="btn btn-primary btn-sm" id="add-piano-textbook-btn">+ 教材追加</button>
+      </div>
+      <div id="piano-textbooks"></div>
     </div>
   </div>
 

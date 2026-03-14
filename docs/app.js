@@ -122,6 +122,10 @@
       if (!practiceData.english.pronunciation) practiceData.english.pronunciation = [];
       if (!practiceData.english.dictation) practiceData.english.dictation = [];
 
+      // Initialize Piano learning data
+      if (!practiceData.piano) practiceData.piano = {};
+      if (!practiceData.piano.textbooks) practiceData.piano.textbooks = [];
+
       // Migrate existing phrases to include new fields
       practiceData.english.phrases = practiceData.english.phrases.map(phrase => ({
         ...phrase,
@@ -694,7 +698,7 @@
   }
 
   // Update UI based on current category
-  function updateEnglishUI() {
+  function updateCategoryUI() {
     const subtabs = document.getElementById('english-subtabs');
     const statsRow = document.getElementById('stats-row');
     const contribGraph = document.getElementById('contrib-graph');
@@ -705,17 +709,33 @@
     const practiceList = document.getElementById('practice-list');
     const plansBtn = document.getElementById('btn-plans');
 
-    // English sections
+    // Category-specific sections
     const phrasesSection = document.getElementById('phrases-section');
-    const vocabSection = document.getElementById('vocabulary-section');
-    const presentationSection = document.getElementById('presentation-section');
+    const pianoSection = document.getElementById('piano-section');
+
+    // Hide all category-specific sections first
+    subtabs?.classList.remove('show');
+    phrasesSection?.classList.remove('show');
+    document.getElementById('pronunciation-section')?.classList.remove('show');
+    document.getElementById('dictation-section')?.classList.remove('show');
+    pianoSection?.classList.remove('show');
 
     if (currentCategory === 'english') {
       subtabs?.classList.add('show');
       if (plansBtn) plansBtn.textContent = '教材';
       showEnglishSubtab(currentEnglishSubtab);
+    } else if (currentCategory === 'piano') {
+      if (plansBtn) plansBtn.textContent = '教材';
+      // Hide standard UI, show piano section
+      [statsRow, contribGraph, todaySection, recentTitle, practiceList].forEach(el => {
+        if (el) el.style.display = 'none';
+      });
+      // Keep calendar visible
+      if (calendarHeader) calendarHeader.style.display = '';
+      if (calendarGrid) calendarGrid.style.display = '';
+      pianoSection?.classList.add('show');
+      renderPianoTextbooks();
     } else {
-      subtabs?.classList.remove('show');
       if (plansBtn) plansBtn.textContent = 'Plans';
       // Show standard practice log UI
       statsRow.style.display = '';
@@ -725,10 +745,12 @@
       calendarGrid.style.display = '';
       recentTitle.style.display = '';
       practiceList.style.display = '';
-      phrasesSection?.classList.remove('show');
-      document.getElementById('pronunciation-section')?.classList.remove('show');
-      document.getElementById('dictation-section')?.classList.remove('show');
     }
+  }
+
+  // Alias for backwards compatibility
+  function updateEnglishUI() {
+    updateCategoryUI();
   }
 
   // Show English subtab content
@@ -2610,6 +2632,181 @@ as soon as possible"></textarea>
     openPhonemeModal(phoneme, index);
   };
 
+  // ==================== PIANO FUNCTIONS ====================
+
+  function renderPianoTextbooks() {
+    if (!practiceData || !practiceData.piano) return;
+
+    const container = document.getElementById('piano-textbooks');
+    if (!container) return;
+
+    const textbooks = practiceData.piano.textbooks || [];
+
+    if (textbooks.length === 0) {
+      container.innerHTML = '<div class="empty">教材を追加して練習を始めよう！</div>';
+      return;
+    }
+
+    container.innerHTML = textbooks.map((tb, tbIndex) => {
+      const pieces = tb.pieces || [];
+      const completedPieces = tb.completedPieces || [];
+      const completedCount = completedPieces.length;
+      const totalCount = pieces.length;
+      const percentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+      return `
+        <div class="piano-textbook" data-textbook="${tbIndex}">
+          <div class="piano-textbook-header">
+            <div class="piano-textbook-name">${tb.name}</div>
+            <button class="btn-icon" onclick="editPianoTextbook(${tbIndex})" title="編集">✏️</button>
+          </div>
+          <div class="piano-textbook-progress">
+            <div class="piano-progress-bar">
+              <div class="piano-progress-fill" style="width: ${percentage}%"></div>
+            </div>
+            <div class="piano-progress-text">
+              <span>🎹 ${completedCount}/${totalCount} 曲完了</span>
+              <span>${percentage}%</span>
+            </div>
+          </div>
+          <div class="piano-pieces-list">
+            ${pieces.map((piece, pieceIndex) => {
+              const isCompleted = completedPieces.some(cp => cp.name === piece.name);
+              const completedInfo = completedPieces.find(cp => cp.name === piece.name);
+              return `
+                <div class="piano-piece-item ${isCompleted ? 'completed' : ''}" data-piece="${pieceIndex}">
+                  <div class="piano-piece-check" onclick="togglePianoPiece(${tbIndex}, ${pieceIndex})">
+                    ${isCompleted ? '✓' : ''}
+                  </div>
+                  <span class="piano-piece-name">${piece.name}</span>
+                  ${piece.rating ? `<span class="piano-piece-rating ${piece.rating}">${piece.rating}</span>` : ''}
+                  ${isCompleted && completedInfo?.date ? `<span class="piano-piece-date">${completedInfo.date}</span>` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.togglePianoPiece = async function(textbookIndex, pieceIndex) {
+    const textbook = practiceData.piano.textbooks[textbookIndex];
+    if (!textbook) return;
+
+    const piece = textbook.pieces[pieceIndex];
+    if (!piece) return;
+
+    if (!textbook.completedPieces) textbook.completedPieces = [];
+
+    const existingIndex = textbook.completedPieces.findIndex(cp => cp.name === piece.name);
+
+    if (existingIndex >= 0) {
+      // Remove from completed
+      textbook.completedPieces.splice(existingIndex, 1);
+      showToast(`「${piece.name}」を未完了に戻しました`, 'success');
+    } else {
+      // Add to completed
+      const todayKey = getTodayKey();
+      textbook.completedPieces.push({
+        name: piece.name,
+        date: todayKey
+      });
+
+      // Also record in calendar
+      let records = practiceData.records.piano;
+      let record = records.find(r => r.date === todayKey);
+      if (!record) {
+        record = { date: todayKey, completed: [] };
+        records.push(record);
+      }
+      if (!record.completed.includes(textbook.name)) {
+        record.completed.push(textbook.name);
+      }
+
+      showToast(`🎉「${piece.name}」を完了！`, 'success');
+    }
+
+    await saveData();
+    renderPianoTextbooks();
+    renderCalendar();
+  };
+
+  window.editPianoTextbook = function(index) {
+    const textbook = practiceData.piano.textbooks[index];
+    openPianoTextbookModal(textbook, index);
+  };
+
+  function openPianoTextbookModal(textbook = null, index = -1) {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    title.textContent = textbook ? '教材を編集' : '教材を追加';
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">教材名</label>
+        <input type="text" class="form-input" id="piano-textbook-name" value="${textbook?.name || ''}" placeholder="トンプソン 現代ピアノ教本 1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">曲目 (1行に1曲、または改行区切り)</label>
+        <textarea class="form-input" id="piano-textbook-pieces" rows="10" placeholder="ピアノのくに&#10;きちんとね&#10;さらさら小川">${(textbook?.pieces || []).map(p => p.name).join('\n')}</textarea>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 16px;">
+        <button class="btn btn-primary" id="save-piano-textbook" style="flex:1;">保存</button>
+        ${textbook ? `<button class="btn btn-delete" id="delete-piano-textbook">削除</button>` : ''}
+      </div>
+    `;
+
+    modal.classList.add('show');
+
+    document.getElementById('save-piano-textbook').addEventListener('click', async () => {
+      const name = document.getElementById('piano-textbook-name').value.trim();
+      const piecesText = document.getElementById('piano-textbook-pieces').value.trim();
+
+      if (!name) {
+        showToast('教材名を入力してください', 'error');
+        return;
+      }
+
+      const pieceNames = piecesText.split('\n').map(p => p.trim()).filter(p => p);
+      const pieces = pieceNames.map(pName => {
+        // Preserve existing piece data if editing
+        const existingPiece = textbook?.pieces?.find(p => p.name === pName);
+        return existingPiece || { name: pName };
+      });
+
+      const newTextbook = {
+        id: textbook?.id || Date.now().toString(),
+        name,
+        pieces,
+        completedPieces: textbook?.completedPieces || [],
+        createdAt: textbook?.createdAt || getTodayKey()
+      };
+
+      if (index >= 0) {
+        practiceData.piano.textbooks[index] = newTextbook;
+      } else {
+        practiceData.piano.textbooks.push(newTextbook);
+      }
+
+      await saveData();
+      modal.classList.remove('show');
+      renderPianoTextbooks();
+    });
+
+    if (textbook) {
+      document.getElementById('delete-piano-textbook')?.addEventListener('click', async () => {
+        if (!confirm(`「${textbook.name}」を削除しますか？`)) return;
+        practiceData.piano.textbooks.splice(index, 1);
+        await saveData();
+        modal.classList.remove('show');
+        renderPianoTextbooks();
+      });
+    }
+  }
+
   // ==================== MATERIALS FUNCTIONS (Dictation) ====================
 
   function renderMaterials(type) {
@@ -3325,6 +3522,9 @@ as soon as possible"></textarea>
     // English: Pronunciation & Dictation
     document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openPhonemeModal());
     document.getElementById('add-dictation-btn')?.addEventListener('click', () => openMaterialModal('dictation'));
+
+    // Piano
+    document.getElementById('add-piano-textbook-btn')?.addEventListener('click', () => openPianoTextbookModal());
 
     document.getElementById('phrase-search')?.addEventListener('input', (e) => {
       phraseSearchQuery = e.target.value;
