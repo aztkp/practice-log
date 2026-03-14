@@ -280,7 +280,8 @@
         "date": "2026-03-14",
         "completed": [
           "r",
-          "l"
+          "l",
+          "f"
         ]
       }
     ]
@@ -1180,8 +1181,13 @@
           "fat"
         ],
         "notes": null,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "fairly",
+            "date": "2026-03-14"
+          }
+        ],
+        "lastPracticed": "2026-03-14",
         "createdAt": "2026-03-14",
         "category": "consonant"
       }
