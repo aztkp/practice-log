@@ -1788,11 +1788,15 @@ as soon as possible"></textarea>
       const textbookId = document.getElementById('study-textbook').value;
       const chipsContainer = document.getElementById('chapter-chips');
 
-      if (textbookId && textbookId !== 'free') {
-        // Get unique chapters from phrases for this textbook
+      if (textbookId !== 'free') {
+        // Get unique chapters from phrases for this textbook (or all if no textbook selected)
         const chapters = [...new Set(
           phrases
-            .filter(p => p.textbookId === textbookId && p.chapter)
+            .filter(p => {
+              if (!p.chapter) return false;
+              if (textbookId === '') return true; // Show all chapters when "すべて" is selected
+              return p.textbookId === textbookId;
+            })
             .map(p => p.chapter)
         )].sort((a, b) => Number(a) - Number(b));
 
@@ -1854,9 +1858,10 @@ as soon as possible"></textarea>
           filtered = filtered.filter(p => !p.textbookId);
         } else if (textbookId) {
           filtered = filtered.filter(p => p.textbookId === textbookId);
-          if (selectedChapters.length > 0) {
-            filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
-          }
+        }
+        // Apply chapter filter (works for both specific textbook and "すべて")
+        if (selectedChapters.length > 0) {
+          filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
         }
       } else if (mode === 'weak') {
         filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
@@ -1935,9 +1940,10 @@ as soon as possible"></textarea>
         filtered = filtered.filter(p => !p.textbookId);
       } else if (textbookId) {
         filtered = filtered.filter(p => p.textbookId === textbookId);
-        if (chapters && chapters.length > 0) {
-          filtered = filtered.filter(p => chapters.includes(p.chapter));
-        }
+      }
+      // Apply chapter filter (works for both specific textbook and "すべて")
+      if (chapters && chapters.length > 0) {
+        filtered = filtered.filter(p => chapters.includes(p.chapter));
       }
     } else if (mode === 'weak') {
       filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
