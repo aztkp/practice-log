@@ -811,6 +811,166 @@
         "masteryLevel": 0,
         "studyCount": 0,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000025ch51a",
+        "japanese": "辿り着きやすい部屋を予約したほうがいいですよ",
+        "english": "You should book a room which is easy to get to.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000026ch51b",
+        "japanese": "お客様に最適なデザインを決めるように努めてください",
+        "english": "Try to decide the design which is best for our customers.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000027ch51c",
+        "japanese": "来年発売される新商品の一覧を見せてください",
+        "english": "Show me the list of the new products that will be launched next year.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000028ch51d",
+        "japanese": "先週その部品を注文した人たちを教えてください",
+        "english": "Let me know the people who ordered the parts last week.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000029ch51e",
+        "japanese": "当地域を訪れた営業担当者の名前を教えてください",
+        "english": "Let me know the name of the representative who visited our area.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000030ch51f",
+        "japanese": "あなたが見本市で会った営業担当者の名前を教えてください",
+        "english": "Let me know the name of the representative (who) you met at the trade show.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000031ch51g",
+        "japanese": "去年利用したのと同じ会社を利用したほうがいいです",
+        "english": "You should use the same company (that) you used last year.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000032ch51h",
+        "japanese": "以前に連絡したことのある会社を教えてください",
+        "english": "Let me know the companies (which) we've contacted before.",
+        "textbookId": "1772684232735",
+        "chapter": "51",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000033ch50a",
+        "japanese": "私は現状のプランで進めていくしかないと思います",
+        "english": "I think that the only option is to continue with the current plan.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000034ch50b",
+        "japanese": "私は新しいシステムを導入するべきだという考えに賛成です",
+        "english": "I agree with the idea that we should introduce the new system.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000035ch50c",
+        "japanese": "最終チェックをする必要があるので、金曜に集まることを提案します",
+        "english": "I suggest we meet on Friday because we need to make a final check.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000036ch50d",
+        "japanese": "多くの顧客から要望があるのですから、土曜の午前中に営業するべきです",
+        "english": "We should open on Saturday mornings since many customers have requested this.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000037ch50e",
+        "japanese": "2人の役員がまだ来ていない以上、投票を遅らせたほうがいいでしょう",
+        "english": "We should delay the vote since two members of the board are not here yet.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000038ch50f",
+        "japanese": "このハードウェアはもう時代遅れなので、取り替える必要があります",
+        "english": "We need to replace this hardware as it is now out of date.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000039ch50g",
+        "japanese": "まだ賛成していない人もいますけれども、私は納入業者を変えたほうがいいと思います",
+        "english": "Although some people are yet to agree, I think we should change the vendor.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000040ch50h",
+        "japanese": "たとえ締め切りには間に合わないとしても、引き続き15日を目標にするべきでしょう",
+        "english": "Even if we cannot make the deadline, we should still aim for the fifteenth.",
+        "textbookId": "1772684232735",
+        "chapter": "50",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
