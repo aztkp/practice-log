@@ -1124,23 +1124,7 @@
         "duration": 71
       }
     ],
-    "pronunciation": [
-      {
-        "id": "1773496251729",
-        "phoneme": "/l/",
-        "name": "l",
-        "examples": [
-          "light",
-          "ball",
-          "feel"
-        ],
-        "notes": null,
-        "practicedWords": [],
-        "lastPracticed": null,
-        "createdAt": "2026-03-14",
-        "category": "consonant"
-      }
-    ],
+    "pronunciation": [],
     "dictation": []
   },
   "guitar": {
