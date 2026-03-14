@@ -2366,15 +2366,7 @@ as soon as possible"></textarea>
       return;
     }
 
-    // Sort function: by word count (fewer first), then by last practiced (older first)
-    const sortPhonemes = (arr) => [...arr].sort((a, b) => {
-      const aWords = (a.practicedWords || []).length;
-      const bWords = (b.practicedWords || []).length;
-      if (aWords !== bWords) return aWords - bWords;
-      if (!a.lastPracticed) return -1;
-      if (!b.lastPracticed) return 1;
-      return a.lastPracticed.localeCompare(b.lastPracticed);
-    });
+    // Keep sortOrder - no re-sorting by practice records
 
     const renderCard = (p) => {
       const realIndex = phonemes.findIndex(ph => ph.id === p.id);
@@ -2435,7 +2427,7 @@ as soon as possible"></textarea>
       html += `
         <div class="phoneme-category-header">🔊 母音 (${vowels.length})</div>
         <div class="phoneme-grid">
-          ${sortPhonemes(vowels).map(renderCard).join('')}
+          ${vowels.map(renderCard).join('')}
         </div>
       `;
     }
@@ -2444,7 +2436,7 @@ as soon as possible"></textarea>
       html += `
         <div class="phoneme-category-header">🗣️ 子音 (${consonants.length})</div>
         <div class="phoneme-grid">
-          ${sortPhonemes(consonants).map(renderCard).join('')}
+          ${consonants.map(renderCard).join('')}
         </div>
       `;
     }
@@ -2453,7 +2445,7 @@ as soon as possible"></textarea>
       html += `
         <div class="phoneme-category-header">📝 その他 (${uncategorized.length})</div>
         <div class="phoneme-grid">
-          ${sortPhonemes(uncategorized).map(renderCard).join('')}
+          ${uncategorized.map(renderCard).join('')}
         </div>
       `;
     }
