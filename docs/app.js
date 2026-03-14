@@ -2273,6 +2273,7 @@ as soon as possible"></textarea>
           <div class="phoneme-footer">
             <span class="phoneme-mastery-badge ${masteryClass}">${masteryLabels[masteryLevel]}</span>
             ${recentWords.length > 0 ? `<span class="phoneme-recent">最近: ${recentWords.map(w => w.word).join(', ')}</span>` : ''}
+            <button class="btn-icon" onclick="event.stopPropagation(); editPhoneme(${realIndex})" title="編集">✏️</button>
           </div>
         </div>
       `;
