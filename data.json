@@ -1135,8 +1135,13 @@
           "car"
         ],
         "notes": null,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "right",
+            "date": "2026-03-14"
+          }
+        ],
+        "lastPracticed": "2026-03-14",
         "createdAt": "2026-03-14",
         "category": "consonant"
       }
