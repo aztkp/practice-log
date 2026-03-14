@@ -1783,6 +1783,31 @@ as soon as possible"></textarea>
     // Track selected chapters
     let selectedChapters = [...lastStudyChapters];
 
+    // Update preview count (defined first so updateChapterChips can call it)
+    const updatePreview = () => {
+      const mode = document.querySelector('input[name="study-mode"]:checked').value;
+      const textbookId = document.getElementById('study-textbook').value;
+
+      let filtered = [...phrases];
+
+      if (mode === 'chapter') {
+        if (textbookId === 'free') {
+          filtered = filtered.filter(p => !p.textbookId);
+        } else if (textbookId) {
+          filtered = filtered.filter(p => p.textbookId === textbookId);
+        }
+        // Apply chapter filter (works for both specific textbook and "すべて")
+        if (selectedChapters.length > 0) {
+          filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
+        }
+      } else if (mode === 'weak') {
+        filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
+        filtered.sort((a, b) => (a.masteryLevel || 0) - (b.masteryLevel || 0));
+      }
+
+      document.getElementById('study-preview').textContent = `対象フレーズ: ${filtered.length}件`;
+    };
+
     // Update chapter chips when textbook changes
     const updateChapterChips = () => {
       const textbookId = document.getElementById('study-textbook').value;
@@ -1831,7 +1856,6 @@ as soon as possible"></textarea>
                   chip.classList.add('selected');
                 }
               }
-              console.log('selectedChapters:', selectedChapters); // Debug
               updatePreview();
             });
           });
@@ -1847,39 +1871,6 @@ as soon as possible"></textarea>
 
     // Initialize chapter chips
     updateChapterChips();
-
-    // Update preview count
-    const updatePreview = () => {
-      const mode = document.querySelector('input[name="study-mode"]:checked').value;
-      const textbookId = document.getElementById('study-textbook').value;
-
-      let filtered = [...phrases];
-      console.log('updatePreview - mode:', mode, 'textbookId:', textbookId, 'selectedChapters:', selectedChapters, 'length:', selectedChapters.length);
-
-      if (mode === 'chapter') {
-        if (textbookId === 'free') {
-          filtered = filtered.filter(p => !p.textbookId);
-        } else if (textbookId) {
-          filtered = filtered.filter(p => p.textbookId === textbookId);
-        }
-        console.log('After textbook filter:', filtered.length);
-        // Apply chapter filter (works for both specific textbook and "すべて")
-        if (selectedChapters.length > 0) {
-          console.log('Applying chapter filter with:', selectedChapters);
-          filtered = filtered.filter(p => {
-            const match = selectedChapters.includes(p.chapter);
-            if (!match && filtered.length < 10) console.log('No match:', p.chapter, 'in', selectedChapters);
-            return match;
-          });
-          console.log('After chapter filter:', filtered.length);
-        }
-      } else if (mode === 'weak') {
-        filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
-        filtered.sort((a, b) => (a.masteryLevel || 0) - (b.masteryLevel || 0));
-      }
-
-      document.getElementById('study-preview').textContent = `対象フレーズ: ${filtered.length}件`;
-    };
 
     // Mode selection (chapter/random/weak)
     content.querySelectorAll('.study-mode-option[data-mode]').forEach(option => {
