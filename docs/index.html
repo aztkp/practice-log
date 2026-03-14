@@ -1003,6 +1003,46 @@
       margin-left: 8px;
     }
 
+    .piano-piece-content {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .piano-piece-item.has-comment .piano-piece-content {
+      cursor: pointer;
+    }
+
+    .piano-piece-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .piano-piece-expand {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 8px;
+      transition: transform 0.2s;
+    }
+
+    .piano-piece-item.expanded .piano-piece-expand {
+      transform: rotate(180deg);
+    }
+
+    .piano-piece-comment {
+      display: none;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      padding: 10px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      line-height: 1.5;
+    }
+
+    .piano-piece-item.expanded .piano-piece-comment {
+      display: block;
+    }
+
     /* Flashcard */
     .flashcard-container {
       display: flex;

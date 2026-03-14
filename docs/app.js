@@ -2673,14 +2673,21 @@ as soon as possible"></textarea>
             ${pieces.map((piece, pieceIndex) => {
               const isCompleted = completedPieces.some(cp => cp.name === piece.name);
               const completedInfo = completedPieces.find(cp => cp.name === piece.name);
+              const hasComment = piece.comment && piece.comment.length > 0;
               return `
-                <div class="piano-piece-item ${isCompleted ? 'completed' : ''}" data-piece="${pieceIndex}">
-                  <div class="piano-piece-check" onclick="togglePianoPiece(${tbIndex}, ${pieceIndex})">
+                <div class="piano-piece-item ${isCompleted ? 'completed' : ''} ${hasComment ? 'has-comment' : ''}" data-piece="${pieceIndex}">
+                  <div class="piano-piece-check" onclick="event.stopPropagation(); togglePianoPiece(${tbIndex}, ${pieceIndex})">
                     ${isCompleted ? '✓' : ''}
                   </div>
-                  <span class="piano-piece-name">${piece.name}</span>
-                  ${piece.rating ? `<span class="piano-piece-rating ${piece.rating}">${piece.rating}</span>` : ''}
-                  ${isCompleted && completedInfo?.date ? `<span class="piano-piece-date">${completedInfo.date}</span>` : ''}
+                  <div class="piano-piece-content" onclick="${hasComment ? `togglePieceComment(this)` : ''}">
+                    <div class="piano-piece-header">
+                      <span class="piano-piece-name">${piece.name}</span>
+                      ${piece.rating ? `<span class="piano-piece-rating ${piece.rating}">${piece.rating}</span>` : ''}
+                      ${isCompleted && completedInfo?.date ? `<span class="piano-piece-date">${completedInfo.date}</span>` : ''}
+                      ${hasComment ? `<span class="piano-piece-expand">▼</span>` : ''}
+                    </div>
+                    ${hasComment ? `<div class="piano-piece-comment">${piece.comment}</div>` : ''}
+                  </div>
                 </div>
               `;
             }).join('')}
@@ -2689,6 +2696,13 @@ as soon as possible"></textarea>
       `;
     }).join('');
   }
+
+  window.togglePieceComment = function(element) {
+    const item = element.closest('.piano-piece-item');
+    if (item) {
+      item.classList.toggle('expanded');
+    }
+  };
 
   window.togglePianoPiece = async function(textbookIndex, pieceIndex) {
     const textbook = practiceData.piano.textbooks[textbookIndex];
