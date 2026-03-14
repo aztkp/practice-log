@@ -731,6 +731,86 @@
         "masteryLevel": 0,
         "studyCount": 0,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000017ch52a",
+        "japanese": "中国に住んでいる友人のエミコが、明日のパーティーに来るんです",
+        "english": "My friend Emiko, who lives in China, is coming to the party tomorrow.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000018ch52b",
+        "japanese": "イタリアで休暇中の友達が、写真を何枚か送ってくれました",
+        "english": "A friend, who is on holiday in Italy, sent me some pictures.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000019ch52c",
+        "japanese": "カナダで会ったこの家族が、この夏日本を訪れる予定なんです",
+        "english": "This family, who I met in Canada, is going to visit Japan this summer.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000020ch52d",
+        "japanese": "私には父親がミュージシャンの友達がいます",
+        "english": "I have a friend whose father is a musician.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000021ch52e",
+        "japanese": "趣味が釣りの友人を何人か誘ってもいいですか",
+        "english": "Can I invite some of my friends whose hobby is fishing?",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000022ch52f",
+        "japanese": "誕生日に欲しいものを彼女に聞いてくれますか",
+        "english": "Can you ask her what she wants for her birthday?",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000023ch52g",
+        "japanese": "子供たちは私が言ったことを、思ったよりよく覚えています",
+        "english": "My children remember what I said better than I thought.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000024ch52h",
+        "japanese": "近頃、息子にはやりたいことをさせています",
+        "english": "These days, I let my son do what he wants to do.",
+        "textbookId": "1772684232735",
+        "chapter": "52",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
