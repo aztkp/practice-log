@@ -284,7 +284,8 @@
         "completed": [
           "r",
           "l",
-          "f"
+          "f",
+          "v"
         ]
       }
     ]
@@ -1204,8 +1205,13 @@
           "have"
         ],
         "notes": null,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "very",
+            "date": "2026-03-14"
+          }
+        ],
+        "lastPracticed": "2026-03-14",
         "createdAt": "2026-03-14",
         "category": "consonant"
       }
