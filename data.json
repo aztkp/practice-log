@@ -540,8 +540,7 @@
       {
         "id": "1773480672738difllr5du",
         "japanese": "XY社に当社の部品を製造してもらうことに決定しました",
-        "english": "We7ve decided to let XY Company manufacture the parts for us.",
-        "situation": "外注の決定を報告する時",
+        "english": "We've decided to let XY Company manufacture the parts for us.",
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
