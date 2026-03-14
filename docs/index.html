@@ -1012,6 +1012,7 @@
     /* Phoneme Table Layout */
     .phoneme-table {
       margin-bottom: 24px;
+      overflow-x: auto;
     }
 
     .phoneme-row {
@@ -1021,8 +1022,8 @@
     }
 
     .phoneme-cell {
-      flex: 1;
-      min-width: 0;
+      width: calc(20% - 6.4px);
+      flex-shrink: 0;
     }
 
     .phoneme-cell.empty {
@@ -1031,16 +1032,13 @@
 
     .phoneme-cell .phoneme-card {
       height: 100%;
+      min-height: 85px;
     }
 
-    /* Consonant table: 5 columns with separator after col 2 */
-    .consonant-table .phoneme-row {
-      position: relative;
-    }
-
+    /* Consonant table: separator between col 1 and col 3 */
     .consonant-table .phoneme-cell:nth-child(3) {
-      margin-left: 16px;
-      padding-left: 16px;
+      margin-left: 12px;
+      padding-left: 12px;
       border-left: 1px solid var(--border-color);
     }
 
