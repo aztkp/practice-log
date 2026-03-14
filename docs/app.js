@@ -906,6 +906,7 @@
       renderPhrases();
     } else if (subtab === 'pronunciation') {
       pronunciationSection?.classList.add('show');
+      renderPronunciationLinks();
       renderPronunciation();
     } else if (subtab === 'dictation') {
       dictationSection?.classList.add('show');
@@ -2322,6 +2323,94 @@ as soon as possible"></textarea>
   function getYouGlishUrl(word) {
     return `https://youglish.com/pronounce/${encodeURIComponent(word)}/english`;
   }
+
+  // Pronunciation Links (pinned resources)
+  function renderPronunciationLinks() {
+    if (!practiceData) return;
+
+    const links = practiceData.english.pronunciationLinks || [];
+    const container = document.getElementById('pronunciation-links');
+    if (!container) return;
+
+    if (links.length === 0) {
+      container.innerHTML = `
+        <div class="pinned-links-header">
+          <span class="pinned-links-title">📌 参考サイト</span>
+          <button class="btn btn-sm" onclick="toggleAddLinkForm()">+ 追加</button>
+        </div>
+        <div class="add-link-form" id="add-link-form" style="display: none;">
+          <input type="text" class="form-input" id="new-link-name" placeholder="サイト名">
+          <input type="url" class="form-input" id="new-link-url" placeholder="URL">
+          <button class="btn btn-primary btn-sm" onclick="addPronunciationLink()">追加</button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="pinned-links-header">
+        <span class="pinned-links-title">📌 参考サイト</span>
+        <button class="btn btn-sm" onclick="toggleAddLinkForm()">+ 追加</button>
+      </div>
+      <div class="pinned-links-list">
+        ${links.map((link, i) => `
+          <div class="pinned-link-item">
+            <a href="${link.url}" target="_blank">${link.name}</a>
+            <button class="btn-icon" onclick="removePronunciationLink(${i})" title="削除">×</button>
+          </div>
+        `).join('')}
+      </div>
+      <div class="add-link-form" id="add-link-form" style="display: none;">
+        <input type="text" class="form-input" id="new-link-name" placeholder="サイト名">
+        <input type="url" class="form-input" id="new-link-url" placeholder="URL">
+        <button class="btn btn-primary btn-sm" onclick="addPronunciationLink()">追加</button>
+      </div>
+    `;
+  }
+
+  window.toggleAddLinkForm = function() {
+    const form = document.getElementById('add-link-form');
+    if (form) {
+      form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+      if (form.style.display === 'flex') {
+        document.getElementById('new-link-name')?.focus();
+      }
+    }
+  };
+
+  window.addPronunciationLink = async function() {
+    const nameInput = document.getElementById('new-link-name');
+    const urlInput = document.getElementById('new-link-url');
+    const name = nameInput?.value.trim();
+    const url = urlInput?.value.trim();
+
+    if (!name || !url) {
+      showToast('サイト名とURLを入力してください', 'error');
+      return;
+    }
+
+    if (!practiceData.english.pronunciationLinks) {
+      practiceData.english.pronunciationLinks = [];
+    }
+
+    practiceData.english.pronunciationLinks.push({
+      id: Date.now().toString(),
+      name,
+      url
+    });
+
+    await saveData();
+    renderPronunciationLinks();
+    showToast('リンクを追加しました', 'success');
+  };
+
+  window.removePronunciationLink = async function(index) {
+    if (!confirm('このリンクを削除しますか？')) return;
+
+    practiceData.english.pronunciationLinks.splice(index, 1);
+    await saveData();
+    renderPronunciationLinks();
+  };
 
   function renderPronunciation() {
     if (!practiceData) return;

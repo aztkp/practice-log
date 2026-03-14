@@ -1180,6 +1180,7 @@
       {"id": "pron_u", "phoneme": "/ʊ/", "name": "ʊ", "examples": ["book", "put", "good"], "category": "vowel", "row": 7, "col": 1, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
       {"id": "pron_e", "phoneme": "/e/", "name": "e", "examples": ["bed", "red", "get"], "category": "vowel", "row": 8, "col": 0, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"}
     ],
+    "pronunciationLinks": [],
     "dictation": []
   }
 }

@@ -680,6 +680,76 @@
       text-decoration: underline;
     }
 
+    /* Pinned Links */
+    .pinned-links {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .pinned-links:empty {
+      display: none;
+    }
+
+    .pinned-links-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .pinned-links-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .pinned-links-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pinned-link-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-tertiary);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .pinned-link-item a {
+      color: var(--english);
+      text-decoration: none;
+    }
+
+    .pinned-link-item a:hover {
+      text-decoration: underline;
+    }
+
+    .pinned-link-item .btn-icon {
+      font-size: 10px;
+      opacity: 0.5;
+    }
+
+    .pinned-link-item .btn-icon:hover {
+      opacity: 1;
+    }
+
+    .add-link-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .add-link-form input {
+      flex: 1;
+      min-width: 0;
+    }
+
     /* Phoneme Cards */
     .phoneme-progress {
       margin-bottom: 16px;
@@ -2211,6 +2281,7 @@
         <button class="btn btn-primary btn-sm" id="add-pronunciation-btn">+ Add Phoneme</button>
       </div>
       <p class="section-desc">音素ごとにYouGlishで徹底練習。タップして練習を記録しよう。</p>
+      <div class="pinned-links" id="pronunciation-links"></div>
       <div class="phoneme-progress" id="phoneme-progress"></div>
       <div class="phoneme-grid" id="pronunciation-list"></div>
     </div>
