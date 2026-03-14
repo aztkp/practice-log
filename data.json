@@ -13,6 +13,12 @@
       {
         "date": "2026-03-05",
         "completed": []
+      },
+      {
+        "date": "2026-03-14",
+        "completed": [
+          "r"
+        ]
       }
     ]
   },
@@ -391,9 +397,15 @@
         "notes": null,
         "masteryLevel": 0,
         "practiceCount": 0,
-        "lastPracticed": null,
+        "lastPracticed": "2026-03-14",
         "createdAt": "2026-03-14",
-        "category": null
+        "category": null,
+        "practicedWords": [
+          {
+            "word": "right",
+            "date": "2026-03-14"
+          }
+        ]
       }
     ],
     "dictation": []
