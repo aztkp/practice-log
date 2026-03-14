@@ -1670,10 +1670,11 @@ as soon as possible"></textarea>
       document.getElementById('study-preview').textContent = `対象フレーズ: ${filtered.length}件`;
     };
 
-    // Mode selection
-    content.querySelectorAll('.study-mode-option').forEach(option => {
+    // Mode selection (chapter/random/weak)
+    content.querySelectorAll('.study-mode-option[data-mode]').forEach(option => {
       option.addEventListener('click', () => {
-        content.querySelectorAll('.study-mode-option').forEach(o => o.classList.remove('selected'));
+        // Only affect options with data-mode attribute
+        content.querySelectorAll('.study-mode-option[data-mode]').forEach(o => o.classList.remove('selected'));
         option.classList.add('selected');
         option.querySelector('input').checked = true;
 
@@ -1696,12 +1697,13 @@ as soon as possible"></textarea>
     document.getElementById('study-textbook').addEventListener('change', updateChapterOptions);
     document.getElementById('study-chapter').addEventListener('change', updatePreview);
 
-    // Question style option listeners
-    document.querySelectorAll('input[name="question-style"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        document.querySelectorAll('.study-mode-option[data-style]').forEach(opt => {
-          opt.classList.toggle('selected', opt.dataset.style === radio.value);
-        });
+    // Question style option listeners (situation/japanese)
+    content.querySelectorAll('.study-mode-option[data-style]').forEach(option => {
+      option.addEventListener('click', () => {
+        // Only affect options with data-style attribute
+        content.querySelectorAll('.study-mode-option[data-style]').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
       });
     });
 
