@@ -939,6 +939,41 @@
       margin-bottom: 16px;
     }
 
+    /* Phoneme Table Layout */
+    .phoneme-table {
+      margin-bottom: 24px;
+    }
+
+    .phoneme-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .phoneme-cell {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .phoneme-cell.empty {
+      visibility: hidden;
+    }
+
+    .phoneme-cell .phoneme-card {
+      height: 100%;
+    }
+
+    /* Consonant table: 5 columns with separator after col 2 */
+    .consonant-table .phoneme-row {
+      position: relative;
+    }
+
+    .consonant-table .phoneme-cell:nth-child(3) {
+      margin-left: 16px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border-color);
+    }
+
     /* Piano Section */
     .piano-section {
       display: none;

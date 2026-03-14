@@ -2326,13 +2326,12 @@ as soon as possible"></textarea>
   function renderPronunciation() {
     if (!practiceData) return;
 
-    const phonemes = (practiceData.english.pronunciation || [])
-      .sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
+    const phonemes = practiceData.english.pronunciation || [];
     const container = document.getElementById('pronunciation-list');
     const progressContainer = document.getElementById('phoneme-progress');
     if (!container) return;
 
-    // Categorize phonemes (already sorted by sortOrder)
+    // Categorize phonemes
     const vowels = phonemes.filter(p => p.category === 'vowel');
     const consonants = phonemes.filter(p => p.category === 'consonant');
     const uncategorized = phonemes.filter(p => !p.category);
@@ -2421,22 +2420,58 @@ as soon as possible"></textarea>
       `;
     };
 
-    let html = '';
+    // Group phonemes by row and render as table
+    const renderTable = (items, maxCols) => {
+      const rows = {};
+      items.forEach(p => {
+        const row = p.row || 1;
+        if (!rows[row]) rows[row] = [];
+        rows[row].push(p);
+      });
 
-    if (vowels.length > 0) {
-      html += `
-        <div class="phoneme-category-header">🔊 母音 (${vowels.length})</div>
-        <div class="phoneme-grid">
-          ${vowels.map(renderCard).join('')}
-        </div>
-      `;
-    }
+      const sortedRowNums = Object.keys(rows).map(Number).sort((a, b) => a - b);
+
+      return sortedRowNums.map(rowNum => {
+        const rowItems = rows[rowNum].sort((a, b) => (a.col || 0) - (b.col || 0));
+        const cells = [];
+
+        // Build cells with gaps
+        let lastCol = -1;
+        rowItems.forEach(p => {
+          const col = p.col || 0;
+          // Add empty cells for gaps
+          for (let i = lastCol + 1; i < col; i++) {
+            cells.push('<div class="phoneme-cell empty"></div>');
+          }
+          cells.push(`<div class="phoneme-cell">${renderCard(p)}</div>`);
+          lastCol = col;
+        });
+
+        // Fill remaining cells to reach maxCols
+        for (let i = lastCol + 1; i < maxCols; i++) {
+          cells.push('<div class="phoneme-cell empty"></div>');
+        }
+
+        return `<div class="phoneme-row">${cells.join('')}</div>`;
+      }).join('');
+    };
+
+    let html = '';
 
     if (consonants.length > 0) {
       html += `
         <div class="phoneme-category-header">🗣️ 子音 (${consonants.length})</div>
-        <div class="phoneme-grid">
-          ${consonants.map(renderCard).join('')}
+        <div class="phoneme-table consonant-table">
+          ${renderTable(consonants, 5)}
+        </div>
+      `;
+    }
+
+    if (vowels.length > 0) {
+      html += `
+        <div class="phoneme-category-header">🔊 母音 (${vowels.length})</div>
+        <div class="phoneme-table vowel-table">
+          ${renderTable(vowels, 5)}
         </div>
       `;
     }
@@ -2444,8 +2479,8 @@ as soon as possible"></textarea>
     if (uncategorized.length > 0) {
       html += `
         <div class="phoneme-category-header">📝 その他 (${uncategorized.length})</div>
-        <div class="phoneme-grid">
-          ${uncategorized.map(renderCard).join('')}
+        <div class="phoneme-table">
+          ${renderTable(uncategorized, 5)}
         </div>
       `;
     }
