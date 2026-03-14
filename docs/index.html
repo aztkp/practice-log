@@ -669,58 +669,154 @@
     .phoneme-card.mastery-2 { border-left-color: #60a5fa; }
     .phoneme-card.mastery-3 { border-left-color: #4ade80; }
 
+    .phoneme-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
     .phoneme-symbol {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 600;
-      margin-bottom: 4px;
+      min-width: 50px;
+    }
+
+    .phoneme-info {
+      flex: 1;
     }
 
     .phoneme-name {
       font-size: 12px;
       color: var(--text-secondary);
-      margin-bottom: 8px;
     }
 
-    .phoneme-examples {
+    .phoneme-word-count {
       font-size: 11px;
       color: var(--text-muted);
-      margin-bottom: 8px;
     }
 
-    .phoneme-examples a {
+    .phoneme-expand-icon {
+      font-size: 10px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+
+    .phoneme-card.expanded .phoneme-expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .phoneme-body {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .phoneme-card.expanded .phoneme-body {
+      display: block;
+    }
+
+    .phoneme-word-input {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .phoneme-word-input .form-input {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+
+    .phoneme-word-list {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .phoneme-word-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .phoneme-word-item:last-child {
+      border-bottom: none;
+    }
+
+    .phoneme-word-item a {
+      flex: 1;
       color: var(--english);
       text-decoration: none;
-      margin-right: 6px;
     }
 
-    .phoneme-examples a:hover {
+    .phoneme-word-item a:hover {
       text-decoration: underline;
     }
 
-    .phoneme-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .phoneme-word-date {
       font-size: 10px;
       color: var(--text-muted);
     }
 
-    .phoneme-streak {
-      display: flex;
-      align-items: center;
-      gap: 2px;
+    .btn-icon {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 14px;
     }
 
-    .phoneme-actions {
-      display: flex;
-      gap: 6px;
-      margin-top: 10px;
+    .btn-icon:hover {
+      color: var(--danger);
     }
 
-    .phoneme-actions .btn {
-      flex: 1;
+    .phoneme-empty-words {
       font-size: 11px;
-      padding: 6px 8px;
+      color: var(--text-muted);
+      padding: 8px 0;
+    }
+
+    .phoneme-empty-words a {
+      color: var(--english);
+      text-decoration: none;
+    }
+
+    .phoneme-empty-words a:hover {
+      text-decoration: underline;
+    }
+
+    .phoneme-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 8px;
+      font-size: 10px;
+    }
+
+    .phoneme-mastery-badge {
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--bg-tertiary);
+      color: var(--text-muted);
+    }
+
+    .phoneme-mastery-badge.mastery-1 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+    .phoneme-mastery-badge.mastery-2 { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
+    .phoneme-mastery-badge.mastery-3 { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+
+    .phoneme-recent {
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 60%;
     }
 
     .phoneme-preset-grid {

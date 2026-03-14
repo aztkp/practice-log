@@ -2187,11 +2187,15 @@ as soon as possible"></textarea>
     const consonants = phonemes.filter(p => p.category === 'consonant');
     const uncategorized = phonemes.filter(p => !p.category);
 
+    // Helper to count mastery based on practiced words
+    const isMastered = (p) => (p.practicedWords || []).length >= 10;
+    const totalWords = phonemes.reduce((sum, p) => sum + (p.practicedWords || []).length, 0);
+
     // Render progress bar
     if (progressContainer && phonemes.length > 0) {
-      const vowelMastered = vowels.filter(p => p.masteryLevel >= 3).length;
-      const consonantMastered = consonants.filter(p => p.masteryLevel >= 3).length;
-      const totalMastered = phonemes.filter(p => p.masteryLevel >= 3).length;
+      const vowelMastered = vowels.filter(isMastered).length;
+      const consonantMastered = consonants.filter(isMastered).length;
+      const totalMastered = phonemes.filter(isMastered).length;
       const percentage = Math.round((totalMastered / phonemes.length) * 100);
 
       progressContainer.innerHTML = `
@@ -2199,7 +2203,7 @@ as soon as possible"></textarea>
           <div class="phoneme-progress-fill" style="width: ${percentage}%"></div>
         </div>
         <div class="phoneme-progress-text">
-          <span>🎯 ${totalMastered}/${phonemes.length} 習得</span>
+          <span>🎯 ${totalMastered}/${phonemes.length} 習得 (${totalWords}単語)</span>
           <span>母音 ${vowelMastered}/${vowels.length} ・ 子音 ${consonantMastered}/${consonants.length}</span>
         </div>
       `;
@@ -2212,9 +2216,11 @@ as soon as possible"></textarea>
       return;
     }
 
-    // Sort function: by mastery level (lower first), then by last practiced (older first)
+    // Sort function: by word count (fewer first), then by last practiced (older first)
     const sortPhonemes = (arr) => [...arr].sort((a, b) => {
-      if (a.masteryLevel !== b.masteryLevel) return a.masteryLevel - b.masteryLevel;
+      const aWords = (a.practicedWords || []).length;
+      const bWords = (b.practicedWords || []).length;
+      if (aWords !== bWords) return aWords - bWords;
       if (!a.lastPracticed) return -1;
       if (!b.lastPracticed) return 1;
       return a.lastPracticed.localeCompare(b.lastPracticed);
@@ -2222,30 +2228,51 @@ as soon as possible"></textarea>
 
     const renderCard = (p) => {
       const realIndex = phonemes.findIndex(ph => ph.id === p.id);
-      const masteryClass = `mastery-${p.masteryLevel || 0}`;
+      const practicedWords = p.practicedWords || [];
+      const wordCount = practicedWords.length;
+      const masteryClass = wordCount >= 10 ? 'mastery-3' : wordCount >= 5 ? 'mastery-2' : wordCount >= 1 ? 'mastery-1' : 'mastery-0';
       const masteryLabels = ['未学習', '練習中', '定着中', '習得'];
-      const daysSincePractice = p.lastPracticed ?
-        Math.floor((new Date() - new Date(p.lastPracticed)) / (1000 * 60 * 60 * 24)) : null;
+      const masteryLevel = wordCount >= 10 ? 3 : wordCount >= 5 ? 2 : wordCount >= 1 ? 1 : 0;
+      const recentWords = practicedWords.slice(-3).reverse();
 
       return `
         <div class="phoneme-card ${masteryClass}" data-index="${realIndex}">
-          <div class="phoneme-symbol">${p.phoneme}</div>
-          <div class="phoneme-name">${p.name}</div>
-          <div class="phoneme-examples">
-            ${(p.examples || []).map(ex =>
-              `<a href="${getYouGlishUrl(ex)}" target="_blank" title="YouGlishで聴く">${ex}</a>`
-            ).join('')}
+          <div class="phoneme-header" onclick="togglePhonemeExpand(${realIndex})">
+            <div class="phoneme-symbol">${p.phoneme}</div>
+            <div class="phoneme-info">
+              <div class="phoneme-name">${p.name}</div>
+              <div class="phoneme-word-count">${wordCount}単語マスター</div>
+            </div>
+            <div class="phoneme-expand-icon">▼</div>
           </div>
-          <div class="phoneme-meta">
-            <span>${masteryLabels[p.masteryLevel || 0]}</span>
-            <span class="phoneme-streak">
-              ${p.practiceCount || 0}回練習
-              ${daysSincePractice !== null ? `・${daysSincePractice === 0 ? '今日' : daysSincePractice + '日前'}` : ''}
-            </span>
+          <div class="phoneme-body" id="phoneme-body-${realIndex}">
+            <div class="phoneme-word-input">
+              <input type="text" class="form-input" id="word-input-${realIndex}"
+                placeholder="単語を入力..."
+                onkeypress="if(event.key==='Enter')addPracticedWord(${realIndex})">
+              <button class="btn btn-primary btn-sm" onclick="addPracticedWord(${realIndex})">追加</button>
+            </div>
+            ${practicedWords.length > 0 ? `
+              <div class="phoneme-word-list">
+                ${practicedWords.slice().reverse().map((w, i) => `
+                  <div class="phoneme-word-item">
+                    <a href="${getYouGlishUrl(w.word)}" target="_blank">${w.word}</a>
+                    <span class="phoneme-word-date">${w.date}</span>
+                    <button class="btn-icon" onclick="removePracticedWord(${realIndex}, ${practicedWords.length - 1 - i})">×</button>
+                  </div>
+                `).join('')}
+              </div>
+            ` : `
+              <div class="phoneme-empty-words">
+                例: ${(p.examples || []).map(ex =>
+                  `<a href="${getYouGlishUrl(ex)}" target="_blank">${ex}</a>`
+                ).join(', ')}
+              </div>
+            `}
           </div>
-          <div class="phoneme-actions">
-            <button class="btn btn-primary" onclick="practicePhoneme(${realIndex})">練習した</button>
-            <button class="btn" onclick="editPhoneme(${realIndex})">編集</button>
+          <div class="phoneme-footer">
+            <span class="phoneme-mastery-badge ${masteryClass}">${masteryLabels[masteryLevel]}</span>
+            ${recentWords.length > 0 ? `<span class="phoneme-recent">最近: ${recentWords.map(w => w.word).join(', ')}</span>` : ''}
           </div>
         </div>
       `;
@@ -2399,8 +2426,7 @@ as soon as possible"></textarea>
           name: preset.name,
           examples: preset.examples,
           notes: null,
-          masteryLevel: 0,
-          practiceCount: 0,
+          practicedWords: [],
           lastPracticed: null,
           createdAt: getTodayKey(),
           category: 'vowel'
@@ -2423,8 +2449,7 @@ as soon as possible"></textarea>
           name: preset.name,
           examples: preset.examples,
           notes: null,
-          masteryLevel: 0,
-          practiceCount: 0,
+          practicedWords: [],
           lastPracticed: null,
           createdAt: getTodayKey(),
           category: 'consonant'
@@ -2459,8 +2484,7 @@ as soon as possible"></textarea>
         name,
         examples,
         notes: notes || null,
-        masteryLevel: masteryEl ? parseInt(masteryEl.value) : (phoneme?.masteryLevel || 0),
-        practiceCount: phoneme?.practiceCount || 0,
+        practicedWords: phoneme?.practicedWords || [],
         lastPracticed: phoneme?.lastPracticed || null,
         createdAt: phoneme?.createdAt || getTodayKey(),
         category: phoneme?.category || null
@@ -2492,12 +2516,35 @@ as soon as possible"></textarea>
   }
 
   // Global functions for phoneme management
-  window.practicePhoneme = async function(index) {
+  window.togglePhonemeExpand = function(index) {
+    const body = document.getElementById(`phoneme-body-${index}`);
+    const card = body?.closest('.phoneme-card');
+    if (body && card) {
+      card.classList.toggle('expanded');
+    }
+  };
+
+  window.addPracticedWord = async function(index) {
+    const input = document.getElementById(`word-input-${index}`);
+    const word = input?.value.trim();
+    if (!word) return;
+
     const phoneme = practiceData.english.pronunciation[index];
-    phoneme.practiceCount = (phoneme.practiceCount || 0) + 1;
+    if (!phoneme.practicedWords) phoneme.practicedWords = [];
+
+    // Check if word already exists
+    if (phoneme.practicedWords.some(w => w.word.toLowerCase() === word.toLowerCase())) {
+      showToast('この単語は既に追加されています', 'error');
+      return;
+    }
+
+    phoneme.practicedWords.push({
+      word,
+      date: getTodayKey()
+    });
     phoneme.lastPracticed = getTodayKey();
 
-    // Also record in calendar (english records)
+    // Also record in calendar
     const todayKey = getTodayKey();
     let records = practiceData.records.english;
     let record = records.find(r => r.date === todayKey);
@@ -2505,29 +2552,52 @@ as soon as possible"></textarea>
       record = { date: todayKey, completed: [] };
       records.push(record);
     }
-    // Add phoneme name if not already completed today
     if (!record.completed.includes(phoneme.name)) {
       record.completed.push(phoneme.name);
     }
 
-    // Auto-increase mastery level based on practice count
-    if (phoneme.practiceCount >= 20 && phoneme.masteryLevel < 3) {
-      phoneme.masteryLevel = 3;
-      showToast(`🎉 ${phoneme.phoneme} を習得しました！`, 'success');
-    } else if (phoneme.practiceCount >= 10 && phoneme.masteryLevel < 2) {
-      phoneme.masteryLevel = 2;
-      showToast(`✨ ${phoneme.phoneme} が定着してきました！`, 'success');
-    } else if (phoneme.practiceCount >= 3 && phoneme.masteryLevel < 1) {
-      phoneme.masteryLevel = 1;
+    // Show milestone messages
+    const wordCount = phoneme.practicedWords.length;
+    if (wordCount === 10) {
+      showToast(`🎉 ${phoneme.phoneme} を習得しました！（10単語達成）`, 'success');
+    } else if (wordCount === 5) {
+      showToast(`✨ ${phoneme.phoneme} が定着してきました！（5単語達成）`, 'success');
+    } else if (wordCount === 1) {
       showToast(`🔥 ${phoneme.phoneme} の練習を開始！`, 'success');
     } else {
-      showToast(`${phoneme.phoneme} を練習しました (${phoneme.practiceCount}回目)`, 'success');
+      showToast(`"${word}" を追加しました`, 'success');
     }
 
     await saveData();
     renderPronunciation();
     renderCalendar();
     renderTodayChecklist();
+
+    // Re-expand the card and focus input
+    setTimeout(() => {
+      const card = document.querySelector(`[data-index="${index}"]`);
+      if (card) card.classList.add('expanded');
+      const newInput = document.getElementById(`word-input-${index}`);
+      if (newInput) newInput.focus();
+    }, 50);
+  };
+
+  window.removePracticedWord = async function(phonemeIndex, wordIndex) {
+    const phoneme = practiceData.english.pronunciation[phonemeIndex];
+    if (!phoneme.practicedWords) return;
+
+    const word = phoneme.practicedWords[wordIndex];
+    if (!confirm(`"${word.word}" を削除しますか？`)) return;
+
+    phoneme.practicedWords.splice(wordIndex, 1);
+    await saveData();
+    renderPronunciation();
+
+    // Re-expand the card
+    setTimeout(() => {
+      const card = document.querySelector(`[data-index="${phonemeIndex}"]`);
+      if (card) card.classList.add('expanded');
+    }, 50);
   };
 
   window.editPhoneme = function(index) {
