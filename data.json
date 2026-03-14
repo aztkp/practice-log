@@ -651,6 +651,86 @@
         "masteryLevel": 0,
         "studyCount": 0,
         "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000009ch53a",
+        "japanese": "会社のロゴを載せる位置を変えてはどうでしょうか",
+        "english": "How about changing the section where the company logo appears?",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000010ch53b",
+        "japanese": "全員が見ることのできる壁に、そのメモを掲示しませんか",
+        "english": "Can we put the memo on the wall where everybody can see it?",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000011ch53c",
+        "japanese": "成功に向かって一緒に働いていた時のことを覚えています",
+        "english": "I remember the time when we worked together to make a success.",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000012ch53d",
+        "japanese": "彼らが初めて会った日についてインタビューするのはどうでしょうか",
+        "english": "How about interviewing them about the day when they first met?",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000013ch53e",
+        "japanese": "グリーンズボロがなぜ最適の場所と言えるかをお教えしたいと思います",
+        "english": "I'd like to show you why Greensboro would be the best location.",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000014ch53f",
+        "japanese": "大きいもののほうがいい理由を説明しましょうか",
+        "english": "Can I show you the reason why the bigger one is better?",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000015ch53g",
+        "japanese": "私はこのようにして昇格試験に向けた準備をしました",
+        "english": "This is how I prepared for the promotion exam.",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773490000016ch53h",
+        "japanese": "ミシマさんならどうやってデバイスを再プログラムしたらよいかを教えてくれます",
+        "english": "Mr. Mishima can show you how you should reprogram the device.",
+        "textbookId": "1772684232735",
+        "chapter": "53",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
       }
     ],
     "vocabulary": [],
