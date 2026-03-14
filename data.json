@@ -17,7 +17,96 @@
     ]
   },
   "english": {
-    "phrases": [],
+    "phrases": [
+      {
+        "id": "1773479810632iabuoknqj",
+        "japanese": "月曜日に少しお時間をいただけないでしょうか",
+        "english": "I wonder if you could give me some time on Monday",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632t4mdgys6o",
+        "japanese": "今日ジョアンにお電話をいただけると大変助かります",
+        "english": "It would be really helpful if you could call Joan today.",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632hfl9zd62n",
+        "japanese": "妥協案に決めることができればありがたいです",
+        "english": "I'd be grateful if we could decide on a compromise.",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632mgqx5suv5",
+        "japanese": "明日までに見積もりを出していただけるとありがたいのですが",
+        "english": "I'd appreciate it if you could provide us with a quote by tommorow.",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632js8ayfa0q",
+        "japanese": "電話会議を来週に延期してもよろしいでしょうか",
+        "english": "Would you mind if we postponed the conference call until next week?",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632jxv5ee2qj",
+        "japanese": "昼食後にお電話してもよろしいでしょうか",
+        "english": "Would it be alright if I called you after lunch?",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "1773479810632q5rp29sku",
+        "japanese": "もう一度数字を見直させていただくことは可能でしょうか",
+        "english": "Is there any chance that we could review the figures once more?",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      },
+      {
+        "id": "177347981063290wxj052l",
+        "japanese": "できれば週末までにその仕事を終えたいのですが",
+        "english": "I'd rather we finished the job before the weekend.",
+        "textbookId": "1772684232735",
+        "chapter": "57",
+        "masteryLevel": 0,
+        "lastStudied": null,
+        "studyCount": 0,
+        "createdAt": "2026-03-14"
+      }
+    ],
     "vocabulary": [],
     "presentations": [],
     "textbooks": [
@@ -32,6 +121,8 @@
         "createdAt": "2026-03-05"
       }
     ],
-    "studyRecords": []
+    "studyRecords": [],
+    "pronunciation": [],
+    "dictation": []
   }
 }
