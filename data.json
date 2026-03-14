@@ -218,8 +218,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -230,8 +230,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -242,8 +242,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -254,8 +254,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -266,8 +266,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -278,8 +278,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -290,8 +290,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       },
       {
@@ -302,8 +302,8 @@
         "textbookId": "1772684232735",
         "chapter": "55",
         "masteryLevel": 0,
-        "lastStudied": null,
-        "studyCount": 0,
+        "lastStudied": "2026-03-14",
+        "studyCount": 1,
         "createdAt": "2026-03-14"
       }
     ],
@@ -321,7 +321,18 @@
         "createdAt": "2026-03-05"
       }
     ],
-    "studyRecords": [],
+    "studyRecords": [
+      {
+        "id": "1773481359285",
+        "date": "2026-03-14",
+        "mode": "chapter",
+        "textbookId": "1772684232735",
+        "chapter": "55",
+        "phraseCount": 8,
+        "correctCount": 0,
+        "duration": 189
+      }
+    ],
     "pronunciation": [],
     "dictation": []
   }
