@@ -1811,15 +1811,16 @@ as soon as possible"></textarea>
             chip.addEventListener('click', () => {
               const chapter = chip.dataset.chapter;
               if (chapter === 'all') {
-                selectedChapters = [];
+                selectedChapters.length = 0; // Clear array in place
                 chipsContainer.querySelectorAll('.chapter-chip').forEach(c => c.classList.remove('selected'));
                 chip.classList.add('selected');
               } else {
                 // Remove 'all' selection
                 chipsContainer.querySelector('[data-chapter="all"]')?.classList.remove('selected');
                 // Toggle this chapter
-                if (selectedChapters.includes(chapter)) {
-                  selectedChapters = selectedChapters.filter(c => c !== chapter);
+                const idx = selectedChapters.indexOf(chapter);
+                if (idx >= 0) {
+                  selectedChapters.splice(idx, 1); // Remove in place
                   chip.classList.remove('selected');
                   // If none selected, select 'all'
                   if (selectedChapters.length === 0) {
@@ -1830,6 +1831,7 @@ as soon as possible"></textarea>
                   chip.classList.add('selected');
                 }
               }
+              console.log('selectedChapters:', selectedChapters); // Debug
               updatePreview();
             });
           });
@@ -1838,7 +1840,7 @@ as soon as possible"></textarea>
         }
       } else {
         chipsContainer.innerHTML = '';
-        selectedChapters = [];
+        selectedChapters.length = 0; // Clear array in place
       }
       updatePreview();
     };
@@ -1852,6 +1854,7 @@ as soon as possible"></textarea>
       const textbookId = document.getElementById('study-textbook').value;
 
       let filtered = [...phrases];
+      console.log('updatePreview - mode:', mode, 'textbookId:', textbookId, 'selectedChapters:', selectedChapters, 'length:', selectedChapters.length);
 
       if (mode === 'chapter') {
         if (textbookId === 'free') {
@@ -1859,9 +1862,16 @@ as soon as possible"></textarea>
         } else if (textbookId) {
           filtered = filtered.filter(p => p.textbookId === textbookId);
         }
+        console.log('After textbook filter:', filtered.length);
         // Apply chapter filter (works for both specific textbook and "すべて")
         if (selectedChapters.length > 0) {
-          filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
+          console.log('Applying chapter filter with:', selectedChapters);
+          filtered = filtered.filter(p => {
+            const match = selectedChapters.includes(p.chapter);
+            if (!match && filtered.length < 10) console.log('No match:', p.chapter, 'in', selectedChapters);
+            return match;
+          });
+          console.log('After chapter filter:', filtered.length);
         }
       } else if (mode === 'weak') {
         filtered = filtered.filter(p => (p.masteryLevel || 0) < 4);
@@ -1896,7 +1906,7 @@ as soon as possible"></textarea>
     });
 
     document.getElementById('study-textbook').addEventListener('change', () => {
-      selectedChapters = [];
+      selectedChapters.length = 0; // Clear array in place
       updateChapterChips();
     });
 
