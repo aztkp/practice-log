@@ -35,6 +35,7 @@
 
   // Phrase study mode state
   let studyMode = null; // 'chapter', 'random', 'weak'
+  let questionStyle = 'situation'; // 'situation' or 'japanese'
   let studyPhrases = [];
   let studyIndex = 0;
   let studyResults = []; // { phraseId, result: 'ok' | 'partial' | 'ng' }
@@ -860,36 +861,112 @@
     return Math.round((masteredCount / phrases.length) * 100);
   }
 
+  // Calculate today's study count
+  function calculateTodayStudyCount() {
+    const records = practiceData.english.studyRecords || [];
+    const today = getTodayKey();
+    return records
+      .filter(r => r.date === today)
+      .reduce((sum, r) => sum + (r.phraseCount || 0), 0);
+  }
+
+  // Calculate total study count (all time)
+  function calculateTotalStudyCount() {
+    const records = practiceData.english.studyRecords || [];
+    return records.reduce((sum, r) => sum + (r.phraseCount || 0), 0);
+  }
+
+  // Calculate user level based on total study count
+  function calculateLevel() {
+    const total = calculateTotalStudyCount();
+    if (total >= 5000) return { level: 10, title: 'Master', next: null };
+    if (total >= 3000) return { level: 9, title: 'Expert', next: 5000 };
+    if (total >= 2000) return { level: 8, title: 'Advanced', next: 3000 };
+    if (total >= 1500) return { level: 7, title: 'Skilled', next: 2000 };
+    if (total >= 1000) return { level: 6, title: 'Intermediate', next: 1500 };
+    if (total >= 700) return { level: 5, title: 'Learner', next: 1000 };
+    if (total >= 500) return { level: 4, title: 'Explorer', next: 700 };
+    if (total >= 300) return { level: 3, title: 'Starter', next: 500 };
+    if (total >= 100) return { level: 2, title: 'Beginner', next: 300 };
+    return { level: 1, title: 'Rookie', next: 100 };
+  }
+
+  // Get motivation message based on streak and study status
+  function getMotivationMessage(streak, todayCount) {
+    // Messages for starting the day
+    if (todayCount === 0) {
+      const startMessages = [
+        "Let's start today's practice!",
+        "Ready to learn something new?",
+        "Every phrase counts!",
+        "Small steps lead to big progress!",
+        "Your future self will thank you!"
+      ];
+      return startMessages[Math.floor(Math.random() * startMessages.length)];
+    }
+
+    // Messages based on streak
+    if (streak >= 30) return "🏆 Amazing! 30+ day streak! You're unstoppable!";
+    if (streak >= 14) return "🌟 2 weeks strong! Keep the momentum!";
+    if (streak >= 7) return "🔥 One week streak! Fantastic dedication!";
+    if (streak >= 3) return "✨ Great work! Day " + streak + " streak!";
+    if (streak >= 1) return "👍 Nice! Keep it going tomorrow!";
+
+    // General encouragement
+    const generalMessages = [
+      "Great progress today!",
+      "You're doing amazing!",
+      "Keep up the excellent work!",
+      "Practice makes perfect!"
+    ];
+    return generalMessages[Math.floor(Math.random() * generalMessages.length)];
+  }
+
   function renderPhraseStats() {
     const container = document.getElementById('phrase-stats');
     if (!container) return;
 
     const streak = calculateStreak();
-    const monthlyCount = calculateMonthlyPhraseCount();
-    const masteryRate = calculateMasteryRate();
+    const todayCount = calculateTodayStudyCount();
+    const totalStudy = calculateTotalStudyCount();
+    const levelInfo = calculateLevel();
     const phrases = practiceData.english.phrases || [];
     const weakCount = phrases.filter(p => (p.masteryLevel || 0) <= 2).length;
+    const motivationMsg = getMotivationMessage(streak, todayCount);
+
+    // Daily goal: 24 phrases (3 chapters/day for ~3 weeks completion)
+    const dailyGoal = 24;
+    const goalProgress = Math.min(100, Math.round((todayCount / dailyGoal) * 100));
+    const goalComplete = todayCount >= dailyGoal;
 
     container.innerHTML = `
+      <div class="phrase-stat-badge motivation-badge" style="flex: 2; min-width: 200px;">
+        <div style="display: flex; flex-direction: column; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span class="stat-icon">🎯</span>
+            <span style="font-size: 14px; font-weight: 600;">Today: ${todayCount}/${dailyGoal}</span>
+            ${goalComplete ? '<span style="color: var(--accent);">Complete!</span>' : ''}
+          </div>
+          <div style="background: var(--bg-tertiary); height: 6px; border-radius: 3px; overflow: hidden;">
+            <div style="width: ${goalProgress}%; height: 100%; background: ${goalComplete ? 'var(--accent)' : 'var(--english)'}; transition: width 0.3s;"></div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">${motivationMsg}</div>
+        </div>
+      </div>
       <div class="phrase-stat-badge">
-        <span class="stat-icon">🔥</span>
+        <span class="stat-icon ${streak >= 7 ? 'streak-fire' : ''}">🔥</span>
         <span class="stat-num">${streak}</span>
         <span class="stat-text">Streak</span>
       </div>
       <div class="phrase-stat-badge">
-        <span class="stat-icon">📚</span>
-        <span class="stat-num">${phrases.length}</span>
-        <span class="stat-text">Total</span>
+        <span class="stat-icon">⚡</span>
+        <span class="stat-num">Lv.${levelInfo.level}</span>
+        <span class="stat-text">${levelInfo.title}</span>
       </div>
       <div class="phrase-stat-badge">
         <span class="stat-icon">💪</span>
         <span class="stat-num">${weakCount}</span>
         <span class="stat-text">Weak</span>
-      </div>
-      <div class="phrase-stat-badge">
-        <span class="stat-icon">⭐</span>
-        <span class="stat-num">${masteryRate}%</span>
-        <span class="stat-text">Mastered</span>
       </div>
     `;
   }
@@ -1287,84 +1364,91 @@
   // Bulk phrase add modal
   function openBulkPhraseModal() {
     const modal = document.getElementById('edit-modal');
+    const modalBox = modal.querySelector('.modal');
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
     const textbooks = practiceData.english.textbooks || [];
 
+    // Use wide modal for bulk add
+    modalBox.classList.add('wide');
+
     title.textContent = 'フレーズ一括追加';
 
     content.innerHTML = `
-      <div class="form-group">
-        <label class="form-label">教材</label>
-        <select class="form-select" id="bulk-textbook">
-          <option value="">自由入力</option>
-          ${textbooks.map(tb => `<option value="${tb.id}">${tb.name}</option>`).join('')}
-        </select>
+      <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+          <label class="form-label">教材</label>
+          <select class="form-select" id="bulk-textbook">
+            <option value="">自由入力</option>
+            ${textbooks.map(tb => `<option value="${tb.id}">${tb.name}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-group" style="width: 100px; margin-bottom: 0;">
+          <label class="form-label">Chapter</label>
+          <input type="number" class="form-input" id="bulk-chapter" placeholder="1" min="1">
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">チャプター</label>
-        <input type="number" class="form-input" id="bulk-chapter" placeholder="1" min="1">
+      <div style="display: flex; gap: 12px;">
+        <div class="form-group" style="flex: 1;">
+          <label class="form-label">日本語（1行1フレーズ）</label>
+          <textarea class="form-textarea" id="bulk-japanese" style="height: 280px; font-size: 13px;" placeholder="彼は会議に遅刻した
+それは私には関係ない
+できるだけ早く"></textarea>
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label class="form-label">English（1行1フレーズ）</label>
+          <textarea class="form-textarea" id="bulk-english" style="height: 280px; font-size: 13px;" placeholder="He was late for the meeting
+It's none of my business
+as soon as possible"></textarea>
+        </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">フレーズ（1行に1フレーズ、日本語と英語をタブか | で区切る）</label>
-        <textarea class="form-textarea" id="bulk-phrases" rows="10" placeholder="彼は会議に遅刻した|He was late for the meeting
-それは私には関係ない|It's none of my business
-できるだけ早く|as soon as possible"></textarea>
-      </div>
-      <div class="bulk-preview" id="bulk-preview"></div>
-      <button class="btn btn-primary" id="save-bulk" style="width:100%;margin-top:16px;">追加</button>
+      <div class="bulk-preview" id="bulk-preview" style="margin-bottom: 12px;"></div>
+      <button class="btn btn-primary" id="save-bulk" style="width:100%;">追加</button>
     `;
 
     modal.classList.add('show');
 
     const updatePreview = () => {
-      const text = document.getElementById('bulk-phrases').value;
-      const lines = text.split('\n').filter(line => line.trim());
-      const parsed = lines.map(line => {
-        const parts = line.split(/\t|\|/);
-        if (parts.length >= 2) {
-          return { jp: parts[0].trim(), en: parts[1].trim(), valid: true };
-        }
-        return { text: line, valid: false };
-      });
+      const jpLines = document.getElementById('bulk-japanese').value.split('\n').filter(line => line.trim());
+      const enLines = document.getElementById('bulk-english').value.split('\n').filter(line => line.trim());
 
-      const validCount = parsed.filter(p => p.valid).length;
-      const invalidCount = parsed.filter(p => !p.valid).length;
+      const jpCount = jpLines.length;
+      const enCount = enLines.length;
+      const matchCount = Math.min(jpCount, enCount);
 
-      let previewHtml = `<span style="color: var(--accent);">${validCount}件</span> 追加可能`;
-      if (invalidCount > 0) {
-        previewHtml += ` / <span style="color: var(--danger);">${invalidCount}件</span> 形式エラー`;
+      let previewHtml = `<span style="color: var(--accent);">${matchCount}件</span> 追加可能`;
+      if (jpCount !== enCount) {
+        previewHtml += ` <span style="color: var(--today);">（日本語: ${jpCount}行, 英語: ${enCount}行）</span>`;
       }
       document.getElementById('bulk-preview').innerHTML = previewHtml;
     };
 
-    document.getElementById('bulk-phrases').addEventListener('input', updatePreview);
+    document.getElementById('bulk-japanese').addEventListener('input', updatePreview);
+    document.getElementById('bulk-english').addEventListener('input', updatePreview);
 
     document.getElementById('save-bulk').addEventListener('click', async () => {
       const textbookId = document.getElementById('bulk-textbook').value || null;
       const chapter = document.getElementById('bulk-chapter').value || null;
-      const text = document.getElementById('bulk-phrases').value;
+      const jpLines = document.getElementById('bulk-japanese').value.split('\n').filter(line => line.trim());
+      const enLines = document.getElementById('bulk-english').value.split('\n').filter(line => line.trim());
 
-      const lines = text.split('\n').filter(line => line.trim());
       const newPhrases = [];
+      const count = Math.min(jpLines.length, enLines.length);
 
-      lines.forEach(line => {
-        const parts = line.split(/\t|\|/);
-        if (parts.length >= 2) {
-          newPhrases.push({
-            id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-            japanese: parts[0].trim(),
-            english: parts[1].trim(),
-            textbookId,
-            chapter,
-            masteryLevel: 0,
-            lastStudied: null,
-            studyCount: 0,
-            createdAt: getTodayKey()
-          });
-        }
-      });
+      for (let i = 0; i < count; i++) {
+        newPhrases.push({
+          id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+          japanese: jpLines[i].trim(),
+          english: enLines[i].trim(),
+          textbookId,
+          chapter,
+          masteryLevel: 0,
+          lastStudied: null,
+          studyCount: 0,
+          createdAt: getTodayKey()
+        });
+      }
 
       if (newPhrases.length === 0) {
         showToast('追加できるフレーズがありません', 'error');
@@ -1374,6 +1458,7 @@
       practiceData.english.phrases.push(...newPhrases);
       await saveData();
       modal.classList.remove('show');
+      modalBox.classList.remove('wide');
       shuffledPhrases = [...practiceData.english.phrases];
       currentPhraseIndex = 0;
       isCardFlipped = false;
@@ -1402,6 +1487,34 @@
 
   // ==================== STUDY MODE FUNCTIONS ====================
 
+  // Get start study motivational message
+  function getStartStudyMessage() {
+    const streak = calculateStreak();
+    const todayCount = calculateTodayStudyCount();
+    const levelInfo = calculateLevel();
+
+    if (todayCount === 0) {
+      const messages = [
+        "Ready to learn? Let's go!",
+        "Time to power up your English!",
+        "Every phrase makes you stronger!",
+        "Today's journey starts now!"
+      ];
+      return messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    if (streak >= 7) {
+      return `${streak} day streak! Keep the fire burning!`;
+    }
+
+    const messages = [
+      `Already studied ${todayCount} today! Keep going!`,
+      "Great momentum! Let's learn more!",
+      `Level ${levelInfo.level} ${levelInfo.title} - aim higher!`
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  }
+
   function openStudyModeModal() {
     const modal = document.getElementById('edit-modal');
     const content = document.getElementById('modal-content');
@@ -1409,10 +1522,17 @@
 
     const textbooks = practiceData.english.textbooks || [];
     const phrases = practiceData.english.phrases || [];
+    const startMessage = getStartStudyMessage();
+    const streak = calculateStreak();
+    const todayCount = calculateTodayStudyCount();
 
     title.textContent = '暗記モード設定';
 
     content.innerHTML = `
+      <div style="background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 188, 212, 0.05) 100%); border-radius: 10px; padding: 14px; margin-bottom: 16px; text-align: center;">
+        <div style="font-size: 18px; margin-bottom: 4px;">${startMessage}</div>
+        <div style="font-size: 12px; color: var(--text-muted);">🔥 ${streak} day streak · 📚 ${todayCount} studied today</div>
+      </div>
       <div class="form-group">
         <label class="form-label">学習モード</label>
         <div class="study-mode-options">
@@ -1459,12 +1579,33 @@
       <div class="form-group">
         <label class="form-label">出題数</label>
         <select class="form-select" id="study-count">
-          <option value="10">10問</option>
-          <option value="20">20問</option>
-          <option value="30">30問</option>
-          <option value="50">50問</option>
+          <option value="8">8問 (1チャプター)</option>
+          <option value="16">16問 (2チャプター)</option>
+          <option value="24" selected>24問 (3チャプター)</option>
+          <option value="32">32問 (4チャプター)</option>
           <option value="all">すべて</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">出題形式</label>
+        <div class="study-mode-options">
+          <label class="study-mode-option selected" data-style="situation">
+            <input type="radio" name="question-style" value="situation" checked>
+            <span class="study-mode-icon">📍</span>
+            <div class="study-mode-info">
+              <div class="study-mode-name">シチュエーション</div>
+              <div class="study-mode-desc">場面から英語を考える</div>
+            </div>
+          </label>
+          <label class="study-mode-option" data-style="japanese">
+            <input type="radio" name="question-style" value="japanese">
+            <span class="study-mode-icon">🇯🇵</span>
+            <div class="study-mode-info">
+              <div class="study-mode-name">日本語</div>
+              <div class="study-mode-desc">日本語から英語に翻訳</div>
+            </div>
+          </label>
+        </div>
       </div>
       <div class="study-preview" id="study-preview">
         対象フレーズ: ${phrases.length}件
@@ -1555,18 +1696,29 @@
     document.getElementById('study-textbook').addEventListener('change', updateChapterOptions);
     document.getElementById('study-chapter').addEventListener('change', updatePreview);
 
+    // Question style option listeners
+    document.querySelectorAll('input[name="question-style"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.study-mode-option[data-style]').forEach(opt => {
+          opt.classList.toggle('selected', opt.dataset.style === radio.value);
+        });
+      });
+    });
+
     document.getElementById('start-study').addEventListener('click', () => {
       const mode = document.querySelector('input[name="study-mode"]:checked').value;
       const textbookId = document.getElementById('study-textbook').value;
       const chapter = document.getElementById('study-chapter').value;
       const countValue = document.getElementById('study-count').value;
+      const style = document.querySelector('input[name="question-style"]:checked').value;
 
-      startStudyMode(mode, textbookId, chapter, countValue);
+      startStudyMode(mode, textbookId, chapter, countValue, style);
       modal.classList.remove('show');
     });
   }
 
-  function startStudyMode(mode, textbookId, chapter, countValue) {
+  function startStudyMode(mode, textbookId, chapter, countValue, style = 'situation') {
+    questionStyle = style;
     const phrases = practiceData.english.phrases || [];
     let filtered = [...phrases];
 
@@ -1609,6 +1761,15 @@
     selectedTextbookId = textbookId;
     selectedChapter = chapter;
 
+    // Show motivational toast
+    const startMessages = [
+      "Let's do this!",
+      "You've got this!",
+      "Time to level up!",
+      "Focus mode: ON!"
+    ];
+    showToast(startMessages[Math.floor(Math.random() * startMessages.length)]);
+
     // Show study mode UI
     renderStudyMode();
   }
@@ -1631,6 +1792,15 @@
       modeTitle = 'ランダムモード';
     }
 
+    // Determine what to show based on question style and flip state
+    const isSituationMode = questionStyle === 'situation';
+    const questionText = isSituationMode
+      ? (phrase.situation || phrase.japanese)  // fallback to japanese if no situation
+      : phrase.japanese;
+    const questionIcon = isSituationMode ? '📍' : '';
+    const frontHint = isSituationMode ? 'この場面で使う英語は？' : 'タップして英語を見る';
+    const backHint = 'タップして問題に戻る';
+
     container.innerHTML = `
       <div class="study-header">
         <div class="study-title">${modeTitle}</div>
@@ -1641,8 +1811,14 @@
       </div>
       <div class="study-card-container">
         <div class="study-card ${isFlipped ? 'flipped' : ''}" id="study-card">
-          <div class="study-card-text">${isFlipped ? phrase.english : phrase.japanese}</div>
-          <div class="study-card-hint">${isFlipped ? 'タップして日本語を見る' : 'タップして英語を見る'}</div>
+          ${isFlipped ? `
+            <div class="study-card-text">${phrase.english}</div>
+            <div style="font-size: 14px; color: var(--text-muted); margin-top: 16px;">${phrase.japanese}</div>
+          ` : `
+            <div style="font-size: 16px; margin-bottom: 12px;">${questionIcon}</div>
+            <div class="study-card-text">${questionText}</div>
+          `}
+          <div class="study-card-hint">${isFlipped ? backHint : frontHint}</div>
           <div class="study-card-meta">${studyIndex + 1} / ${studyPhrases.length}</div>
         </div>
         <div class="study-buttons">
@@ -1728,12 +1904,54 @@
     renderStudyResults(okCount, partialCount, ngCount, duration);
   }
 
+  // Get celebration message based on performance
+  function getCelebrationMessage(percentage, streak) {
+    if (percentage === 100) {
+      const perfectMessages = [
+        "🎉 Perfect! You're on fire!",
+        "💯 Flawless! Absolutely amazing!",
+        "🌟 100%! You're a superstar!",
+        "🏆 Perfect score! Incredible!"
+      ];
+      return perfectMessages[Math.floor(Math.random() * perfectMessages.length)];
+    }
+    if (percentage >= 80) {
+      const greatMessages = [
+        "🎊 Excellent work!",
+        "⭐ Great job!",
+        "🙌 Awesome performance!",
+        "💪 You're getting stronger!"
+      ];
+      return greatMessages[Math.floor(Math.random() * greatMessages.length)];
+    }
+    if (percentage >= 60) {
+      const goodMessages = [
+        "👍 Good effort!",
+        "📈 You're improving!",
+        "✨ Keep practicing!",
+        "💡 Almost there!"
+      ];
+      return goodMessages[Math.floor(Math.random() * goodMessages.length)];
+    }
+    const encourageMessages = [
+      "🌱 Every practice counts!",
+      "💪 Don't give up!",
+      "📚 Review and try again!",
+      "🎯 Focus on the weak ones!"
+    ];
+    return encourageMessages[Math.floor(Math.random() * encourageMessages.length)];
+  }
+
   function renderStudyResults(okCount, partialCount, ngCount, duration) {
     const container = document.getElementById('study-mode-container');
     if (!container) return;
 
     const total = studyPhrases.length;
     const percentage = Math.round((okCount / total) * 100);
+    const streak = calculateStreak();
+    const celebrationMsg = getCelebrationMessage(percentage, streak);
+    const todayTotal = calculateTodayStudyCount();
+    const levelInfo = calculateLevel();
 
     // Get phrases that need review (ng and partial)
     const reviewPhrases = studyResults
@@ -1750,8 +1968,14 @@
       </div>
       <div class="study-result">
         <div class="study-result-header">
+          <div style="font-size: 24px; margin-bottom: 12px;">${celebrationMsg}</div>
           <div class="study-result-score">${percentage}%</div>
           <div class="study-result-label">${total}問中 ${okCount}問正解</div>
+          <div style="margin-top: 12px; display: flex; gap: 16px; justify-content: center;">
+            <span style="font-size: 13px; color: var(--text-muted);">🔥 ${streak} Day Streak</span>
+            <span style="font-size: 13px; color: var(--text-muted);">📚 Today: ${todayTotal}</span>
+            <span style="font-size: 13px; color: var(--text-muted);">⚡ Lv.${levelInfo.level}</span>
+          </div>
         </div>
         <div class="study-result-stats">
           <div class="study-result-stat">
@@ -1803,6 +2027,7 @@
 
     // Reset state
     studyMode = null;
+    questionStyle = 'situation';
     studyPhrases = [];
     studyIndex = 0;
     studyResults = [];
@@ -2486,12 +2711,16 @@
 
     // Modals
     document.getElementById('modal-close')?.addEventListener('click', () => {
-      document.getElementById('edit-modal').classList.remove('show');
+      const modal = document.getElementById('edit-modal');
+      modal.classList.remove('show');
+      modal.querySelector('.modal')?.classList.remove('wide');
     });
 
     document.getElementById('edit-modal')?.addEventListener('click', e => {
       if (e.target.id === 'edit-modal') {
-        document.getElementById('edit-modal').classList.remove('show');
+        const modal = document.getElementById('edit-modal');
+        modal.classList.remove('show');
+        modal.querySelector('.modal')?.classList.remove('wide');
       }
     });
 
@@ -2543,8 +2772,8 @@
       renderPhrases();
     });
     document.getElementById('quick-study-btn')?.addEventListener('click', () => {
-      // Quick study: weak phrases, random, 10 questions
-      startStudyMode('weak', '', '', '10');
+      // Quick study: weak phrases, 24 questions (3 chapters worth), situation mode
+      startStudyMode('weak', '', '', '24', 'situation');
     });
 
     document.getElementById('flashcard')?.addEventListener('click', () => {
