@@ -1163,6 +1163,21 @@
         "lastPracticed": null,
         "createdAt": "2026-03-14",
         "category": "consonant"
+      },
+      {
+        "id": "1773496576367",
+        "phoneme": "/f/",
+        "name": "f",
+        "examples": [
+          "fish",
+          "life",
+          "fat"
+        ],
+        "notes": null,
+        "practicedWords": [],
+        "lastPracticed": null,
+        "createdAt": "2026-03-14",
+        "category": "consonant"
       }
     ],
     "dictation": []
