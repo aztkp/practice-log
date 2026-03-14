@@ -384,30 +384,7 @@
         "duration": 163
       }
     ],
-    "pronunciation": [
-      {
-        "id": "1773486323152",
-        "phoneme": "/r/",
-        "name": "r",
-        "examples": [
-          "red",
-          "right",
-          "car"
-        ],
-        "notes": null,
-        "masteryLevel": 0,
-        "practiceCount": 0,
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": null,
-        "practicedWords": [
-          {
-            "word": "right",
-            "date": "2026-03-14"
-          }
-        ]
-      }
-    ],
+    "pronunciation": [],
     "dictation": []
   }
 }
