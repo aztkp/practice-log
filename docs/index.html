@@ -619,6 +619,148 @@
       text-decoration: underline;
     }
 
+    /* Phoneme Cards */
+    .phoneme-progress {
+      margin-bottom: 16px;
+    }
+
+    .phoneme-progress-bar {
+      height: 6px;
+      background: var(--bg-tertiary);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .phoneme-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--english), #4ade80);
+      transition: width 0.3s;
+    }
+
+    .phoneme-progress-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .phoneme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .phoneme-card {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 3px solid var(--bg-tertiary);
+    }
+
+    .phoneme-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .phoneme-card.mastery-1 { border-left-color: #fbbf24; }
+    .phoneme-card.mastery-2 { border-left-color: #60a5fa; }
+    .phoneme-card.mastery-3 { border-left-color: #4ade80; }
+
+    .phoneme-symbol {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .phoneme-name {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .phoneme-examples {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .phoneme-examples a {
+      color: var(--english);
+      text-decoration: none;
+      margin-right: 6px;
+    }
+
+    .phoneme-examples a:hover {
+      text-decoration: underline;
+    }
+
+    .phoneme-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .phoneme-streak {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .phoneme-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .phoneme-actions .btn {
+      flex: 1;
+      font-size: 11px;
+      padding: 6px 8px;
+    }
+
+    .phoneme-preset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .phoneme-preset {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .phoneme-preset:hover {
+      border-color: var(--english);
+      background: var(--bg-secondary);
+    }
+
+    .phoneme-preset.selected {
+      border-color: var(--english);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .phoneme-preset-symbol {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .phoneme-preset-name {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
     /* Flashcard */
     .flashcard-container {
       display: flex;
@@ -1522,10 +1664,11 @@
     <div class="english-section" id="pronunciation-section">
       <div class="section-header">
         <div class="section-title">🎤 Pronunciation</div>
-        <button class="btn btn-primary btn-sm" id="add-pronunciation-btn">+ Add</button>
+        <button class="btn btn-primary btn-sm" id="add-pronunciation-btn">+ Add Phoneme</button>
       </div>
-      <p class="section-desc">Track your pronunciation practice with YouTube videos, apps, etc.</p>
-      <div class="material-list" id="pronunciation-list"></div>
+      <p class="section-desc">音素ごとにYouGlishで徹底練習。タップして練習を記録しよう。</p>
+      <div class="phoneme-progress" id="phoneme-progress"></div>
+      <div class="phoneme-grid" id="pronunciation-list"></div>
     </div>
 
     <!-- English: Dictation Section -->

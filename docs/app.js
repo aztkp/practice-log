@@ -269,7 +269,14 @@
       const records = practiceData.records[cat.id] || [];
       let plans;
       if (cat.id === 'english') {
-        plans = (practiceData.english.textbooks || []).map(tb => tb.name);
+        const textbooks = practiceData.english.textbooks || [];
+        const pronunciation = practiceData.english.pronunciation || [];
+        const dictation = practiceData.english.dictation || [];
+        plans = [
+          ...textbooks.map(tb => tb.name),
+          ...pronunciation.map(p => p.name),
+          ...dictation.map(d => d.name)
+        ];
       } else {
         plans = practiceData.plans[cat.id] || [];
       }
@@ -375,11 +382,17 @@
     const container = document.getElementById('today-checklist');
     if (!container) return;
 
-    // For English category, use textbooks as plans
+    // For English category, use textbooks, pronunciation, and dictation as plans
     let plans;
     if (currentCategory === 'english') {
       const textbooks = practiceData.english.textbooks || [];
-      plans = textbooks.map(tb => tb.name);
+      const pronunciation = practiceData.english.pronunciation || [];
+      const dictation = practiceData.english.dictation || [];
+      plans = [
+        ...textbooks.map(tb => tb.name),
+        ...pronunciation.map(p => p.name),
+        ...dictation.map(d => d.name)
+      ];
     } else {
       plans = practiceData.plans[currentCategory] || [];
     }
@@ -524,7 +537,13 @@
         let plans;
         if (cat.id === 'english') {
           const textbooks = practiceData.english.textbooks || [];
-          plans = textbooks.map(tb => tb.name);
+          const pronunciation = practiceData.english.pronunciation || [];
+          const dictation = practiceData.english.dictation || [];
+          plans = [
+            ...textbooks.map(tb => tb.name),
+            ...pronunciation.map(p => p.name),
+            ...dictation.map(d => d.name)
+          ];
         } else {
           plans = practiceData.plans[cat.id] || [];
         }
@@ -745,7 +764,7 @@
       renderPhrases();
     } else if (subtab === 'pronunciation') {
       pronunciationSection?.classList.add('show');
-      renderMaterials('pronunciation');
+      renderPronunciation();
     } else if (subtab === 'dictation') {
       dictationSection?.classList.add('show');
       renderMaterials('dictation');
@@ -2083,7 +2102,273 @@ as soon as possible"></textarea>
     renderPhrases();
   }
 
-  // ==================== MATERIALS FUNCTIONS (Pronunciation/Dictation) ====================
+  // ==================== PHONEME PRONUNCIATION FUNCTIONS ====================
+
+  // Preset phonemes that Japanese speakers often struggle with
+  const PHONEME_PRESETS = [
+    { phoneme: '/θ/', name: 'th (voiceless)', examples: ['think', 'three', 'bath'] },
+    { phoneme: '/ð/', name: 'th (voiced)', examples: ['this', 'that', 'the'] },
+    { phoneme: '/æ/', name: 'a (cat)', examples: ['cat', 'hat', 'map'] },
+    { phoneme: '/ɑː/', name: 'a (father)', examples: ['father', 'hot', 'cop'] },
+    { phoneme: '/ʌ/', name: 'u (cup)', examples: ['cup', 'but', 'love'] },
+    { phoneme: '/ɜːr/', name: 'er (bird)', examples: ['bird', 'word', 'learn'] },
+    { phoneme: '/r/', name: 'r', examples: ['red', 'right', 'car'] },
+    { phoneme: '/l/', name: 'l', examples: ['light', 'ball', 'feel'] },
+    { phoneme: '/v/', name: 'v', examples: ['very', 'love', 'have'] },
+    { phoneme: '/f/', name: 'f', examples: ['fish', 'life', 'office'] },
+    { phoneme: '/w/', name: 'w', examples: ['water', 'we', 'away'] },
+    { phoneme: '/ŋ/', name: 'ng', examples: ['sing', 'ring', 'long'] },
+    { phoneme: '/ʃ/', name: 'sh', examples: ['she', 'show', 'fish'] },
+    { phoneme: '/ʒ/', name: 'zh (vision)', examples: ['vision', 'measure', 'pleasure'] },
+    { phoneme: '/dʒ/', name: 'j', examples: ['job', 'judge', 'age'] },
+    { phoneme: '/tʃ/', name: 'ch', examples: ['church', 'watch', 'much'] },
+  ];
+
+  function getYouGlishUrl(word) {
+    return `https://youglish.com/pronounce/${encodeURIComponent(word)}/english`;
+  }
+
+  function renderPronunciation() {
+    if (!practiceData) return;
+
+    const phonemes = practiceData.english.pronunciation || [];
+    const container = document.getElementById('pronunciation-list');
+    const progressContainer = document.getElementById('phoneme-progress');
+    if (!container) return;
+
+    // Render progress bar
+    if (progressContainer && phonemes.length > 0) {
+      const mastered = phonemes.filter(p => p.masteryLevel >= 3).length;
+      const practicing = phonemes.filter(p => p.masteryLevel >= 1 && p.masteryLevel < 3).length;
+      const percentage = Math.round((mastered / phonemes.length) * 100);
+
+      progressContainer.innerHTML = `
+        <div class="phoneme-progress-bar">
+          <div class="phoneme-progress-fill" style="width: ${percentage}%"></div>
+        </div>
+        <div class="phoneme-progress-text">
+          <span>🎯 ${mastered}/${phonemes.length} mastered</span>
+          <span>🔥 ${practicing} practicing</span>
+        </div>
+      `;
+    } else if (progressContainer) {
+      progressContainer.innerHTML = '';
+    }
+
+    if (phonemes.length === 0) {
+      container.innerHTML = '<div class="empty">音素を追加して練習を始めよう！</div>';
+      return;
+    }
+
+    // Sort: by mastery level (lower first), then by last practiced (older first)
+    const sorted = [...phonemes].sort((a, b) => {
+      if (a.masteryLevel !== b.masteryLevel) return a.masteryLevel - b.masteryLevel;
+      if (!a.lastPracticed) return -1;
+      if (!b.lastPracticed) return 1;
+      return a.lastPracticed.localeCompare(b.lastPracticed);
+    });
+
+    container.innerHTML = sorted.map((p) => {
+      const realIndex = phonemes.findIndex(ph => ph.id === p.id);
+      const masteryClass = `mastery-${p.masteryLevel || 0}`;
+      const masteryLabels = ['未学習', '練習中', '定着中', '習得'];
+      const daysSincePractice = p.lastPracticed ?
+        Math.floor((new Date() - new Date(p.lastPracticed)) / (1000 * 60 * 60 * 24)) : null;
+
+      return `
+        <div class="phoneme-card ${masteryClass}" data-index="${realIndex}">
+          <div class="phoneme-symbol">${p.phoneme}</div>
+          <div class="phoneme-name">${p.name}</div>
+          <div class="phoneme-examples">
+            ${(p.examples || []).map(ex =>
+              `<a href="${getYouGlishUrl(ex)}" target="_blank" title="YouGlishで聴く">${ex}</a>`
+            ).join('')}
+          </div>
+          <div class="phoneme-meta">
+            <span>${masteryLabels[p.masteryLevel || 0]}</span>
+            <span class="phoneme-streak">
+              ${p.practiceCount || 0}回練習
+              ${daysSincePractice !== null ? `・${daysSincePractice === 0 ? '今日' : daysSincePractice + '日前'}` : ''}
+            </span>
+          </div>
+          <div class="phoneme-actions">
+            <button class="btn btn-primary" onclick="practicePhoneme(${realIndex})">練習した</button>
+            <button class="btn" onclick="editPhoneme(${realIndex})">編集</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function openPhonemeModal(phoneme = null, index = -1) {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    title.textContent = phoneme ? '音素を編集' : '音素を追加';
+
+    const existingPhonemes = (practiceData.english.pronunciation || []).map(p => p.phoneme);
+    const availablePresets = PHONEME_PRESETS.filter(p =>
+      phoneme || !existingPhonemes.includes(p.phoneme)
+    );
+
+    content.innerHTML = `
+      ${!phoneme && availablePresets.length > 0 ? `
+        <div class="form-group">
+          <label class="form-label">プリセットから選択</label>
+          <div class="phoneme-preset-grid">
+            ${availablePresets.map((p, i) => `
+              <div class="phoneme-preset" data-preset="${i}">
+                <div class="phoneme-preset-symbol">${p.phoneme}</div>
+                <div class="phoneme-preset-name">${p.name}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="text-align: center; color: var(--text-muted); margin: 12px 0;">または手動入力</div>
+      ` : ''}
+      <div class="form-group">
+        <label class="form-label">音素記号 (IPA)</label>
+        <input type="text" class="form-input" id="phoneme-symbol" value="${phoneme?.phoneme || ''}" placeholder="/θ/">
+      </div>
+      <div class="form-group">
+        <label class="form-label">名前</label>
+        <input type="text" class="form-input" id="phoneme-name" value="${phoneme?.name || ''}" placeholder="th (voiceless)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">例単語 (カンマ区切り)</label>
+        <input type="text" class="form-input" id="phoneme-examples" value="${(phoneme?.examples || []).join(', ')}" placeholder="think, three, bath">
+      </div>
+      <div class="form-group">
+        <label class="form-label">メモ (任意)</label>
+        <input type="text" class="form-input" id="phoneme-notes" value="${phoneme?.notes || ''}" placeholder="舌を歯の間に挟む">
+      </div>
+      ${phoneme ? `
+        <div class="form-group">
+          <label class="form-label">習熟度</label>
+          <select class="form-input" id="phoneme-mastery">
+            <option value="0" ${phoneme.masteryLevel === 0 ? 'selected' : ''}>未学習</option>
+            <option value="1" ${phoneme.masteryLevel === 1 ? 'selected' : ''}>練習中</option>
+            <option value="2" ${phoneme.masteryLevel === 2 ? 'selected' : ''}>定着中</option>
+            <option value="3" ${phoneme.masteryLevel === 3 ? 'selected' : ''}>習得</option>
+          </select>
+        </div>
+      ` : ''}
+      <div style="display: flex; gap: 8px; margin-top: 16px;">
+        <button class="btn btn-primary" id="save-phoneme" style="flex:1;">保存</button>
+        ${phoneme ? `<button class="btn btn-delete" id="delete-phoneme">削除</button>` : ''}
+      </div>
+    `;
+
+    modal.classList.add('show');
+
+    // Preset selection
+    content.querySelectorAll('.phoneme-preset').forEach(el => {
+      el.addEventListener('click', () => {
+        content.querySelectorAll('.phoneme-preset').forEach(p => p.classList.remove('selected'));
+        el.classList.add('selected');
+        const preset = availablePresets[parseInt(el.dataset.preset)];
+        document.getElementById('phoneme-symbol').value = preset.phoneme;
+        document.getElementById('phoneme-name').value = preset.name;
+        document.getElementById('phoneme-examples').value = preset.examples.join(', ');
+      });
+    });
+
+    // Save handler
+    document.getElementById('save-phoneme').addEventListener('click', async () => {
+      const symbol = document.getElementById('phoneme-symbol').value.trim();
+      const name = document.getElementById('phoneme-name').value.trim();
+      const examplesStr = document.getElementById('phoneme-examples').value.trim();
+      const notes = document.getElementById('phoneme-notes').value.trim();
+      const masteryEl = document.getElementById('phoneme-mastery');
+
+      if (!symbol || !name) {
+        showToast('音素記号と名前を入力してください', 'error');
+        return;
+      }
+
+      const examples = examplesStr ? examplesStr.split(',').map(e => e.trim()).filter(e => e) : [];
+
+      const newPhoneme = {
+        id: phoneme?.id || Date.now().toString(),
+        phoneme: symbol,
+        name,
+        examples,
+        notes: notes || null,
+        masteryLevel: masteryEl ? parseInt(masteryEl.value) : (phoneme?.masteryLevel || 0),
+        practiceCount: phoneme?.practiceCount || 0,
+        lastPracticed: phoneme?.lastPracticed || null,
+        createdAt: phoneme?.createdAt || getTodayKey()
+      };
+
+      if (index >= 0) {
+        practiceData.english.pronunciation[index] = newPhoneme;
+      } else {
+        practiceData.english.pronunciation.push(newPhoneme);
+      }
+
+      await saveData();
+      modal.classList.remove('show');
+      renderPronunciation();
+    });
+
+    // Delete handler
+    if (phoneme) {
+      document.getElementById('delete-phoneme')?.addEventListener('click', async () => {
+        if (!confirm(`「${phoneme.phoneme}」を削除しますか？`)) return;
+        practiceData.english.pronunciation.splice(index, 1);
+        await saveData();
+        modal.classList.remove('show');
+        renderPronunciation();
+      });
+    }
+  }
+
+  // Global functions for phoneme management
+  window.practicePhoneme = async function(index) {
+    const phoneme = practiceData.english.pronunciation[index];
+    phoneme.practiceCount = (phoneme.practiceCount || 0) + 1;
+    phoneme.lastPracticed = getTodayKey();
+
+    // Also record in calendar (english records)
+    const todayKey = getTodayKey();
+    let records = practiceData.records.english;
+    let record = records.find(r => r.date === todayKey);
+    if (!record) {
+      record = { date: todayKey, completed: [] };
+      records.push(record);
+    }
+    // Add phoneme name if not already completed today
+    if (!record.completed.includes(phoneme.name)) {
+      record.completed.push(phoneme.name);
+    }
+
+    // Auto-increase mastery level based on practice count
+    if (phoneme.practiceCount >= 20 && phoneme.masteryLevel < 3) {
+      phoneme.masteryLevel = 3;
+      showToast(`🎉 ${phoneme.phoneme} を習得しました！`, 'success');
+    } else if (phoneme.practiceCount >= 10 && phoneme.masteryLevel < 2) {
+      phoneme.masteryLevel = 2;
+      showToast(`✨ ${phoneme.phoneme} が定着してきました！`, 'success');
+    } else if (phoneme.practiceCount >= 3 && phoneme.masteryLevel < 1) {
+      phoneme.masteryLevel = 1;
+      showToast(`🔥 ${phoneme.phoneme} の練習を開始！`, 'success');
+    } else {
+      showToast(`${phoneme.phoneme} を練習しました (${phoneme.practiceCount}回目)`, 'success');
+    }
+
+    await saveData();
+    renderPronunciation();
+    renderCalendar();
+    renderTodayChecklist();
+  };
+
+  window.editPhoneme = function(index) {
+    const phoneme = practiceData.english.pronunciation[index];
+    openPhonemeModal(phoneme, index);
+  };
+
+  // ==================== MATERIALS FUNCTIONS (Dictation) ====================
 
   function renderMaterials(type) {
     if (!practiceData) return;
@@ -2796,7 +3081,7 @@ as soon as possible"></textarea>
     document.getElementById('start-study-btn')?.addEventListener('click', openStudyModeModal);
 
     // English: Pronunciation & Dictation
-    document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openMaterialModal('pronunciation'));
+    document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openPhonemeModal());
     document.getElementById('add-dictation-btn')?.addEventListener('click', () => openMaterialModal('dictation'));
 
     document.getElementById('phrase-search')?.addEventListener('input', (e) => {
