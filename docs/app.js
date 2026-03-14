@@ -2326,12 +2326,13 @@ as soon as possible"></textarea>
   function renderPronunciation() {
     if (!practiceData) return;
 
-    const phonemes = practiceData.english.pronunciation || [];
+    const phonemes = (practiceData.english.pronunciation || [])
+      .sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999));
     const container = document.getElementById('pronunciation-list');
     const progressContainer = document.getElementById('phoneme-progress');
     if (!container) return;
 
-    // Categorize phonemes
+    // Categorize phonemes (already sorted by sortOrder)
     const vowels = phonemes.filter(p => p.category === 'vowel');
     const consonants = phonemes.filter(p => p.category === 'consonant');
     const uncategorized = phonemes.filter(p => !p.category);

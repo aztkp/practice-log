@@ -1131,90 +1131,54 @@
       }
     ],
     "pronunciation": [
-      {
-        "id": "1773496269675",
-        "phoneme": "/r/",
-        "name": "r",
-        "examples": [
-          "red",
-          "right",
-          "car"
-        ],
-        "notes": null,
-        "practicedWords": [
-          {
-            "word": "right",
-            "date": "2026-03-14"
-          },
-          {
-            "word": "order",
-            "date": "2026-03-14"
-          }
-        ],
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": "consonant"
-      },
-      {
-        "id": "1773496289671",
-        "phoneme": "/l/",
-        "name": "l",
-        "examples": [
-          "light",
-          "ball",
-          "feel"
-        ],
-        "notes": null,
-        "practicedWords": [
-          {
-            "word": "library",
-            "date": "2026-03-14"
-          }
-        ],
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": "consonant"
-      },
-      {
-        "id": "1773496576367",
-        "phoneme": "/f/",
-        "name": "f",
-        "examples": [
-          "fish",
-          "life",
-          "fat"
-        ],
-        "notes": null,
-        "practicedWords": [
-          {
-            "word": "fairly",
-            "date": "2026-03-14"
-          }
-        ],
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": "consonant"
-      },
-      {
-        "id": "1773497300163",
-        "phoneme": "/v/",
-        "name": "v",
-        "examples": [
-          "very",
-          "love",
-          "have"
-        ],
-        "notes": null,
-        "practicedWords": [
-          {
-            "word": "very",
-            "date": "2026-03-14"
-          }
-        ],
-        "lastPracticed": "2026-03-14",
-        "createdAt": "2026-03-14",
-        "category": "consonant"
-      }
+      {"id": "pron_s", "phoneme": "/s/", "name": "s", "pair": "z", "examples": ["sun", "see", "bus"], "category": "consonant", "sortOrder": 1, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_z", "phoneme": "/z/", "name": "z", "pair": "s", "examples": ["zoo", "zero", "buzz"], "category": "consonant", "sortOrder": 2, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_sh", "phoneme": "/ʃ/", "name": "ʃ", "pair": "ʒ", "examples": ["she", "ship", "fish"], "category": "consonant", "sortOrder": 3, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_zh", "phoneme": "/ʒ/", "name": "ʒ", "pair": "ʃ", "examples": ["vision", "measure", "beige"], "category": "consonant", "sortOrder": 4, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_th_voiceless", "phoneme": "/θ/", "name": "θ", "pair": "ð", "examples": ["think", "three", "bath"], "category": "consonant", "sortOrder": 5, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_th_voiced", "phoneme": "/ð/", "name": "ð", "pair": "θ", "examples": ["this", "that", "mother"], "category": "consonant", "sortOrder": 6, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_f", "phoneme": "/f/", "name": "f", "pair": "v", "examples": ["fish", "life", "fat"], "category": "consonant", "sortOrder": 7, "practicedWords": [{"word": "fairly", "date": "2026-03-14"}], "lastPracticed": "2026-03-14", "createdAt": "2026-03-14"},
+      {"id": "pron_v", "phoneme": "/v/", "name": "v", "pair": "f", "examples": ["very", "love", "have"], "category": "consonant", "sortOrder": 8, "practicedWords": [{"word": "very", "date": "2026-03-14"}], "lastPracticed": "2026-03-14", "createdAt": "2026-03-14"},
+      {"id": "pron_r", "phoneme": "/r/", "name": "r", "examples": ["red", "right", "car"], "category": "consonant", "sortOrder": 9, "practicedWords": [{"word": "right", "date": "2026-03-14"}, {"word": "order", "date": "2026-03-14"}], "lastPracticed": "2026-03-14", "createdAt": "2026-03-14"},
+      {"id": "pron_l", "phoneme": "/l/", "name": "l", "examples": ["light", "ball", "feel"], "category": "consonant", "sortOrder": 10, "practicedWords": [{"word": "library", "date": "2026-03-14"}], "lastPracticed": "2026-03-14", "createdAt": "2026-03-14"},
+      {"id": "pron_t", "phoneme": "/t/", "name": "t", "pair": "d", "examples": ["top", "time", "cat"], "category": "consonant", "sortOrder": 11, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_d", "phoneme": "/d/", "name": "d", "pair": "t", "examples": ["day", "dog", "bad"], "category": "consonant", "sortOrder": 12, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_p", "phoneme": "/p/", "name": "p", "pair": "b", "examples": ["pen", "paper", "cup"], "category": "consonant", "sortOrder": 13, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_b", "phoneme": "/b/", "name": "b", "pair": "p", "examples": ["book", "boy", "job"], "category": "consonant", "sortOrder": 14, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_k", "phoneme": "/k/", "name": "k", "pair": "g", "examples": ["key", "cat", "back"], "category": "consonant", "sortOrder": 15, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_g", "phoneme": "/g/", "name": "g", "pair": "k", "examples": ["go", "game", "big"], "category": "consonant", "sortOrder": 16, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ch", "phoneme": "/tʃ/", "name": "tʃ", "pair": "dʒ", "examples": ["chair", "church", "watch"], "category": "consonant", "sortOrder": 17, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_dj", "phoneme": "/dʒ/", "name": "dʒ", "pair": "tʃ", "examples": ["job", "judge", "age"], "category": "consonant", "sortOrder": 18, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_m", "phoneme": "/m/", "name": "m", "examples": ["man", "mom", "team"], "category": "consonant", "sortOrder": 19, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_n", "phoneme": "/n/", "name": "n", "examples": ["no", "night", "sun"], "category": "consonant", "sortOrder": 20, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ng", "phoneme": "/ŋ/", "name": "ŋ", "examples": ["sing", "ring", "long"], "category": "consonant", "sortOrder": 21, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_h", "phoneme": "/h/", "name": "h", "examples": ["hat", "hello", "behind"], "category": "consonant", "sortOrder": 22, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_w", "phoneme": "/w/", "name": "w", "examples": ["we", "water", "away"], "category": "consonant", "sortOrder": 23, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_y", "phoneme": "/j/", "name": "j", "examples": ["yes", "you", "year"], "category": "consonant", "sortOrder": 24, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_aa", "phoneme": "/ɑ/", "name": "ɑ", "examples": ["father", "hot", "car"], "category": "vowel", "sortOrder": 25, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ae", "phoneme": "/æ/", "name": "æ", "examples": ["cat", "hat", "apple"], "category": "vowel", "sortOrder": 26, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_uh", "phoneme": "/ʌ/", "name": "ʌ", "examples": ["cup", "but", "love"], "category": "vowel", "sortOrder": 27, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_schwa", "phoneme": "/ə/", "name": "ə", "examples": ["about", "banana", "sofa"], "category": "vowel", "sortOrder": 28, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ai", "phoneme": "/aɪ/", "name": "aɪ", "examples": ["I", "time", "fly"], "category": "vowel", "sortOrder": 29, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ei", "phoneme": "/eɪ/", "name": "eɪ", "examples": ["day", "say", "make"], "category": "vowel", "sortOrder": 30, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_oi", "phoneme": "/ɔɪ/", "name": "ɔɪ", "examples": ["boy", "oil", "join"], "category": "vowel", "sortOrder": 31, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_au", "phoneme": "/aʊ/", "name": "aʊ", "examples": ["now", "out", "house"], "category": "vowel", "sortOrder": 32, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ou", "phoneme": "/oʊ/", "name": "oʊ", "examples": ["go", "no", "home"], "category": "vowel", "sortOrder": 33, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_aw", "phoneme": "/ɔː/", "name": "ɔː", "examples": ["law", "call", "bought"], "category": "vowel", "sortOrder": 34, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_er_stressed", "phoneme": "/ɜː/", "name": "ɜː", "examples": ["bird", "her", "work"], "category": "vowel", "sortOrder": 35, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_er", "phoneme": "/ər/", "name": "ər", "examples": ["butter", "under", "water"], "category": "vowel", "sortOrder": 36, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ar", "phoneme": "/ɑr/", "name": "ɑr", "examples": ["car", "far", "star"], "category": "vowel", "sortOrder": 37, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_or", "phoneme": "/ɔr/", "name": "ɔr", "examples": ["or", "more", "door"], "category": "vowel", "sortOrder": 38, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ir", "phoneme": "/ɪər/", "name": "ɪər", "examples": ["ear", "near", "here"], "category": "vowel", "sortOrder": 39, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ur", "phoneme": "/ʊər/", "name": "ʊər", "examples": ["tour", "sure", "pure"], "category": "vowel", "sortOrder": 40, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_air", "phoneme": "/eər/", "name": "eər", "examples": ["air", "hair", "care"], "category": "vowel", "sortOrder": 41, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ire", "phoneme": "/aɪər/", "name": "aɪər", "examples": ["fire", "tire", "hire"], "category": "vowel", "sortOrder": 42, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_our", "phoneme": "/aʊər/", "name": "aʊər", "examples": ["hour", "our", "flower"], "category": "vowel", "sortOrder": 43, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_ee", "phoneme": "/iː/", "name": "iː", "examples": ["see", "he", "feet"], "category": "vowel", "sortOrder": 44, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_i", "phoneme": "/ɪ/", "name": "ɪ", "examples": ["sit", "it", "fish"], "category": "vowel", "sortOrder": 45, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_oo", "phoneme": "/uː/", "name": "uː", "examples": ["food", "too", "blue"], "category": "vowel", "sortOrder": 46, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_u", "phoneme": "/ʊ/", "name": "ʊ", "examples": ["book", "put", "good"], "category": "vowel", "sortOrder": 47, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"},
+      {"id": "pron_e", "phoneme": "/e/", "name": "e", "examples": ["bed", "red", "get"], "category": "vowel", "sortOrder": 48, "practicedWords": [], "lastPracticed": null, "createdAt": "2026-03-14"}
     ],
     "dictation": []
   }
