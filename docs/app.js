@@ -126,6 +126,10 @@
       if (!practiceData.piano) practiceData.piano = {};
       if (!practiceData.piano.textbooks) practiceData.piano.textbooks = [];
 
+      // Initialize Guitar learning data
+      if (!practiceData.guitar) practiceData.guitar = {};
+      if (!practiceData.guitar.textbooks) practiceData.guitar.textbooks = [];
+
       // Migrate existing phrases to include new fields
       practiceData.english.phrases = practiceData.english.phrases.map(phrase => ({
         ...phrase,
@@ -377,6 +381,109 @@
         openDayModal(dayEl.dataset.date);
       });
     });
+
+    // Update streak stats
+    renderStreakStats();
+  }
+
+  // Calculate and render streak statistics
+  function renderStreakStats() {
+    if (!practiceData) return;
+
+    // Collect all practice dates from all categories
+    const practiceDates = new Set();
+    CATEGORIES.forEach(cat => {
+      const records = practiceData.records[cat.id] || [];
+      records.forEach(record => {
+        if ((record.completed || []).length > 0) {
+          practiceDates.add(record.date);
+        }
+      });
+    });
+
+    const sortedDates = Array.from(practiceDates).sort().reverse();
+    const todayKey = getTodayKey();
+    const today = new Date(todayKey);
+
+    // Calculate current streak
+    let currentStreak = 0;
+    let checkDate = new Date(today);
+
+    // Check if practiced today
+    if (practiceDates.has(todayKey)) {
+      currentStreak = 1;
+      checkDate.setDate(checkDate.getDate() - 1);
+    }
+
+    // Count consecutive days backwards
+    while (true) {
+      const dateKey = checkDate.toISOString().split('T')[0];
+      if (practiceDates.has(dateKey)) {
+        currentStreak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    // Calculate best streak
+    let bestStreak = 0;
+    let tempStreak = 0;
+    let prevDate = null;
+
+    sortedDates.reverse().forEach(dateStr => {
+      const date = new Date(dateStr);
+      if (prevDate) {
+        const diffDays = Math.round((date - prevDate) / (1000 * 60 * 60 * 24));
+        if (diffDays === 1) {
+          tempStreak++;
+        } else {
+          bestStreak = Math.max(bestStreak, tempStreak);
+          tempStreak = 1;
+        }
+      } else {
+        tempStreak = 1;
+      }
+      prevDate = date;
+    });
+    bestStreak = Math.max(bestStreak, tempStreak, currentStreak);
+
+    // Count this month's practice days
+    const monthStart = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-01`;
+    const monthEnd = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-31`;
+    const monthDays = sortedDates.filter(d => d >= monthStart && d <= monthEnd).length;
+
+    // Total practice days
+    const totalDays = practiceDates.size;
+
+    // Update UI
+    const currentStreakEl = document.getElementById('current-streak');
+    const bestStreakEl = document.getElementById('best-streak');
+    const monthDaysEl = document.getElementById('month-days');
+    const totalDaysEl = document.getElementById('total-days');
+    const messageEl = document.getElementById('streak-message');
+
+    if (currentStreakEl) currentStreakEl.textContent = currentStreak;
+    if (bestStreakEl) bestStreakEl.textContent = bestStreak;
+    if (monthDaysEl) monthDaysEl.textContent = monthDays;
+    if (totalDaysEl) totalDaysEl.textContent = totalDays;
+
+    // Motivational message
+    if (messageEl) {
+      let message = '';
+      if (currentStreak === 0) {
+        message = '今日も練習して連続記録を始めよう！ 💪';
+      } else if (currentStreak >= 30) {
+        message = `🎉 素晴らしい！${currentStreak}日連続達成！`;
+      } else if (currentStreak >= 7) {
+        message = `🔥 1週間以上継続中！この調子！`;
+      } else if (currentStreak >= 3) {
+        message = `✨ ${currentStreak}日連続！習慣になってきた！`;
+      } else {
+        message = `🌱 ${currentStreak}日連続！続けていこう！`;
+      }
+      messageEl.textContent = message;
+    }
   }
 
   // Today's Checklist
@@ -712,6 +819,7 @@
     // Category-specific sections
     const phrasesSection = document.getElementById('phrases-section');
     const pianoSection = document.getElementById('piano-section');
+    const guitarSection = document.getElementById('guitar-section');
 
     // Hide all category-specific sections first
     subtabs?.classList.remove('show');
@@ -719,6 +827,7 @@
     document.getElementById('pronunciation-section')?.classList.remove('show');
     document.getElementById('dictation-section')?.classList.remove('show');
     pianoSection?.classList.remove('show');
+    guitarSection?.classList.remove('show');
 
     if (currentCategory === 'english') {
       subtabs?.classList.add('show');
@@ -735,6 +844,17 @@
       if (calendarGrid) calendarGrid.style.display = '';
       pianoSection?.classList.add('show');
       renderPianoTextbooks();
+    } else if (currentCategory === 'guitar') {
+      if (plansBtn) plansBtn.textContent = '教材';
+      // Hide standard UI, show guitar section
+      [statsRow, contribGraph, todaySection, recentTitle, practiceList].forEach(el => {
+        if (el) el.style.display = 'none';
+      });
+      // Keep calendar visible
+      if (calendarHeader) calendarHeader.style.display = '';
+      if (calendarGrid) calendarGrid.style.display = '';
+      guitarSection?.classList.add('show');
+      renderGuitarTextbooks();
     } else {
       if (plansBtn) plansBtn.textContent = 'Plans';
       // Show standard practice log UI
@@ -2821,6 +2941,194 @@ as soon as possible"></textarea>
     }
   }
 
+  // ==================== GUITAR FUNCTIONS ====================
+
+  function renderGuitarTextbooks() {
+    if (!practiceData || !practiceData.guitar) return;
+
+    const container = document.getElementById('guitar-textbooks');
+    if (!container) return;
+
+    const textbooks = practiceData.guitar.textbooks || [];
+
+    if (textbooks.length === 0) {
+      container.innerHTML = '<div class="empty">教材を追加して練習を始めよう！</div>';
+      return;
+    }
+
+    container.innerHTML = textbooks.map((tb, tbIndex) => {
+      const pieces = tb.pieces || [];
+      const completedPieces = tb.completedPieces || [];
+      const completedCount = completedPieces.length;
+      const totalCount = pieces.length;
+      const percentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+      return `
+        <div class="guitar-textbook" data-textbook="${tbIndex}">
+          <div class="guitar-textbook-header">
+            <div class="guitar-textbook-name">${tb.name}</div>
+            <button class="btn-icon" onclick="editGuitarTextbook(${tbIndex})" title="編集">✏️</button>
+          </div>
+          <div class="guitar-textbook-progress">
+            <div class="guitar-progress-bar">
+              <div class="guitar-progress-fill" style="width: ${percentage}%"></div>
+            </div>
+            <div class="guitar-progress-text">
+              <span>🎸 ${completedCount}/${totalCount} 曲完了</span>
+              <span>${percentage}%</span>
+            </div>
+          </div>
+          <div class="guitar-pieces-list">
+            ${pieces.map((piece, pieceIndex) => {
+              const isCompleted = completedPieces.some(cp => cp.name === piece.name);
+              const completedInfo = completedPieces.find(cp => cp.name === piece.name);
+              const hasComment = piece.comment && piece.comment.length > 0;
+              return `
+                <div class="guitar-piece-item ${isCompleted ? 'completed' : ''} ${hasComment ? 'has-comment' : ''}" data-piece="${pieceIndex}">
+                  <div class="guitar-piece-check" onclick="event.stopPropagation(); toggleGuitarPiece(${tbIndex}, ${pieceIndex})">
+                    ${isCompleted ? '✓' : ''}
+                  </div>
+                  <div class="guitar-piece-content" onclick="${hasComment ? `toggleGuitarPieceComment(this)` : ''}">
+                    <div class="guitar-piece-header">
+                      <span class="guitar-piece-name">${piece.name}</span>
+                      ${isCompleted && completedInfo?.date ? `<span class="guitar-piece-date">${completedInfo.date}</span>` : ''}
+                      ${hasComment ? `<span class="guitar-piece-expand">▼</span>` : ''}
+                    </div>
+                    ${hasComment ? `<div class="guitar-piece-comment">${piece.comment}</div>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.toggleGuitarPieceComment = function(element) {
+    const item = element.closest('.guitar-piece-item');
+    if (item) {
+      item.classList.toggle('expanded');
+    }
+  };
+
+  window.toggleGuitarPiece = async function(textbookIndex, pieceIndex) {
+    const textbook = practiceData.guitar.textbooks[textbookIndex];
+    if (!textbook) return;
+
+    const piece = textbook.pieces[pieceIndex];
+    if (!piece) return;
+
+    if (!textbook.completedPieces) textbook.completedPieces = [];
+
+    const existingIndex = textbook.completedPieces.findIndex(cp => cp.name === piece.name);
+
+    if (existingIndex >= 0) {
+      // Remove from completed
+      textbook.completedPieces.splice(existingIndex, 1);
+      showToast(`「${piece.name}」を未完了に戻しました`, 'success');
+    } else {
+      // Add to completed
+      const todayKey = getTodayKey();
+      textbook.completedPieces.push({
+        name: piece.name,
+        date: todayKey
+      });
+
+      // Also record in calendar
+      let records = practiceData.records.guitar;
+      let record = records.find(r => r.date === todayKey);
+      if (!record) {
+        record = { date: todayKey, completed: [] };
+        records.push(record);
+      }
+      if (!record.completed.includes(textbook.name)) {
+        record.completed.push(textbook.name);
+      }
+
+      showToast(`🎉「${piece.name}」を完了！`, 'success');
+    }
+
+    await saveData();
+    renderGuitarTextbooks();
+    renderCalendar();
+  };
+
+  window.editGuitarTextbook = function(index) {
+    const textbook = practiceData.guitar.textbooks[index];
+    openGuitarTextbookModal(textbook, index);
+  };
+
+  function openGuitarTextbookModal(textbook = null, index = -1) {
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    title.textContent = textbook ? '教材を編集' : '教材を追加';
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">教材名</label>
+        <input type="text" class="form-input" id="guitar-textbook-name" value="${textbook?.name || ''}" placeholder="ギター教本名">
+      </div>
+      <div class="form-group">
+        <label class="form-label">曲目 (1行に1曲)</label>
+        <textarea class="form-input" id="guitar-textbook-pieces" rows="10" placeholder="コード C&#10;コード G&#10;基本ストローク">${(textbook?.pieces || []).map(p => p.name).join('\n')}</textarea>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 16px;">
+        <button class="btn btn-primary" id="save-guitar-textbook" style="flex:1;">保存</button>
+        ${textbook ? `<button class="btn btn-delete" id="delete-guitar-textbook">削除</button>` : ''}
+      </div>
+    `;
+
+    modal.classList.add('show');
+
+    document.getElementById('save-guitar-textbook').addEventListener('click', async () => {
+      const name = document.getElementById('guitar-textbook-name').value.trim();
+      const piecesText = document.getElementById('guitar-textbook-pieces').value.trim();
+
+      if (!name) {
+        showToast('教材名を入力してください', 'error');
+        return;
+      }
+
+      const pieceNames = piecesText.split('\n').map(p => p.trim()).filter(p => p);
+      const pieces = pieceNames.map(pName => {
+        // Preserve existing piece data if editing
+        const existingPiece = textbook?.pieces?.find(p => p.name === pName);
+        return existingPiece || { name: pName };
+      });
+
+      const newTextbook = {
+        id: textbook?.id || Date.now().toString(),
+        name,
+        pieces,
+        completedPieces: textbook?.completedPieces || [],
+        createdAt: textbook?.createdAt || getTodayKey()
+      };
+
+      if (index >= 0) {
+        practiceData.guitar.textbooks[index] = newTextbook;
+      } else {
+        practiceData.guitar.textbooks.push(newTextbook);
+      }
+
+      await saveData();
+      modal.classList.remove('show');
+      renderGuitarTextbooks();
+    });
+
+    if (textbook) {
+      document.getElementById('delete-guitar-textbook')?.addEventListener('click', async () => {
+        if (!confirm(`「${textbook.name}」を削除しますか？`)) return;
+        practiceData.guitar.textbooks.splice(index, 1);
+        await saveData();
+        modal.classList.remove('show');
+        renderGuitarTextbooks();
+      });
+    }
+  }
+
   // ==================== MATERIALS FUNCTIONS (Dictation) ====================
 
   function renderMaterials(type) {
@@ -3539,6 +3847,9 @@ as soon as possible"></textarea>
 
     // Piano
     document.getElementById('add-piano-textbook-btn')?.addEventListener('click', () => openPianoTextbookModal());
+
+    // Guitar
+    document.getElementById('add-guitar-textbook-btn')?.addEventListener('click', () => openGuitarTextbookModal());
 
     document.getElementById('phrase-search')?.addEventListener('input', (e) => {
       phraseSearchQuery = e.target.value;

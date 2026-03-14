@@ -215,6 +215,67 @@
       margin-top: 2px;
     }
 
+    /* Streak Section */
+    .streak-section {
+      margin-bottom: 20px;
+    }
+
+    .streak-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .streak-card {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .streak-card.streak-current {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+    }
+
+    .streak-icon {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .streak-value {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .streak-card.streak-current .streak-value {
+      color: white;
+    }
+
+    .streak-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .streak-card.streak-current .streak-label {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .streak-message {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 8px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+    }
+
+    .streak-message:empty {
+      display: none;
+    }
+
     /* Modal category sections */
     .modal-category-section {
       margin-bottom: 16px;
@@ -884,6 +945,145 @@
     }
 
     .piano-section.show {
+      display: block;
+    }
+
+    /* Guitar Section */
+    .guitar-section {
+      display: none;
+    }
+
+    .guitar-section.show {
+      display: block;
+    }
+
+    .guitar-textbook {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .guitar-textbook-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .guitar-textbook-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .guitar-textbook-progress {
+      margin-bottom: 12px;
+    }
+
+    .guitar-progress-bar {
+      height: 8px;
+      background: var(--bg-tertiary);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .guitar-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--guitar), #ff6090);
+      transition: width 0.3s;
+    }
+
+    .guitar-progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .guitar-pieces-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .guitar-piece-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .guitar-piece-item:last-child {
+      border-bottom: none;
+    }
+
+    .guitar-piece-item.completed {
+      opacity: 0.6;
+    }
+
+    .guitar-piece-check {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .guitar-piece-item.completed .guitar-piece-check {
+      background: var(--guitar);
+      border-color: var(--guitar);
+      color: white;
+    }
+
+    .guitar-piece-name {
+      flex: 1;
+    }
+
+    .guitar-piece-date {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 8px;
+    }
+
+    .guitar-piece-content {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .guitar-piece-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .guitar-piece-expand {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 8px;
+      transition: transform 0.2s;
+    }
+
+    .guitar-piece-item.expanded .guitar-piece-expand {
+      transform: rotate(180deg);
+    }
+
+    .guitar-piece-comment {
+      display: none;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      padding: 10px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      line-height: 1.5;
+    }
+
+    .guitar-piece-item.expanded .guitar-piece-comment {
       display: block;
     }
 
@@ -1858,6 +2058,33 @@
       <div id="today-checklist"></div>
     </div>
 
+    <!-- Streak & Stats -->
+    <div class="streak-section" id="streak-section">
+      <div class="streak-cards">
+        <div class="streak-card streak-current">
+          <div class="streak-icon">🔥</div>
+          <div class="streak-value" id="current-streak">0</div>
+          <div class="streak-label">連続日数</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-icon">🏆</div>
+          <div class="streak-value" id="best-streak">0</div>
+          <div class="streak-label">最高記録</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-icon">📅</div>
+          <div class="streak-value" id="month-days">0</div>
+          <div class="streak-label">今月</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-icon">✨</div>
+          <div class="streak-value" id="total-days">0</div>
+          <div class="streak-label">累計</div>
+        </div>
+      </div>
+      <div class="streak-message" id="streak-message"></div>
+    </div>
+
     <!-- Calendar -->
     <div class="calendar-header">
       <div class="calendar-nav">
@@ -1970,6 +2197,15 @@
         <button class="btn btn-primary btn-sm" id="add-piano-textbook-btn">+ 教材追加</button>
       </div>
       <div id="piano-textbooks"></div>
+    </div>
+
+    <!-- Guitar Section -->
+    <div class="guitar-section" id="guitar-section">
+      <div class="section-header">
+        <div class="section-title">🎸 教材</div>
+        <button class="btn btn-primary btn-sm" id="add-guitar-textbook-btn">+ 教材追加</button>
+      </div>
+      <div id="guitar-textbooks"></div>
     </div>
   </div>
 
