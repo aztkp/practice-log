@@ -2404,6 +2404,9 @@ as soon as possible"></textarea>
 
     modal.classList.add('show');
 
+    // Track selected preset category
+    let selectedCategory = phoneme?.category || null;
+
     // Preset selection
     content.querySelectorAll('.phoneme-preset').forEach(el => {
       el.addEventListener('click', () => {
@@ -2412,6 +2415,7 @@ as soon as possible"></textarea>
         const type = el.dataset.type;
         const presetIdx = parseInt(el.dataset.preset);
         const preset = type === 'vowel' ? availableVowels[presetIdx] : availableConsonants[presetIdx];
+        selectedCategory = type; // Save the category
         document.getElementById('phoneme-symbol').value = preset.phoneme;
         document.getElementById('phoneme-name').value = preset.name;
         document.getElementById('phoneme-examples').value = preset.examples.join(', ');
@@ -2488,7 +2492,7 @@ as soon as possible"></textarea>
         practicedWords: phoneme?.practicedWords || [],
         lastPracticed: phoneme?.lastPracticed || null,
         createdAt: phoneme?.createdAt || getTodayKey(),
-        category: phoneme?.category || null
+        category: selectedCategory
       };
 
       if (index >= 0) {
