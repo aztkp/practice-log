@@ -269,38 +269,7 @@
     ]
   },
   "guitar": {
-    "textbooks": [
-      {
-        "id": "guitar-basics-7days",
-        "name": "エレキギター基礎 7日間",
-        "pieces": [
-          {"name": "Day1: 各部名称・チューニング"},
-          {"name": "Day2: ピッキング・ミュート"},
-          {"name": "Day3: パワーコード"},
-          {"name": "Day4: コードチェンジ"},
-          {"name": "Day5: 基本コード (Em, Am, C, G, D)"},
-          {"name": "Day6: ストロークパターン"},
-          {"name": "Day7: 簡単なリフ"}
-        ],
-        "completedPieces": [],
-        "createdAt": "2026-03-14"
-      },
-      {
-        "id": "yonezu-hana-ni-arashi",
-        "name": "花に嵐 / 米津玄師",
-        "pieces": [
-          {"name": "コード確認 (簡単ver)", "comment": "U-FRET 初心者向け簡単コード版を使用"},
-          {"name": "イントロ"},
-          {"name": "Aメロ"},
-          {"name": "Bメロ"},
-          {"name": "サビ"},
-          {"name": "通し練習 (ゆっくり)"},
-          {"name": "通し練習 (原曲テンポ)"}
-        ],
-        "completedPieces": [],
-        "createdAt": "2026-03-14"
-      }
-    ]
+    "textbooks": []
   },
   "records": {
     "guitar": [],
@@ -1224,11 +1193,23 @@
         "lastPracticed": "2026-03-14",
         "createdAt": "2026-03-14",
         "category": "consonant"
+      },
+      {
+        "id": "1773497300163",
+        "phoneme": "/v/",
+        "name": "v",
+        "examples": [
+          "very",
+          "love",
+          "have"
+        ],
+        "notes": null,
+        "practicedWords": [],
+        "lastPracticed": null,
+        "createdAt": "2026-03-14",
+        "category": "consonant"
       }
     ],
     "dictation": []
-  },
-  "guitar": {
-    "textbooks": []
   }
 }
