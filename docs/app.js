@@ -35,13 +35,19 @@
 
   // Phrase study mode state
   let studyMode = null; // 'chapter', 'random', 'weak'
-  let questionStyle = 'situation'; // 'situation' or 'japanese'
+  let questionStyle = 'japanese'; // 'situation' or 'japanese'
   let studyPhrases = [];
   let studyIndex = 0;
   let studyResults = []; // { phraseId, result: 'ok' | 'partial' | 'ng' }
   let studyStartTime = null;
   let selectedTextbookId = null;
   let selectedChapter = null;
+  // Remember last study settings
+  let lastStudyMode = 'chapter';
+  let lastStudyTextbook = '';
+  let lastStudyChapter = '';
+  let lastStudyCount = 'all';
+  let lastQuestionStyle = 'japanese';
   let phraseFilterTextbook = '';
   let phraseFilterChapter = '';
   let phraseFilterMastery = '';
@@ -1536,24 +1542,24 @@ as soon as possible"></textarea>
       <div class="form-group">
         <label class="form-label">学習モード</label>
         <div class="study-mode-options">
-          <label class="study-mode-option selected" data-mode="chapter">
-            <input type="radio" name="study-mode" value="chapter" checked>
+          <label class="study-mode-option ${lastStudyMode === 'chapter' ? 'selected' : ''}" data-mode="chapter">
+            <input type="radio" name="study-mode" value="chapter" ${lastStudyMode === 'chapter' ? 'checked' : ''}>
             <span class="study-mode-icon">📖</span>
             <div class="study-mode-info">
               <div class="study-mode-name">チャプター別</div>
               <div class="study-mode-desc">特定の教材・チャプターから出題</div>
             </div>
           </label>
-          <label class="study-mode-option" data-mode="random">
-            <input type="radio" name="study-mode" value="random">
+          <label class="study-mode-option ${lastStudyMode === 'random' ? 'selected' : ''}" data-mode="random">
+            <input type="radio" name="study-mode" value="random" ${lastStudyMode === 'random' ? 'checked' : ''}>
             <span class="study-mode-icon">🔀</span>
             <div class="study-mode-info">
               <div class="study-mode-name">ランダム</div>
               <div class="study-mode-desc">全てのフレーズからランダム出題</div>
             </div>
           </label>
-          <label class="study-mode-option" data-mode="weak">
-            <input type="radio" name="study-mode" value="weak">
+          <label class="study-mode-option ${lastStudyMode === 'weak' ? 'selected' : ''}" data-mode="weak">
+            <input type="radio" name="study-mode" value="weak" ${lastStudyMode === 'weak' ? 'checked' : ''}>
             <span class="study-mode-icon">💪</span>
             <div class="study-mode-info">
               <div class="study-mode-name">苦手優先</div>
@@ -1562,15 +1568,15 @@ as soon as possible"></textarea>
           </label>
         </div>
       </div>
-      <div class="form-group" id="textbook-select-group">
+      <div class="form-group" id="textbook-select-group" style="${lastStudyMode !== 'chapter' ? 'display:none' : ''}">
         <label class="form-label">教材</label>
         <select class="form-select" id="study-textbook">
-          <option value="">すべて</option>
-          ${textbooks.map(tb => `<option value="${tb.id}">${tb.name}</option>`).join('')}
-          <option value="free">自由入力</option>
+          <option value="" ${lastStudyTextbook === '' ? 'selected' : ''}>すべて</option>
+          ${textbooks.map(tb => `<option value="${tb.id}" ${lastStudyTextbook === tb.id ? 'selected' : ''}>${tb.name}</option>`).join('')}
+          <option value="free" ${lastStudyTextbook === 'free' ? 'selected' : ''}>自由入力</option>
         </select>
       </div>
-      <div class="form-group" id="chapter-select-group">
+      <div class="form-group" id="chapter-select-group" style="${lastStudyMode !== 'chapter' ? 'display:none' : ''}">
         <label class="form-label">チャプター</label>
         <select class="form-select" id="study-chapter" disabled>
           <option value="">すべて</option>
@@ -1579,26 +1585,26 @@ as soon as possible"></textarea>
       <div class="form-group">
         <label class="form-label">出題数</label>
         <select class="form-select" id="study-count">
-          <option value="8">8問 (1チャプター)</option>
-          <option value="16">16問 (2チャプター)</option>
-          <option value="24" selected>24問 (3チャプター)</option>
-          <option value="32">32問 (4チャプター)</option>
-          <option value="all">すべて</option>
+          <option value="8" ${lastStudyCount === '8' ? 'selected' : ''}>8問 (1チャプター)</option>
+          <option value="16" ${lastStudyCount === '16' ? 'selected' : ''}>16問 (2チャプター)</option>
+          <option value="24" ${lastStudyCount === '24' ? 'selected' : ''}>24問 (3チャプター)</option>
+          <option value="32" ${lastStudyCount === '32' ? 'selected' : ''}>32問 (4チャプター)</option>
+          <option value="all" ${lastStudyCount === 'all' ? 'selected' : ''}>すべて</option>
         </select>
       </div>
       <div class="form-group">
         <label class="form-label">出題形式</label>
         <div class="study-mode-options">
-          <label class="study-mode-option selected" data-style="situation">
-            <input type="radio" name="question-style" value="situation" checked>
+          <label class="study-mode-option ${lastQuestionStyle === 'situation' ? 'selected' : ''}" data-style="situation">
+            <input type="radio" name="question-style" value="situation" ${lastQuestionStyle === 'situation' ? 'checked' : ''}>
             <span class="study-mode-icon">📍</span>
             <div class="study-mode-info">
               <div class="study-mode-name">シチュエーション</div>
               <div class="study-mode-desc">場面から英語を考える</div>
             </div>
           </label>
-          <label class="study-mode-option" data-style="japanese">
-            <input type="radio" name="question-style" value="japanese">
+          <label class="study-mode-option ${lastQuestionStyle === 'japanese' ? 'selected' : ''}" data-style="japanese">
+            <input type="radio" name="question-style" value="japanese" ${lastQuestionStyle === 'japanese' ? 'checked' : ''}>
             <span class="study-mode-icon">🇯🇵</span>
             <div class="study-mode-info">
               <div class="study-mode-name">日本語</div>
@@ -1616,7 +1622,7 @@ as soon as possible"></textarea>
     modal.classList.add('show');
 
     // Update chapter options when textbook changes
-    const updateChapterOptions = () => {
+    const updateChapterOptions = (selectChapter = '') => {
       const textbookId = document.getElementById('study-textbook').value;
       const chapterSelect = document.getElementById('study-chapter');
 
@@ -1631,7 +1637,7 @@ as soon as possible"></textarea>
         if (chapters.length > 0) {
           chapterSelect.innerHTML = `
             <option value="">すべて</option>
-            ${chapters.map(ch => `<option value="${ch}">Ch.${ch}</option>`).join('')}
+            ${chapters.map(ch => `<option value="${ch}" ${selectChapter === ch ? 'selected' : ''}>Ch.${ch}</option>`).join('')}
           `;
           chapterSelect.disabled = false;
         } else {
@@ -1644,6 +1650,11 @@ as soon as possible"></textarea>
       }
       updatePreview();
     };
+
+    // Initialize chapter dropdown with saved value
+    if (lastStudyTextbook && lastStudyTextbook !== 'free') {
+      updateChapterOptions(lastStudyChapter);
+    }
 
     // Update preview count
     const updatePreview = () => {
@@ -1719,8 +1730,15 @@ as soon as possible"></textarea>
     });
   }
 
-  function startStudyMode(mode, textbookId, chapter, countValue, style = 'situation') {
+  function startStudyMode(mode, textbookId, chapter, countValue, style = 'japanese') {
+    // Save settings for next time
+    lastStudyMode = mode;
+    lastStudyTextbook = textbookId;
+    lastStudyChapter = chapter;
+    lastStudyCount = countValue;
+    lastQuestionStyle = style;
     questionStyle = style;
+
     const phrases = practiceData.english.phrases || [];
     let filtered = [...phrases];
 
@@ -2029,7 +2047,6 @@ as soon as possible"></textarea>
 
     // Reset state
     studyMode = null;
-    questionStyle = 'situation';
     studyPhrases = [];
     studyIndex = 0;
     studyResults = [];
@@ -2774,8 +2791,8 @@ as soon as possible"></textarea>
       renderPhrases();
     });
     document.getElementById('quick-study-btn')?.addEventListener('click', () => {
-      // Quick study: weak phrases, 24 questions (3 chapters worth), situation mode
-      startStudyMode('weak', '', '', '24', 'situation');
+      // Quick study: weak phrases, all questions, japanese mode
+      startStudyMode('weak', '', '', 'all', 'japanese');
     });
 
     document.getElementById('flashcard')?.addEventListener('click', () => {
