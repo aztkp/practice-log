@@ -1284,7 +1284,7 @@
       },
       {
         "id": "1773490000133ch45a",
-        "japanese": "妻がこのペンを私に買ってくれました",
+        "japanese": "妻が私にこのペンを買ってくれました",
         "english": "My wife bought me this pen.",
         "textbookId": "1772684232735",
         "chapter": "45",
@@ -1295,80 +1295,73 @@
       },
       {
         "id": "1773490000134ch45b",
-        "japanese": "兄が犬の世話の仕方を私に教えてくれました",
-        "english": "My brother taught me how to take care of dogs.",
+        "japanese": "ポールはお父さんに誕生日カードを作りました",
+        "english": "Paul made his father a birthday card.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000135ch45c",
-        "japanese": "弟にその本を送りました",
-        "english": "I sent my brother the book.",
+        "japanese": "ライアンは友人たちに食事を作りました",
+        "english": "Ryan cooked his friends a meal.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000136ch45d",
-        "japanese": "奥さんに何を作ってあげたのですか",
-        "english": "What did you make for your wife?",
+        "japanese": "娘が私に昼食を作ってくれました",
+        "english": "My daughter made me my lunch.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000137ch45e",
-        "japanese": "息子に最新のスマートフォンを買ってあげました",
-        "english": "I bought my son the latest smartphone.",
+        "japanese": "私は祖母にお礼のはがきを書きました",
+        "english": "I wrote my grandmother a thank you card.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000138ch45f",
-        "japanese": "娘にピアノの弾き方を教えました",
-        "english": "I taught my daughter how to play the piano.",
+        "japanese": "ミナコが私に息子さんの心温まる話をしてくれました",
+        "english": "Minako told me a heartwarming story about her son.",
         "textbookId": "1772684232735",
         "chapter": "45",
-        "masteryLevel": 1,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000139ch45g",
-        "japanese": "同僚にこの書類を見せてもらえますか",
-        "english": "Can you show your colleague this document?",
+        "japanese": "サラはお母さんにペンダントを買ったと聞きました",
+        "english": "I heard Sarah got her mother a pendant.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000140ch45h",
-        "japanese": "お客様に新しいカタログをお送りしましょうか",
-        "english": "Shall I send the customer the new catalog?",
+        "japanese": "アレックスに新しい時計をあげたのですか",
+        "english": "Did you give Alex a new watch?",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 1,
-        "createdAt": "2026-03-15",
-        "lastStudied": "2026-03-15"
+        "studyCount": 0,
+        "createdAt": "2026-03-15"
       },
       {
         "id": "1773490000033ch50a",
