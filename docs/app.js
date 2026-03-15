@@ -413,6 +413,9 @@
     if (practiceDates.has(todayKey)) {
       currentStreak = 1;
       checkDate.setDate(checkDate.getDate() - 1);
+    } else {
+      // If not practiced today, start counting from yesterday
+      checkDate.setDate(checkDate.getDate() - 1);
     }
 
     // Count consecutive days backwards
