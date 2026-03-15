@@ -91,7 +91,7 @@
 
   // Audio playback for phrases
   // Available chapters with audio files
-  const AUDIO_CHAPTERS = ['45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57'];
+  const AUDIO_CHAPTERS = ['40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57'];
 
   function getPhraseAudioPath(phrase) {
     if (!phrase || !phrase.chapter) return null;
@@ -127,6 +127,13 @@
       console.error('Audio playback error:', err);
       showToast('音声の再生に失敗しました', 'error');
     });
+  }
+
+  function playPhraseAudioByIndex(index) {
+    const phrases = practiceData?.english?.phrases || [];
+    if (index >= 0 && index < phrases.length) {
+      playPhraseAudio(phrases[index]);
+    }
   }
 
   // API
@@ -1348,6 +1355,7 @@
       const textbook = textbooks.find(tb => tb.id === phrase.textbookId);
       const masteryLevel = phrase.masteryLevel || 0;
       const masteryStars = '★'.repeat(masteryLevel) + '☆'.repeat(5 - masteryLevel);
+      const audioPath = getPhraseAudioPath(phrase);
 
       // Build source label
       let sourceLabel = '';
@@ -1366,6 +1374,7 @@
             ${sourceLabel ? `<div class="phrase-source">${sourceLabel}</div>` : ''}
           </div>
           <div class="vocab-actions">
+            ${audioPath ? `<button class="btn btn-sm btn-audio" onclick="playPhraseAudioByIndex(${realIndex})" title="音声を再生">🔊</button>` : ''}
             <button class="btn btn-sm" onclick="editPhrase(${realIndex})">編集</button>
             <button class="btn btn-sm btn-delete" onclick="deletePhrase(${realIndex})">×</button>
           </div>
@@ -1702,6 +1711,10 @@ as soon as possible"></textarea>
     currentPhraseIndex = 0;
     isCardFlipped = false;
     renderPhrases();
+  };
+
+  window.playPhraseAudioByIndex = function(index) {
+    playPhraseAudioByIndex(index);
   };
 
   // ==================== STUDY MODE FUNCTIONS ====================
@@ -2534,7 +2547,7 @@ as soon as possible"></textarea>
       return `
         <div class="phoneme-card ${masteryClass}" data-index="${realIndex}">
           <div class="phoneme-header" onclick="togglePhonemeExpand(${realIndex})">
-            <div class="phoneme-symbol">${p.phoneme}</div>
+            <div class="phoneme-symbol">${p.phoneme.replace(/\//g, '')}${p.important ? '<span class="important-mark">★</span>' : ''}</div>
             <div class="phoneme-info">
               <div class="phoneme-name">${p.name}</div>
               <div class="phoneme-word-count">${wordCount}単語マスター</div>
