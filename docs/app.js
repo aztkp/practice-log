@@ -89,6 +89,51 @@
     return getDateKey(new Date());
   }
 
+  // Audio playback for phrases
+  // Available chapters with audio files
+  const AUDIO_CHAPTERS = ['57']; // Add more chapters as audio files are added
+
+  function getPhraseAudioPath(phrase) {
+    if (!phrase || !phrase.chapter) return null;
+    if (!AUDIO_CHAPTERS.includes(phrase.chapter)) return null;
+
+    // Get all phrases in this chapter to find the index
+    const chapterPhrases = practiceData.english.phrases
+      .filter(p => p.chapter === phrase.chapter)
+      .sort((a, b) => {
+        // Sort by createdAt or id to maintain consistent order
+        if (a.createdAt && b.createdAt) return a.createdAt.localeCompare(b.createdAt);
+        return a.id.localeCompare(b.id);
+      });
+
+    const phraseIndex = chapterPhrases.findIndex(p => p.id === phrase.id);
+    if (phraseIndex === -1) return null;
+
+    return `audio/ch${phrase.chapter}/phrase_${phraseIndex + 1}.mp3`;
+  }
+
+  let currentAudio = null;
+
+  function playPhraseAudio(phrase) {
+    const audioPath = getPhraseAudioPath(phrase);
+    if (!audioPath) {
+      showToast('音声ファイルがありません', 'error');
+      return;
+    }
+
+    // Stop any currently playing audio
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+
+    currentAudio = new Audio(audioPath);
+    currentAudio.play().catch(err => {
+      console.error('Audio playback error:', err);
+      showToast('音声の再生に失敗しました', 'error');
+    });
+  }
+
   // API
   async function fetchData() {
     const token = getToken();
@@ -2019,6 +2064,9 @@ as soon as possible"></textarea>
     const frontHint = isSituationMode ? 'この場面で使う英語は？' : 'タップして英語を見る';
     const backHint = 'タップして問題に戻る';
 
+    // Get audio path for this phrase
+    const audioPath = getPhraseAudioPath(phrase);
+
     container.innerHTML = `
       <div class="study-header">
         <div class="study-title">${modeTitle}</div>
@@ -2031,6 +2079,7 @@ as soon as possible"></textarea>
         <div class="study-card ${isFlipped ? 'flipped' : ''}" id="study-card">
           ${isFlipped ? `
             <div class="study-card-text">${phrase.english}</div>
+            ${audioPath ? `<button class="btn audio-play-btn" id="play-audio" title="音声を再生">🔊</button>` : ''}
             <div style="font-size: 14px; color: var(--text-muted); margin-top: 16px;">${phrase.japanese}</div>
           ` : `
             <div style="font-size: 16px; margin-bottom: 12px;">${questionIcon}</div>
@@ -2050,10 +2099,21 @@ as soon as possible"></textarea>
     container.style.display = 'block';
 
     // Event listeners
-    document.getElementById('study-card').addEventListener('click', () => {
+    document.getElementById('study-card').addEventListener('click', (e) => {
+      // Don't flip if clicking the audio button
+      if (e.target.id === 'play-audio') return;
       isCardFlipped = !isCardFlipped;
       renderStudyMode();
     });
+
+    // Audio play button
+    const playBtn = document.getElementById('play-audio');
+    if (playBtn) {
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        playPhraseAudio(phrase);
+      });
+    }
 
     document.getElementById('study-ng').addEventListener('click', () => submitStudyAnswer('ng'));
     document.getElementById('study-partial').addEventListener('click', () => submitStudyAnswer('partial'));
