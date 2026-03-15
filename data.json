@@ -294,7 +294,8 @@
           "s",
           "z",
           "ʃ",
-          "ʒ"
+          "ʒ",
+          "θ"
         ]
       }
     ]
@@ -941,323 +942,355 @@
       },
       {
         "id": "1773490000101ch49a",
-        "japanese": "このシステムを導入して以来、このフォーマットを使い続けています",
-        "english": "We've been using this format since we introduced this system.",
+        "japanese": "締め切りに間に合わないといけないので、残業しなければなりません",
+        "english": "Since we have to meet the deadline, we have to work overtime.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000102ch49b",
-        "japanese": "担当者がここに来るまで、待っていてください",
-        "english": "Please wait until the person in charge comes here.",
+        "japanese": "週末に引っ越しをするので、新しい家具が必要になります",
+        "english": "Since we are moving this weekend, we will need new furniture.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000103ch49c",
-        "japanese": "デイヴィスさんは、彼女のオフィスに戻ったらすぐに我々に電話をくれるでしょう",
-        "english": "Ms. Davis will call us as soon as she gets back to her office.",
+        "japanese": "完成するまで、残りの部分に取り組んでいただけますか",
+        "english": "Can you work on the remaining sections until it's completed?",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000104ch49d",
-        "japanese": "問題があれば、メーカーに電話してください",
-        "english": "Please call the manufacturer if you have a problem.",
+        "japanese": "電話を受けたら、すぐに出発します",
+        "english": "As soon as we receive the call, we will leave.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000105ch49e",
-        "japanese": "問題がない限り、メーカーに電話する必要はありません",
-        "english": "You don't have to call the manufacturer unless you have a problem.",
+        "japanese": "十分な時間があれば、来週より前に作業を終えられます",
+        "english": "If we have enough time, we can finish the work before next week.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000106ch49f",
-        "japanese": "あとで再確認ができるように、これらのファイルはサーバー上に保管してください",
-        "english": "Store these files on the server so that we can review them later.",
+        "japanese": "私たちが決定を下さないかぎり、彼らは着手しません",
+        "english": "Unless we make a decision, they will not start.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000107ch49g",
-        "japanese": "そのファイルは、今日私が必要とする場合に備えて、必ず返してください",
-        "english": "Make sure you return the file in case I need it today.",
+        "japanese": "ミーティングを同時通訳してもらえるように、通訳者を手配しましょう",
+        "english": "Let's arrange an interpreter so that the meeting can be interpreted simultaneously.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000108ch49h",
-        "japanese": "たとえそのデータが正しいと思っても、ジムに確認を頼んでください",
-        "english": "Even if you think the data is correct, please ask Jim to check it.",
+        "japanese": "何か問題があった場合に備えて、チームに待機してもらいましょう",
+        "english": "Let's have the team on standby in case there are any problems.",
         "textbookId": "1772684232735",
         "chapter": "49",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000109ch48a",
-        "japanese": "電気がついている間は、建物の中に入れます",
-        "english": "You can enter the building while the lights are on.",
+        "japanese": "ミーティングが終わったら、タクシーを呼んでいただけますか",
+        "english": "When the meeting is over, can you call a taxi?",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000110ch48b",
-        "japanese": "図書館が見えたら、右に曲がってください",
-        "english": "Turn right when you see the library.",
+        "japanese": "私がお話をする前に、お席におつきください",
+        "english": "Please take your seats before I start talking.",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000111ch48c",
-        "japanese": "セントラル駅に着いたら、お電話をいただけますか",
-        "english": "Could you call me when you arrive at Central Station?",
+        "japanese": "私たちが待っている間、コーヒーか紅茶はいかがですか",
+        "english": "While we wait, would you like some coffee or tea?",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000112ch48d",
-        "japanese": "サウス通りに入ると、左手に弊社があります",
-        "english": "Our office is on the left when you turn into South Street.",
+        "japanese": "お帰りになった後、メッセージをお伝えしましょうか",
+        "english": "After you leave, shall I give her a message?",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000113ch48e",
-        "japanese": "コンビニに来る前に、カトウビルが右手にあります",
-        "english": "The Kato Building is on the right, before you come to the convenience store.",
+        "japanese": "報告書を読んだら、チームメンバーに転送してください",
+        "english": "As soon as you read the report, please forward it to the team members.",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000114ch48f",
-        "japanese": "エレベーターに乗る前に、受付で登録を済ませてください",
-        "english": "Before you take the elevator, please sign in at reception.",
+        "japanese": "お見えになったら、私のオフィスにお連れしてください",
+        "english": "When she arrives, please bring her to my office.",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000115ch48g",
-        "japanese": "2つ目の信号まで来たら、左へ曲がってください",
-        "english": "After you reach the second traffic light, turn left.",
+        "japanese": "始める前に、全員がログインしているか確認してください",
+        "english": "Before we start, please make sure everyone is logged in.",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000116ch48h",
-        "japanese": "高速道路が見えたらすぐ、右に曲がってください",
-        "english": "As soon as you see the freeway, turn right.",
+        "japanese": "私がパスワードを入力する間、少々お待ちください",
+        "english": "While I enter the password, please wait a moment.",
         "textbookId": "1772684232735",
         "chapter": "48",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000117ch47a",
-        "japanese": "オフィスをきれいに整頓しておいてください",
+        "japanese": "オフィスを整頓しておいてください",
         "english": "Please keep the office tidy.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000118ch47b",
-        "japanese": "これらの箱を赤に塗ってもらえますか",
-        "english": "Can you color these boxes red?",
+        "japanese": "この件については秘密にしておいていただけますか",
+        "english": "Would you keep this matter confidential?",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000119ch47c",
-        "japanese": "私たちはその新型をCXと名付けました",
-        "english": "We named the new model the CX.",
+        "japanese": "その部門には、知識のある人を責任者にしておくことが重要です",
+        "english": "It is important to keep someone knowledgeable in charge of that section.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000120ch47d",
-        "japanese": "誰もがその情報にアクセスしやすいようにしてください",
-        "english": "Please make it easier for everyone to access the information.",
+        "japanese": "私はこの会議を短くしたいと思います",
+        "english": "I'd like to keep this meeting short.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000121ch47e",
-        "japanese": "顧客を満足させ続けるために、継続的な改善をしてください",
-        "english": "Make constant improvements to keep the customers satisfied.",
+        "japanese": "彼女のプレゼンテーションはとても面白かったです",
+        "english": "I found her presentation very interesting.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000122ch47f",
-        "japanese": "この仕事を面白いと思ってくれたらいいのですが",
-        "english": "I hope you'll find this task interesting.",
+        "japanese": "残念ながら彼の説明が分かりにくいと思いました",
+        "english": "Unfortunately, I found his explanation difficult to understand.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000123ch47g",
-        "japanese": "待合室をバリアフリーにしなければならないでしょう",
-        "english": "We will have to make the waiting room barrier-free.",
+        "japanese": "コンピューターの電源を切らないでください",
+        "english": "Please don't leave your computer switched off.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000124ch47h",
-        "japanese": "来年、オフィスを改装する予定です",
-        "english": "We're going to have the office remodeled next year.",
+        "japanese": "何かをキャンセルした場合、クライアントを怒らせることになりかねません",
+        "english": "If we cancel anything, we may leave the clients angry.",
         "textbookId": "1772684232735",
         "chapter": "47",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000125ch46a",
-        "japanese": "フナバシさんの連絡先を見つけてほしいです",
-        "english": "I want you to find the contact details for Ms. Funabashi.",
+        "japanese": "今日中にそのEメールを書いていただきたいのですが",
+        "english": "I want you to write the email today.",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000126ch46b",
-        "japanese": "その式典でスピーチをしていただきたく存じます",
-        "english": "I'd like you to deliver a speech at the ceremony.",
+        "japanese": "スケジュールに合う会場を見つけていただきたいのですが",
+        "english": "I want you to find a venue that fits our schedule.",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000127ch46c",
-        "japanese": "メアリーには今夜少し遅くまで残ってもらう必要があります",
-        "english": "I need Mary to stay a little later tonight.",
+        "japanese": "数日中にお電話をいただきたいのですが",
+        "english": "I would like you to call me in a few days.",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000128ch46d",
-        "japanese": "金曜の会議の手配をするようにとハリーに伝えていただけますか",
-        "english": "Could you tell Harry to arrange the meeting for Friday?",
+        "japanese": "私たちの製品をお試しいただきたいのですが",
+        "english": "I would like you to try our products.",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000129ch46e",
-        "japanese": "今日は早めに退社してもいいですか",
-        "english": "Will you permit me to leave early today?",
+        "japanese": "彼女に作業完了したと知らせてもらえますか",
+        "english": "Can you tell her that the work is complete?",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000130ch46f",
-        "japanese": "締め切りを延長させていただいてもよろしいでしょうか",
-        "english": "Would you allow us to extend the deadline?",
+        "japanese": "ミーティングのスケジュールを変更するよう彼に頼んでいただけますか",
+        "english": "Could you ask him to reschedule the meeting?",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000131ch46g",
-        "japanese": "時間通りに仕事を終わらせてもらえると考えていいですか",
-        "english": "Can I expect you to complete the task on time?",
+        "japanese": "同僚に今日中に報告書を仕上げるように言っていただけますか",
+        "english": "Can you tell your colleague to finish the report by today?",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000132ch46h",
-        "japanese": "会議室を準備するようお願いしてもいいですか",
-        "english": "Can I ask you to prepare the meeting room?",
+        "japanese": "全員にプレゼンテーションの準備をするよう伝えていただけますか",
+        "english": "Could you tell everyone to prepare for the presentation?",
         "textbookId": "1772684232735",
         "chapter": "46",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000133ch45a",
@@ -1729,8 +1762,13 @@
         "category": "consonant",
         "row": 2,
         "col": 0,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "think",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
