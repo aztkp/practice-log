@@ -291,7 +291,8 @@
       {
         "date": "2026-03-15",
         "completed": [
-          "s"
+          "s",
+          "z"
         ]
       }
     ]
@@ -1692,8 +1693,13 @@
         "category": "consonant",
         "row": 1,
         "col": 1,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "easy",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
