@@ -302,7 +302,8 @@
           "r",
           "ɑ",
           "æ",
-          "ʌ"
+          "ʌ",
+          "ə"
         ]
       }
     ]
@@ -2211,8 +2212,13 @@
         "category": "vowel",
         "row": 1,
         "col": 3,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "about",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
