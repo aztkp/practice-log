@@ -97,14 +97,9 @@
     if (!phrase || !phrase.chapter) return null;
     if (!AUDIO_CHAPTERS.includes(phrase.chapter)) return null;
 
-    // Get all phrases in this chapter to find the index
+    // Get all phrases in this chapter (keep original order from data.json)
     const chapterPhrases = practiceData.english.phrases
-      .filter(p => p.chapter === phrase.chapter)
-      .sort((a, b) => {
-        // Sort by createdAt or id to maintain consistent order
-        if (a.createdAt && b.createdAt) return a.createdAt.localeCompare(b.createdAt);
-        return a.id.localeCompare(b.id);
-      });
+      .filter(p => p.chapter === phrase.chapter);
 
     const phraseIndex = chapterPhrases.findIndex(p => p.id === phrase.id);
     if (phraseIndex === -1) return null;
