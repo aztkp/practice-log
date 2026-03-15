@@ -91,7 +91,7 @@
 
   // Audio playback for phrases
   // Available chapters with audio files
-  const AUDIO_CHAPTERS = ['57']; // Add more chapters as audio files are added
+  const AUDIO_CHAPTERS = ['45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57'];
 
   function getPhraseAudioPath(phrase) {
     if (!phrase || !phrase.chapter) return null;
