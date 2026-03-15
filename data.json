@@ -301,7 +301,8 @@
           "d",
           "r",
           "ɑ",
-          "æ"
+          "æ",
+          "ʌ"
         ]
       }
     ]
@@ -2189,8 +2190,13 @@
         "category": "vowel",
         "row": 1,
         "col": 2,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "cup",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
