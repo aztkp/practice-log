@@ -295,7 +295,8 @@
           "z",
           "ʃ",
           "ʒ",
-          "θ"
+          "θ",
+          "ð"
         ]
       }
     ]
@@ -1784,8 +1785,13 @@
         "category": "consonant",
         "row": 2,
         "col": 1,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "there",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
