@@ -287,6 +287,12 @@
           "f",
           "v"
         ]
+      },
+      {
+        "date": "2026-03-15",
+        "completed": [
+          "s"
+        ]
       }
     ]
   },
@@ -1284,7 +1290,7 @@
       },
       {
         "id": "1773490000133ch45a",
-        "japanese": "妻が私にこのペンを買ってくれました",
+        "japanese": "妻がこのペンを私に買ってくれました",
         "english": "My wife bought me this pen.",
         "textbookId": "1772684232735",
         "chapter": "45",
@@ -1295,73 +1301,80 @@
       },
       {
         "id": "1773490000134ch45b",
-        "japanese": "ポールはお父さんに誕生日カードを作りました",
-        "english": "Paul made his father a birthday card.",
+        "japanese": "兄が犬の世話の仕方を私に教えてくれました",
+        "english": "My brother taught me how to take care of dogs.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000135ch45c",
-        "japanese": "ライアンは友人たちに食事を作りました",
-        "english": "Ryan cooked his friends a meal.",
+        "japanese": "弟にその本を送りました",
+        "english": "I sent my brother the book.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000136ch45d",
-        "japanese": "娘が私に昼食を作ってくれました",
-        "english": "My daughter made me my lunch.",
+        "japanese": "奥さんに何を作ってあげたのですか",
+        "english": "What did you make for your wife?",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000137ch45e",
-        "japanese": "私は祖母にお礼のはがきを書きました",
-        "english": "I wrote my grandmother a thank you card.",
+        "japanese": "息子に最新のスマートフォンを買ってあげました",
+        "english": "I bought my son the latest smartphone.",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000138ch45f",
-        "japanese": "ミナコが私に息子さんの心温まる話をしてくれました",
-        "english": "Minako told me a heartwarming story about her son.",
+        "japanese": "娘にピアノの弾き方を教えました",
+        "english": "I taught my daughter how to play the piano.",
         "textbookId": "1772684232735",
         "chapter": "45",
-        "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "masteryLevel": 1,
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000139ch45g",
-        "japanese": "サラはお母さんにペンダントを買ったと聞きました",
-        "english": "I heard Sarah got her mother a pendant.",
+        "japanese": "同僚にこの書類を見せてもらえますか",
+        "english": "Can you show your colleague this document?",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000140ch45h",
-        "japanese": "アレックスに新しい時計をあげたのですか",
-        "english": "Did you give Alex a new watch?",
+        "japanese": "お客様に新しいカタログをお送りしましょうか",
+        "english": "Shall I send the customer the new catalog?",
         "textbookId": "1772684232735",
         "chapter": "45",
         "masteryLevel": 0,
-        "studyCount": 0,
-        "createdAt": "2026-03-15"
+        "studyCount": 1,
+        "createdAt": "2026-03-15",
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000033ch50a",
@@ -1657,8 +1670,13 @@
         "category": "consonant",
         "row": 1,
         "col": 0,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "city",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
