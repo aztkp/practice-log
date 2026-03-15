@@ -446,6 +446,14 @@
       });
     });
 
+    // Also include English study records (Quick Response)
+    const studyRecords = practiceData.english?.studyRecords || [];
+    studyRecords.forEach(record => {
+      if (record.date) {
+        practiceDates.add(record.date);
+      }
+    });
+
     const sortedDates = Array.from(practiceDates).sort().reverse();
     const todayKey = getTodayKey();
     const today = new Date(todayKey);
