@@ -347,9 +347,9 @@
         "situation": "スケジュール変更をお願いする時",
         "textbookId": "1772684232735",
         "chapter": "57",
-        "masteryLevel": 1,
+        "masteryLevel": 2,
         "lastStudied": "2026-03-15",
-        "studyCount": 3,
+        "studyCount": 4,
         "createdAt": "2026-03-14"
       },
       {
@@ -407,9 +407,9 @@
         "situation": "誰かの帰りを確認したい時",
         "textbookId": "1772684232735",
         "chapter": "56",
-        "masteryLevel": 0,
+        "masteryLevel": 1,
         "lastStudied": "2026-03-15",
-        "studyCount": 3,
+        "studyCount": 4,
         "createdAt": "2026-03-14"
       },
       {
@@ -443,9 +443,9 @@
         "situation": "会議中の出来事を報告する時",
         "textbookId": "1772684232735",
         "chapter": "56",
-        "masteryLevel": 2,
+        "masteryLevel": 3,
         "lastStudied": "2026-03-15",
-        "studyCount": 3,
+        "studyCount": 4,
         "createdAt": "2026-03-14"
       },
       {
@@ -478,9 +478,9 @@
         "situation": "プロジェクトの進捗を報告する時",
         "textbookId": "1772684232735",
         "chapter": "56",
-        "masteryLevel": 1,
+        "masteryLevel": 2,
         "lastStudied": "2026-03-15",
-        "studyCount": 4,
+        "studyCount": 5,
         "createdAt": "2026-03-14"
       },
       {
@@ -871,9 +871,9 @@
         "textbookId": "1772684232735",
         "chapter": "51",
         "masteryLevel": 0,
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14",
-        "lastStudied": "2026-03-14"
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000028ch51d",
@@ -882,9 +882,9 @@
         "textbookId": "1772684232735",
         "chapter": "51",
         "masteryLevel": 0,
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14",
-        "lastStudied": "2026-03-14"
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000029ch51e",
@@ -904,9 +904,9 @@
         "textbookId": "1772684232735",
         "chapter": "51",
         "masteryLevel": 0,
-        "studyCount": 1,
+        "studyCount": 2,
         "createdAt": "2026-03-14",
-        "lastStudied": "2026-03-14"
+        "lastStudied": "2026-03-15"
       },
       {
         "id": "1773490000031ch51g",
@@ -1014,7 +1014,7 @@
         "textbookId": "1772684232735",
         "chapter": "50",
         "masteryLevel": 0,
-        "studyCount": 2,
+        "studyCount": 3,
         "createdAt": "2026-03-14",
         "lastStudied": "2026-03-15"
       }
@@ -1148,6 +1148,16 @@
         "phraseCount": 8,
         "correctCount": 1,
         "duration": 103
+      },
+      {
+        "id": "1773555040184",
+        "date": "2026-03-15",
+        "mode": "chapter",
+        "textbookId": null,
+        "chapter": null,
+        "phraseCount": 8,
+        "correctCount": 4,
+        "duration": 74
       }
     ],
     "pronunciation": [
