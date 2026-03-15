@@ -296,7 +296,8 @@
           "ʃ",
           "ʒ",
           "θ",
-          "ð"
+          "ð",
+          "t"
         ]
       }
     ]
@@ -1897,8 +1898,13 @@
         "category": "consonant",
         "row": 4,
         "col": 0,
-        "practicedWords": [],
-        "lastPracticed": null,
+        "practicedWords": [
+          {
+            "word": "take",
+            "date": "2026-03-15"
+          }
+        ],
+        "lastPracticed": "2026-03-15",
         "createdAt": "2026-03-14"
       },
       {
