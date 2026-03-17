@@ -221,12 +221,52 @@
       });
 
       if (res.status === 409) {
+        // Conflict: merge remote changes with local changes
         const latest = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
           headers: { 'Authorization': `token ${token}` }
         });
         if (latest.ok) {
           const latestData = await latest.json();
           dataSha = latestData.sha;
+
+          // Decode and parse remote data
+          const remoteData = JSON.parse(atob(latestData.content));
+
+          // Merge: keep remote phrases/phonemes, but update with local study progress
+          if (remoteData.english && practiceData.english) {
+            // Merge phrases: use remote as base, update study data from local
+            const localPhraseMap = {};
+            (practiceData.english.phrases || []).forEach(p => { localPhraseMap[p.id] = p; });
+
+            remoteData.english.phrases = (remoteData.english.phrases || []).map(rp => {
+              const lp = localPhraseMap[rp.id];
+              if (lp && (lp.lastStudied || lp.studyCount > 0)) {
+                return { ...rp, lastStudied: lp.lastStudied, studyCount: lp.studyCount, masteryLevel: lp.masteryLevel };
+              }
+              return rp;
+            });
+
+            // Merge pronunciation
+            const localPhonemeMap = {};
+            (practiceData.english.pronunciation || []).forEach(p => { localPhonemeMap[p.id] = p; });
+
+            remoteData.english.pronunciation = (remoteData.english.pronunciation || []).map(rp => {
+              const lp = localPhonemeMap[rp.id];
+              if (lp && lp.practicedWords) {
+                return { ...rp, practicedWords: lp.practicedWords };
+              }
+              return rp;
+            });
+          }
+
+          // Merge records
+          if (practiceData.records) {
+            remoteData.records = { ...remoteData.records, ...practiceData.records };
+          }
+
+          // Update local practiceData with merged data
+          practiceData = remoteData;
+
           const retry = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
             method: 'PUT',
             headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
@@ -239,7 +279,7 @@
           if (retry.ok) {
             const data = await retry.json();
             dataSha = data.content.sha;
-            showToast('Saved');
+            showToast('Saved (merged)');
             return true;
           }
         }
