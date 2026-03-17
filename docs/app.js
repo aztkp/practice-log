@@ -2545,7 +2545,7 @@ as soon as possible"></textarea>
       const recentWords = practicedWords.slice(-3).reverse();
 
       return `
-        <div class="phoneme-card ${masteryClass}" data-index="${realIndex}">
+        <div class="phoneme-card ${masteryClass} expanded" data-index="${realIndex}">
           <div class="phoneme-header" onclick="togglePhonemeExpand(${realIndex})">
             <div class="phoneme-symbol">${p.phoneme.replace(/\//g, '')}${p.important ? '<span class="important-mark">★</span>' : ''}</div>
             <div class="phoneme-info">
