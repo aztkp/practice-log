@@ -2378,6 +2378,88 @@
       background: var(--bg-tertiary);
       border-radius: 8px;
     }
+
+    /* Meeting Phrases */
+    .meeting-phrases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meeting-phrase-item {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .meeting-phrase-item:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .meeting-phrase-item.mastered {
+      border-left-color: var(--accent);
+      opacity: 0.8;
+    }
+
+    .meeting-phrase-check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      font-size: 12px;
+    }
+
+    .meeting-phrase-item.mastered .meeting-phrase-check {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .meeting-phrase-content {
+      flex: 1;
+    }
+
+    .meeting-phrase-en {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--english);
+    }
+
+    .meeting-phrase-jp {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .meeting-phrase-context {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      padding: 6px 10px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      display: none;
+    }
+
+    .meeting-phrase-item.expanded .meeting-phrase-context {
+      display: block;
+    }
+
+    .meeting-phrase-toggle {
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -2400,6 +2482,7 @@
       <button class="sub-tab active" data-subtab="phrases">📝 Phrases</button>
       <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
       <button class="sub-tab" data-subtab="dictation">👂 Dictation</button>
+      <button class="sub-tab" data-subtab="meeting">💼 Meeting</button>
     </div>
 
     <!-- Stats -->
@@ -2589,6 +2672,24 @@
           <div class="result-score" id="result-score"></div>
         </div>
       </div>
+    </div>
+
+    <!-- English: Meeting Section -->
+    <div class="english-section" id="meeting-section">
+      <div class="section-header">
+        <div class="section-title">💼 Meeting English</div>
+        <button class="btn btn-primary btn-sm" id="start-meeting-study-btn">▶ Practice</button>
+      </div>
+      <p class="section-desc">研究ミーティングで使う英語フレーズを練習しよう</p>
+
+      <!-- Meeting stats -->
+      <div class="phrase-stats" id="meeting-stats"></div>
+
+      <!-- Meeting phrase list -->
+      <div class="meeting-phrases-list" id="meeting-phrases-list"></div>
+
+      <!-- Meeting study mode container -->
+      <div class="study-mode-container" id="meeting-study-container" style="display: none;"></div>
     </div>
 
     <!-- Piano Section -->

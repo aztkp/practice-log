@@ -168,6 +168,7 @@
       if (!practiceData.english.studyRecords) practiceData.english.studyRecords = [];
       if (!practiceData.english.pronunciation) practiceData.english.pronunciation = [];
       if (!practiceData.english.dictation) practiceData.english.dictation = [];
+      if (!practiceData.english.meetingPhrases) practiceData.english.meetingPhrases = [];
 
       // Initialize Piano learning data
       if (!practiceData.piano) practiceData.piano = {};
@@ -985,6 +986,7 @@
     const phrasesSection = document.getElementById('phrases-section');
     const pronunciationSection = document.getElementById('pronunciation-section');
     const dictationSection = document.getElementById('dictation-section');
+    const meetingSection = document.getElementById('meeting-section');
 
     // Hide all sections first (hide Today section for English)
     [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
@@ -993,6 +995,7 @@
     phrasesSection?.classList.remove('show');
     pronunciationSection?.classList.remove('show');
     dictationSection?.classList.remove('show');
+    meetingSection?.classList.remove('show');
 
     // Update subtab active state
     document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
@@ -1010,6 +1013,10 @@
       dictationSection?.classList.add('show');
       renderMaterials('dictation');
       initDictationPractice();
+    } else if (subtab === 'meeting') {
+      meetingSection?.classList.add('show');
+      renderMeetingPhrases();
+      initMeetingPractice();
     }
   }
 
@@ -4279,6 +4286,207 @@ as soon as possible"></textarea>
     }
     await saveData();
     renderPresentations();
+  };
+
+  // ==================== MEETING ENGLISH FUNCTIONS ====================
+
+  let meetingStudyPhrases = [];
+  let meetingStudyIndex = 0;
+  let isMeetingCardFlipped = false;
+
+  function initMeetingPractice() {
+    document.getElementById('start-meeting-study-btn')?.addEventListener('click', startMeetingStudyMode);
+  }
+
+  function renderMeetingPhrases() {
+    if (!practiceData) return;
+
+    const phrases = practiceData.english.meetingPhrases || [];
+    const container = document.getElementById('meeting-phrases-list');
+    const statsContainer = document.getElementById('meeting-stats');
+
+    if (!container) return;
+
+    // Render stats
+    const masteredCount = phrases.filter(p => p.mastered).length;
+    const totalCount = phrases.length;
+    const percentage = totalCount > 0 ? Math.round((masteredCount / totalCount) * 100) : 0;
+
+    if (statsContainer) {
+      statsContainer.innerHTML = `
+        <div class="phrase-stat-badge" style="flex: 2;">
+          <div style="display: flex; flex-direction: column; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span class="stat-icon">💼</span>
+              <span style="font-size: 14px; font-weight: 600;">Progress: ${masteredCount}/${totalCount}</span>
+              ${percentage === 100 ? '<span style="color: var(--accent);">Complete!</span>' : ''}
+            </div>
+            <div style="background: var(--bg-tertiary); height: 6px; border-radius: 3px; overflow: hidden;">
+              <div style="width: ${percentage}%; height: 100%; background: var(--accent); transition: width 0.3s;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-stat-badge">
+          <span class="stat-icon">✅</span>
+          <span class="stat-num">${masteredCount}</span>
+          <span class="stat-text">Mastered</span>
+        </div>
+        <div class="phrase-stat-badge">
+          <span class="stat-icon">📚</span>
+          <span class="stat-num">${totalCount - masteredCount}</span>
+          <span class="stat-text">To Learn</span>
+        </div>
+      `;
+    }
+
+    if (phrases.length === 0) {
+      container.innerHTML = '<div class="empty">ミーティング用フレーズがありません</div>';
+      return;
+    }
+
+    container.innerHTML = phrases.map((phrase, index) => `
+      <div class="meeting-phrase-item ${phrase.mastered ? 'mastered' : ''}" data-index="${index}">
+        <div class="meeting-phrase-check" onclick="toggleMeetingPhraseMastery(${index})">
+          ${phrase.mastered ? '✓' : ''}
+        </div>
+        <div class="meeting-phrase-content" onclick="toggleMeetingPhraseExpand(${index})">
+          <div class="meeting-phrase-en">${phrase.english}</div>
+          <div class="meeting-phrase-jp">${phrase.japanese}</div>
+          ${phrase.context ? `<div class="meeting-phrase-context" id="meeting-context-${index}">${phrase.context}</div>` : ''}
+        </div>
+        ${phrase.context ? `<span class="meeting-phrase-toggle">▼</span>` : ''}
+      </div>
+    `).join('');
+  }
+
+  window.toggleMeetingPhraseMastery = async function(index) {
+    const phrases = practiceData.english.meetingPhrases || [];
+    if (index < 0 || index >= phrases.length) return;
+
+    phrases[index].mastered = !phrases[index].mastered;
+    phrases[index].masteredAt = phrases[index].mastered ? getTodayKey() : null;
+
+    await saveData();
+    renderMeetingPhrases();
+
+    if (phrases[index].mastered) {
+      showToast('✅ Mastered!', 'success');
+    }
+  };
+
+  window.toggleMeetingPhraseExpand = function(index) {
+    const item = document.querySelector(`.meeting-phrase-item[data-index="${index}"]`);
+    if (item) {
+      item.classList.toggle('expanded');
+    }
+  };
+
+  function startMeetingStudyMode() {
+    const phrases = practiceData.english.meetingPhrases || [];
+    const unmastered = phrases.filter(p => !p.mastered);
+
+    if (unmastered.length === 0) {
+      showToast('🎉 All phrases mastered!', 'success');
+      return;
+    }
+
+    meetingStudyPhrases = shuffleArray([...unmastered]);
+    meetingStudyIndex = 0;
+    isMeetingCardFlipped = false;
+
+    const container = document.getElementById('meeting-study-container');
+    if (container) {
+      container.style.display = 'block';
+      renderMeetingStudyCard();
+    }
+  }
+
+  function renderMeetingStudyCard() {
+    const container = document.getElementById('meeting-study-container');
+    if (!container) return;
+
+    if (meetingStudyIndex >= meetingStudyPhrases.length) {
+      // Study complete
+      container.innerHTML = `
+        <div class="study-header">
+          <span class="study-title">Meeting English - Complete!</span>
+          <button class="btn" onclick="exitMeetingStudyMode()">✕ Close</button>
+        </div>
+        <div class="study-result">
+          <div class="study-result-header">
+            <div class="study-result-score">🎉</div>
+            <div class="study-result-label">Practice Complete!</div>
+          </div>
+          <div style="text-align: center; margin-top: 20px;">
+            <p>Reviewed ${meetingStudyPhrases.length} phrases</p>
+            <button class="btn btn-primary" onclick="exitMeetingStudyMode()" style="margin-top: 20px;">Done</button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    const phrase = meetingStudyPhrases[meetingStudyIndex];
+    const progress = Math.round(((meetingStudyIndex) / meetingStudyPhrases.length) * 100);
+
+    container.innerHTML = `
+      <div class="study-header">
+        <span class="study-title">Meeting English (${meetingStudyIndex + 1}/${meetingStudyPhrases.length})</span>
+        <button class="btn" onclick="exitMeetingStudyMode()">✕ Close</button>
+      </div>
+      <div class="study-progress-bar">
+        <div class="study-progress-fill" style="width: ${progress}%"></div>
+      </div>
+      <div class="study-card-container">
+        <div class="study-card ${isMeetingCardFlipped ? 'flipped' : ''}" onclick="flipMeetingCard()">
+          <div class="study-card-text">
+            ${isMeetingCardFlipped ? phrase.english : phrase.japanese}
+          </div>
+          <div class="study-card-hint">
+            ${isMeetingCardFlipped ? 'Click for Japanese' : 'Click to reveal English'}
+          </div>
+        </div>
+        <div class="study-buttons" style="${isMeetingCardFlipped ? '' : 'visibility: hidden;'}">
+          <button class="study-btn ng" onclick="meetingStudyNext(false)">もう一度</button>
+          <button class="study-btn ok" onclick="meetingStudyNext(true)">OK ✓</button>
+        </div>
+      </div>
+    `;
+  }
+
+  window.flipMeetingCard = function() {
+    isMeetingCardFlipped = !isMeetingCardFlipped;
+    renderMeetingStudyCard();
+  };
+
+  window.meetingStudyNext = async function(mastered) {
+    const phrase = meetingStudyPhrases[meetingStudyIndex];
+
+    if (mastered) {
+      // Find and update the original phrase
+      const phrases = practiceData.english.meetingPhrases || [];
+      const originalIndex = phrases.findIndex(p => p.id === phrase.id);
+      if (originalIndex >= 0) {
+        phrases[originalIndex].mastered = true;
+        phrases[originalIndex].masteredAt = getTodayKey();
+      }
+      await saveData();
+    }
+
+    meetingStudyIndex++;
+    isMeetingCardFlipped = false;
+    renderMeetingStudyCard();
+  };
+
+  window.exitMeetingStudyMode = function() {
+    const container = document.getElementById('meeting-study-container');
+    if (container) {
+      container.style.display = 'none';
+    }
+    meetingStudyPhrases = [];
+    meetingStudyIndex = 0;
+    isMeetingCardFlipped = false;
+    renderMeetingPhrases();
   };
 
   // Render All
