@@ -2539,18 +2539,19 @@ as soon as possible"></textarea>
       const realIndex = phonemes.findIndex(ph => ph.id === p.id);
       const practicedWords = p.practicedWords || [];
       const wordCount = practicedWords.length;
-      const masteryClass = wordCount >= 10 ? 'mastery-3' : wordCount >= 5 ? 'mastery-2' : wordCount >= 1 ? 'mastery-1' : 'mastery-0';
-      const masteryLabels = ['未学習', '練習中', '定着中', '習得'];
-      const masteryLevel = wordCount >= 10 ? 3 : wordCount >= 5 ? 2 : wordCount >= 1 ? 1 : 0;
       const recentWords = practicedWords.slice(-3).reverse();
 
+      // Gradient color based on word count (0-10+)
+      const progress = Math.min(wordCount / 10, 1);
+      const bgColor = `hsl(${120 * progress}, ${40 + 20 * progress}%, ${95 - 10 * progress}%)`;
+
       return `
-        <div class="phoneme-card ${masteryClass} expanded" data-index="${realIndex}">
+        <div class="phoneme-card expanded" data-index="${realIndex}" style="background: ${bgColor};">
           <div class="phoneme-header" onclick="togglePhonemeExpand(${realIndex})">
             <div class="phoneme-symbol">${p.phoneme.replace(/\//g, '')}${p.important ? '<span class="important-mark">★</span>' : ''}</div>
             <div class="phoneme-info">
               <div class="phoneme-name">${p.name}</div>
-              <div class="phoneme-word-count">${wordCount}単語マスター</div>
+              <div class="phoneme-word-count">${wordCount}単語</div>
             </div>
             <div class="phoneme-expand-icon">▼</div>
           </div>
@@ -2580,7 +2581,6 @@ as soon as possible"></textarea>
             `}
           </div>
           <div class="phoneme-footer">
-            <span class="phoneme-mastery-badge ${masteryClass}">${masteryLabels[masteryLevel]}</span>
             ${recentWords.length > 0 ? `<span class="phoneme-recent">最近: ${recentWords.map(w => w.word).join(', ')}</span>` : ''}
             <button class="btn-icon" onclick="event.stopPropagation(); editPhoneme(${realIndex})" title="編集">✏️</button>
           </div>
