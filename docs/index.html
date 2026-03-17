@@ -885,6 +885,85 @@
       color: var(--primary);
     }
 
+    .dictation-saved-list {
+      margin-bottom: 16px;
+    }
+
+    .dictation-material-card {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .dictation-material-card:hover {
+      transform: translateX(4px);
+    }
+
+    .dictation-material-card .material-thumb {
+      width: 80px;
+      height: 45px;
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .dictation-material-card .material-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dictation-material-card .material-info {
+      flex: 1;
+    }
+
+    .dictation-material-card .material-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .dictation-material-card .material-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .dictation-material-card .material-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .dictation-add-new {
+      margin-bottom: 16px;
+    }
+
+    .dictation-add-new summary {
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    .dictation-add-form {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dictation-player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
     .phoneme-card {
       background: var(--bg-secondary);
       border-radius: 12px;
@@ -2464,52 +2543,52 @@
     <div class="english-section" id="dictation-section">
       <div class="section-header">
         <div class="section-title">👂 Dictation</div>
-        <button class="btn btn-primary btn-sm" id="add-dictation-btn">+ Add Material</button>
       </div>
       <p class="section-desc">YouTubeのインタビュー動画でディクテーション練習</p>
 
-      <!-- YouTube Dictation Practice -->
-      <div class="dictation-practice" id="dictation-practice">
-        <div class="dictation-input-row">
-          <input type="text" class="form-input" id="youtube-url-input" placeholder="YouTube URL (例: https://youtube.com/watch?v=...)">
-          <button class="btn btn-primary" id="load-video-btn">Load</button>
+      <!-- Saved Materials List -->
+      <div class="dictation-saved-list" id="dictation-saved-list"></div>
+
+      <!-- Add New Material (collapsible) -->
+      <details class="dictation-add-new" id="dictation-add-new">
+        <summary class="btn btn-sm">+ 新しい動画を追加</summary>
+        <div class="dictation-add-form">
+          <input type="text" class="form-input" id="new-video-title" placeholder="タイトル (例: Stranger Things Interview)">
+          <input type="text" class="form-input" id="youtube-url-input" placeholder="YouTube URL">
+          <p class="transcript-help">
+            <a href="https://downsub.com/" target="_blank">downsub.com</a> で字幕を取得してペースト
+          </p>
+          <textarea class="form-input" id="transcript-input" rows="4" placeholder="字幕テキストをここにペースト..."></textarea>
+          <button class="btn btn-primary" id="save-material-btn">保存</button>
+        </div>
+      </details>
+
+      <!-- Active Practice Area (hidden until material selected) -->
+      <div class="dictation-player" id="dictation-player" style="display:none;">
+        <div class="dictation-player-header">
+          <span id="current-material-title">-</span>
+          <button class="btn btn-sm" id="close-player-btn">✕ 閉じる</button>
+        </div>
+        <div id="youtube-player-container"></div>
+
+        <div class="dictation-controls">
+          <button class="btn btn-sm" id="prev-segment-btn">◀ 前</button>
+          <button class="btn btn-sm" id="replay-btn">🔁 再生</button>
+          <button class="btn btn-sm" id="next-segment-btn">次 ▶</button>
+          <span class="current-segment" id="current-segment">Segment: -</span>
         </div>
 
-        <div class="dictation-player" id="dictation-player" style="display:none;">
-          <div id="youtube-player-container"></div>
+        <div class="dictation-area">
+          <textarea class="form-input" id="dictation-input" rows="3" placeholder="聞こえた内容を入力..."></textarea>
+          <button class="btn btn-primary" id="check-answer-btn">Check Answer</button>
+        </div>
 
-          <div class="dictation-controls">
-            <button class="btn btn-sm" id="replay-btn">🔁 Replay</button>
-            <button class="btn btn-sm" id="slow-btn">🐢 0.75x</button>
-            <button class="btn btn-sm" id="normal-btn">1x</button>
-            <span class="current-segment" id="current-segment">Segment: -</span>
-          </div>
-
-          <div class="dictation-area">
-            <textarea class="form-input" id="dictation-input" rows="3" placeholder="聞こえた内容を入力..."></textarea>
-            <button class="btn btn-primary" id="check-answer-btn">Check Answer</button>
-          </div>
-
-          <div class="dictation-result" id="dictation-result" style="display:none;">
-            <div class="result-label">正解:</div>
-            <div class="result-answer" id="correct-answer"></div>
-            <div class="result-score" id="result-score"></div>
-          </div>
-
-          <div class="dictation-transcript-section">
-            <details>
-              <summary>📝 字幕データ (クリックで展開)</summary>
-              <p class="transcript-help">
-                <a href="https://downsub.com/" target="_blank">downsub.com</a> で字幕をダウンロードしてペースト
-              </p>
-              <textarea class="form-input" id="transcript-input" rows="5" placeholder="字幕テキストをここにペースト..."></textarea>
-              <button class="btn btn-sm" id="parse-transcript-btn">Parse & Start</button>
-            </details>
-          </div>
+        <div class="dictation-result" id="dictation-result" style="display:none;">
+          <div class="result-label">正解:</div>
+          <div class="result-answer" id="correct-answer"></div>
+          <div class="result-score" id="result-score"></div>
         </div>
       </div>
-
-      <div class="material-list" id="dictation-list"></div>
     </div>
 
     <!-- Piano Section -->

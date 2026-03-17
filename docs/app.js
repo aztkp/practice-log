@@ -1015,45 +1015,208 @@
 
   // ==================== DICTATION PRACTICE ====================
 
-  let dictationPlayer = null;
   let dictationSegments = [];
   let currentDictationIndex = 0;
+  let currentMaterialId = null;
 
   function initDictationPractice() {
-    const loadBtn = document.getElementById('load-video-btn');
-    const urlInput = document.getElementById('youtube-url-input');
-    const parseBtn = document.getElementById('parse-transcript-btn');
+    renderDictationMaterials();
+
+    const saveBtn = document.getElementById('save-material-btn');
     const checkBtn = document.getElementById('check-answer-btn');
     const replayBtn = document.getElementById('replay-btn');
-    const slowBtn = document.getElementById('slow-btn');
-    const normalBtn = document.getElementById('normal-btn');
+    const prevBtn = document.getElementById('prev-segment-btn');
+    const nextBtn = document.getElementById('next-segment-btn');
+    const closeBtn = document.getElementById('close-player-btn');
 
-    if (!loadBtn) return;
-
-    // Remove old listeners by cloning
-    const newLoadBtn = loadBtn.cloneNode(true);
-    loadBtn.parentNode.replaceChild(newLoadBtn, loadBtn);
-
-    newLoadBtn.addEventListener('click', () => {
-      const url = urlInput.value.trim();
-      if (url) loadYouTubeVideo(url);
-    });
-
-    urlInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const url = urlInput.value.trim();
-        if (url) loadYouTubeVideo(url);
-      }
-    });
-
-    parseBtn?.addEventListener('click', parseTranscript);
+    saveBtn?.addEventListener('click', saveDictationMaterial);
     checkBtn?.addEventListener('click', checkDictationAnswer);
     replayBtn?.addEventListener('click', replayCurrentSegment);
-    slowBtn?.addEventListener('click', () => setPlaybackRate(0.75));
-    normalBtn?.addEventListener('click', () => setPlaybackRate(1));
+    prevBtn?.addEventListener('click', () => navigateSegment(-1));
+    nextBtn?.addEventListener('click', () => navigateSegment(1));
+    closeBtn?.addEventListener('click', closeDictationPlayer);
+  }
+
+  function renderDictationMaterials() {
+    const container = document.getElementById('dictation-saved-list');
+    if (!container || !practiceData) return;
+
+    const materials = practiceData.english.dictationMaterials || [];
+
+    if (materials.length === 0) {
+      container.innerHTML = '<p class="empty">動画を追加して練習を始めよう</p>';
+      return;
+    }
+
+    container.innerHTML = materials.map((m, idx) => {
+      const videoId = extractVideoId(m.url);
+      const thumb = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '';
+      const practiceCount = m.practiceCount || 0;
+      const lastPracticed = m.lastPracticed ? new Date(m.lastPracticed).toLocaleDateString() : '-';
+
+      return `
+        <div class="dictation-material-card" onclick="loadDictationMaterial(${idx})">
+          <div class="material-thumb">
+            ${thumb ? `<img src="${thumb}" alt="">` : ''}
+          </div>
+          <div class="material-info">
+            <div class="material-title">${m.title || 'Untitled'}</div>
+            <div class="material-meta">${m.segments?.length || 0} segments • ${practiceCount}回練習 • ${lastPracticed}</div>
+          </div>
+          <div class="material-actions">
+            <button class="btn-icon" onclick="event.stopPropagation(); deleteDictationMaterial(${idx})" title="削除">🗑</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.loadDictationMaterial = function(index) {
+    const materials = practiceData.english.dictationMaterials || [];
+    const material = materials[index];
+    if (!material) return;
+
+    currentMaterialId = index;
+    dictationSegments = material.segments || [];
+    currentDictationIndex = 0;
+
+    const videoId = extractVideoId(material.url);
+    if (!videoId) {
+      showToast('Invalid video URL', 'error');
+      return;
+    }
+
+    const container = document.getElementById('youtube-player-container');
+    const playerSection = document.getElementById('dictation-player');
+    const titleEl = document.getElementById('current-material-title');
+
+    container.innerHTML = `<iframe
+      id="yt-iframe"
+      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>`;
+
+    titleEl.textContent = material.title || 'Untitled';
+    playerSection.style.display = 'block';
+    updateSegmentDisplay();
+
+    // Update practice count
+    material.practiceCount = (material.practiceCount || 0) + 1;
+    material.lastPracticed = new Date().toISOString();
+    saveData();
+  };
+
+  window.deleteDictationMaterial = async function(index) {
+    if (!confirm('この動画を削除しますか？')) return;
+
+    const materials = practiceData.english.dictationMaterials || [];
+    materials.splice(index, 1);
+    await saveData();
+    renderDictationMaterials();
+    showToast('削除しました');
+  };
+
+  async function saveDictationMaterial() {
+    const titleInput = document.getElementById('new-video-title');
+    const urlInput = document.getElementById('youtube-url-input');
+    const transcriptInput = document.getElementById('transcript-input');
+
+    const title = titleInput?.value.trim();
+    const url = urlInput?.value.trim();
+    const transcript = transcriptInput?.value.trim();
+
+    if (!url) {
+      showToast('URLを入力してください', 'error');
+      return;
+    }
+
+    const videoId = extractVideoId(url);
+    if (!videoId) {
+      showToast('無効なYouTube URL', 'error');
+      return;
+    }
+
+    if (!transcript) {
+      showToast('字幕を入力してください', 'error');
+      return;
+    }
+
+    // Parse transcript
+    const segments = parseTranscriptText(transcript);
+    if (segments.length === 0) {
+      showToast('字幕を解析できませんでした', 'error');
+      return;
+    }
+
+    // Initialize array if needed
+    if (!practiceData.english.dictationMaterials) {
+      practiceData.english.dictationMaterials = [];
+    }
+
+    // Add material
+    practiceData.english.dictationMaterials.push({
+      id: Date.now().toString(),
+      title: title || `Video ${practiceData.english.dictationMaterials.length + 1}`,
+      url: url,
+      segments: segments,
+      practiceCount: 0,
+      lastPracticed: null,
+      createdAt: new Date().toISOString()
+    });
+
+    await saveData();
+
+    // Clear inputs
+    if (titleInput) titleInput.value = '';
+    if (urlInput) urlInput.value = '';
+    if (transcriptInput) transcriptInput.value = '';
+
+    // Close details
+    document.getElementById('dictation-add-new')?.removeAttribute('open');
+
+    renderDictationMaterials();
+    showToast(`${segments.length}セグメントを保存しました`);
+  }
+
+  function parseTranscriptText(text) {
+    const lines = text.split(/[\n\r]+/).filter(line => line.trim());
+    const hasTimestamps = lines.some(line => /^\[?\d{1,2}:\d{2}\]?/.test(line.trim()));
+
+    let segments = [];
+
+    if (hasTimestamps) {
+      let currentText = '';
+      let currentTime = 0;
+
+      lines.forEach(line => {
+        const timeMatch = line.match(/^\[?(\d{1,2}):(\d{2})\]?\s*(.*)/);
+        if (timeMatch) {
+          if (currentText) {
+            segments.push({ start: currentTime, text: currentText.trim() });
+          }
+          currentTime = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+          currentText = timeMatch[3] || '';
+        } else {
+          currentText += ' ' + line;
+        }
+      });
+      if (currentText) {
+        segments.push({ start: currentTime, text: currentText.trim() });
+      }
+    } else {
+      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      segments = sentences.map((s, i) => ({
+        start: 0,
+        text: s.trim()
+      })).filter(s => s.text);
+    }
+
+    return segments;
   }
 
   function extractVideoId(url) {
+    if (!url) return null;
     const patterns = [
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/,
       /^([a-zA-Z0-9_-]{11})$/
@@ -1065,93 +1228,24 @@
     return null;
   }
 
-  function loadYouTubeVideo(url) {
-    const videoId = extractVideoId(url);
-    if (!videoId) {
-      showToast('Invalid YouTube URL', 'error');
-      return;
-    }
-
-    const container = document.getElementById('youtube-player-container');
-    const playerSection = document.getElementById('dictation-player');
-
-    container.innerHTML = `<iframe
-      id="yt-iframe"
-      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>`;
-
-    playerSection.style.display = 'block';
-    showToast('Video loaded! Paste transcript to start practice.');
-  }
-
-  function parseTranscript() {
-    const transcriptInput = document.getElementById('transcript-input');
-    const text = transcriptInput.value.trim();
-
-    if (!text) {
-      showToast('Please paste transcript text', 'error');
-      return;
-    }
-
-    // Parse transcript - split by sentences or lines
-    const lines = text.split(/[\n\r]+/).filter(line => line.trim());
-
-    // Try to detect timestamp format (e.g., "0:00" or "[00:00]")
-    const hasTimestamps = lines.some(line => /^\[?\d{1,2}:\d{2}\]?/.test(line.trim()));
-
-    if (hasTimestamps) {
-      // Parse with timestamps
-      dictationSegments = [];
-      let currentText = '';
-      let currentTime = 0;
-
-      lines.forEach(line => {
-        const timeMatch = line.match(/^\[?(\d{1,2}):(\d{2})\]?\s*(.*)/);
-        if (timeMatch) {
-          if (currentText) {
-            dictationSegments.push({ start: currentTime, text: currentText.trim() });
-          }
-          currentTime = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-          currentText = timeMatch[3] || '';
-        } else {
-          currentText += ' ' + line;
-        }
-      });
-      if (currentText) {
-        dictationSegments.push({ start: currentTime, text: currentText.trim() });
-      }
-    } else {
-      // No timestamps - split into sentences
-      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-      dictationSegments = sentences.map((s, i) => ({
-        start: 0,
-        text: s.trim()
-      }));
-    }
-
-    if (dictationSegments.length === 0) {
-      showToast('Could not parse transcript', 'error');
-      return;
-    }
-
-    currentDictationIndex = 0;
-    updateSegmentDisplay();
-    showToast(`Loaded ${dictationSegments.length} segments. Start practicing!`);
-  }
-
   function updateSegmentDisplay() {
     const segmentLabel = document.getElementById('current-segment');
-    if (segmentLabel) {
-      segmentLabel.textContent = `Segment: ${currentDictationIndex + 1}/${dictationSegments.length}`;
+    if (segmentLabel && dictationSegments.length > 0) {
+      segmentLabel.textContent = `${currentDictationIndex + 1} / ${dictationSegments.length}`;
     }
 
-    // Clear input and result
     const input = document.getElementById('dictation-input');
     const result = document.getElementById('dictation-result');
     if (input) input.value = '';
     if (result) result.style.display = 'none';
+  }
+
+  function navigateSegment(direction) {
+    const newIndex = currentDictationIndex + direction;
+    if (newIndex >= 0 && newIndex < dictationSegments.length) {
+      currentDictationIndex = newIndex;
+      updateSegmentDisplay();
+    }
   }
 
   function checkDictationAnswer() {
@@ -1167,31 +1261,22 @@
 
     const userAnswer = input.value.trim().toLowerCase();
     const correctAnswer = dictationSegments[currentDictationIndex].text;
-    const correctLower = correctAnswer.toLowerCase().replace(/[^\w\s]/g, '');
+    const correctLower = correctAnswer.toLowerCase().replace(/[^\w\s']/g, '');
 
-    // Simple word-based scoring
     const userWords = userAnswer.split(/\s+/).filter(w => w);
     const correctWords = correctLower.split(/\s+/).filter(w => w);
 
     let matches = 0;
     userWords.forEach(word => {
-      if (correctWords.includes(word.replace(/[^\w]/g, ''))) matches++;
+      if (correctWords.includes(word.replace(/[^\w']/g, ''))) matches++;
     });
 
     const score = correctWords.length > 0 ? Math.round((matches / correctWords.length) * 100) : 0;
 
     correctDiv.textContent = correctAnswer;
-    scoreDiv.textContent = `Score: ${score}% (${matches}/${correctWords.length} words)`;
+    scoreDiv.textContent = `${score}% (${matches}/${correctWords.length})`;
     scoreDiv.style.color = score >= 80 ? '#4ade80' : score >= 50 ? '#fbbf24' : '#ef4444';
     resultDiv.style.display = 'block';
-
-    // Auto advance after checking
-    if (currentDictationIndex < dictationSegments.length - 1) {
-      setTimeout(() => {
-        currentDictationIndex++;
-        updateSegmentDisplay();
-      }, 2000);
-    }
   }
 
   function replayCurrentSegment() {
@@ -1199,18 +1284,19 @@
     if (!iframe || !dictationSegments.length) return;
 
     const segment = dictationSegments[currentDictationIndex];
-    if (segment && segment.start > 0) {
-      iframe.src = iframe.src.split('?')[0] + `?start=${segment.start}&enablejsapi=1&autoplay=1`;
+    const videoId = iframe.src.match(/embed\/([^?]+)/)?.[1];
+    if (videoId && segment) {
+      const start = segment.start > 0 ? segment.start : 0;
+      iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&enablejsapi=1`;
     }
   }
 
-  function setPlaybackRate(rate) {
-    const iframe = document.getElementById('yt-iframe');
-    if (iframe && iframe.contentWindow) {
-      // Note: This requires YouTube IFrame API to be fully loaded
-      // For now, show a toast with instructions
-      showToast(`Use YouTube player settings for ${rate}x speed`);
-    }
+  function closeDictationPlayer() {
+    document.getElementById('dictation-player').style.display = 'none';
+    document.getElementById('youtube-player-container').innerHTML = '';
+    currentMaterialId = null;
+    dictationSegments = [];
+    currentDictationIndex = 0;
   }
 
   // Initialize English subtabs
