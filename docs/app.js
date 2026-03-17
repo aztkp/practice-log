@@ -1009,6 +1009,207 @@
     } else if (subtab === 'dictation') {
       dictationSection?.classList.add('show');
       renderMaterials('dictation');
+      initDictationPractice();
+    }
+  }
+
+  // ==================== DICTATION PRACTICE ====================
+
+  let dictationPlayer = null;
+  let dictationSegments = [];
+  let currentDictationIndex = 0;
+
+  function initDictationPractice() {
+    const loadBtn = document.getElementById('load-video-btn');
+    const urlInput = document.getElementById('youtube-url-input');
+    const parseBtn = document.getElementById('parse-transcript-btn');
+    const checkBtn = document.getElementById('check-answer-btn');
+    const replayBtn = document.getElementById('replay-btn');
+    const slowBtn = document.getElementById('slow-btn');
+    const normalBtn = document.getElementById('normal-btn');
+
+    if (!loadBtn) return;
+
+    // Remove old listeners by cloning
+    const newLoadBtn = loadBtn.cloneNode(true);
+    loadBtn.parentNode.replaceChild(newLoadBtn, loadBtn);
+
+    newLoadBtn.addEventListener('click', () => {
+      const url = urlInput.value.trim();
+      if (url) loadYouTubeVideo(url);
+    });
+
+    urlInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const url = urlInput.value.trim();
+        if (url) loadYouTubeVideo(url);
+      }
+    });
+
+    parseBtn?.addEventListener('click', parseTranscript);
+    checkBtn?.addEventListener('click', checkDictationAnswer);
+    replayBtn?.addEventListener('click', replayCurrentSegment);
+    slowBtn?.addEventListener('click', () => setPlaybackRate(0.75));
+    normalBtn?.addEventListener('click', () => setPlaybackRate(1));
+  }
+
+  function extractVideoId(url) {
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/,
+      /^([a-zA-Z0-9_-]{11})$/
+    ];
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) return match[1];
+    }
+    return null;
+  }
+
+  function loadYouTubeVideo(url) {
+    const videoId = extractVideoId(url);
+    if (!videoId) {
+      showToast('Invalid YouTube URL', 'error');
+      return;
+    }
+
+    const container = document.getElementById('youtube-player-container');
+    const playerSection = document.getElementById('dictation-player');
+
+    container.innerHTML = `<iframe
+      id="yt-iframe"
+      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>`;
+
+    playerSection.style.display = 'block';
+    showToast('Video loaded! Paste transcript to start practice.');
+  }
+
+  function parseTranscript() {
+    const transcriptInput = document.getElementById('transcript-input');
+    const text = transcriptInput.value.trim();
+
+    if (!text) {
+      showToast('Please paste transcript text', 'error');
+      return;
+    }
+
+    // Parse transcript - split by sentences or lines
+    const lines = text.split(/[\n\r]+/).filter(line => line.trim());
+
+    // Try to detect timestamp format (e.g., "0:00" or "[00:00]")
+    const hasTimestamps = lines.some(line => /^\[?\d{1,2}:\d{2}\]?/.test(line.trim()));
+
+    if (hasTimestamps) {
+      // Parse with timestamps
+      dictationSegments = [];
+      let currentText = '';
+      let currentTime = 0;
+
+      lines.forEach(line => {
+        const timeMatch = line.match(/^\[?(\d{1,2}):(\d{2})\]?\s*(.*)/);
+        if (timeMatch) {
+          if (currentText) {
+            dictationSegments.push({ start: currentTime, text: currentText.trim() });
+          }
+          currentTime = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+          currentText = timeMatch[3] || '';
+        } else {
+          currentText += ' ' + line;
+        }
+      });
+      if (currentText) {
+        dictationSegments.push({ start: currentTime, text: currentText.trim() });
+      }
+    } else {
+      // No timestamps - split into sentences
+      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      dictationSegments = sentences.map((s, i) => ({
+        start: 0,
+        text: s.trim()
+      }));
+    }
+
+    if (dictationSegments.length === 0) {
+      showToast('Could not parse transcript', 'error');
+      return;
+    }
+
+    currentDictationIndex = 0;
+    updateSegmentDisplay();
+    showToast(`Loaded ${dictationSegments.length} segments. Start practicing!`);
+  }
+
+  function updateSegmentDisplay() {
+    const segmentLabel = document.getElementById('current-segment');
+    if (segmentLabel) {
+      segmentLabel.textContent = `Segment: ${currentDictationIndex + 1}/${dictationSegments.length}`;
+    }
+
+    // Clear input and result
+    const input = document.getElementById('dictation-input');
+    const result = document.getElementById('dictation-result');
+    if (input) input.value = '';
+    if (result) result.style.display = 'none';
+  }
+
+  function checkDictationAnswer() {
+    const input = document.getElementById('dictation-input');
+    const resultDiv = document.getElementById('dictation-result');
+    const correctDiv = document.getElementById('correct-answer');
+    const scoreDiv = document.getElementById('result-score');
+
+    if (!dictationSegments.length || currentDictationIndex >= dictationSegments.length) {
+      showToast('No segment to check', 'error');
+      return;
+    }
+
+    const userAnswer = input.value.trim().toLowerCase();
+    const correctAnswer = dictationSegments[currentDictationIndex].text;
+    const correctLower = correctAnswer.toLowerCase().replace(/[^\w\s]/g, '');
+
+    // Simple word-based scoring
+    const userWords = userAnswer.split(/\s+/).filter(w => w);
+    const correctWords = correctLower.split(/\s+/).filter(w => w);
+
+    let matches = 0;
+    userWords.forEach(word => {
+      if (correctWords.includes(word.replace(/[^\w]/g, ''))) matches++;
+    });
+
+    const score = correctWords.length > 0 ? Math.round((matches / correctWords.length) * 100) : 0;
+
+    correctDiv.textContent = correctAnswer;
+    scoreDiv.textContent = `Score: ${score}% (${matches}/${correctWords.length} words)`;
+    scoreDiv.style.color = score >= 80 ? '#4ade80' : score >= 50 ? '#fbbf24' : '#ef4444';
+    resultDiv.style.display = 'block';
+
+    // Auto advance after checking
+    if (currentDictationIndex < dictationSegments.length - 1) {
+      setTimeout(() => {
+        currentDictationIndex++;
+        updateSegmentDisplay();
+      }, 2000);
+    }
+  }
+
+  function replayCurrentSegment() {
+    const iframe = document.getElementById('yt-iframe');
+    if (!iframe || !dictationSegments.length) return;
+
+    const segment = dictationSegments[currentDictationIndex];
+    if (segment && segment.start > 0) {
+      iframe.src = iframe.src.split('?')[0] + `?start=${segment.start}&enablejsapi=1&autoplay=1`;
+    }
+  }
+
+  function setPlaybackRate(rate) {
+    const iframe = document.getElementById('yt-iframe');
+    if (iframe && iframe.contentWindow) {
+      // Note: This requires YouTube IFrame API to be fully loaded
+      // For now, show a toast with instructions
+      showToast(`Use YouTube player settings for ${rate}x speed`);
     }
   }
 

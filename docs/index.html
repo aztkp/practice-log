@@ -782,6 +782,109 @@
       gap: 12px;
     }
 
+    /* Dictation Practice */
+    .dictation-practice {
+      margin-bottom: 20px;
+    }
+
+    .dictation-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .dictation-input-row input {
+      flex: 1;
+    }
+
+    .dictation-player {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    #youtube-player-container {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    #youtube-player-container iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dictation-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .current-segment {
+      margin-left: auto;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .dictation-area {
+      margin-bottom: 12px;
+    }
+
+    .dictation-area textarea {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .dictation-result {
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .result-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .result-answer {
+      font-size: 15px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .result-score {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .dictation-transcript-section {
+      margin-top: 12px;
+    }
+
+    .dictation-transcript-section summary {
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .transcript-help {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 8px 0;
+    }
+
+    .transcript-help a {
+      color: var(--primary);
+    }
+
     .phoneme-card {
       background: var(--bg-secondary);
       border-radius: 12px;
@@ -2361,9 +2464,51 @@
     <div class="english-section" id="dictation-section">
       <div class="section-header">
         <div class="section-title">👂 Dictation</div>
-        <button class="btn btn-primary btn-sm" id="add-dictation-btn">+ Add</button>
+        <button class="btn btn-primary btn-sm" id="add-dictation-btn">+ Add Material</button>
       </div>
-      <p class="section-desc">Track your dictation practice with podcasts, videos, etc.</p>
+      <p class="section-desc">YouTubeのインタビュー動画でディクテーション練習</p>
+
+      <!-- YouTube Dictation Practice -->
+      <div class="dictation-practice" id="dictation-practice">
+        <div class="dictation-input-row">
+          <input type="text" class="form-input" id="youtube-url-input" placeholder="YouTube URL (例: https://youtube.com/watch?v=...)">
+          <button class="btn btn-primary" id="load-video-btn">Load</button>
+        </div>
+
+        <div class="dictation-player" id="dictation-player" style="display:none;">
+          <div id="youtube-player-container"></div>
+
+          <div class="dictation-controls">
+            <button class="btn btn-sm" id="replay-btn">🔁 Replay</button>
+            <button class="btn btn-sm" id="slow-btn">🐢 0.75x</button>
+            <button class="btn btn-sm" id="normal-btn">1x</button>
+            <span class="current-segment" id="current-segment">Segment: -</span>
+          </div>
+
+          <div class="dictation-area">
+            <textarea class="form-input" id="dictation-input" rows="3" placeholder="聞こえた内容を入力..."></textarea>
+            <button class="btn btn-primary" id="check-answer-btn">Check Answer</button>
+          </div>
+
+          <div class="dictation-result" id="dictation-result" style="display:none;">
+            <div class="result-label">正解:</div>
+            <div class="result-answer" id="correct-answer"></div>
+            <div class="result-score" id="result-score"></div>
+          </div>
+
+          <div class="dictation-transcript-section">
+            <details>
+              <summary>📝 字幕データ (クリックで展開)</summary>
+              <p class="transcript-help">
+                <a href="https://downsub.com/" target="_blank">downsub.com</a> で字幕をダウンロードしてペースト
+              </p>
+              <textarea class="form-input" id="transcript-input" rows="5" placeholder="字幕テキストをここにペースト..."></textarea>
+              <button class="btn btn-sm" id="parse-transcript-btn">Parse & Start</button>
+            </details>
+          </div>
+        </div>
+      </div>
+
       <div class="material-list" id="dictation-list"></div>
     </div>
 
