@@ -62,7 +62,12 @@
   }
 
   function b64encode(str) {
-    return btoa(String.fromCharCode(...new TextEncoder().encode(str)));
+    const bytes = new TextEncoder().encode(str);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
   }
 
   function showToast(msg, type = 'success') {
@@ -196,41 +201,27 @@
     }
   }
 
-  async function saveData() {
+  async function saveData(retryCount = 0) {
     const token = getToken();
-    if (!token || !practiceData) return false;
+    if (!token || !practiceData) {
+      console.error('Save failed: no token or practiceData');
+      return false;
+    }
+
+    const MAX_RETRIES = 3;
 
     try {
-      if (!dataSha) {
-        const latest = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
-          headers: { 'Authorization': `token ${token}` }
-        });
-        if (latest.ok) {
-          const latestData = await latest.json();
-          dataSha = latestData.sha;
-        }
-      }
-
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
-        method: 'PUT',
-        headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: 'Update practice log',
-          content: b64encode(JSON.stringify(practiceData, null, 2)),
-          sha: dataSha
-        })
+      // Always get fresh SHA before saving to avoid conflicts
+      const latestRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
+        headers: { 'Authorization': `token ${token}` }
       });
+      if (latestRes.ok) {
+        const latestData = await latestRes.json();
+        const remoteSha = latestData.sha;
 
-      if (res.status === 409) {
-        // Conflict: merge remote changes with local changes
-        const latest = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
-          headers: { 'Authorization': `token ${token}` }
-        });
-        if (latest.ok) {
-          const latestData = await latest.json();
-          dataSha = latestData.sha;
-
-          // Decode and parse remote data
+        // If SHA changed, we need to merge
+        if (dataSha && remoteSha !== dataSha) {
+          console.log('SHA mismatch detected, merging data...');
           const remoteData = JSON.parse(atob(latestData.content));
 
           // Merge: keep remote phrases/phonemes, but update with local study progress
@@ -266,6 +257,14 @@
             remoteStudyRecords.forEach(r => { studyRecordMap[r.id] = r; });
             localStudyRecords.forEach(r => { studyRecordMap[r.id] = r; }); // local overwrites remote
             remoteData.english.studyRecords = Object.values(studyRecordMap);
+
+            // Merge dictationMaterials
+            const remoteDictation = remoteData.english.dictationMaterials || [];
+            const localDictation = practiceData.english.dictationMaterials || [];
+            const dictationMap = {};
+            remoteDictation.forEach(d => { dictationMap[d.id] = d; });
+            localDictation.forEach(d => { dictationMap[d.id] = d; });
+            remoteData.english.dictationMaterials = Object.values(dictationMap);
           }
 
           // Merge records
@@ -275,29 +274,43 @@
 
           // Update local practiceData with merged data
           practiceData = remoteData;
+        }
 
-          const retry = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
-            method: 'PUT',
-            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              message: 'Update practice log',
-              content: b64encode(JSON.stringify(practiceData, null, 2)),
-              sha: dataSha
-            })
-          });
-          if (retry.ok) {
-            const data = await retry.json();
-            dataSha = data.content.sha;
-            showToast('Saved (merged)');
-            return true;
-          }
+        dataSha = remoteSha;
+      }
+
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/data.json`, {
+        method: 'PUT',
+        headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: 'Update practice log',
+          content: b64encode(JSON.stringify(practiceData, null, 2)),
+          sha: dataSha
+        })
+      });
+
+      if (res.status === 409) {
+        // Conflict: retry with fresh data
+        console.log(`409 conflict, retry ${retryCount + 1}/${MAX_RETRIES}`);
+        if (retryCount < MAX_RETRIES) {
+          dataSha = null; // Force refresh SHA on next attempt
+          return saveData(retryCount + 1);
+        } else {
+          console.error('Max retries reached for 409 conflict');
+          showToast('Failed to save (conflict)', 'error');
+          return false;
         }
       }
 
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Save failed:', res.status, errorText);
+        throw new Error(`Failed: ${res.status}`);
+      }
 
       const data = await res.json();
       dataSha = data.content.sha;
+      console.log('Save successful, new SHA:', dataSha);
       showToast('Saved');
       return true;
     } catch (e) {
