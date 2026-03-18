@@ -1377,12 +1377,34 @@
     renderPhrasesList(filteredPhrases);
   }
 
-  // Calculate streak days
+  // Calculate streak days (includes all English practice: Phrases, Pronunciation, etc.)
   function calculateStreak() {
-    const records = practiceData.english.studyRecords || [];
-    if (records.length === 0) return 0;
+    const practiceDates = new Set();
 
-    const dates = [...new Set(records.map(r => r.date))].sort().reverse();
+    // Add studyRecords dates (Phrases)
+    const studyRecords = practiceData.english.studyRecords || [];
+    studyRecords.forEach(r => {
+      if (r.date) practiceDates.add(r.date);
+    });
+
+    // Add pronunciation practice dates
+    const pronunciation = practiceData.english.pronunciation || [];
+    pronunciation.forEach(p => {
+      if (p.lastPracticed) practiceDates.add(p.lastPracticed);
+      (p.practicedWords || []).forEach(w => {
+        if (w.date) practiceDates.add(w.date);
+      });
+    });
+
+    // Add dictation practice dates
+    const dictationMaterials = practiceData.english.dictationMaterials || [];
+    dictationMaterials.forEach(m => {
+      if (m.lastPracticed) practiceDates.add(m.lastPracticed);
+    });
+
+    if (practiceDates.size === 0) return 0;
+
+    const dates = [...practiceDates].sort().reverse();
     let streak = 0;
     const today = getTodayKey();
     const yesterday = getDateKey(new Date(Date.now() - 86400000));
