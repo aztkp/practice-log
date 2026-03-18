@@ -449,10 +449,57 @@
         if (count > 0) {
           checksByDate[record.date] = (checksByDate[record.date] || 0) + count;
           if (!categoryByDate[record.date]) categoryByDate[record.date] = [];
-          categoryByDate[record.date].push(cat.id);
+          if (!categoryByDate[record.date].includes(cat.id)) {
+            categoryByDate[record.date].push(cat.id);
+          }
         }
       });
     });
+
+    // Add English practice data (Phrases, Pronunciation, Dictation)
+    if (practiceData.english) {
+      // StudyRecords (Phrases)
+      (practiceData.english.studyRecords || []).forEach(r => {
+        if (r.date) {
+          checksByDate[r.date] = (checksByDate[r.date] || 0) + (r.phraseCount || 1);
+          if (!categoryByDate[r.date]) categoryByDate[r.date] = [];
+          if (!categoryByDate[r.date].includes('english')) {
+            categoryByDate[r.date].push('english');
+          }
+        }
+      });
+
+      // Pronunciation
+      (practiceData.english.pronunciation || []).forEach(p => {
+        if (p.lastPracticed) {
+          checksByDate[p.lastPracticed] = (checksByDate[p.lastPracticed] || 0) + 1;
+          if (!categoryByDate[p.lastPracticed]) categoryByDate[p.lastPracticed] = [];
+          if (!categoryByDate[p.lastPracticed].includes('english')) {
+            categoryByDate[p.lastPracticed].push('english');
+          }
+        }
+        (p.practicedWords || []).forEach(w => {
+          if (w.date) {
+            checksByDate[w.date] = (checksByDate[w.date] || 0) + 1;
+            if (!categoryByDate[w.date]) categoryByDate[w.date] = [];
+            if (!categoryByDate[w.date].includes('english')) {
+              categoryByDate[w.date].push('english');
+            }
+          }
+        });
+      });
+
+      // Dictation
+      (practiceData.english.dictationMaterials || []).forEach(m => {
+        if (m.lastPracticed) {
+          checksByDate[m.lastPracticed] = (checksByDate[m.lastPracticed] || 0) + 1;
+          if (!categoryByDate[m.lastPracticed]) categoryByDate[m.lastPracticed] = [];
+          if (!categoryByDate[m.lastPracticed].includes('english')) {
+            categoryByDate[m.lastPracticed].push('english');
+          }
+        }
+      });
+    }
 
     const firstDay = new Date(currentYear, currentMonth, 1);
     const lastDay = new Date(currentYear, currentMonth + 1, 0);
