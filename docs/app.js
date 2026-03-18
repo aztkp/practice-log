@@ -2516,6 +2516,7 @@ as soon as possible"></textarea>
 
   async function submitStudyAnswer(result) {
     const phrase = studyPhrases[studyIndex];
+    if (!phrase) return; // Already finished or invalid index
 
     // Record result
     studyResults.push({
