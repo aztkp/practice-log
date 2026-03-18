@@ -258,6 +258,14 @@
               }
               return rp;
             });
+
+            // Merge studyRecords (combine both, avoid duplicates by id)
+            const remoteStudyRecords = remoteData.english.studyRecords || [];
+            const localStudyRecords = practiceData.english.studyRecords || [];
+            const studyRecordMap = {};
+            remoteStudyRecords.forEach(r => { studyRecordMap[r.id] = r; });
+            localStudyRecords.forEach(r => { studyRecordMap[r.id] = r; }); // local overwrites remote
+            remoteData.english.studyRecords = Object.values(studyRecordMap);
           }
 
           // Merge records
