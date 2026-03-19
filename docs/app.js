@@ -90,8 +90,26 @@
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   }
 
+  // Day boundary: 5 AM - practice before this counts as previous day
+  const DAY_BOUNDARY_HOUR = 5;
+
+  function getEffectiveDate(date = new Date()) {
+    const d = new Date(date);
+    // If current hour is before boundary, treat as previous day
+    if (d.getHours() < DAY_BOUNDARY_HOUR) {
+      d.setDate(d.getDate() - 1);
+    }
+    return d;
+  }
+
   function getTodayKey() {
-    return getDateKey(new Date());
+    return getDateKey(getEffectiveDate(new Date()));
+  }
+
+  function getYesterdayKey() {
+    const effective = getEffectiveDate(new Date());
+    effective.setDate(effective.getDate() - 1);
+    return getDateKey(effective);
   }
 
   // Audio playback for phrases
@@ -584,7 +602,7 @@
 
     // Count consecutive days backwards
     while (true) {
-      const dateKey = checkDate.toISOString().split('T')[0];
+      const dateKey = getDateKey(checkDate);
       if (practiceDates.has(dateKey)) {
         currentStreak++;
         checkDate.setDate(checkDate.getDate() - 1);
@@ -1178,7 +1196,7 @@
 
     // Update practice count
     material.practiceCount = (material.practiceCount || 0) + 1;
-    material.lastPracticed = new Date().toISOString();
+    material.lastPracticed = getTodayKey();
     saveData();
   };
 
@@ -1459,7 +1477,11 @@
     // Add dictation practice dates
     const dictationMaterials = practiceData.english.dictationMaterials || [];
     dictationMaterials.forEach(m => {
-      if (m.lastPracticed) practiceDates.add(m.lastPracticed);
+      if (m.lastPracticed) {
+        // Handle both ISO format (legacy) and YYYY-MM-DD format
+        const dateStr = m.lastPracticed.length > 10 ? m.lastPracticed.substring(0, 10) : m.lastPracticed;
+        practiceDates.add(dateStr);
+      }
     });
 
     if (practiceDates.size === 0) return 0;
@@ -1467,12 +1489,12 @@
     const dates = [...practiceDates].sort().reverse();
     let streak = 0;
     const today = getTodayKey();
-    const yesterday = getDateKey(new Date(Date.now() - 86400000));
+    const yesterday = getYesterdayKey();
 
     // Check if studied today or yesterday
     if (dates[0] !== today && dates[0] !== yesterday) return 0;
 
-    let checkDate = dates[0] === today ? new Date() : new Date(Date.now() - 86400000);
+    let checkDate = dates[0] === today ? getEffectiveDate(new Date()) : getEffectiveDate(new Date(Date.now() - 86400000));
 
     for (const dateStr of dates) {
       const expectedDate = getDateKey(checkDate);
