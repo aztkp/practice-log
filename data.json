@@ -3246,6 +3246,406 @@
         "studyCount": 3,
         "createdAt": "2026-03-14",
         "lastStudied": "2026-03-15"
+      },
+      {
+        "id": "1742460000001u20a",
+        "japanese": "彼らは売上目標を問題なく達成しそうです",
+        "english": "They are going to reach their sales target with no problem.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000002u20b",
+        "japanese": "新しいカフェが駅の近くに開店する予定です",
+        "english": "A new cafe is going to open near the station.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000003u20c",
+        "japanese": "明日の午後は雨が降るでしょう",
+        "english": "It will rain tomorrow afternoon.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000004u20d",
+        "japanese": "ランチルームは1週間閉まることになります",
+        "english": "The lunch room will be closed for one week.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000005u20e",
+        "japanese": "ワールドカップは明日始まります",
+        "english": "The World Cup starts tomorrow.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000006u20f",
+        "japanese": "台風が来ているので、気をつけてください",
+        "english": "A typhoon is coming, so please take care.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000007u20g",
+        "japanese": "あと15分でオフィスが閉まります",
+        "english": "The office is closing in fifteen minutes.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000008u20h",
+        "japanese": "3日後に家族揃ってトロントへ出発します",
+        "english": "My whole family is leaving for Toronto in three days.",
+        "textbookId": "1772684232735",
+        "chapter": "20",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000009u21a",
+        "japanese": "私たちは、今週末までにその仕事を終えることができます",
+        "english": "We can finish the job by the end of the week.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000010u21b",
+        "japanese": "スズキさんは今日会議に間に合いません",
+        "english": "Ms. Suzuki can't make the meeting today.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000011u21c",
+        "japanese": "私たちはこの在庫不足を予測することができませんでした",
+        "english": "We couldn't predict this stock shortage.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000012u21d",
+        "japanese": "お越しくださった方は弊社の最新カタログをご覧いただくことができます",
+        "english": "Visitors are able to see our latest catalog.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000013u21e",
+        "japanese": "今日はあまり進歩がありませんでした",
+        "english": "We were not able to make much progress today.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000014u21f",
+        "japanese": "これは深刻なサーバーエラーを引き起こす可能性があります",
+        "english": "This can cause a serious server error.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000015u21g",
+        "japanese": "このようなエラーはもうこれ以上起こるはずがありません",
+        "english": "This kind of error can't happen anymore.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000016u21h",
+        "japanese": "彼女はアンケートの結果を知っているかもしれません",
+        "english": "She may know the results of the questionnaire.",
+        "textbookId": "1772684232735",
+        "chapter": "21",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000017u22a",
+        "japanese": "終わったら教えてもらえますか",
+        "english": "Can you let me know when you finish?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000018u22b",
+        "japanese": "このファイルの使い方を教えてもらえますか",
+        "english": "Can you show me how to use this file?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000019u22c",
+        "japanese": "少しの間、手伝ってもらえますか",
+        "english": "Will you help me for a minute?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000020u22d",
+        "japanese": "イベントのあと、我々と会っていただけますか",
+        "english": "Could you meet us after the event?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000021u22e",
+        "japanese": "私が外出している間、電話に出ていただけますか",
+        "english": "Would you answer the phone while I'm out?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000022u22f",
+        "japanese": "その資料のコピーを貸してもらえますか",
+        "english": "Can I borrow a copy of the document?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000023u22g",
+        "japanese": "締め切りを延長してもよろしいですか",
+        "english": "Could we extend the deadline?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000024u22h",
+        "japanese": "この仕事について、ご意見を伺ってもよろしいですか",
+        "english": "May I ask your opinion on this task?",
+        "textbookId": "1772684232735",
+        "chapter": "22",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000025u23a",
+        "japanese": "ハリソンさんは遅れて参ります",
+        "english": "Mr. Harrison will be late.",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000026u23b",
+        "japanese": "キムラさんは3時以降に折り返しお電話をすることができるでしょう",
+        "english": "Mr. Kimura will be able to call you back after three o'clock.",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000027u23c",
+        "japanese": "カナイさんは本日中に折り返しお電話をすることができないでしょう",
+        "english": "Ms. Kanai won't be able to call you back by the end of today.",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000028u23d",
+        "japanese": "彼女はすぐに戻ってくるかもしれません",
+        "english": "She may be back soon.",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000029u23e",
+        "japanese": "彼と連絡がつくのに数分かかるかもしれません",
+        "english": "It may take a few minutes to reach him.",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000030u23f",
+        "japanese": "もう一度おっしゃっていただけますか",
+        "english": "Could you repeat that, please?",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000031u23g",
+        "japanese": "ご用件をお伺いしてもよろしいですか",
+        "english": "May I ask what this is concerning?",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000032u23h",
+        "japanese": "お名前をいただいてもよろしいですか",
+        "english": "May I have your name, please?",
+        "textbookId": "1772684232735",
+        "chapter": "23",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000033u24a",
+        "japanese": "あなたは9時までにここに来る必要があります",
+        "english": "You have to be here before nine.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000034u24b",
+        "japanese": "あなたは5月の講演会にぜひ出席すべきです",
+        "english": "You must attend the lecture meeting in May.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000035u24c",
+        "japanese": "この欄を埋める必要はありません",
+        "english": "You don't have to fill in this column.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000036u24d",
+        "japanese": "この情報はウェブサイトには載せてはいけません",
+        "english": "You mustn't put this information on our website.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000037u24e",
+        "japanese": "31日より前に終わらせるように努力したほうがいいですよ",
+        "english": "You should try to finish before the thirty-first.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000038u24f",
+        "japanese": "締め切りのことを心配すべきではありません",
+        "english": "You shouldn't worry about the deadline.",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000039u24g",
+        "japanese": "面会の約束をお取りしましょうか",
+        "english": "Shall I make an appointment?",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
+      },
+      {
+        "id": "1742460000040u24h",
+        "japanese": "次の議題に移りましょう",
+        "english": "Shall we move to our next topic?",
+        "textbookId": "1772684232735",
+        "chapter": "24",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-20"
       }
     ],
     "vocabulary": [],
