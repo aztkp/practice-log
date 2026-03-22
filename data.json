@@ -3686,6 +3686,406 @@
         "studyCount": 1,
         "createdAt": "2026-03-20",
         "lastStudied": "2026-03-21"
+      },
+      {
+        "id": "1742460000001u15a",
+        "japanese": "私は明日の出張の手配をしているところです",
+        "english": "I'm making arrangements for tomorrow's trip.",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000002u15b",
+        "japanese": "彼女は今、プレゼンの準備をしているところです",
+        "english": "She's getting ready to give the presentation now.",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000003u15c",
+        "japanese": "あなたはすでにそれに取り掛かっていますか",
+        "english": "Are you already working on it?",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000004u15d",
+        "japanese": "彼はまだ費用を計算しているのですか",
+        "english": "Is he still calculating the cost?",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000005u15e",
+        "japanese": "私はその時、書類を確認していました",
+        "english": "I was checking some documents at that time.",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000006u15f",
+        "japanese": "昨日の午後、経理課が領収書を用意していました",
+        "english": "The finance department was preparing the receipts yesterday afternoon.",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000007u15g",
+        "japanese": "彼女は今日の午前中にCEOに会っていたのですか",
+        "english": "Was she meeting with the CEO this morning?",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000008u15h",
+        "japanese": "彼らは会議で何を話していたのですか",
+        "english": "What were they talking about in the meeting?",
+        "textbookId": "1772684232735",
+        "chapter": "15",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000009u16a",
+        "japanese": "私たちは15年間シアトルに住んでいます",
+        "english": "We have lived in Seattle for fifteen years.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000010u16b",
+        "japanese": "マックスと私は小学校以来の知り合いです",
+        "english": "Max and I have known each other since elementary school.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000011u16c",
+        "japanese": "家族と休暇でアメリカに行ったことがあります",
+        "english": "My family and I have been to the States on vacation.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000012u16d",
+        "japanese": "以前、そのレストランに家族を連れて行ったことがあります",
+        "english": "I've taken my family to that restaurant before.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000013u16e",
+        "japanese": "同僚と日本の将棋をやってみたことがあります",
+        "english": "I've tried Japanese shogi with my colleagues.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000014u16f",
+        "japanese": "ちょうど彼の結婚の知らせを聞いたところです",
+        "english": "I've just heard the news of his marriage.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000015u16g",
+        "japanese": "子供たちは新しい学校に慣れてきました",
+        "english": "My children have gotten used to their new school.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000016u16h",
+        "japanese": "私たちはすでに観光バスツアーを予約しました",
+        "english": "We've already booked a sightseeing bus tour.",
+        "textbookId": "1772684232735",
+        "chapter": "16",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000017u17a",
+        "japanese": "韓国料理はまだ食べてみる機会がありません",
+        "english": "I haven't had a chance to try Korean food yet.",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000018u17b",
+        "japanese": "まだ休日にどこへ行くか決めていません",
+        "english": "I haven't decided where to go on holiday yet.",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000019u17c",
+        "japanese": "私たちは西日本には数年行っていません",
+        "english": "We've not been to the west of Japan for several years.",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000020u17d",
+        "japanese": "マーカスは何年もテニスをしていません",
+        "english": "Marcus has not played tennis for many years.",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000021u17e",
+        "japanese": "この種類のスポーツはこれまでに一度もやってみたことがありません",
+        "english": "I've never tried this kind of sport before.",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000022u17f",
+        "japanese": "クラシック・コンサートに行ったことがありますか",
+        "english": "Have you ever been to a classical concert?",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000023u17g",
+        "japanese": "国立美術館の展覧会にはもう行きましたか",
+        "english": "Have you visited the exhibition at the national gallery yet?",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000024u17h",
+        "japanese": "どのくらいダンスを習っているのですか",
+        "english": "How long have you been learning to dance?",
+        "textbookId": "1772684232735",
+        "chapter": "17",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000025u18a",
+        "japanese": "ABC社からの請求書を受け取っております",
+        "english": "I've received the invoice from ABC Inc.",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000026u18b",
+        "japanese": "もう報告書を仕上げましたか",
+        "english": "Have you finished the report yet?",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000027u18c",
+        "japanese": "そのデータを見つけるのに苦労しましたか",
+        "english": "Have you had any trouble finding the data?",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000028u18d",
+        "japanese": "過去に問題を経験したことはありません",
+        "english": "We haven't experienced any problems in the past.",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000029u18e",
+        "japanese": "いくつかの問題を見つけました",
+        "english": "We've come up with a few problems.",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000030u18f",
+        "japanese": "もうオザキさんから電話がありましたか",
+        "english": "Has Mr. Ozaki called yet?",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000031u18g",
+        "japanese": "私は変更のことでたくさんのお客様にずっと電話をし続けています",
+        "english": "I've been calling a number of clients about the changes.",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000032u18h",
+        "japanese": "私たちは何年もの間ずっとABC社と取引を続けています",
+        "english": "We've been dealing with ABC Inc. for many years.",
+        "textbookId": "1772684232735",
+        "chapter": "18",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000033u19a",
+        "japanese": "午後はあなたのお手伝いをしますよ",
+        "english": "I'll help you out in the afternoon.",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000034u19b",
+        "japanese": "来週、販売会議が行われます",
+        "english": "The sales conference will be held next week.",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000035u19c",
+        "japanese": "スピーチのあとに、質問の時間があるでしょう",
+        "english": "There will be time for questions after the speech.",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000036u19d",
+        "japanese": "イベントのあと、空いた時間はありますか",
+        "english": "Will you have any free time after the event?",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000037u19e",
+        "japanese": "書類はいつ準備できますか",
+        "english": "When will the document be ready?",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000038u19f",
+        "japanese": "私は27日からロンドンにいる予定です",
+        "english": "I'm going to be in London from the twenty-seventh.",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000039u19g",
+        "japanese": "昼食後に会議を開く予定です",
+        "english": "We're going to hold a meeting after lunch.",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
+      },
+      {
+        "id": "1742460000040u19h",
+        "japanese": "すべての準備が間に合いそうですか",
+        "english": "Is everything going to be ready in time?",
+        "textbookId": "1772684232735",
+        "chapter": "19",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-03-23"
       }
     ],
     "vocabulary": [],
