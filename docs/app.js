@@ -4468,6 +4468,7 @@ as soon as possible"></textarea>
           ${phrase.context ? `<div class="meeting-phrase-context" id="meeting-context-${index}">${phrase.context}</div>` : ''}
         </div>
         ${phrase.context ? `<span class="meeting-phrase-toggle">▼</span>` : ''}
+        <button class="btn btn-sm btn-delete" onclick="deleteMeetingPhrase(${index})" title="削除">×</button>
       </div>
     `).join('');
   }
@@ -4492,6 +4493,18 @@ as soon as possible"></textarea>
     if (item) {
       item.classList.toggle('expanded');
     }
+  };
+
+  window.deleteMeetingPhrase = async function(index) {
+    const phrases = practiceData.english.meetingPhrases || [];
+    if (index < 0 || index >= phrases.length) return;
+
+    if (!confirm('このフレーズを削除しますか？')) return;
+
+    phrases.splice(index, 1);
+    await saveData();
+    renderMeetingPhrases();
+    showToast('フレーズを削除しました', 'success');
   };
 
   function startMeetingStudyMode() {
