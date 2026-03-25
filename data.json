@@ -5415,7 +5415,8 @@
         "japanese": "私の研究は、異文化間コミュニケーションにおけるソーシャルロボットの役割について調べています。",
         "english": "My research investigates the role of social robots in cross-cultural communication.",
         "context": "研究テーマを紹介する時",
-        "mastered": false
+        "mastered": true,
+        "masteredAt": "2026-03-25"
       },
       {
         "id": "meet_002",
