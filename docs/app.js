@@ -4449,6 +4449,7 @@ as soon as possible"></textarea>
           <span class="stat-num">${totalCount - masteredCount}</span>
           <span class="stat-text">To Learn</span>
         </div>
+        ${totalCount > 0 ? `<button class="btn btn-sm btn-delete" onclick="deleteAllMeetingPhrases()" style="margin-left: auto;">全削除</button>` : ''}
       `;
     }
 
@@ -4505,6 +4506,18 @@ as soon as possible"></textarea>
     await saveData();
     renderMeetingPhrases();
     showToast('フレーズを削除しました', 'success');
+  };
+
+  window.deleteAllMeetingPhrases = async function() {
+    const phrases = practiceData.english.meetingPhrases || [];
+    if (phrases.length === 0) return;
+
+    if (!confirm(`Meeting Englishの全${phrases.length}件のフレーズを削除しますか？`)) return;
+
+    practiceData.english.meetingPhrases = [];
+    await saveData();
+    renderMeetingPhrases();
+    showToast('全てのフレーズを削除しました', 'success');
   };
 
   function startMeetingStudyMode() {
