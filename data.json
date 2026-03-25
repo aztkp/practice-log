@@ -3255,7 +3255,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000002u15b",
@@ -3265,7 +3266,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000003u15c",
@@ -3275,7 +3277,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000004u15d",
@@ -3285,7 +3288,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000005u15e",
@@ -3295,7 +3299,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000006u15f",
@@ -3305,7 +3310,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000007u15g",
@@ -3315,7 +3321,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000008u15h",
@@ -3325,7 +3332,8 @@
         "chapter": "15",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000009u16a",
@@ -3335,7 +3343,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000010u16b",
@@ -3345,7 +3354,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000011u16c",
@@ -3355,7 +3365,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000012u16d",
@@ -3365,7 +3376,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000013u16e",
@@ -3375,7 +3387,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000014u16f",
@@ -3385,7 +3398,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000015u16g",
@@ -3395,7 +3409,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000016u16h",
@@ -3405,7 +3420,8 @@
         "chapter": "16",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000017u17a",
@@ -3415,7 +3431,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000018u17b",
@@ -3425,7 +3442,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000019u17c",
@@ -3435,7 +3453,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000020u17d",
@@ -3445,7 +3464,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000021u17e",
@@ -3455,7 +3475,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000022u17f",
@@ -3465,7 +3486,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000023u17g",
@@ -3475,7 +3497,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000024u17h",
@@ -3485,7 +3508,8 @@
         "chapter": "17",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000025u18a",
@@ -3495,7 +3519,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000026u18b",
@@ -3505,7 +3530,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000027u18c",
@@ -3515,7 +3541,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000028u18d",
@@ -3525,7 +3552,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000029u18e",
@@ -3535,7 +3563,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000030u18f",
@@ -3545,7 +3574,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000031u18g",
@@ -3555,7 +3585,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000032u18h",
@@ -3565,7 +3596,8 @@
         "chapter": "18",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000033u19a",
@@ -3575,7 +3607,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000034u19b",
@@ -3585,7 +3618,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000035u19c",
@@ -3595,7 +3629,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000036u19d",
@@ -3605,7 +3640,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000037u19e",
@@ -3615,7 +3651,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000038u19f",
@@ -3625,7 +3662,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000039u19g",
@@ -3635,7 +3673,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000040u19h",
@@ -3645,7 +3684,8 @@
         "chapter": "19",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000001u20a",
@@ -3655,7 +3695,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000002u20b",
@@ -3665,7 +3706,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000003u20c",
@@ -3675,7 +3717,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000004u20d",
@@ -3685,7 +3728,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000005u20e",
@@ -3695,7 +3739,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000006u20f",
@@ -3705,7 +3750,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000007u20g",
@@ -3715,7 +3761,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000008u20h",
@@ -3725,7 +3772,8 @@
         "chapter": "20",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000009u21a",
@@ -3735,7 +3783,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000010u21b",
@@ -3745,7 +3794,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000011u21c",
@@ -3755,7 +3805,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000012u21d",
@@ -3765,7 +3816,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000013u21e",
@@ -3775,7 +3827,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000014u21f",
@@ -3785,7 +3838,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000015u21g",
@@ -3795,7 +3849,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000016u21h",
@@ -3805,7 +3860,8 @@
         "chapter": "21",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000017u22a",
@@ -3815,7 +3871,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000018u22b",
@@ -3825,7 +3882,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000019u22c",
@@ -3835,7 +3893,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000020u22d",
@@ -3845,7 +3904,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000021u22e",
@@ -3855,7 +3915,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000022u22f",
@@ -3865,7 +3926,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000023u22g",
@@ -3875,7 +3937,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000024u22h",
@@ -3885,7 +3948,8 @@
         "chapter": "22",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000025u23a",
@@ -3895,7 +3959,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000026u23b",
@@ -3905,7 +3970,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000027u23c",
@@ -3915,7 +3981,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000028u23d",
@@ -3925,7 +3992,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000029u23e",
@@ -3935,7 +4003,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000030u23f",
@@ -3945,7 +4014,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000031u23g",
@@ -3955,7 +4025,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000032u23h",
@@ -3965,7 +4036,8 @@
         "chapter": "23",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000033u24a",
@@ -3975,7 +4047,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000034u24b",
@@ -3985,7 +4058,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000035u24c",
@@ -3995,7 +4069,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000036u24d",
@@ -4005,7 +4080,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000037u24e",
@@ -4015,7 +4091,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000038u24f",
@@ -4025,7 +4102,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000039u24g",
@@ -4035,7 +4113,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       },
       {
         "id": "1742460000040u24h",
@@ -4045,7 +4124,8 @@
         "chapter": "24",
         "masteryLevel": 0,
         "studyCount": 0,
-        "createdAt": "2026-03-26"
+        "createdAt": "2026-03-26",
+        "lastStudied": null
       }
     ],
     "vocabulary": [],
@@ -5269,147 +5349,6 @@
       }
     ],
     "dictation": [],
-    "meetingPhrases": [
-      {
-        "id": "meet_001",
-        "japanese": "私の研究は、異文化間コミュニケーションにおけるソーシャルロボットの役割について調べています。",
-        "english": "My research investigates the role of social robots in cross-cultural communication.",
-        "context": "研究テーマを紹介する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_002",
-        "japanese": "この研究は、Clark & Brennanの共通基盤理論に基づいています。",
-        "english": "This study is grounded in Clark and Brennan's theory of common ground.",
-        "context": "理論的背景を説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_003",
-        "japanese": "共通基盤とは、会話の参加者が共有している知識のことです。",
-        "english": "Common ground refers to the mutual knowledge shared among conversational participants.",
-        "context": "共通基盤を定義する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_004",
-        "japanese": "正統的周辺参加の概念は、グループへの段階的な参加プロセスを説明しています。",
-        "english": "The concept of legitimate peripheral participation describes the gradual process of becoming a full member of a community.",
-        "context": "LPPを説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_005",
-        "japanese": "私たちの研究では、ユーモアを異文化間コミュニケーションの課題として検討しています。",
-        "english": "In our study, we examine humor as a challenge in cross-cultural communication.",
-        "context": "研究の焦点を説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_006",
-        "japanese": "ユーモアは、成功するには共有された文化的文脈を必要とします。",
-        "english": "Humor requires shared cultural context to be successful.",
-        "context": "ユーモアの特性を説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_007",
-        "japanese": "私たちは「解説的ツッコミ」を行うロボットを提案しています。",
-        "english": "We propose a robot that performs what we call 'explanatory tsukkomi.'",
-        "context": "ロボットのデザインを紹介する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_008",
-        "japanese": "ツッコミとは、日本の漫才におけるボケへのツッコミを指します。",
-        "english": "Tsukkomi refers to the straight-man role in Japanese manzai comedy that responds to the funny-man's jokes.",
-        "context": "ツッコミを説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_009",
-        "japanese": "このロボットは、参加者が共有していない文化的文脈を説明します。",
-        "english": "The robot explains cultural context that participants may not share.",
-        "context": "ロボットの機能を説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_010",
-        "japanese": "私たちの仮説は、ロボットの介入がユーモアの理解を促進するというものです。",
-        "english": "Our hypothesis is that robot intervention facilitates humor comprehension.",
-        "context": "仮説を述べる時",
-        "mastered": false
-      },
-      {
-        "id": "meet_011",
-        "japanese": "予備的な知見によると、この効果は特に語学学習者において顕著でした。",
-        "english": "Preliminary findings suggest this effect is particularly pronounced among language learners.",
-        "context": "初期結果を報告する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_012",
-        "japanese": "私たちは、感情的な接地（アフェクティブグラウンディング）という概念を探求しています。",
-        "english": "We are exploring the concept of affective grounding in communication.",
-        "context": "研究の方向性を説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_013",
-        "japanese": "この研究の実用的な応用としては、異文化間の職場環境での活用が考えられます。",
-        "english": "Practical applications of this research include deployment in multicultural workplace settings.",
-        "context": "応用を議論する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_014",
-        "japanese": "本研究の限界として、サンプルサイズが比較的小さいことが挙げられます。",
-        "english": "A limitation of this study is the relatively small sample size.",
-        "context": "研究の限界を認める時",
-        "mastered": false
-      },
-      {
-        "id": "meet_015",
-        "japanese": "今後の研究では、異なる文化的背景を持つ参加者を対象に検証する予定です。",
-        "english": "Future work will validate these findings with participants from diverse cultural backgrounds.",
-        "context": "今後の展望を述べる時",
-        "mastered": false
-      },
-      {
-        "id": "meet_016",
-        "japanese": "この方法論を詳しく説明させてください。",
-        "english": "Let me elaborate on the methodology we employed.",
-        "context": "方法論を詳しく説明する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_017",
-        "japanese": "ご質問に関してですが、私たちは両方のアプローチを検討しました。",
-        "english": "Regarding your question, we considered both approaches.",
-        "context": "質問に答える時",
-        "mastered": false
-      },
-      {
-        "id": "meet_018",
-        "japanese": "この結果は、私たちの最初の予測と一致しています。",
-        "english": "These results are consistent with our initial predictions.",
-        "context": "結果を解釈する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_019",
-        "japanese": "この研究分野に関する先行研究はかなり限られています。",
-        "english": "Prior work in this specific area has been quite limited.",
-        "context": "研究のギャップを指摘する時",
-        "mastered": false
-      },
-      {
-        "id": "meet_020",
-        "japanese": "これまでのところ、結果は私たちのアプローチが有望であることを示唆しています。",
-        "english": "So far, the results suggest that our approach shows promise.",
-        "context": "全体的な結論を述べる時",
-        "mastered": false
-      }
-    ]
+    "meetingPhrases": []
   }
 }
