@@ -5349,6 +5349,224 @@
       }
     ],
     "dictation": [],
-    "meetingPhrases": []
+    "meetingPhrases": [
+      {
+        "id": "meet_101",
+        "japanese": "その通知を確認した日はショックでした",
+        "english": "I was shocked when I saw the notification.",
+        "context": "悪い知らせを受けた時",
+        "mastered": false
+      },
+      {
+        "id": "meet_102",
+        "japanese": "感情を整理するのに時間がかかりました",
+        "english": "It took me some time to process my emotions.",
+        "context": "ショックを受けた後の状態を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_103",
+        "japanese": "最近エネルギーが低くなってきています",
+        "english": "I've been feeling low on energy lately.",
+        "context": "体調や気分を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_104",
+        "japanese": "季節の変わり目で体調が悪いのかもしれません",
+        "english": "It might be because of the change of seasons.",
+        "context": "体調不良の理由を推測する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_105",
+        "japanese": "近くに締め切りがあるわけではないので休んでいます",
+        "english": "I'm taking a break since there's no immediate deadline.",
+        "context": "休息を取っている理由を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_106",
+        "japanese": "前日に別の会議にもリジェクトされていました",
+        "english": "I had also been rejected by another venue the day before.",
+        "context": "連続したリジェクトを説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_107",
+        "japanese": "フィードバックが適切だったので受け入れることができました",
+        "english": "The feedback was fair, so I was able to accept it.",
+        "context": "査読結果への反応を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_108",
+        "japanese": "リバッタルが不完全だったため、査読者にも申し訳なく思います",
+        "english": "I feel sorry for the reviewers because my rebuttal was incomplete.",
+        "context": "不十分な対応を反省する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_109",
+        "japanese": "大事な時期に体調が悪かったことを後悔しています",
+        "english": "I regret that I was unwell during such a critical period.",
+        "context": "タイミングの悪さを振り返る時",
+        "mastered": false
+      },
+      {
+        "id": "meet_110",
+        "japanese": "却下日から4ヶ月後に改訂版を提出できます",
+        "english": "We can submit a revised version four months after the rejection date.",
+        "context": "再投稿のルールを説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_111",
+        "japanese": "そのタイミングで再投稿したいと思っています",
+        "english": "I'm planning to resubmit at that time.",
+        "context": "再投稿の計画を伝える時",
+        "mastered": false
+      },
+      {
+        "id": "meet_112",
+        "japanese": "1回目のサイクルで良い評価をもらえていました",
+        "english": "We received positive feedback in the first cycle.",
+        "context": "過去の査読結果を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_113",
+        "japanese": "対応することができず悔しい思いをしました",
+        "english": "I was frustrated that I couldn't address the issues.",
+        "context": "悔しさを表現する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_114",
+        "japanese": "私たちはこの会議に再投稿すべきでしょうか？",
+        "english": "Should we resubmit to this venue?",
+        "context": "再投稿の判断を相談する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_115",
+        "japanese": "細かい修正方針についてはまだ考えているところです",
+        "english": "I'm still thinking about the detailed revision plan.",
+        "context": "検討中であることを伝える時",
+        "mastered": false
+      },
+      {
+        "id": "meet_116",
+        "japanese": "また相談させてください",
+        "english": "I'd like to discuss this with you again later.",
+        "context": "継続的な相談を依頼する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_117",
+        "japanese": "締め切りまで余裕があるので、簡単にでもチェックしてほしいです",
+        "english": "Since we have time until the deadline, could you take a quick look at it?",
+        "context": "フィードバックを依頼する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_118",
+        "japanese": "この研究の最初のコンセプトはあなたと相談しました",
+        "english": "I discussed the initial concept of this research with you.",
+        "context": "共同研究の経緯を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_119",
+        "japanese": "共著者に入っていただけませんか",
+        "english": "Would you be willing to join as a co-author?",
+        "context": "共著者への参加を依頼する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_120",
+        "japanese": "playfulではないという理由でデスクリジェクトになりました",
+        "english": "It was desk-rejected because it wasn't considered playful enough.",
+        "context": "リジェクト理由を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_121",
+        "japanese": "半年以上先の目標に向かって努力を継続することが難しいです",
+        "english": "I find it difficult to sustain effort toward goals more than six months away.",
+        "context": "モチベーションの課題を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_122",
+        "japanese": "3年で博士を取る必要はないと言ってもらえました",
+        "english": "I was told that I don't need to finish my PhD in three years.",
+        "context": "アドバイスを共有する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_123",
+        "japanese": "元気な時に博論を書けばいいと言われて助けになりました",
+        "english": "It helped when they said I could write my dissertation when I'm feeling better.",
+        "context": "励ましの言葉を共有する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_124",
+        "japanese": "ライセンスを確認したところ、再配布可能でした",
+        "english": "I checked the license, and it allows redistribution.",
+        "context": "ライセンス確認の結果を報告する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_125",
+        "japanese": "現在サービスが停止しています",
+        "english": "The service is currently discontinued.",
+        "context": "サービス状況を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_126",
+        "japanese": "いくつか参考になるフレームワークを見つけました",
+        "english": "I found some frameworks that could be useful references.",
+        "context": "参考資料を共有する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_127",
+        "japanese": "有名な実験を実装して評価しています",
+        "english": "They implemented well-known experiments and evaluated them.",
+        "context": "研究手法を説明する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_128",
+        "japanese": "実装にかかった時間やタスク負荷を計測する方針もあります",
+        "english": "Another approach is to measure the time and task load required for implementation.",
+        "context": "評価方法を提案する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_129",
+        "japanese": "採択おめでとうございます",
+        "english": "Congratulations on your acceptance!",
+        "context": "採択を祝福する時",
+        "mastered": false
+      },
+      {
+        "id": "meet_130",
+        "japanese": "その会議には行く予定ですか？",
+        "english": "Are you planning to attend the conference?",
+        "context": "参加予定を尋ねる時",
+        "mastered": false
+      },
+      {
+        "id": "meet_131",
+        "japanese": "デモが通ればいいなと思っています",
+        "english": "I'm hoping the demo will be accepted.",
+        "context": "期待を表現する時",
+        "mastered": false
+      }
+    ]
   }
 }
