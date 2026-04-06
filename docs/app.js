@@ -240,7 +240,7 @@
         // If SHA changed, we need to merge
         if (dataSha && remoteSha !== dataSha) {
           console.log('SHA mismatch detected, merging data...');
-          const remoteData = JSON.parse(atob(latestData.content));
+          const remoteData = JSON.parse(b64decode(latestData.content));
 
           // Merge: keep remote phrases/phonemes, but update with local study progress
           if (remoteData.english && practiceData.english) {
