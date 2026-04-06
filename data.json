@@ -327,10 +327,10 @@
         "english": "What should I do next?",
         "textbookId": "1772684232735",
         "chapter": "10",
-        "masteryLevel": 0,
-        "studyCount": 0,
+        "masteryLevel": 1,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p2",
@@ -339,9 +339,9 @@
         "textbookId": "1772684232735",
         "chapter": "10",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p3",
@@ -350,9 +350,9 @@
         "textbookId": "1772684232735",
         "chapter": "10",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p4",
@@ -361,9 +361,9 @@
         "textbookId": "1772684232735",
         "chapter": "10",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p5",
@@ -371,10 +371,10 @@
         "english": "Whose data is this?",
         "textbookId": "1772684232735",
         "chapter": "10",
-        "masteryLevel": 0,
-        "studyCount": 0,
+        "masteryLevel": 1,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p6",
@@ -383,9 +383,9 @@
         "textbookId": "1772684232735",
         "chapter": "10",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p7",
@@ -393,10 +393,10 @@
         "english": "Whose e-mail addresses do you have?",
         "textbookId": "1772684232735",
         "chapter": "10",
-        "masteryLevel": 0,
-        "studyCount": 0,
+        "masteryLevel": 1,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u10p8",
@@ -404,10 +404,10 @@
         "english": "Whose products arrived yesterday?",
         "textbookId": "1772684232735",
         "chapter": "10",
-        "masteryLevel": 0,
-        "studyCount": 0,
+        "masteryLevel": 1,
+        "studyCount": 1,
         "createdAt": "2026-04-06",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000001u11p1",
@@ -4857,6 +4857,16 @@
         "phraseCount": 8,
         "correctCount": 0,
         "duration": 236
+      },
+      {
+        "id": "1775443904749",
+        "date": "2026-04-06",
+        "mode": "chapter",
+        "textbookId": null,
+        "chapter": "10",
+        "phraseCount": 8,
+        "correctCount": 4,
+        "duration": 48
       }
     ],
     "pronunciation": [
