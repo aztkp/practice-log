@@ -3254,9 +3254,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000002u15b",
@@ -3265,9 +3265,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000003u15c",
@@ -3276,9 +3276,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000004u15d",
@@ -3287,9 +3287,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000005u15e",
@@ -3298,9 +3298,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000006u15f",
@@ -3309,9 +3309,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000007u15g",
@@ -3320,9 +3320,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000008u15h",
@@ -3331,9 +3331,9 @@
         "textbookId": "1772684232735",
         "chapter": "15",
         "masteryLevel": 0,
-        "studyCount": 0,
+        "studyCount": 1,
         "createdAt": "2026-03-26",
-        "lastStudied": null
+        "lastStudied": "2026-04-06"
       },
       {
         "id": "1742460000009u16a",
@@ -4407,6 +4407,16 @@
         "phraseCount": 24,
         "correctCount": 0,
         "duration": 160
+      },
+      {
+        "id": "1775443368291",
+        "date": "2026-04-06",
+        "mode": "chapter",
+        "textbookId": null,
+        "chapter": "15",
+        "phraseCount": 8,
+        "correctCount": 0,
+        "duration": 236
       }
     ],
     "pronunciation": [
