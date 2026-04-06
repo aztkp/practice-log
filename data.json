@@ -5358,6 +5358,83 @@
         "studyCount": 0,
         "createdAt": "2026-03-26",
         "lastStudied": null
+      },
+      {
+        "id": "1743897600000p1",
+        "japanese": "D3の大原です",
+        "english": "I'm Ohara, a third-year doctoral student.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p2",
+        "japanese": "研究テーマはお笑いです",
+        "english": "My research topic is comedy.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p3",
+        "japanese": "具体的には、VRChatのお笑いサークルに入り浸って、遠隔コミュニケーションにおけるお笑いを研究しています",
+        "english": "Specifically, I hang out in a comedy club on VRChat, studying comedy in the context of remote communication.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p4",
+        "japanese": "また、味覚を使ったお笑いの新しい形式があるんじゃないかということで、味覚コメディを提案する研究もやっています",
+        "english": "I'm also working on research proposing gustatory comedy, exploring whether there could be a new form of comedy using the sense of taste.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p5",
+        "japanese": "趣味もお笑いです",
+        "english": "My hobby is also comedy.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p6",
+        "japanese": "たまに劇場に行ったり、ラジオを聞いたりしています",
+        "english": "I sometimes go to comedy theaters and listen to comedy radio shows.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
+      },
+      {
+        "id": "1743897600000p7",
+        "japanese": "普段は研究室の一番奥の机にいたり、いなかったりしています",
+        "english": "You can usually find me at the desk in the back of the lab — or sometimes not.",
+        "textbookId": "1743897600000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-06",
+        "lastStudied": null
       }
     ],
     "vocabulary": [],
@@ -5367,6 +5444,11 @@
         "id": "1772684232735",
         "name": "英会話 Quick Response",
         "createdAt": "2026-03-05"
+      },
+      {
+        "id": "1743897600000",
+        "name": "自己紹介",
+        "createdAt": "2026-04-06"
       }
     ],
     "studyRecords": [
