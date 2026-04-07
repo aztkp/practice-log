@@ -113,11 +113,26 @@
   }
 
   // Audio playback for phrases
-  // Available chapters with audio files
+  // Quick Response textbook: audio/ch{chapter}/phrase_{n}.mp3
   const AUDIO_CHAPTERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57'];
+  // Study textbooks: audio/study/{name}/phrase_{n}.mp3
+  const STUDY_AUDIO = {
+    '1743897600000': 'self-intro',
+    '1743984000000': 'azatoi'
+  };
 
   function getPhraseAudioPath(phrase) {
     if (!phrase || !phrase.chapter) return null;
+
+    const studyDir = STUDY_AUDIO[phrase.textbookId];
+    if (studyDir) {
+      const tbPhrases = practiceData.english.phrases
+        .filter(p => p.textbookId === phrase.textbookId);
+      const idx = tbPhrases.findIndex(p => p.id === phrase.id);
+      if (idx === -1) return null;
+      return `audio/study/${studyDir}/phrase_${idx + 1}.mp3`;
+    }
+
     if (!AUDIO_CHAPTERS.includes(phrase.chapter)) return null;
 
     // Get all phrases in this chapter (keep original order from data.json)
