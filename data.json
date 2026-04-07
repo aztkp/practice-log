@@ -5998,12 +5998,14 @@
       {
         "id": "1743897600000",
         "name": "自己紹介",
-        "createdAt": "2026-04-06"
+        "createdAt": "2026-04-06",
+        "type": "study"
       },
       {
         "id": "1743984000000",
         "name": "Azatoi論文ディスカッション",
-        "createdAt": "2026-04-07"
+        "createdAt": "2026-04-07",
+        "type": "study"
       }
     ],
     "studyRecords": [

@@ -52,6 +52,9 @@
   let phraseFilterChapter = '';
   let phraseFilterMastery = '';
   let phraseSearchQuery = '';
+  let activeStudyContainerId = 'study-mode-container';
+  let studyTabSelectedTextbook = null;
+  let studyTabSelectedChapter = '';
 
   // Utils
   function b64decode(str) {
@@ -1088,6 +1091,7 @@
     const pronunciationSection = document.getElementById('pronunciation-section');
     const dictationSection = document.getElementById('dictation-section');
     const meetingSection = document.getElementById('meeting-section');
+    const studySection = document.getElementById('study-section');
 
     // Hide all sections first (hide Today section for English)
     [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
@@ -1097,6 +1101,7 @@
     pronunciationSection?.classList.remove('show');
     dictationSection?.classList.remove('show');
     meetingSection?.classList.remove('show');
+    studySection?.classList.remove('show');
 
     // Update subtab active state
     document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
@@ -1118,7 +1123,199 @@
       meetingSection?.classList.add('show');
       renderMeetingPhrases();
       initMeetingPractice();
+    } else if (subtab === 'study') {
+      studySection?.classList.add('show');
+      renderStudyTab();
     }
+  }
+
+  // ==================== STUDY TAB ====================
+
+  function renderStudyTab() {
+    if (!practiceData) return;
+
+    const studyTextbooks = (practiceData.english.textbooks || []).filter(tb => tb.type === 'study');
+    const allPhrases = practiceData.english.phrases || [];
+
+    // Auto-select first textbook if none selected
+    if (!studyTabSelectedTextbook && studyTextbooks.length > 0) {
+      studyTabSelectedTextbook = studyTextbooks[0].id;
+    }
+
+    // Render textbook tabs
+    const tabsContainer = document.getElementById('study-textbook-tabs');
+    if (tabsContainer) {
+      tabsContainer.innerHTML = studyTextbooks.map(tb => {
+        const count = allPhrases.filter(p => p.textbookId === tb.id).length;
+        return `<button class="study-textbook-tab ${studyTabSelectedTextbook === tb.id ? 'active' : ''}" data-id="${tb.id}">${tb.name} <span style="color:var(--text-muted);font-size:11px;">(${count})</span></button>`;
+      }).join('');
+
+      tabsContainer.querySelectorAll('.study-textbook-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          studyTabSelectedTextbook = btn.dataset.id;
+          studyTabSelectedChapter = '';
+          renderStudyTab();
+        });
+      });
+    }
+
+    // Get phrases for selected textbook
+    const tbPhrases = allPhrases.filter(p => p.textbookId === studyTabSelectedTextbook);
+
+    // Get unique chapters
+    const chapters = [...new Set(tbPhrases.filter(p => p.chapter).map(p => p.chapter))]
+      .sort((a, b) => Number(a) - Number(b));
+
+    // Render chapter nav
+    const chapterNav = document.getElementById('study-chapter-nav');
+    if (chapterNav && chapters.length > 1) {
+      // Find chapter names from the textbook data if available
+      const selectedTb = studyTextbooks.find(tb => tb.id === studyTabSelectedTextbook);
+      chapterNav.innerHTML = `
+        <button class="study-chapter-btn ${!studyTabSelectedChapter ? 'active' : ''}" data-ch="">All</button>
+        ${chapters.map(ch => `<button class="study-chapter-btn ${studyTabSelectedChapter === ch ? 'active' : ''}" data-ch="${ch}">Ch.${ch}</button>`).join('')}
+      `;
+      chapterNav.querySelectorAll('.study-chapter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          studyTabSelectedChapter = btn.dataset.ch;
+          renderStudyTab();
+        });
+      });
+    } else if (chapterNav) {
+      chapterNav.innerHTML = '';
+    }
+
+    // Filter by chapter
+    let displayPhrases = tbPhrases;
+    if (studyTabSelectedChapter) {
+      displayPhrases = tbPhrases.filter(p => p.chapter === studyTabSelectedChapter);
+    }
+
+    // Render phrase list
+    const listContainer = document.getElementById('study-phrases-list');
+    if (listContainer) {
+      if (displayPhrases.length === 0) {
+        listContainer.innerHTML = '<div class="empty">フレーズがありません</div>';
+      } else {
+        listContainer.innerHTML = displayPhrases.map(p => {
+          const stars = '★'.repeat(p.masteryLevel || 0) + '☆'.repeat(5 - (p.masteryLevel || 0));
+          const audioPath = getPhraseAudioPath(p);
+          const audioBtn = audioPath ? `<button class="btn-audio study-audio-btn" data-id="${p.id}" title="Play audio">🔊</button>` : '';
+          const textbook = studyTextbooks.find(tb => tb.id === p.textbookId);
+          const source = textbook ? `${textbook.name}${p.chapter ? ' Ch.' + p.chapter : ''}` : '';
+          return `
+            <div class="vocab-item">
+              <div class="vocab-content">
+                <div class="mastery-stars" style="font-size:11px;margin-bottom:2px;">${stars}</div>
+                <div class="vocab-japanese">${p.japanese}</div>
+                <div class="vocab-english">${p.english}</div>
+                ${source ? `<div style="font-size:11px;color:var(--text-muted);margin-top:2px;">${source}</div>` : ''}
+              </div>
+              <div class="vocab-actions">
+                ${audioBtn}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Audio button handlers
+        listContainer.querySelectorAll('.study-audio-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const phrase = allPhrases.find(p => p.id === btn.dataset.id);
+            if (phrase) playPhraseAudio(phrase);
+          });
+        });
+      }
+    }
+  }
+
+  function openStudyTabStudyModal() {
+    if (!studyTabSelectedTextbook) {
+      showToast('テキストブックを選択してください', 'error');
+      return;
+    }
+
+    const allPhrases = practiceData.english.phrases || [];
+    const tbPhrases = allPhrases.filter(p => p.textbookId === studyTabSelectedTextbook);
+    const chapters = [...new Set(tbPhrases.filter(p => p.chapter).map(p => p.chapter))]
+      .sort((a, b) => Number(a) - Number(b));
+    const textbook = (practiceData.english.textbooks || []).find(tb => tb.id === studyTabSelectedTextbook);
+
+    const modal = document.getElementById('edit-modal');
+    const content = document.getElementById('modal-content');
+    const title = document.querySelector('.modal-title');
+
+    title.textContent = `${textbook?.name || 'Study'} - 暗記モード`;
+
+    let selectedChapters = studyTabSelectedChapter ? [studyTabSelectedChapter] : [];
+
+    content.innerHTML = `
+      <div class="form-group">
+        <label class="form-label">チャプター <span style="font-size:11px;color:var(--text-muted);">(複数選択可)</span></label>
+        <div id="study-tab-chapter-chips" style="display:flex;flex-wrap:wrap;gap:8px;min-height:36px;"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">出題数</label>
+        <select class="form-select" id="study-tab-count">
+          <option value="8">8問</option>
+          <option value="16">16問</option>
+          <option value="all" selected>すべて</option>
+        </select>
+      </div>
+      <div class="study-preview" id="study-tab-preview">対象フレーズ: ${tbPhrases.length}件</div>
+      <button class="btn btn-primary" id="study-tab-start" style="width:100%;margin-top:16px;">開始</button>
+    `;
+
+    modal.classList.add('show');
+
+    // Render chapter chips
+    const chipsContainer = document.getElementById('study-tab-chapter-chips');
+    if (chapters.length > 0) {
+      chipsContainer.innerHTML = `
+        <button type="button" class="chapter-chip ${selectedChapters.length === 0 ? 'selected' : ''}" data-chapter="all">すべて</button>
+        ${chapters.map(ch => `<button type="button" class="chapter-chip ${selectedChapters.includes(ch) ? 'selected' : ''}" data-chapter="${ch}">Ch.${ch}</button>`).join('')}
+      `;
+
+      const updatePreview = () => {
+        let filtered = tbPhrases;
+        if (selectedChapters.length > 0) {
+          filtered = filtered.filter(p => selectedChapters.includes(p.chapter));
+        }
+        document.getElementById('study-tab-preview').textContent = `対象フレーズ: ${filtered.length}件`;
+      };
+
+      chipsContainer.querySelectorAll('.chapter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const ch = chip.dataset.chapter;
+          if (ch === 'all') {
+            selectedChapters = [];
+            chipsContainer.querySelectorAll('.chapter-chip').forEach(c => c.classList.remove('selected'));
+            chip.classList.add('selected');
+          } else {
+            chipsContainer.querySelector('[data-chapter="all"]')?.classList.remove('selected');
+            const idx = selectedChapters.indexOf(ch);
+            if (idx >= 0) {
+              selectedChapters.splice(idx, 1);
+              chip.classList.remove('selected');
+              if (selectedChapters.length === 0) {
+                chipsContainer.querySelector('[data-chapter="all"]')?.classList.add('selected');
+              }
+            } else {
+              selectedChapters.push(ch);
+              chip.classList.add('selected');
+            }
+          }
+          updatePreview();
+        });
+      });
+    }
+
+    document.getElementById('study-tab-start').addEventListener('click', () => {
+      activeStudyContainerId = 'study-study-container';
+      startStudyMode('chapter', studyTabSelectedTextbook, selectedChapters, document.getElementById('study-tab-count').value, 'japanese');
+      modal.classList.remove('show');
+    });
   }
 
   // ==================== DICTATION PRACTICE ====================
@@ -1421,10 +1618,18 @@
 
   // ==================== PHRASES FUNCTIONS ====================
 
+  function getStudyTextbookIds() {
+    return (practiceData.english.textbooks || [])
+      .filter(tb => tb.type === 'study')
+      .map(tb => tb.id);
+  }
+
   function renderPhrases() {
     if (!practiceData) return;
 
-    const phrases = practiceData.english.phrases || [];
+    const studyIds = getStudyTextbookIds();
+    const phrases = (practiceData.english.phrases || [])
+      .filter(p => !studyIds.includes(p.textbookId));
     renderPhraseStats();
     renderPhraseHeatmap();
     renderTextbookList();
@@ -1701,8 +1906,9 @@
     const container = document.getElementById('textbook-list');
     if (!container) return;
 
-    const textbooks = practiceData.english.textbooks || [];
-    const phrases = practiceData.english.phrases || [];
+    const textbooks = (practiceData.english.textbooks || []).filter(tb => tb.type !== 'study');
+    const studyIds = getStudyTextbookIds();
+    const phrases = (practiceData.english.phrases || []).filter(p => !studyIds.includes(p.textbookId));
 
     // Count phrases per textbook
     const freePhraseCount = phrases.filter(p => !p.textbookId).length;
@@ -1731,8 +1937,9 @@
     const chapterSelect = document.getElementById('phrase-filter-chapter');
     if (!textbookSelect || !chapterSelect) return;
 
-    const textbooks = practiceData.english.textbooks || [];
-    const phrases = practiceData.english.phrases || [];
+    const textbooks = (practiceData.english.textbooks || []).filter(tb => tb.type !== 'study');
+    const studyIds = getStudyTextbookIds();
+    const phrases = (practiceData.english.phrases || []).filter(p => !studyIds.includes(p.textbookId));
 
     // Update textbook filter options
     textbookSelect.innerHTML = `
@@ -2213,8 +2420,9 @@ as soon as possible"></textarea>
     const content = document.getElementById('modal-content');
     const title = document.querySelector('.modal-title');
 
-    const textbooks = practiceData.english.textbooks || [];
-    const phrases = practiceData.english.phrases || [];
+    const studyIds = getStudyTextbookIds();
+    const textbooks = (practiceData.english.textbooks || []).filter(tb => tb.type !== 'study');
+    const phrases = (practiceData.english.phrases || []).filter(p => !studyIds.includes(p.textbookId));
     const startMessage = getStartStudyMessage();
     const streak = calculateStreak();
     const todayCount = calculateTodayStudyCount();
@@ -2444,6 +2652,7 @@ as soon as possible"></textarea>
       const countValue = document.getElementById('study-count').value;
       const style = document.querySelector('input[name="question-style"]:checked').value;
 
+      activeStudyContainerId = 'study-mode-container';
       startStudyMode(mode, textbookId, chapters, countValue, style);
       modal.classList.remove('show');
     });
@@ -2515,7 +2724,7 @@ as soon as possible"></textarea>
   }
 
   function renderStudyMode() {
-    const container = document.getElementById('study-mode-container');
+    const container = document.getElementById(activeStudyContainerId);
     if (!container) return;
 
     const phrase = studyPhrases[studyIndex];
@@ -2699,7 +2908,7 @@ as soon as possible"></textarea>
   }
 
   function renderStudyResults(okCount, partialCount, ngCount, duration) {
-    const container = document.getElementById('study-mode-container');
+    const container = document.getElementById(activeStudyContainerId);
     if (!container) return;
 
     const total = studyPhrases.length;
@@ -2776,21 +2985,27 @@ as soon as possible"></textarea>
   }
 
   function exitStudyMode() {
-    const container = document.getElementById('study-mode-container');
+    const container = document.getElementById(activeStudyContainerId);
     if (container) {
       container.style.display = 'none';
     }
 
     // Reset state
+    const wasStudyTab = activeStudyContainerId === 'study-study-container';
     studyMode = null;
     studyPhrases = [];
     studyIndex = 0;
     studyResults = [];
     studyStartTime = null;
     isCardFlipped = false;
+    activeStudyContainerId = 'study-mode-container';
 
-    // Refresh phrases display
-    renderPhrases();
+    // Refresh display
+    if (wasStudyTab) {
+      renderStudyTab();
+    } else {
+      renderPhrases();
+    }
   }
 
   // ==================== PHONEME PRONUNCIATION FUNCTIONS ====================
@@ -4732,6 +4947,7 @@ as soon as possible"></textarea>
     document.getElementById('bulk-add-phrase-btn')?.addEventListener('click', openBulkPhraseModal);
     document.getElementById('manage-textbooks-btn')?.addEventListener('click', openTextbookModal);
     document.getElementById('start-study-btn')?.addEventListener('click', openStudyModeModal);
+    document.getElementById('start-study-study-btn')?.addEventListener('click', openStudyTabStudyModal);
 
     // English: Pronunciation & Dictation
     document.getElementById('add-pronunciation-btn')?.addEventListener('click', () => openPhonemeModal());
@@ -4762,6 +4978,7 @@ as soon as possible"></textarea>
     });
     document.getElementById('quick-study-btn')?.addEventListener('click', () => {
       // Quick study: weak phrases, all questions, japanese mode
+      activeStudyContainerId = 'study-mode-container';
       startStudyMode('weak', '', '', 'all', 'japanese');
     });
 

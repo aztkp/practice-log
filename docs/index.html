@@ -1859,6 +1859,58 @@
       margin-left: 4px;
     }
 
+    .study-textbook-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .study-textbook-tab {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--bg-tertiary);
+      border: 2px solid transparent;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .study-textbook-tab:hover {
+      background: var(--bg-card);
+    }
+
+    .study-textbook-tab.active {
+      border-color: var(--english);
+      background: var(--bg-card);
+    }
+
+    .study-chapter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .study-chapter-btn {
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid transparent;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .study-chapter-btn:hover {
+      background: var(--bg-card);
+    }
+
+    .study-chapter-btn.active {
+      border-color: var(--english);
+      background: var(--bg-card);
+    }
+
     /* Textbook management modal */
     .textbooks-manage-list {
       display: flex;
@@ -2483,6 +2535,7 @@
       <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
       <button class="sub-tab" data-subtab="dictation">👂 Dictation</button>
       <button class="sub-tab" data-subtab="meeting">💼 Meeting</button>
+      <button class="sub-tab" data-subtab="study">📖 Study</button>
     </div>
 
     <!-- Stats -->
@@ -2690,6 +2743,25 @@
 
       <!-- Meeting study mode container -->
       <div class="study-mode-container" id="meeting-study-container" style="display: none;"></div>
+    </div>
+
+    <!-- English: Study Section -->
+    <div class="english-section" id="study-section">
+      <div class="section-header">
+        <div class="section-title">📖 Study</div>
+        <button class="btn btn-primary" id="start-study-study-btn">▶ Study</button>
+      </div>
+      <p class="section-desc">論文・自己紹介など、テーマ別の英語フレーズを練習</p>
+
+      <!-- Study textbook selector -->
+      <div class="study-textbook-tabs" id="study-textbook-tabs"></div>
+
+      <!-- Study phrase list -->
+      <div class="study-chapter-nav" id="study-chapter-nav"></div>
+      <div class="vocab-list" id="study-phrases-list"></div>
+
+      <!-- Study mode container -->
+      <div class="study-mode-container" id="study-study-container" style="display: none;"></div>
     </div>
 
     <!-- Piano Section -->
