@@ -5985,6 +5985,94 @@
         "studyCount": 0,
         "createdAt": "2026-04-07",
         "lastStudied": null
+      },
+      {
+        "id": "1744502400000p1",
+        "japanese": "しかし、コンピュータ制御の仮想観客には2つの知覚的な問題が未解決のまま残っています",
+        "english": "However, two perceptual questions remain unresolved for computer-controlled virtual audiences.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p2",
+        "japanese": "まず、仮想観客は笑いを表現するためにどのような手がかりを使うべきでしょうか",
+        "english": "First, what cues should virtual audiences use to express laughter?",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p3",
+        "japanese": "次に、いつ反応すべきでしょうか",
+        "english": "Second, when should they respond?",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p4",
+        "japanese": "実際の人間との共同視聴では、笑いの相互観察を通じて自然な同期が起こります",
+        "english": "In co-viewing with real humans, natural synchronization occurs through mutual observation of laughter.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p5",
+        "japanese": "しかし、コンピュータ制御の仮想観客はそのような自律的な同期を実現できません",
+        "english": "But computer-controlled virtual audiences cannot achieve such autonomous synchronization.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p6",
+        "japanese": "現在のほとんどのシステムは、オチなどのコンテンツイベントに基づいて反応を事前定義しています",
+        "english": "Most current systems pre-define responses based on content events such as punchlines.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p7",
+        "japanese": "しかし、個々の視聴者は異なるタイミングで笑います",
+        "english": "Yet individual viewers laugh at different times.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
+      },
+      {
+        "id": "1744502400000p8",
+        "japanese": "これらの問題に対処するには、笑いが広がるメカニズムを理解する必要があります",
+        "english": "To address these questions, we need to understand the mechanisms of how laughter spreads.",
+        "textbookId": "1744502400000",
+        "chapter": "1",
+        "masteryLevel": 0,
+        "studyCount": 0,
+        "createdAt": "2026-04-13",
+        "lastStudied": null
       }
     ],
     "vocabulary": [],
@@ -6006,6 +6094,12 @@
         "name": "Azatoi論文ディスカッション",
         "createdAt": "2026-04-07",
         "type": "study"
+      },
+      {
+        "id": "1744502400000",
+        "name": "Laughter論文ディスカッション",
+        "type": "study",
+        "createdAt": "2026-04-13"
       }
     ],
     "studyRecords": [

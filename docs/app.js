@@ -121,7 +121,8 @@
   // Study textbooks: audio/study/{name}/phrase_{n}.mp3
   const STUDY_AUDIO = {
     '1743897600000': 'self-intro',
-    '1743984000000': 'azatoi'
+    '1743984000000': 'azatoi',
+    '1744502400000': 'laughter'
   };
 
   function getPhraseAudioPath(phrase) {
@@ -1207,8 +1208,8 @@
             <div class="vocab-item">
               <div class="vocab-content">
                 <div class="mastery-stars" style="font-size:11px;margin-bottom:2px;">${stars}</div>
-                <div class="vocab-japanese">${p.japanese}</div>
                 <div class="vocab-english">${p.english}</div>
+                <div class="vocab-japanese">${p.japanese}</div>
                 ${source ? `<div style="font-size:11px;color:var(--text-muted);margin-top:2px;">${source}</div>` : ''}
               </div>
               <div class="vocab-actions">
@@ -2037,8 +2038,8 @@
         <div class="vocab-item">
           <div class="phrase-mastery" title="習熟度: ${masteryLevel}/5">${masteryStars}</div>
           <div class="vocab-content">
-            <div class="vocab-meaning">${phrase.japanese}</div>
-            <div class="vocab-example">${phrase.english}</div>
+            <div class="vocab-meaning">${phrase.english}</div>
+            <div class="vocab-example">${phrase.japanese}</div>
             ${sourceLabel ? `<div class="phrase-source">${sourceLabel}</div>` : ''}
           </div>
           <div class="vocab-actions">
