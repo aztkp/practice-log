@@ -7344,6 +7344,8 @@
       }
     ],
     "dictation": [],
+    "dictationMaterials": [],
+    "dictationLog": [],
     "meetingPhrases": [
       {
         "id": "meet_101",

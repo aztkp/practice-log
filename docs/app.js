@@ -19,7 +19,7 @@
   let currentMonth = new Date().getMonth();
 
   // English learning state
-  let currentEnglishSubtab = 'phrases';
+  let currentEnglishSubtab = 'dictation';
   let currentPhraseIndex = 0;
   let shuffledPhrases = [];
   let isCardFlipped = false;
@@ -210,6 +210,8 @@
       if (!practiceData.english.studyRecords) practiceData.english.studyRecords = [];
       if (!practiceData.english.pronunciation) practiceData.english.pronunciation = [];
       if (!practiceData.english.dictation) practiceData.english.dictation = [];
+      if (!practiceData.english.dictationMaterials) practiceData.english.dictationMaterials = [];
+      if (!practiceData.english.dictationLog) practiceData.english.dictationLog = [];
       if (!practiceData.english.meetingPhrases) practiceData.english.meetingPhrases = [];
 
       // Initialize Piano learning data
@@ -302,6 +304,14 @@
             remoteDictation.forEach(d => { dictationMap[d.id] = d; });
             localDictation.forEach(d => { dictationMap[d.id] = d; });
             remoteData.english.dictationMaterials = Object.values(dictationMap);
+
+            // Merge dictationLog (combine, dedupe by id)
+            const remoteLog = remoteData.english.dictationLog || [];
+            const localLog = practiceData.english.dictationLog || [];
+            const logMap = {};
+            remoteLog.forEach(l => { logMap[l.id] = l; });
+            localLog.forEach(l => { logMap[l.id] = l; });
+            remoteData.english.dictationLog = Object.values(logMap);
           }
 
           // Merge records
@@ -526,13 +536,13 @@
         });
       });
 
-      // Dictation
-      (practiceData.english.dictationMaterials || []).forEach(m => {
-        if (m.lastPracticed) {
-          checksByDate[m.lastPracticed] = (checksByDate[m.lastPracticed] || 0) + 1;
-          if (!categoryByDate[m.lastPracticed]) categoryByDate[m.lastPracticed] = [];
-          if (!categoryByDate[m.lastPracticed].includes('english')) {
-            categoryByDate[m.lastPracticed].push('english');
+      // Dictation log (per-day per-type entries)
+      (practiceData.english.dictationLog || []).forEach(l => {
+        if (l.date) {
+          checksByDate[l.date] = (checksByDate[l.date] || 0) + 1;
+          if (!categoryByDate[l.date]) categoryByDate[l.date] = [];
+          if (!categoryByDate[l.date].includes('english')) {
+            categoryByDate[l.date].push('english');
           }
         }
       });
@@ -1348,26 +1358,40 @@
     if (!container || !practiceData) return;
 
     const materials = practiceData.english.dictationMaterials || [];
+    const log = practiceData.english.dictationLog || [];
+    const today = getTodayKey();
 
     if (materials.length === 0) {
-      container.innerHTML = '<p class="empty">動画を追加して練習を始めよう</p>';
+      container.innerHTML = '<p class="empty">YouGlishで見つけた動画を追加して練習を始めよう</p>';
+      renderDictationToday();
       return;
     }
 
     container.innerHTML = materials.map((m, idx) => {
       const videoId = extractVideoId(m.url);
       const thumb = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '';
-      const practiceCount = m.practiceCount || 0;
+      const dictCount = log.filter(l => l.materialId === m.id && l.type === 'dictation').length;
+      const shadCount = log.filter(l => l.materialId === m.id && l.type === 'shadowing').length;
+      const dictTodayDone = log.some(l => l.materialId === m.id && l.type === 'dictation' && l.date === today);
+      const shadTodayDone = log.some(l => l.materialId === m.id && l.type === 'shadowing' && l.date === today);
       const lastPracticed = m.lastPracticed ? new Date(m.lastPracticed).toLocaleDateString() : '-';
 
       return `
-        <div class="dictation-material-card" onclick="loadDictationMaterial(${idx})">
-          <div class="material-thumb">
+        <div class="dictation-material-card">
+          <div class="material-thumb" onclick="loadDictationMaterial(${idx})" style="cursor:pointer">
             ${thumb ? `<img src="${thumb}" alt="">` : ''}
           </div>
-          <div class="material-info">
-            <div class="material-title">${m.title || 'Untitled'}</div>
-            <div class="material-meta">${m.segments?.length || 0} segments • ${practiceCount}回練習 • ${lastPracticed}</div>
+          <div class="material-info" onclick="loadDictationMaterial(${idx})" style="cursor:pointer">
+            <div class="material-title">${escapeHtml(m.title || 'Untitled')}</div>
+            <div class="material-meta">${m.segments?.length || 0} seg • 👂${dictCount} • 🗣${shadCount} • ${lastPracticed}</div>
+            <div class="material-log">
+              <button class="dictation-log-btn ${dictTodayDone ? 'done' : ''}" onclick="event.stopPropagation(); toggleDictationLog('${m.id}', 'dictation')">
+                ${dictTodayDone ? '✓' : ''} 👂 Dictation
+              </button>
+              <button class="dictation-log-btn ${shadTodayDone ? 'done' : ''}" onclick="event.stopPropagation(); toggleDictationLog('${m.id}', 'shadowing')">
+                ${shadTodayDone ? '✓' : ''} 🗣 Shadowing
+              </button>
+            </div>
           </div>
           <div class="material-actions">
             <button class="btn-icon" onclick="event.stopPropagation(); deleteDictationMaterial(${idx})" title="削除">🗑</button>
@@ -1375,7 +1399,83 @@
         </div>
       `;
     }).join('');
+
+    renderDictationToday();
   }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  }
+
+  function renderDictationToday() {
+    const container = document.getElementById('dictation-today');
+    if (!container || !practiceData) return;
+
+    const log = practiceData.english.dictationLog || [];
+    const today = getTodayKey();
+    const dictDoneToday = log.some(l => l.date === today && l.type === 'dictation');
+    const shadDoneToday = log.some(l => l.date === today && l.type === 'shadowing');
+
+    // Calculate streak (any practice type counts)
+    const dates = new Set(log.map(l => l.date));
+    let streak = 0;
+    let cursor = new Date();
+    while (true) {
+      const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}-${String(cursor.getDate()).padStart(2, '0')}`;
+      if (dates.has(key)) {
+        streak++;
+        cursor.setDate(cursor.getDate() - 1);
+      } else {
+        // Allow today to be unfinished without breaking streak
+        if (key === today && streak === 0) {
+          cursor.setDate(cursor.getDate() - 1);
+          continue;
+        }
+        break;
+      }
+    }
+
+    const totalDays = dates.size;
+
+    container.innerHTML = `
+      <div class="dictation-today-progress">
+        <span class="dictation-today-chip ${dictDoneToday ? 'done' : ''}">${dictDoneToday ? '✓' : ''} 👂 今日のDictation</span>
+        <span class="dictation-today-chip ${shadDoneToday ? 'done' : ''}">${shadDoneToday ? '✓' : ''} 🗣 今日のShadowing</span>
+      </div>
+      <div class="dictation-today-streak">
+        <span><strong>${streak}</strong>連続日</span>
+        <span><strong>${totalDays}</strong>累計日</span>
+      </div>
+    `;
+  }
+
+  window.toggleDictationLog = async function(materialId, type) {
+    if (!practiceData.english.dictationLog) practiceData.english.dictationLog = [];
+    const log = practiceData.english.dictationLog;
+    const today = getTodayKey();
+
+    const existingIdx = log.findIndex(l => l.materialId === materialId && l.type === type && l.date === today);
+    if (existingIdx >= 0) {
+      log.splice(existingIdx, 1);
+    } else {
+      log.push({
+        id: Date.now().toString() + Math.random().toString(36).slice(2, 6),
+        date: today,
+        type: type,
+        materialId: materialId
+      });
+      // Update material's lastPracticed for backward-compat
+      const material = (practiceData.english.dictationMaterials || []).find(m => m.id === materialId);
+      if (material) {
+        material.lastPracticed = today;
+        material.practiceCount = (material.practiceCount || 0) + 1;
+      }
+    }
+
+    await saveData();
+    renderDictationMaterials();
+    renderCalendar();
+  };
 
   window.loadDictationMaterial = function(index) {
     const materials = practiceData.english.dictationMaterials || [];

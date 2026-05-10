@@ -889,6 +889,82 @@
       margin-bottom: 16px;
     }
 
+    .dictation-today {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dictation-today-progress {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dictation-today-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      background: var(--bg-tertiary, #1a1a1a);
+      font-size: 13px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+    }
+
+    .dictation-today-chip.done {
+      background: rgba(0, 188, 212, 0.15);
+      color: var(--english);
+      border-color: var(--english);
+    }
+
+    .dictation-today-streak {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .dictation-today-streak strong {
+      color: var(--english);
+      font-size: 18px;
+      margin-right: 4px;
+    }
+
+    .dictation-material-card .material-log {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .dictation-log-btn {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: var(--bg-tertiary, #1a1a1a);
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .dictation-log-btn:hover {
+      border-color: var(--english);
+    }
+
+    .dictation-log-btn.done {
+      background: rgba(0, 188, 212, 0.15);
+      color: var(--english);
+      border-color: var(--english);
+    }
+
     .dictation-material-card {
       background: var(--bg-secondary);
       border-radius: 10px;
@@ -2541,11 +2617,11 @@
 
     <!-- English Sub-tabs (only shown when english category is selected) -->
     <div class="sub-tabs" id="english-subtabs">
-      <button class="sub-tab active" data-subtab="phrases">📝 Phrases</button>
-      <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
-      <button class="sub-tab" data-subtab="dictation">👂 Dictation</button>
-      <button class="sub-tab" data-subtab="meeting">💼 Meeting</button>
+      <button class="sub-tab active" data-subtab="dictation">👂 Dictation</button>
+      <button class="sub-tab" data-subtab="phrases">📝 Phrases</button>
       <button class="sub-tab" data-subtab="study">📖 Study</button>
+      <button class="sub-tab" data-subtab="meeting">💼 Meeting</button>
+      <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
     </div>
 
     <!-- Stats -->
@@ -2690,7 +2766,10 @@
       <div class="section-header">
         <div class="section-title">👂 Dictation</div>
       </div>
-      <p class="section-desc">YouTubeのインタビュー動画でディクテーション練習</p>
+      <p class="section-desc">YouGlishで見つけた動画を登録して、毎日ディクテーション＆シャドーイング</p>
+
+      <!-- Today's progress + streak -->
+      <div class="dictation-today" id="dictation-today"></div>
 
       <!-- Saved Materials List -->
       <div class="dictation-saved-list" id="dictation-saved-list"></div>
