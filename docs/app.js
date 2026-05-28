@@ -1344,6 +1344,7 @@
     const prevBtn = document.getElementById('prev-segment-btn');
     const nextBtn = document.getElementById('next-segment-btn');
     const closeBtn = document.getElementById('close-player-btn');
+    const savePhraseBtn = document.getElementById('save-phrase-btn');
 
     saveBtn?.addEventListener('click', saveDictationMaterial);
     checkBtn?.addEventListener('click', checkDictationAnswer);
@@ -1351,6 +1352,7 @@
     prevBtn?.addEventListener('click', () => navigateSegment(-1));
     nextBtn?.addEventListener('click', () => navigateSegment(1));
     closeBtn?.addEventListener('click', closeDictationPlayer);
+    savePhraseBtn?.addEventListener('click', saveDictationPhrase);
   }
 
   function renderDictationMaterials() {
@@ -1482,7 +1484,7 @@
     const material = materials[index];
     if (!material) return;
 
-    currentMaterialId = index;
+    currentMaterialId = material.id;
     dictationSegments = material.segments || [];
     currentDictationIndex = 0;
 
@@ -1506,6 +1508,7 @@
     titleEl.textContent = material.title || 'Untitled';
     playerSection.style.display = 'block';
     updateSegmentDisplay();
+    renderSavedPhrases();
 
     // Update practice count
     material.practiceCount = (material.practiceCount || 0) + 1;
@@ -1700,9 +1703,97 @@
   function closeDictationPlayer() {
     document.getElementById('dictation-player').style.display = 'none';
     document.getElementById('youtube-player-container').innerHTML = '';
+    const phraseInput = document.getElementById('saved-phrase-input');
+    if (phraseInput) phraseInput.value = '';
+    const section = document.getElementById('saved-phrases-section');
+    if (section) section.open = false;
     currentMaterialId = null;
     dictationSegments = [];
     currentDictationIndex = 0;
+  }
+
+  function getCurrentMaterial() {
+    if (!currentMaterialId) return null;
+    const materials = practiceData.english.dictationMaterials || [];
+    return materials.find(m => m.id === currentMaterialId) || null;
+  }
+
+  async function saveDictationPhrase() {
+    const material = getCurrentMaterial();
+    if (!material) {
+      showToast('動画を開いてください', 'error');
+      return;
+    }
+    const input = document.getElementById('saved-phrase-input');
+    const text = input?.value.trim();
+    if (!text) {
+      showToast('フレーズを入力してください', 'error');
+      return;
+    }
+
+    if (!material.savedPhrases) material.savedPhrases = [];
+    material.savedPhrases.push({
+      id: Date.now().toString(),
+      text: text,
+      createdAt: new Date().toISOString()
+    });
+
+    if (input) input.value = '';
+    renderSavedPhrases();
+    await saveData();
+    showToast('フレーズを保存しました');
+  }
+
+  window.deleteDictationPhrase = async function(phraseId) {
+    const material = getCurrentMaterial();
+    if (!material || !material.savedPhrases) return;
+    if (!confirm('このフレーズを削除しますか？')) return;
+    material.savedPhrases = material.savedPhrases.filter(p => p.id !== phraseId);
+    renderSavedPhrases();
+    await saveData();
+  };
+
+  function renderSavedPhrases() {
+    const listEl = document.getElementById('saved-phrase-list');
+    const countEl = document.getElementById('saved-phrases-count');
+    if (!listEl || !countEl) return;
+
+    const material = getCurrentMaterial();
+    const phrases = (material && material.savedPhrases) || [];
+
+    countEl.textContent = `(${phrases.length})`;
+
+    if (phrases.length === 0) {
+      listEl.innerHTML = '<div class="saved-phrase-empty">まだフレーズが保存されていません</div>';
+      return;
+    }
+
+    const sorted = [...phrases].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+    listEl.innerHTML = sorted.map(p => {
+      const dateLabel = formatPhraseDate(p.createdAt);
+      const safeText = escapeHtml(p.text);
+      return `
+        <div class="saved-phrase-item">
+          <div class="saved-phrase-item-body">
+            <div class="saved-phrase-text">${safeText}</div>
+            <div class="saved-phrase-date">${dateLabel}</div>
+          </div>
+          <button class="saved-phrase-delete" onclick="deleteDictationPhrase('${p.id}')" title="削除">🗑</button>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function formatPhraseDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const hh = String(d.getHours()).padStart(2, '0');
+    const mm = String(d.getMinutes()).padStart(2, '0');
+    return `${y}-${m}-${day} ${hh}:${mm}`;
   }
 
   // Initialize English subtabs
