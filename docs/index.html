@@ -818,6 +818,24 @@
       height: 100%;
     }
 
+    /* Local audio material: no 16:9 black box */
+    #youtube-player-container:has(audio) {
+      aspect-ratio: auto;
+      background: transparent;
+      overflow: visible;
+    }
+
+    .segment-text {
+      background: var(--bg-tertiary, rgba(255,255,255,0.05));
+      border-left: 3px solid var(--accent, #6366f1);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
     .dictation-controls {
       display: flex;
       align-items: center;
@@ -993,6 +1011,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .dictation-material-card .material-thumb-audio {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
     }
 
     .dictation-material-card .material-info {
@@ -2887,8 +2915,11 @@
           <button class="btn btn-sm" id="prev-segment-btn">◀ 前</button>
           <button class="btn btn-sm" id="replay-btn">🔁 再生</button>
           <button class="btn btn-sm" id="next-segment-btn">次 ▶</button>
+          <button class="btn btn-sm" id="toggle-text-btn">👁 テキスト</button>
           <span class="current-segment" id="current-segment">Segment: -</span>
         </div>
+
+        <div class="segment-text" id="segment-text" style="display:none;"></div>
 
         <div class="dictation-area">
           <textarea class="form-input" id="dictation-input" rows="3" placeholder="聞こえた内容を入力..."></textarea>

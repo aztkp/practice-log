@@ -1353,6 +1353,12 @@
     nextBtn?.addEventListener('click', () => navigateSegment(1));
     closeBtn?.addEventListener('click', closeDictationPlayer);
     savePhraseBtn?.addEventListener('click', saveDictationPhrase);
+
+    // Show/hide the answer text — useful for shadowing (read along)
+    document.getElementById('toggle-text-btn')?.addEventListener('click', () => {
+      const el = document.getElementById('segment-text');
+      if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    });
   }
 
   function renderDictationMaterials() {
@@ -1372,6 +1378,7 @@
     container.innerHTML = materials.map((m, idx) => {
       const videoId = extractVideoId(m.url);
       const thumb = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '';
+      const isAudio = !!m.audioFile;
       const dictCount = log.filter(l => l.materialId === m.id && l.type === 'dictation').length;
       const shadCount = log.filter(l => l.materialId === m.id && l.type === 'shadowing').length;
       const dictTodayDone = log.some(l => l.materialId === m.id && l.type === 'dictation' && l.date === today);
@@ -1381,7 +1388,7 @@
       return `
         <div class="dictation-material-card">
           <div class="material-thumb" onclick="loadDictationMaterial(${idx})" style="cursor:pointer">
-            ${thumb ? `<img src="${thumb}" alt="">` : ''}
+            ${thumb ? `<img src="${thumb}" alt="">` : (isAudio ? '<div class="material-thumb-audio">🎧</div>' : '')}
           </div>
           <div class="material-info" onclick="loadDictationMaterial(${idx})" style="cursor:pointer">
             <div class="material-title">${escapeHtml(m.title || 'Untitled')}</div>
@@ -1488,22 +1495,27 @@
     dictationSegments = material.segments || [];
     currentDictationIndex = 0;
 
-    const videoId = extractVideoId(material.url);
-    if (!videoId) {
-      showToast('Invalid video URL', 'error');
-      return;
-    }
-
     const container = document.getElementById('youtube-player-container');
     const playerSection = document.getElementById('dictation-player');
     const titleEl = document.getElementById('current-material-title');
 
-    container.innerHTML = `<iframe
-      id="yt-iframe"
-      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>`;
+    if (material.audioFile) {
+      // Local audio material (mp3 served from GitHub Pages)
+      container.innerHTML = `<audio id="dictation-audio" controls preload="metadata"
+        style="width:100%" src="audio/${material.audioFile}"></audio>`;
+    } else {
+      const videoId = extractVideoId(material.url);
+      if (!videoId) {
+        showToast('Invalid video URL', 'error');
+        return;
+      }
+      container.innerHTML = `<iframe
+        id="yt-iframe"
+        src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${window.location.origin}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>`;
+    }
 
     titleEl.textContent = material.title || 'Untitled';
     playerSection.style.display = 'block';
@@ -1643,6 +1655,11 @@
       segmentLabel.textContent = `${currentDictationIndex + 1} / ${dictationSegments.length}`;
     }
 
+    const textEl = document.getElementById('segment-text');
+    if (textEl) {
+      textEl.textContent = dictationSegments[currentDictationIndex]?.text || '';
+    }
+
     const input = document.getElementById('dictation-input');
     const result = document.getElementById('dictation-result');
     if (input) input.value = '';
@@ -1688,7 +1705,27 @@
     resultDiv.style.display = 'block';
   }
 
+  let audioSegmentStopTimer = null;
+  function playAudioSegment(audio) {
+    if (!dictationSegments.length) return;
+    const seg = dictationSegments[currentDictationIndex];
+    const start = seg.start > 0 ? seg.start : 0;
+    const next = dictationSegments[currentDictationIndex + 1];
+    const end = next ? next.start : (isFinite(audio.duration) ? audio.duration : start + 10);
+    if (audioSegmentStopTimer) { clearTimeout(audioSegmentStopTimer); audioSegmentStopTimer = null; }
+    audio.currentTime = start;
+    audio.play();
+    // Stop at the end of this segment so each chunk plays in isolation
+    const durationMs = Math.max(300, (end - start) * 1000);
+    audioSegmentStopTimer = setTimeout(() => { audio.pause(); }, durationMs);
+  }
+
   function replayCurrentSegment() {
+    const audio = document.getElementById('dictation-audio');
+    if (audio) {
+      playAudioSegment(audio);
+      return;
+    }
     const iframe = document.getElementById('yt-iframe');
     if (!iframe || !dictationSegments.length) return;
 
@@ -1701,6 +1738,9 @@
   }
 
   function closeDictationPlayer() {
+    const audio = document.getElementById('dictation-audio');
+    if (audio) audio.pause();
+    if (audioSegmentStopTimer) { clearTimeout(audioSegmentStopTimer); audioSegmentStopTimer = null; }
     document.getElementById('dictation-player').style.display = 'none';
     document.getElementById('youtube-player-container').innerHTML = '';
     const phraseInput = document.getElementById('saved-phrase-input');
