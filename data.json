@@ -9114,6 +9114,260 @@
                 "meaning": "計算ずくで可愛い(本研究のキー表現)",
                 "id": "sec1-v5"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec1-f1",
+                "english": "So, think about this for a second.",
+                "japanese": "ちょっとこれについて考えてみてください。",
+                "start": 0.0
+              },
+              {
+                "id": "sec1-f2",
+                "english": "What if a machine like manipulated you on purpose?",
+                "japanese": "もし機械が、意図的にあなたを操作したとしたら？",
+                "start": 4.7
+              },
+              {
+                "id": "sec1-f3",
+                "english": "Okay. And you were completely aware it was doing it.",
+                "japanese": "そして、それが行われていることにあなたが完全に気づいていたとしたら。",
+                "start": 7.8
+              },
+              {
+                "id": "sec1-f4",
+                "english": "You knew it was a trick, but that knowledge actually made you like the machine more.",
+                "japanese": "それが仕掛けだと分かっていたのに、その気づきがむしろその機械をより好きにさせた。",
+                "start": 10.3
+              },
+              {
+                "id": "sec1-f5",
+                "english": "Yeah, I mean, it fundamentally breaks how we think about manipulation, doesn't it?",
+                "japanese": "ええ、それは私たちの『操作』についての考え方を根本から覆しますよね。",
+                "start": 15.6
+              },
+              {
+                "id": "sec1-f6",
+                "english": "Right. We operate on this assumption that for a trip to work, the mark has to be completely in the dark.",
+                "japanese": "そうです。私たちは、仕掛けが成立するにはターゲットが完全に何も知らない必要がある、という前提で動いています。",
+                "start": 20.1
+              },
+              {
+                "id": "sec1-f7",
+                "english": "The illusion, you know, it only holds up as long as the strings are invisible.",
+                "japanese": "その幻想は、操り糸が見えない間だけ保たれるのです。",
+                "start": 25.8
+              },
+              {
+                "id": "sec1-f8",
+                "english": "Because the second you see the strings, you usually feel like insulted.",
+                "japanese": "なぜなら、糸が見えた瞬間、たいてい侮辱されたように感じるからです。",
+                "start": 29.1
+              },
+              {
+                "id": "sec1-f9",
+                "english": "Exactly. You realize you're being played, your defenses instantly shoot up, and well, the trust is gone.",
+                "japanese": "その通り。自分が操られていると気づき、防御が一気に高まり、そして信頼は消え去ります。",
+                "start": 33.0
+              },
+              {
+                "id": "sec1-f10",
+                "english": "But today for our deep dive, we're going into this, honestly, it's a wild frontier of robot design.",
+                "japanese": "でも今日のディープダイブでは、正直に言って、ロボット設計の途方もない最前線に踏み込みます。",
+                "start": 39.5
+              },
+              {
+                "id": "sec1-f11",
+                "english": "It really is.",
+                "japanese": "本当にそうですね。",
+                "start": 45.2
+              },
+              {
+                "id": "sec1-f12",
+                "english": "And it's entirely built around making the strings visible.",
+                "japanese": "そしてそれは、操り糸をあえて『見せる』ことを軸に作られています。",
+                "start": 46.2
+              },
+              {
+                "id": "sec1-f13",
+                "english": "We are looking at a highly specific space where engineers aren't just programming machines to be cute, they're programming them to be deliberately, calculatedly cute.",
+                "japanese": "私たちが見ているのは、エンジニアが機械を単に可愛くプログラムするのではなく、意図的・計算ずくで可愛くなるようにプログラムする、非常に特殊な領域です。",
+                "start": 48.8
+              },
+              {
+                "id": "sec1-f14",
+                "english": "Right to your face.",
+                "japanese": "それも、面と向かって堂々と。",
+                "start": 57.9
+              },
+              {
+                "id": "sec1-f15",
+                "english": "Yeah, right to your face, with zero subtlety about their intentions.",
+                "japanese": "ええ、面と向かって、その意図を全く隠そうともせずに。",
+                "start": 58.8
+              },
+              {
+                "id": "sec1-f16",
+                "english": "And for everyone listening, this isn't some theoretical thought experiment about the distant future.",
+                "japanese": "そして聴いている皆さん、これは遠い未来についての理論的な思考実験ではありません。",
+                "start": 62.2
+              },
+              {
+                "id": "sec1-f17",
+                "english": "We're actually breaking down a really cutting-edge 2026 paper coming out of the University of Tokyo.",
+                "japanese": "私たちは、東京大学から出た非常に最先端の2026年の論文を実際に読み解いています。",
+                "start": 67.2
+              },
+              {
+                "id": "sec1-f18",
+                "english": "Fresh research. Very fresh.",
+                "japanese": "新しい研究です。とても新しい。",
+                "start": 73.6
+              },
+              {
+                "id": "sec1-f19",
+                "english": "The title alone gives you a sense of where we're heading here.",
+                "japanese": "タイトルだけでも、これからどこへ向かうのかが伝わってきます。",
+                "start": 75.7
+              },
+              {
+                "id": "sec1-f20",
+                "english": "It's called Can Robots Be Asatoy?",
+                "japanese": "『ロボットはあざとくなれるか？』というタイトルです。",
+                "start": 78.2
+              },
+              {
+                "id": "sec1-f21",
+                "english": "Designing Calculatedly Cute Social Robot Behaviors Through Cross-Cultural Participatory Visualization.",
+                "japanese": "『異文化参加型可視化を通じた、計算ずくで可愛いソーシャルロボットの振る舞いの設計』。",
+                "start": 81.5
+              },
+              {
+                "id": "sec1-f22",
+                "english": "That is a mouthful.",
+                "japanese": "長くて言いにくいですね。",
+                "start": 88.2
+              },
+              {
+                "id": "sec1-f23",
+                "english": "It is, yeah.",
+                "japanese": "ええ、そうですね。",
+                "start": 89.3
+              },
+              {
+                "id": "sec1-f24",
+                "english": "But the researchers presented this at the Designing Interactive Systems Conference, the disconference over in Singapore.",
+                "japanese": "でも研究者たちはこれを、シンガポールで開かれた Designing Interactive Systems Conference（DIS会議）で発表しました。",
+                "start": 90.2
+              },
+              {
+                "id": "sec1-f25",
+                "english": "So the core mission for our deep dive today is really figuring out why roboticists are even resorting to this in the first place.",
+                "japanese": "今日のディープダイブの中心的な使命は、そもそもなぜロボット研究者がこんな手段に訴えているのかを解明することです。",
+                "start": 96.3
+              },
+              {
+                "id": "sec1-f26",
+                "english": "Right, what's the underlying problem?",
+                "japanese": "そうですね、根底にある問題は何なのか？",
+                "start": 104.0
+              },
+              {
+                "id": "sec1-f27",
+                "english": "Because as robots step out of the manufacturing plants and into our actual lives, like Walker and I are hospitals sitting on our kitchen counters doing elder care designers are hitting this massive psychological hurdle.",
+                "japanese": "ロボットが製造工場を出て私たちの実生活に入り込むにつれ——病院やキッチンカウンターの上、高齢者ケアの現場などで——設計者は巨大な心理的ハードルにぶつかっているからです。",
+                "start": 105.7
+              },
+              {
+                "id": "sec1-f28",
+                "english": "How do you actually get a human being to accept this hunk of metal and code?",
+                "japanese": "金属とコードの塊にすぎないものを、人間にどうやって受け入れさせるのか？",
+                "start": 118.4
+              },
+              {
+                "id": "sec1-f29",
+                "english": "How do you make us want to interact with it daily without building something that is inherently deceptive or entirely dependent on a really narrow cultural idea of what looks friendly?",
+                "japanese": "本質的に欺瞞的なものや、『何が親しみやすいか』という非常に狭い文化的観念に完全に依存したものを作ることなく、どうやって毎日それと関わりたいと思わせるのか？",
+                "start": 124.9
+              },
+              {
+                "id": "sec1-f30",
+                "english": "And that is the central tension driving this entire field of research right now.",
+                "japanese": "そしてそれこそが、今この研究分野全体を突き動かしている中心的な緊張関係です。",
+                "start": 136.4
+              },
+              {
+                "id": "sec1-f31",
+                "english": "I mean, for decades, the robotics industry has leaned heavily on a very specific static set of visual cues to manufacture our trust.",
+                "japanese": "つまり、何十年もの間、ロボット業界は私たちの信頼を作り出すために、非常に特定の静的な視覚的手がかりに大きく依存してきました。",
+                "start": 140.3
+              },
+              {
+                "id": "sec1-f32",
+                "english": "They design the robot to look a certain way and they just assume the human's biological hardware will do the rest.",
+                "japanese": "ロボットをある見た目に設計し、あとは人間の生物学的なハードウェアが勝手に処理してくれると想定するのです。",
+                "start": 148.6
+              },
+              {
+                "id": "sec1-f33",
+                "english": "Just rely on our instinct.",
+                "japanese": "ただ私たちの本能に頼るわけですね。",
+                "start": 153.2
+              },
+              {
+                "id": "sec1-f34",
+                "english": "Exactly, but this University of Tokyo paper is suggesting that the old visual tricks are, well, they're failing us.",
+                "japanese": "その通り。しかしこの東京大学の論文は、従来の視覚的なトリックがもはや通用しなくなっていると示唆しています。",
+                "start": 154.3
+              },
+              {
+                "id": "sec1-f35",
+                "english": "They are proposing a radical behavioral shift instead, one that's deeply rooted in the social dynamics of East Asian youth culture.",
+                "japanese": "代わりに彼らは、東アジアの若者文化の社会的力学に深く根ざした、根本的な『行動』への転換を提案しています。",
+                "start": 161.2
+              },
+              {
+                "id": "sec1-f36",
+                "english": "Which is fascinating.",
+                "japanese": "これが実に興味深い。",
+                "start": 167.4
+              },
+              {
+                "id": "sec1-f37",
+                "english": "It's a paper that forces us to completely rethink the psychological boundaries of human-robot interaction.",
+                "japanese": "人間とロボットの相互作用の心理的境界を、完全に考え直すことを迫る論文です。",
+                "start": 168.7
+              },
+              {
+                "id": "sec1-f38",
+                "english": "Well, before we can really grasp why this new behavioral approach is so radical, I think we need to understand why the old approach is broken.",
+                "japanese": "この新しい行動的アプローチがなぜそれほど革新的なのかを本当に理解する前に、なぜ従来のアプローチが破綻しているのかを理解する必要があると思います。",
+                "start": 174.8
+              },
+              {
+                "id": "sec1-f39",
+                "english": "Because if you look at almost any consumer robot on the market right now, they all kind of, they share the same aesthetic.",
+                "japanese": "なぜなら、今市場に出ているほぼどの消費者向けロボットを見ても、どれも同じような美意識を共有しているからです。",
+                "start": 181.9
+              },
+              {
+                "id": "sec1-f40",
+                "english": "Yeah, you do.",
+                "japanese": "ええ、確かに。",
+                "start": 188.8
+              },
+              {
+                "id": "sec1-f41",
+                "english": "They look like minimalist to cartoon characters.",
+                "japanese": "ミニマルな、あるいは漫画のキャラクターのような見た目です。",
+                "start": 189.6
+              },
+              {
+                "id": "sec1-f42",
+                "english": "So why is this current industry standard for robot cuteness suddenly hitting a wall?",
+                "japanese": "では、なぜロボットの可愛さに関するこの現在の業界標準が、突然壁にぶつかっているのでしょうか？",
+                "start": 191.6
+              }
             ]
           },
           {
@@ -9206,6 +9460,236 @@
                 "meaning": "蜜月期(初期の好意的な時期)",
                 "id": "sec2-v7"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec2-f1",
+                "english": "So the current standard relies on something behavioral scientists call the baby schema.",
+                "japanese": "そこで現在の標準は、行動科学者が『ベビースキーマ（baby schema）』と呼ぶものに依存しています。",
+                "start": 197.1
+              },
+              {
+                "id": "sec2-f2",
+                "english": "The baby schema.",
+                "japanese": "ベビースキーマ。",
+                "start": 202.1
+              },
+              {
+                "id": "sec2-f3",
+                "english": "Right. It's been the absolute gold standard for achieving robot acceptability.",
+                "japanese": "そうです。それはロボットの受容性を高めるための、まさに王道（ゴールドスタンダード）でした。",
+                "start": 202.9
+              },
+              {
+                "id": "sec2-f4",
+                "english": "The baby schema is basically an established set of infantile physical features.",
+                "japanese": "ベビースキーマとは、基本的に確立された一連の幼児的な身体的特徴のことです。",
+                "start": 208.4
+              },
+              {
+                "id": "sec2-f5",
+                "english": "Like actual babies.",
+                "japanese": "本物の赤ちゃんのような、ということですね。",
+                "start": 213.6
+              },
+              {
+                "id": "sec2-f6",
+                "english": "Literally, we're talking about disproportionately large eyes, a head that is massive relative to the rest of the body, round cheeks, small chins.",
+                "japanese": "文字どおり、不釣り合いに大きな目、体に対して非常に大きな頭、丸い頬、小さな顎、といったものを指します。",
+                "start": 214.8
+              },
+              {
+                "id": "sec2-f7",
+                "english": "Okay, yeah. These aren't arbitrary design choices, you know?",
+                "japanese": "なるほど。これらは恣意的なデザインの選択ではないんですよね？",
+                "start": 222.7
+              },
+              {
+                "id": "sec2-f8",
+                "english": "They are specific visual triggers that are biologically hardwired into our evolutionary history.",
+                "japanese": "これらは、私たちの進化の歴史に生物学的に組み込まれた、特定の視覚的トリガーです。",
+                "start": 225.9
+              },
+              {
+                "id": "sec2-f9",
+                "english": "They're designed to elicit innate human caregiving responses.",
+                "japanese": "生得的な人間の養育反応を引き出すように設計されています。",
+                "start": 231.7
+              },
+              {
+                "id": "sec2-f10",
+                "english": "So it's essentially a biological hack.",
+                "japanese": "つまり本質的には『生物学的ハック』ですね。",
+                "start": 235.7
+              },
+              {
+                "id": "sec2-f11",
+                "english": "That's one way to put it, yeah.",
+                "japanese": "ええ、そういう言い方もできます。",
+                "start": 237.6
+              },
+              {
+                "id": "sec2-f12",
+                "english": "Like the designer knows that if they put giant, vulnerable looking eyes on a piece of plastic, my brain just bypasses logic.",
+                "japanese": "設計者は、プラスチックの塊に巨大で無防備に見える目を付ければ、私の脳が理屈を飛び越えてしまうと分かっているのです。",
+                "start": 239.1
+              },
+              {
+                "id": "sec2-f13",
+                "english": "My brain registers infant, dumps a bunch of oxytocin or whatever caregiving chemicals into my system.",
+                "japanese": "私の脳は『幼児だ』と認識し、オキシトシンなどの養育に関わる化学物質を体に大量に放出します。",
+                "start": 247.6
+              },
+              {
+                "id": "sec2-f14",
+                "english": "And suddenly I feel this overwhelming urge to protect a machine that doesn't actually have feelings.",
+                "japanese": "そして突然、本当は感情など持たない機械を守りたいという、抑えがたい衝動を感じてしまうのです。",
+                "start": 253.9
+              },
+              {
+                "id": "sec2-f15",
+                "english": "That's a very accurate way to describe the mechanism.",
+                "japanese": "そのメカニズムの説明として、とても正確です。",
+                "start": 259.8
+              },
+              {
+                "id": "sec2-f16",
+                "english": "When we perceive those specific infantile proportions, our physiological response is just automatic.",
+                "japanese": "あの特定の幼児的な比率を知覚すると、私たちの生理的反応はただ自動的に起こります。",
+                "start": 262.4
+              },
+              {
+                "id": "sec2-f17",
+                "english": "We wanna nurture, we wanna protect.",
+                "japanese": "養いたい、守りたい、と感じてしまう。",
+                "start": 268.8
+              },
+              {
+                "id": "sec2-f18",
+                "english": "We can't help it.",
+                "japanese": "どうしようもないのです。",
+                "start": 270.6
+              },
+              {
+                "id": "sec2-f19",
+                "english": "We really can't.",
+                "japanese": "本当に、どうしようもない。",
+                "start": 271.4
+              },
+              {
+                "id": "sec2-f20",
+                "english": "And for a long time, slapping that baby schema onto a robot was a highly successful shortcut to getting humans to lower their guard around new technology.",
+                "japanese": "そして長い間、ロボットにベビースキーマを当てはめることは、新しい技術に対する人間の警戒心を解かせる、非常に成功した近道でした。",
+                "start": 272.2
+              },
+              {
+                "id": "sec2-f21",
+                "english": "But the researchers point out a massive design trap inherent in this approach.",
+                "japanese": "しかし研究者たちは、このアプローチに内在する大きな設計上の罠を指摘しています。",
+                "start": 281.2
+              },
+              {
+                "id": "sec2-f22",
+                "english": "I'd imagine the most obvious trap is that you just end up with an incredibly boring monoculture of design.",
+                "japanese": "一番分かりやすい罠は、ひどく退屈な『デザインの単一化（モノカルチャー）』に陥ってしまうことだと思います。",
+                "start": 286.0
+              },
+              {
+                "id": "sec2-f23",
+                "english": "Oh, absolutely. Like if the only way to get humans to trust a robot is to give it giant anime eyes, then every single robot designed for the next century is gonna look exactly the same.",
+                "japanese": "まさにその通り。ロボットを人間に信頼させる唯一の方法が巨大なアニメ的な目を付けることなら、これから一世紀の間に設計されるロボットはすべて全く同じ見た目になってしまいます。",
+                "start": 290.7
+              },
+              {
+                "id": "sec2-f24",
+                "english": "You completely limit design diversity.",
+                "japanese": "デザインの多様性を完全に制限してしまうのです。",
+                "start": 300.2
+              },
+              {
+                "id": "sec2-f25",
+                "english": "You severely limit it.",
+                "japanese": "深刻に制限してしまいます。",
+                "start": 302.1
+              },
+              {
+                "id": "sec2-f26",
+                "english": "And beyond just being aesthetically stagnant, you run the risk of normalizing one singular, very specific visual aesthetic as the absolute standard for all robots globally.",
+                "japanese": "そして美的に停滞するだけでなく、ある一つの非常に特定の視覚的美意識を、世界中の全ロボットの絶対的標準として常態化させてしまう危険があります。",
+                "start": 303.8
+              },
+              {
+                "id": "sec2-f27",
+                "english": "It presumes that one specific manifestation of cute works for every application and every culture, which is honestly incredibly limiting.",
+                "japanese": "それは、ある一つの『可愛さ』の現れ方が、あらゆる用途・あらゆる文化に通用すると前提しているわけで、正直に言って極めて限定的です。",
+                "start": 315.2
+              },
+              {
+                "id": "sec2-f28",
+                "english": "But the paper points out an even deeper functional flaw.",
+                "japanese": "しかし論文は、さらに根深い機能的な欠陥を指摘しています。",
+                "start": 324.0
+              },
+              {
+                "id": "sec2-f29",
+                "english": "Which is? Research increasingly shows that static cute appearances alone are completely incapable of generating long-term emotional attachment.",
+                "japanese": "それは何かというと——静的な可愛い見た目だけでは、長期的な感情的愛着を生み出すことが全くできない、という研究結果が増えているのです。",
+                "start": 327.2
+              },
+              {
+                "id": "sec2-f30",
+                "english": "Oh, wow. Meaning the biological hack wears off.",
+                "japanese": "なるほど。つまり、生物学的ハックは効果が薄れていくということですね。",
+                "start": 336.1
+              },
+              {
+                "id": "sec2-f31",
+                "english": "Precisely. It wears off.",
+                "japanese": "その通り。効き目が切れるのです。",
+                "start": 338.9
+              },
+              {
+                "id": "sec2-f32",
+                "english": "A robot might look absolutely adorable the first time you unbox it.",
+                "japanese": "開封した最初の瞬間は、ロボットはこの上なく愛らしく見えるかもしれません。",
+                "start": 340.6
+              },
+              {
+                "id": "sec2-f33",
+                "english": "But if its actual behavior is repetitive or if it doesn't dynamically respond to you over time in a meaningful way, that visual novelty fades very quickly.",
+                "japanese": "しかし実際の振る舞いが反復的だったり、時間をかけて意味のある形で動的に応答しなかったりすると、その視覚的な目新しさはとても早く色あせてしまいます。",
+                "start": 344.2
+              },
+              {
+                "id": "sec2-f34",
+                "english": "The honeymoon phase ends.",
+                "japanese": "蜜月期（ハネムーン期）は終わるのです。",
+                "start": 352.9
+              },
+              {
+                "id": "sec2-f35",
+                "english": "Right. The human brain adapts, the illusion of life breaks, and suddenly you're just looking at a toaster with big eyes.",
+                "japanese": "そうです。人間の脳は順応し、生命らしさの幻想は崩れ、気づけばただ『大きな目のついたトースター』を見ているだけになります。",
+                "start": 354.2
+              },
+              {
+                "id": "sec2-f36",
+                "english": "You lose interest.",
+                "japanese": "興味を失ってしまうのです。",
+                "start": 359.9
+              },
+              {
+                "id": "sec2-f37",
+                "english": "Okay, then there is the other side of this, which the paper gets into, and it's something that makes me genuinely uncomfortable.",
+                "japanese": "さて、ここで論文が踏み込む別の側面があって、それは私を本当に居心地悪くさせるものです。",
+                "start": 360.7
+              },
+              {
+                "id": "sec2-f38",
+                "english": "The ethical side.",
+                "japanese": "倫理的な側面ですね。",
+                "start": 366.2
+              }
             ]
           },
           {
@@ -9292,6 +9776,182 @@
                 "term": "persuasion",
                 "meaning": "説得",
                 "id": "sec3-v6"
+              }
+            ],
+            "fullText": [
+              {
+                "id": "sec3-f1",
+                "english": "Yes, the ethical implications of the baby schema.",
+                "japanese": "そう、ベビースキーマの倫理的な含意です。",
+                "start": 367.6
+              },
+              {
+                "id": "sec3-f2",
+                "english": "The text refers to this traditional static form of cuteness as a potential dark pattern.",
+                "japanese": "この文献は、こうした従来型の静的な可愛さを、潜在的な『ダークパターン』と呼んでいます。",
+                "start": 370.8
+              },
+              {
+                "id": "sec3-f3",
+                "english": "Which is a strong term.",
+                "japanese": "強い言葉ですね。",
+                "start": 376.9
+              },
+              {
+                "id": "sec3-f4",
+                "english": "It is. Now, in the software world, a dark pattern is a deceptive user interface.",
+                "japanese": "そうです。さて、ソフトウェアの世界では、ダークパターンとは利用者を欺くユーザーインターフェースのことです。",
+                "start": 378.2
+              },
+              {
+                "id": "sec3-f5",
+                "english": "It's like the predatory mobile game that hides a massive data mining operation behind a colorful cartoon mascot.",
+                "japanese": "カラフルな漫画のマスコットの裏に巨大なデータ収集の仕組みを隠している、悪質なモバイルゲームのようなものです。",
+                "start": 384.1
+              },
+              {
+                "id": "sec3-f6",
+                "english": "The mascot isn't there to entertain you.",
+                "japanese": "そのマスコットは、あなたを楽しませるためにいるのではありません。",
+                "start": 391.3
+              },
+              {
+                "id": "sec3-f7",
+                "english": "It's there to disarm you, so you click agree on the terms of service.",
+                "japanese": "あなたの警戒を解き、利用規約に『同意』をクリックさせるためにいるのです。",
+                "start": 392.9
+              },
+              {
+                "id": "sec3-f8",
+                "english": "And the paper seems to be asking, where does harmless persuasion end and actual manipulation begin when we talk about robot design?",
+                "japanese": "そして論文はこう問うているようです——ロボット設計について語るとき、無害な説得はどこで終わり、本当の操作はどこから始まるのか？",
+                "start": 397.0
+              },
+              {
+                "id": "sec3-f9",
+                "english": "The researchers are highlighting a very active ethical debate here.",
+                "japanese": "研究者たちはここで、非常に活発な倫理的議論を浮き彫りにしています。",
+                "start": 405.1
+              },
+              {
+                "id": "sec3-f10",
+                "english": "The reason traditional static cuteness can function manipulatively is precisely because it actively bypasses user agency.",
+                "japanese": "従来の静的な可愛さが操作的に機能しうる理由は、まさにそれがユーザーの主体性（agency）を積極的に回避するからです。",
+                "start": 408.3
+              },
+              {
+                "id": "sec3-f11",
+                "english": "It sneaks past your defenses.",
+                "japanese": "あなたの防御をこっそりすり抜けるのです。",
+                "start": 415.4
+              },
+              {
+                "id": "sec3-f12",
+                "english": "Exactly. When you interact with a robot utilizing the baby schema, it elicits an automatic effective response from you.",
+                "japanese": "その通り。ベビースキーマを利用したロボットと関わると、あなたから自動的な情動反応が引き出されます。",
+                "start": 416.6
+              },
+              {
+                "id": "sec3-f13",
+                "english": "You do not consciously choose to find it cute.",
+                "japanese": "あなたは意識的に『可愛い』と感じることを選んでいるわけではありません。",
+                "start": 422.5
+              },
+              {
+                "id": "sec3-f14",
+                "english": "Right. Your biology reacts a fraction of a second before your conscious, rational mind can even process the interaction.",
+                "japanese": "そうです。あなたの生理反応は、意識的で理性的な心がその相互作用を処理するよりも一瞬早く反応してしまうのです。",
+                "start": 424.9
+              },
+              {
+                "id": "sec3-f15",
+                "english": "So my body is reacting to the stimulus before my brain has time to ask, wait, what does this machine actually want from me?",
+                "japanese": "つまり私の体は、脳が『待って、この機械は私から一体何を求めているんだ？』と問う暇もなく、刺激に反応しているのですね。",
+                "start": 431.4
+              },
+              {
+                "id": "sec3-f16",
+                "english": "Exactly. And if that unconscious biological reaction is being leveraged by the designer to achieve an ulterior motive, say, to make you feel comfortable enough to share highly personal medical information with the robot or to keep you engaging with a commercial platform for far longer than you originally intended, that fits the definition of a dark pattern.",
+                "japanese": "その通り。そしてもし、その無意識の生物学的反応が、設計者によって隠れた動機のために利用されているなら——たとえば、あなたが安心して極めて個人的な医療情報をロボットに共有してしまうように、あるいは当初の意図よりもずっと長く商業プラットフォームに関わり続けさせるように——それはダークパターンの定義に当てはまります。",
+                "start": 438.3
+              },
+              {
+                "id": "sec3-f17",
+                "english": "The manipulative intent of the machine's programming is being actively hidden behind a facade of harmless, infant-like vulnerability.",
+                "japanese": "機械のプログラムの操作的な意図が、無害で幼児のような無防備さという見せかけの裏に、積極的に隠されているのです。",
+                "start": 460.5
+              },
+              {
+                "id": "sec3-f18",
+                "english": "Well, I want to be really clear for anyone listening that we are just reporting on the ethical tensions highlighted in these sources.",
+                "japanese": "ええ、聴いている皆さんにはっきりさせておきたいのですが、私たちはこれらの資料で示された倫理的な緊張を報告しているだけです。",
+                "start": 469.1
+              },
+              {
+                "id": "sec3-f19",
+                "english": "Absolutely. We aren't taking a stance that every designer who puts big eyes on a robot is some evil mastermind trying to steal your data.",
+                "japanese": "その通り。ロボットに大きな目を付ける設計者の誰もが、あなたのデータを盗もうとする邪悪な黒幕だ、という立場を取っているわけではありません。",
+                "start": 475.2
+              },
+              {
+                "id": "sec3-f20",
+                "english": "No, no. But the psychological tension is undeniable.",
+                "japanese": "いえ、決して。しかしその心理的な緊張は否定できません。",
+                "start": 481.2
+              },
+              {
+                "id": "sec3-f21",
+                "english": "The manipulation only works because the human user doesn't realize they're being manipulated.",
+                "japanese": "その操作は、人間のユーザーが操作されていると気づかないからこそ成立するのです。",
+                "start": 484.2
+              },
+              {
+                "id": "sec3-f22",
+                "english": "The robot's static appearance is operating as a smoke screen for the designer's actual intent.",
+                "japanese": "ロボットの静的な見た目は、設計者の本当の意図を覆い隠す『煙幕』として機能しているのです。",
+                "start": 490.0
+              },
+              {
+                "id": "sec3-f23",
+                "english": "Which brings us to the necessity for a paradigm shift.",
+                "japanese": "そしてそれが、パラダイムシフトの必要性へとつながります。",
+                "start": 495.3
+              },
+              {
+                "id": "sec3-f24",
+                "english": "Because if static appearance-based cuteness is failing to create long-term attachment and it's simultaneously wandering into the ethical minefield of dark patterns, roboticists need a fundamentally new strategy.",
+                "japanese": "なぜなら、静的な見た目に基づく可愛さが長期的な愛着を生み出せず、同時にダークパターンという倫理的な地雷原へと迷い込んでいるなら、ロボット研究者には根本的に新しい戦略が必要だからです。",
+                "start": 498.4
+              },
+              {
+                "id": "sec3-f25",
+                "english": "They have to move away from the question of how should a robot look and start asking how should a robot act.",
+                "japanese": "彼らは『ロボットはどう見えるべきか』という問いから離れ、『ロボットはどう振る舞うべきか』を問い始めなければなりません。",
+                "start": 510.8
+              },
+              {
+                "id": "sec3-f26",
+                "english": "Exactly. Passive biological cuteness is a dead end.",
+                "japanese": "その通り。受動的で生物学的な可愛さは、行き止まりです。",
+                "start": 516.5
+              },
+              {
+                "id": "sec3-f27",
+                "english": "What is the behavioral alternative?",
+                "japanese": "では、行動的な代替案とは何か？",
+                "start": 520.1
+              },
+              {
+                "id": "sec3-f28",
+                "english": "Right. And I think this is where the paper introduces the cultural concepts that serve as the entire foundation of their research.",
+                "japanese": "そうですね。そしてここで論文は、研究全体の土台となる文化的な概念を導入するのだと思います。",
+                "start": 522.1
+              },
+              {
+                "id": "sec3-f29",
+                "english": "Yeah. So to find a new behavioral model, the researchers actually turned away from Western biological psychology entirely and they look deeply into East Asian cultural frameworks.",
+                "japanese": "ええ。新しい行動モデルを見つけるために、研究者たちは西洋の生物学的心理学から完全に離れ、東アジアの文化的枠組みを深く掘り下げました。",
+                "start": 528.8
               }
             ]
           },
@@ -9393,6 +10053,302 @@
                 "meaning": "共犯者(ここでは「一緒に遊びに乗る人」)",
                 "id": "sec4-v7"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec4-f1",
+                "english": "Okay. The primary concept that anger their study to is a Japanese term called azatoi.",
+                "japanese": "さて。彼らの研究の起点となった中心的な概念は、『あざとい（azatoi）』という日本語です。",
+                "start": 538.7
+              },
+              {
+                "id": "sec4-f2",
+                "english": "Azatoi. Right.",
+                "japanese": "あざとい。なるほど。",
+                "start": 543.6
+              },
+              {
+                "id": "sec4-f3",
+                "english": "In this specific context, azatoi translates to an intentional, highly calculated form of cuteness.",
+                "japanese": "この特定の文脈では、『あざとい』は意図的で高度に計算された可愛さの形を意味します。",
+                "start": 545.2
+              },
+              {
+                "id": "sec4-f4",
+                "english": "They also draw parallels to similar cultural phenomena in neighboring regions, specifically pointing to agyo in Korean culture and sajiao in Chinese culture.",
+                "japanese": "彼らはまた、近隣地域の類似した文化的現象との類似点も挙げており、特に韓国文化の『エギョ（aegyo）』と中国文化の『サージャオ（撒嬌）』を指摘しています。",
+                "start": 550.6
+              },
+              {
+                "id": "sec4-f5",
+                "english": "Let's break down what these concepts actually look like in practice because this isn't just about like someone wearing a cute outfit.",
+                "japanese": "これらの概念が実際にどんなものなのかを分解してみましょう。なぜなら、これは単に誰かが可愛い服を着る、というような話ではないからです。",
+                "start": 559.9
+              },
+              {
+                "id": "sec4-f6",
+                "english": "No, it is entirely behavioral.",
+                "japanese": "そうです、これは完全に『行動』の話です。",
+                "start": 566.0
+              },
+              {
+                "id": "sec4-f7",
+                "english": "While they all have distinct cultural nuances, azatoi, ajo and sajiao share a very similar structural foundation.",
+                "japanese": "それぞれに固有の文化的ニュアンスはあるものの、あざとい・エギョ・サージャオは、非常によく似た構造的な土台を共有しています。",
+                "start": 568.1
+              },
+              {
+                "id": "sec4-f8",
+                "english": "They all involve the deliberate, active performance of cuteness.",
+                "japanese": "いずれも、可愛さの意図的で能動的な『パフォーマンス（演技）』を伴います。",
+                "start": 577.1
+              },
+              {
+                "id": "sec4-f9",
+                "english": "Performance being the key word.",
+                "japanese": "『パフォーマンス』が鍵となる言葉ですね。",
+                "start": 580.7
+              },
+              {
+                "id": "sec4-f10",
+                "english": "Yes. It is a set of behaviors deployed specifically to elicit a favorable response, affection, or even a concession from the person you are interacting with.",
+                "japanese": "そうです。それは、相手から好意的な反応、愛情、あるいは譲歩さえも引き出すために、特に繰り出される一連の行動です。",
+                "start": 582.2
+              },
+              {
+                "id": "sec4-f11",
+                "english": "It is cuteness as a strategic social action.",
+                "japanese": "いわば、戦略的な社会的行為としての可愛さです。",
+                "start": 591.4
+              },
+              {
+                "id": "sec4-f12",
+                "english": "The word that jumps out at me from the text is deliberate.",
+                "japanese": "この文章で私の目を引く言葉は『意図的（deliberate）』です。",
+                "start": 594.3
+              },
+              {
+                "id": "sec4-f13",
+                "english": "The researchers make a massive distinction here between this and the baby schema.",
+                "japanese": "研究者たちはここで、これとベビースキーマとの間に大きな区別を設けています。",
+                "start": 597.6
+              },
+              {
+                "id": "sec4-f14",
+                "english": "A huge distinction.",
+                "japanese": "非常に大きな区別です。",
+                "start": 601.8
+              },
+              {
+                "id": "sec4-f15",
+                "english": "Unlike the hidden manipulation of the big plastic eyes, a behavior like azatoi requires the receiver, the person observing the behavior, to actually perceive the intention behind it.",
+                "japanese": "大きなプラスチックの目による隠れた操作とは違い、あざといのような行動は、受け手——その行動を観察する人——が背後の意図を実際に知覚することを必要とします。",
+                "start": 603.1
+              },
+              {
+                "id": "sec4-f16",
+                "english": "Right. For the behavior to work, the human has to know that the other person, or in this case the robot, is actively trying to appear attractive or appealing to them.",
+                "japanese": "そうです。その行動が機能するためには、人間が、相手——この場合はロボット——が自分に対して魅力的に、あるいは好ましく見せようと積極的に試みている、と知っていなければなりません。",
+                "start": 613.9
+              },
+              {
+                "id": "sec4-f17",
+                "english": "And that is the defining characteristic that separates this entirely from a dark pattern.",
+                "japanese": "そしてそれこそが、これをダークパターンから完全に切り離す決定的な特徴です。",
+                "start": 622.8
+              },
+              {
+                "id": "sec4-f18",
+                "english": "The intent is not disguised, it is highly visible.",
+                "japanese": "意図は偽装されておらず、はっきりと見えているのです。",
+                "start": 628.3
+              },
+              {
+                "id": "sec4-f19",
+                "english": "It's right there in the open.",
+                "japanese": "それは堂々と表に出ています。",
+                "start": 631.0
+              },
+              {
+                "id": "sec4-f20",
+                "english": "Exactly. The performer is essentially saying, I am performing this cute action right now specifically so that you will like me or do what I want.",
+                "japanese": "その通り。演じ手は本質的にこう言っているのです——『私は今、あなたに好かれたい、あるいはあなたに私の望むことをしてほしいから、この可愛い行動を演じています』と。",
+                "start": 632.2
+              },
+              {
+                "id": "sec4-f21",
+                "english": "It is not trying to slip past your conscious mind, it is knocking very loudly on the front door.",
+                "japanese": "それはあなたの意識をこっそりすり抜けようとするのではなく、正面玄関を大きな音でノックしているのです。",
+                "start": 640.9
+              },
+              {
+                "id": "sec4-f22",
+                "english": "Okay, I have to stop you there because this seems like a massive psychological contradiction.",
+                "japanese": "ちょっと待ってください、これは大きな心理的矛盾のように思えるからです。",
+                "start": 646.3
+              },
+              {
+                "id": "sec4-f23",
+                "english": "How so? Well, if I'm interacting with someone and I am fully, completely aware that they are faking behavior, that they are performing a calculated strategic action specifically to get a favorable response out of me, why wouldn't that instantly backfire?",
+                "japanese": "どういうことですか？——もし私が誰かと関わっていて、その人が行動を装っている、つまり私から好意的な反応を得るために計算された戦略的な行動を演じていると完全に分かっているなら、なぜそれが即座に裏目に出ないのでしょうか？",
+                "start": 650.6
+              },
+              {
+                "id": "sec4-f24",
+                "english": "It's a fair point.",
+                "japanese": "もっともな指摘です。",
+                "start": 666.5
+              },
+              {
+                "id": "sec4-f25",
+                "english": "In almost every normal human relationship, if you realize someone is being strategically fake to manipulate you, you feel offended, you pull away.",
+                "japanese": "ほとんどすべての普通の人間関係では、誰かが自分を操ろうとして戦略的に偽っていると気づけば、気分を害して距離を取りますよね。",
+                "start": 667.4
+              },
+              {
+                "id": "sec4-f26",
+                "english": "Why would the researchers assume a human would accept this blatant manipulation from a machine?",
+                "japanese": "なぜ研究者たちは、人間が機械からのこの露骨な操作を受け入れると想定するのでしょうか？",
+                "start": 675.5
+              },
+              {
+                "id": "sec4-f27",
+                "english": "It's a great question, and it cuts right to the heart of the ethical debate we just discussed.",
+                "japanese": "素晴らしい質問で、まさに今議論した倫理的論争の核心を突いています。",
+                "start": 680.6
+              },
+              {
+                "id": "sec4-f28",
+                "english": "Making the intention highly visible completely alters the power dynamic of the interaction.",
+                "japanese": "意図をはっきり見えるようにすることは、その相互作用の力関係を完全に変えてしまうのです。",
+                "start": 685.2
+              },
+              {
+                "id": "sec4-f29",
+                "english": "Okay. It's a kind of manipulation which relies on deception and hidden motives and transforms it into a transparent performance.",
+                "japanese": "なるほど。それは、欺瞞と隠れた動機に頼る種類の操作を、透明なパフォーマンスへと変換するものですね。",
+                "start": 690.1
+              },
+              {
+                "id": "sec4-f30",
+                "english": "By making it glaringly obvious that the robot is trying to be cute, the user is no longer an unwitting victim of a biological hack.",
+                "japanese": "ロボットが可愛くあろうとしていることを露骨なほど明白にすることで、ユーザーはもはや生物学的ハックの無自覚な被害者ではなくなります。",
+                "start": 698.2
+              },
+              {
+                "id": "sec4-f31",
+                "english": "You're in on the joke.",
+                "japanese": "あなたは『ネタを承知の上で乗っている』わけです。",
+                "start": 706.2
+              },
+              {
+                "id": "sec4-f32",
+                "english": "Exactly. The user is actively invited into the interaction as an aware participant.",
+                "japanese": "その通り。ユーザーは、自覚した参加者としてその相互作用に積極的に招き入れられるのです。",
+                "start": 707.2
+              },
+              {
+                "id": "sec4-f33",
+                "english": "It shifts the paradigm from covert deception to a kind of interactive, mutually understood play.",
+                "japanese": "それは、隠れた欺瞞から、双方が理解し合うインタラクティブな『遊び』へとパラダイムを転換します。",
+                "start": 712.9
+              },
+              {
+                "id": "sec4-f34",
+                "english": "You, the human, know it's a game, the robot's programming knows it's a game, and you both implicitly agree to participate in the performance.",
+                "japanese": "人間であるあなたはそれがゲームだと知っており、ロボットのプログラムもそれがゲームだと知っていて、二人とも暗黙のうちにそのパフォーマンスに参加することに同意しているのです。",
+                "start": 719.8
+              },
+              {
+                "id": "sec4-f35",
+                "english": "It's kind of like the difference between a pickpocket and a stage magician.",
+                "japanese": "それは、スリと舞台マジシャンの違いのようなものです。",
+                "start": 728.5
+              },
+              {
+                "id": "sec4-f36",
+                "english": "Oh, that's good.",
+                "japanese": "おお、それはいい例えですね。",
+                "start": 731.0
+              },
+              {
+                "id": "sec4-f37",
+                "english": "Like if a pickpocket bum sent to me on the street and takes my wallet, I'm a victim of covert manipulation.",
+                "japanese": "たとえば、スリが路上で私にぶつかって財布を抜き取ったら、私は隠れた操作の被害者です。",
+                "start": 731.9
+              },
+              {
+                "id": "sec4-f38",
+                "english": "I am furious.",
+                "japanese": "私は激怒します。",
+                "start": 736.5
+              },
+              {
+                "id": "sec4-f39",
+                "english": "That's really...",
+                "japanese": "それは本当に……",
+                "start": 737.5
+              },
+              {
+                "id": "sec4-f40",
+                "english": "But if I buy a ticket to a magic show and a magician calls me on stage, distracts me with a joke and pulls my watch off my wrist, I laugh.",
+                "japanese": "でも、もし私がマジックショーのチケットを買い、マジシャンが私を舞台に呼んで、冗談で気をそらし、私の手首から腕時計を抜き取ったら、私は笑います。",
+                "start": 738.4
+              },
+              {
+                "id": "sec4-f41",
+                "english": "Why? I applaud.",
+                "japanese": "なぜか？拍手します。",
+                "start": 745.6
+              },
+              {
+                "id": "sec4-f42",
+                "english": "I know the magician is manipulating my perception of reality.",
+                "japanese": "私はマジシャンが私の現実認識を操作していると分かっています。",
+                "start": 747.2
+              },
+              {
+                "id": "sec4-f43",
+                "english": "But the transparency of the performance, the fact that we both know what trick is happening, is exactly what makes it entertaining.",
+                "japanese": "しかしそのパフォーマンスの透明性、つまりどんなトリックが起きているかを二人とも知っているという事実こそが、それを面白くしているのです。",
+                "start": 750.5
+              },
+              {
+                "id": "sec4-f44",
+                "english": "I am consenting to the illusion.",
+                "japanese": "私はその幻想に『同意』しているのです。",
+                "start": 757.2
+              },
+              {
+                "id": "sec4-f45",
+                "english": "That is a perfect analogy.",
+                "japanese": "それは完璧な例えです。",
+                "start": 759.2
+              },
+              {
+                "id": "sec4-f46",
+                "english": "And the core hypothesis of these researchers is that this transparent quality might be the key to bypassing the ethical mind field of dark patterns, while simultaneously solving the problem of long-term engagement.",
+                "japanese": "そしてこの研究者たちの中心的な仮説は、この透明性という性質こそが、ダークパターンの倫理的な地雷原を回避する鍵であり、同時に長期的な関与の問題を解決する鍵かもしれない、というものです。",
+                "start": 760.8
+              },
+              {
+                "id": "sec4-f47",
+                "english": "But you're playing along.",
+                "japanese": "でもあなたは一緒に乗っているわけですね。",
+                "start": 772.7
+              },
+              {
+                "id": "sec4-f48",
+                "english": "Exactly. The performance requires active engagement from the user, which sustains interest much longer than a static visual design.",
+                "japanese": "その通り。そのパフォーマンスはユーザーの能動的な関与を必要とし、それが静的な視覚デザインよりもずっと長く興味を持続させるのです。",
+                "start": 773.7
+              },
+              {
+                "id": "sec4-f49",
+                "english": "But having a brilliant hypothesis based on human cultural sociology is only the first step.",
+                "japanese": "しかし、人間の文化社会学に基づく見事な仮説を持つことは、最初の一歩にすぎません。",
+                "start": 781.7
+              }
             ]
           },
           {
@@ -9484,6 +10440,314 @@
                 "term": "monumental",
                 "meaning": "途方もない・記念碑的な",
                 "id": "sec5-v7"
+              }
+            ],
+            "fullText": [
+              {
+                "id": "sec5-f1",
+                "english": "The monumental challenge is figuring out how to actually program a human sociological concept into a machine.",
+                "japanese": "途方もない課題は、人間の社会学的な概念を、どうやって実際に機械にプログラムするかを解明することです。",
+                "start": 787.6
+              },
+              {
+                "id": "sec5-f2",
+                "english": "Right. It's one thing for a human being who grew up in a specific culture to intuitively understand how to perform as a toy.",
+                "japanese": "そうです。特定の文化の中で育った人間が、あざとさをどう演じるかを直感的に理解するのは一つのことです。",
+                "start": 794.0
+              },
+              {
+                "id": "sec5-f3",
+                "english": "We read the room, we adjust our tone, we know the social boundaries.",
+                "japanese": "私たちは空気を読み、声のトーンを調整し、社会的な境界をわきまえます。",
+                "start": 800.9
+              },
+              {
+                "id": "sec5-f4",
+                "english": "But a robot doesn't have intuition.",
+                "japanese": "しかしロボットには直感がありません。",
+                "start": 804.3
+              },
+              {
+                "id": "sec5-f5",
+                "english": "It only has code.",
+                "japanese": "あるのはコードだけです。",
+                "start": 806.8
+              },
+              {
+                "id": "sec5-f6",
+                "english": "So to bridge that gap, to turn a vibe into an algorithm, the researchers needed a rigorous scientific framework to measure exactly how these behaviors are sent and perceived.",
+                "japanese": "そこでそのギャップを埋め、『雰囲気』をアルゴリズムに変えるために、研究者たちは、これらの行動がどのように送られ、知覚されるのかを正確に測定する厳密な科学的枠組みを必要としました。",
+                "start": 808.4
+              },
+              {
+                "id": "sec5-f7",
+                "english": "And to achieve that, they actually dug into the archives of psychology and utilized a framework from 1956 known as Brunswick's Lens Model.",
+                "japanese": "そしてそれを実現するために、彼らは実際に心理学の文献をさかのぼり、1956年の『ブルンスウィックのレンズモデル（Brunswik's Lens Model）』として知られる枠組みを用いました。",
+                "start": 818.6
+              },
+              {
+                "id": "sec5-f8",
+                "english": "1956. Yeah, it's an old one, but they used this model as the absolute theoretical backbone for the entire study.",
+                "japanese": "1956年。ええ、古いものですが、彼らはこのモデルを研究全体の絶対的な理論的支柱として使いました。",
+                "start": 827.0
+              },
+              {
+                "id": "sec5-f9",
+                "english": "The Lens Model was originally designed to describe the exact multi-step process by which a sender's internal intention is communicated to and ultimately perceived by a receiver through a messy environment of observable cues.",
+                "japanese": "レンズモデルはもともと、送り手の内的な意図が、観測可能な手がかりが入り混じった雑然とした環境を通して、受け手に伝わり最終的に知覚される、その多段階のプロセスを正確に記述するために考案されました。",
+                "start": 834.3
+              },
+              {
+                "id": "sec5-f10",
+                "english": "Okay, I really want to spend some time walking through how this model functions because if we don't grasp this, the rest of the experiment just won't make sense.",
+                "japanese": "さて、このモデルがどう機能するのかをじっくり追っていきたいと思います。なぜなら、これを掴んでおかないと、実験の残りの部分が意味をなさなくなるからです。",
+                "start": 847.3
+              },
+              {
+                "id": "sec5-f11",
+                "english": "Let's do it.",
+                "japanese": "やりましょう。",
+                "start": 854.7
+              },
+              {
+                "id": "sec5-f12",
+                "english": "So the model is broken down into three distinct sequential phases.",
+                "japanese": "このモデルは、明確に区別される三つの連続した段階に分けられます。",
+                "start": 855.6
+              },
+              {
+                "id": "sec5-f13",
+                "english": "The first phase is called cue validity.",
+                "japanese": "第一の段階は『手がかりの妥当性（cue validity）』と呼ばれます。",
+                "start": 858.6
+              },
+              {
+                "id": "sec5-f14",
+                "english": "Yeah. And from the perspective of robot design, this is the sender's actual intention being encoded into a set of observable behaviors.",
+                "japanese": "ええ。ロボット設計の観点から言うと、これは送り手の実際の意図が、一連の観測可能な行動へと符号化される段階です。",
+                "start": 860.6
+              },
+              {
+                "id": "sec5-f15",
+                "english": "This is the literal code the roboticist writes.",
+                "japanese": "これは、ロボット研究者が実際に書くコードそのものです。",
+                "start": 867.6
+              },
+              {
+                "id": "sec5-f16",
+                "english": "Correct. It is the objective reality of what the machine is outputting.",
+                "japanese": "その通り。それは、機械が出力しているものの客観的な現実です。",
+                "start": 869.8
+              },
+              {
+                "id": "sec5-f17",
+                "english": "The programmer writes code that says, when X happens, raise pitch by 20% and tilt head 15 degrees.",
+                "japanese": "プログラマーは『Xが起きたら、ピッチを20%上げ、頭を15度傾ける』というコードを書きます。",
+                "start": 873.7
+              },
+              {
+                "id": "sec5-f18",
+                "english": "That intent is now validly present in the environment.",
+                "japanese": "その意図は、今や妥当な形で環境の中に存在しているわけです。",
+                "start": 880.9
+              },
+              {
+                "id": "sec5-f19",
+                "english": "Okay, got it.",
+                "japanese": "なるほど、分かりました。",
+                "start": 883.8
+              },
+              {
+                "id": "sec5-f20",
+                "english": "The second phase of the model is cue utilization.",
+                "japanese": "モデルの第二の段階は『手がかりの利用（cue utilization）』です。",
+                "start": 885.0
+              },
+              {
+                "id": "sec5-f21",
+                "english": "This entirely shifts the focus to the receiver's end of the interaction.",
+                "japanese": "これは焦点を、相互作用における受け手の側へと完全に移します。",
+                "start": 888.7
+              },
+              {
+                "id": "sec5-f22",
+                "english": "You're human.",
+                "japanese": "あなたは人間ですね。",
+                "start": 892.7
+              },
+              {
+                "id": "sec5-f23",
+                "english": "Right. And the robot does whatever interpret those specific behaviors out of all the noise in the environment and out of all the subtle things the robot is doing, what does the human user actually notice?",
+                "japanese": "そうです。環境中のあらゆるノイズの中から、そしてロボットが行っているあらゆる微妙な振る舞いの中から、その特定の行動をどう解釈するか——人間のユーザーは実際に何に気づくのか？",
+                "start": 893.5
+              },
+              {
+                "id": "sec5-f24",
+                "english": "And more importantly, which specific cues do they prioritize when their brain forms a final impression of the robot's intent?",
+                "japanese": "そしてさらに重要なのは、ロボットの意図についての最終的な印象を脳が形成するとき、どの特定の手がかりを優先するのか？という点です。",
+                "start": 903.5
+              },
+              {
+                "id": "sec5-f25",
+                "english": "And then the third and final phase is achievement.",
+                "japanese": "そして三つ目で最後の段階が『達成（achievement）』です。",
+                "start": 910.6
+              },
+              {
+                "id": "sec5-f26",
+                "english": "This is the moment of truth.",
+                "japanese": "これは正念場です。",
+                "start": 914.1
+              },
+              {
+                "id": "sec5-f27",
+                "english": "Was the original intention of the sender successfully communicated to the receiver and did it result in the desired effect?",
+                "japanese": "送り手の元々の意図は、受け手にうまく伝わったのか、そして望んだ効果をもたらしたのか？",
+                "start": 915.7
+              },
+              {
+                "id": "sec5-f28",
+                "english": "Exactly. Did the robot successfully output the message, being calculatedly cute?",
+                "japanese": "その通り。ロボットは『計算ずくで可愛い』というメッセージをうまく出力できたのか？",
+                "start": 921.2
+              },
+              {
+                "id": "sec5-f29",
+                "english": "And did the human receiver interpret that message correctly and respond with the desired positive affection?",
+                "japanese": "そして人間の受け手は、そのメッセージを正しく解釈し、望まれた肯定的な好意で応えたのか？",
+                "start": 926.0
+              },
+              {
+                "id": "sec5-f30",
+                "english": "Now, I know it might seem strange to rely heavily on a psychological model from 1956 for a cutting edge 2026 robotics paper.",
+                "japanese": "さて、最先端の2026年のロボット論文で、1956年の心理学モデルに大きく頼るのは奇妙に思えるかもしれません。",
+                "start": 931.5
+              },
+              {
+                "id": "sec5-f31",
+                "english": "A little bit, yeah.",
+                "japanese": "少しはそうですね。",
+                "start": 940.0
+              },
+              {
+                "id": "sec5-f32",
+                "english": "But the framework is incredibly resilient because it describes something we all do constantly every single day.",
+                "japanese": "でもこの枠組みは驚くほど頑健です。なぜなら、それは私たち全員が毎日絶えず行っていることを記述しているからです。",
+                "start": 940.8
+              },
+              {
+                "id": "sec5-f33",
+                "english": "We absolutely do.",
+                "japanese": "本当にそうしていますね。",
+                "start": 947.6
+              },
+              {
+                "id": "sec5-f34",
+                "english": "We are all running Brunthwick's lens model in the background of our brains continuously.",
+                "japanese": "私たちは皆、脳の裏側で絶えずブルンスウィックのレンズモデルを走らせているのです。",
+                "start": 948.4
+              },
+              {
+                "id": "sec5-f35",
+                "english": "Right. Walking into an office and trying to figure out if your passive-aggressive co-worker is actually happy to see you, or just faking a polite, professional smile.",
+                "japanese": "そうです。オフィスに入って、受動攻撃的な同僚が本当に自分に会えて嬉しいのか、それとも礼儀正しく職業的な笑顔を装っているだけなのかを見極めようとする、あの場面です。",
+                "start": 953.2
+              },
+              {
+                "id": "sec5-f36",
+                "english": "Perfect example. The cue validity is the objective physical reality of their face.",
+                "japanese": "完璧な例です。手がかりの妥当性は、その人の顔の客観的な物理的現実です。",
+                "start": 963.0
+              },
+              {
+                "id": "sec5-f37",
+                "english": "The specific muscles contracting around their mouth, the tension in their jaw, the micro movements of their eyes.",
+                "japanese": "口の周りで収縮する特定の筋肉、顎の緊張、目の微細な動き。",
+                "start": 968.2
+              },
+              {
+                "id": "sec5-f38",
+                "english": "The cue utilization is you, the observer, subconsciously scanning that face and noticing that while their mouth is smiling, the muscles around their eyes are completely stiff.",
+                "japanese": "手がかりの利用は、観察者であるあなたが、その顔を無意識にスキャンし、口は笑っているのに目の周りの筋肉が完全にこわばっていることに気づくことです。",
+                "start": 974.5
+              },
+              {
+                "id": "sec5-f39",
+                "english": "You prioritize that specific lack of eye movement.",
+                "japanese": "あなたはその特定の『目が動いていないこと』を優先します。",
+                "start": 984.8
+              },
+              {
+                "id": "sec5-f40",
+                "english": "You utilize that cue.",
+                "japanese": "その手がかりを利用するのです。",
+                "start": 987.9
+              },
+              {
+                "id": "sec5-f41",
+                "english": "Exactly. And the achievement is your brain finalizing the interpretation.",
+                "japanese": "その通り。そして達成は、あなたの脳が解釈を確定させることです。",
+                "start": 989.3
+              },
+              {
+                "id": "sec5-f42",
+                "english": "Nope, they are definitely just being polite.",
+                "japanese": "『いや、この人は間違いなくただ礼儀正しくしているだけだ』。",
+                "start": 993.8
+              },
+              {
+                "id": "sec5-f43",
+                "english": "They still hate me.",
+                "japanese": "『やっぱり私のことを嫌っている』。",
+                "start": 996.0
+              },
+              {
+                "id": "sec5-f44",
+                "english": "We are constantly decoding these fragmented behavioral cues and other humans.",
+                "japanese": "私たちは絶えず、こうした断片的な行動の手がかりを、そして他者を解読しているのです。",
+                "start": 997.1
+              },
+              {
+                "id": "sec5-f45",
+                "english": "The researchers are simply applying this exact same decoding process to a machine's output.",
+                "japanese": "研究者たちは、まさにこの同じ解読プロセスを、機械の出力に当てはめているだけなのです。",
+                "start": 1002.6
+              },
+              {
+                "id": "sec5-f46",
+                "english": "But here is the major roadblock the researchers faced.",
+                "japanese": "しかしここで、研究者たちが直面した大きな障害があります。",
+                "start": 1008.2
+              },
+              {
+                "id": "sec5-f47",
+                "english": "Before they could program a robot to output these cues, they had to figure out what the cues actually were.",
+                "japanese": "ロボットにこれらの手がかりを出力させるようプログラムする前に、彼らはその手がかりが実際に何なのかを突き止めなければなりませんでした。",
+                "start": 1011.6
+              },
+              {
+                "id": "sec5-f48",
+                "english": "They can't just guess.",
+                "japanese": "ただ当てずっぽうにはできませんよね。",
+                "start": 1016.9
+              },
+              {
+                "id": "sec5-f49",
+                "english": "No, they had to isolate and quantify the specific measurable human behaviors that constitute calculated cuteness in the real world.",
+                "japanese": "そうです。彼らは、現実世界で計算された可愛さを構成する、特定の測定可能な人間の行動を、切り分けて定量化しなければなりませんでした。",
+                "start": 1018.0
+              },
+              {
+                "id": "sec5-f50",
+                "english": "This necessity is what led to the first major phase of their research, the formative study.",
+                "japanese": "この必要性こそが、研究の最初の大きな段階、すなわち『形成的研究（formative study）』へとつながりました。",
+                "start": 1027.0
+              },
+              {
+                "id": "sec5-f51",
+                "english": "So armed with the theoretical framework of the lens model, they went straight to the human source.",
+                "japanese": "そこでレンズモデルという理論的枠組みを携え、彼らはまっすぐ人間という源へと向かいました。",
+                "start": 1033.0
               }
             ]
           },
@@ -9583,6 +10847,470 @@
                 "meaning": "無能・不手際",
                 "id": "sec6-v8"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec6-f1",
+                "english": "The researchers conducted in-depth, semi-structured interviews with nine university students specifically selected from Japan, China, and Korea.",
+                "japanese": "研究者たちは、日本・中国・韓国から特に選ばれた9名の大学生に対して、詳細な半構造化インタビューを行いました。",
+                "start": 1038.1
+              },
+              {
+                "id": "sec6-f2",
+                "english": "They targeted these specific demographics because, as we mentioned earlier, the cultural concepts of asatoi, sushou, and agio are highly prevalent and actively practiced within the youth culture of those regions.",
+                "japanese": "こうした特定の層を対象にしたのは、先ほど触れたように、あざとい・サージャオ・エギョという文化的概念が、それらの地域の若者文化の中で非常に広く浸透し、活発に実践されているからです。",
+                "start": 1045.6
+              },
+              {
+                "id": "sec6-f3",
+                "english": "And the methodology for these interviews was fascinating.",
+                "japanese": "そしてこれらのインタビューの手法が、実に興味深いものでした。",
+                "start": 1056.1
+              },
+              {
+                "id": "sec6-f4",
+                "english": "They didn't just ask the students to define the terms.",
+                "japanese": "彼らは学生たちに、ただ用語を定義させただけではありませんでした。",
+                "start": 1059.1
+              },
+              {
+                "id": "sec6-f5",
+                "english": "They asked the participants to vividly recall highly specific personal experiences.",
+                "japanese": "参加者に、非常に具体的な個人的体験を生き生きと思い出すよう求めたのです。",
+                "start": 1062.2
+              },
+              {
+                "id": "sec6-f6",
+                "english": "Like actual memories?",
+                "japanese": "実際の記憶を、ということですか？",
+                "start": 1068.0
+              },
+              {
+                "id": "sec6-f7",
+                "english": "Yes. They wanted detailed accounts of times when the students either actively performed calculated cuteness themselves to get a specific outcome or times when they acutely perceived someone else doing it to them.",
+                "japanese": "はい。彼らは、学生たちが特定の結果を得るために自ら計算された可愛さを能動的に演じた時、あるいは誰かが自分にそれを仕掛けてくるのを鋭く感じ取った時の、詳細な語りを求めました。",
+                "start": 1069.1
+              },
+              {
+                "id": "sec6-f8",
+                "english": "By rigorously analyzing the transcripts of these lived experiences, the researchers were able to isolate a highly specific blueprint of behavioral cues and their intended effects.",
+                "japanese": "こうした実体験の記録を厳密に分析することで、研究者たちは、行動の手がかりとその意図された効果についての、非常に具体的な設計図を切り出すことができました。",
+                "start": 1082.3
+              },
+              {
+                "id": "sec6-f9",
+                "english": "And this blueprint is exactly what the engineers needed to start writing code.",
+                "japanese": "そしてこの設計図こそ、エンジニアがコードを書き始めるために必要としていたものです。",
+                "start": 1093.6
+              },
+              {
+                "id": "sec6-f10",
+                "english": "The study identified six distinct multimodal behavioral cues.",
+                "japanese": "研究は、明確に区別される6つの『多モーダル（multimodal）』な行動の手がかりを特定しました。",
+                "start": 1097.9
+              },
+              {
+                "id": "sec6-f11",
+                "english": "Multimodal meanings. Meaning these aren't just facial expressions.",
+                "japanese": "多モーダル、というのは——つまりこれらは単なる表情ではない、ということですね。",
+                "start": 1101.8
+              },
+              {
+                "id": "sec6-f12",
+                "english": "They span across voice, physical movement, and language.",
+                "japanese": "それらは、声・身体の動き・言語にまたがっています。",
+                "start": 1105.0
+              },
+              {
+                "id": "sec6-f13",
+                "english": "And I don't want to just list these off because the psychology behind each one is where this gets genuinely wild.",
+                "japanese": "そして単に列挙するだけにはしたくありません。なぜなら、それぞれの背後にある心理こそが、これが本当に面白くなるところだからです。",
+                "start": 1108.8
+              },
+              {
+                "id": "sec6-f14",
+                "english": "It really does.",
+                "japanese": "本当にそうですね。",
+                "start": 1113.9
+              },
+              {
+                "id": "sec6-f15",
+                "english": "Let's go through them.",
+                "japanese": "一つずつ見ていきましょう。",
+                "start": 1114.4
+              },
+              {
+                "id": "sec6-f16",
+                "english": "OK, so the first cue they identified is exaggerated proximity.",
+                "japanese": "では、彼らが特定した第一の手がかりは『誇張された近接（exaggerated proximity）』です。",
+                "start": 1115.3
+              },
+              {
+                "id": "sec6-f17",
+                "english": "This involves behaviors like initiating very light physical touches or moving into someone's personal space in a highly deliberate, exaggerated way.",
+                "japanese": "これは、ごく軽い身体的接触を仕掛けたり、相手のパーソナルスペースに、非常に意図的で誇張された形で入り込んだりする行動を含みます。",
+                "start": 1120.6
+              },
+              {
+                "id": "sec6-f18",
+                "english": "Sometimes the students describe it as showing someone their nails or a ring just to force physical closeness, like, oh, look at my new ring, just to get close to you.",
+                "japanese": "学生たちはときに、ただ物理的な近さを強いるために、自分の爪や指輪を見せること——『ねえ、新しい指輪見て』とただあなたに近づくために——として説明しました。",
+                "start": 1130.2
+              },
+              {
+                "id": "sec6-f19",
+                "english": "Psychologically, this cue works by intentionally collapsing physical boundaries to create a sense of forced, yet seemingly playful, intimacy.",
+                "japanese": "心理的には、この手がかりは、物理的な境界を意図的に崩すことで、強制的でありながら一見遊び心のある親密さの感覚を作り出すことで機能します。",
+                "start": 1138.4
+              },
+              {
+                "id": "sec6-f20",
+                "english": "It demands the receiver's immediate physical attention.",
+                "japanese": "それは受け手の即座の身体的な注意を要求します。",
+                "start": 1146.8
+              },
+              {
+                "id": "sec6-f21",
+                "english": "OK, that makes sense.",
+                "japanese": "なるほど、納得できます。",
+                "start": 1149.9
+              },
+              {
+                "id": "sec6-f22",
+                "english": "The second cue they isolated is categorized as perlinguistic.",
+                "japanese": "彼らが切り出した第二の手がかりは、『パラ言語的（paralinguistic）』なものに分類されます。",
+                "start": 1151.0
+              },
+              {
+                "id": "sec6-f23",
+                "english": "This relates entirely to the vocal delivery rather than the words themselves.",
+                "japanese": "これは言葉そのものではなく、声の出し方に完全に関わるものです。",
+                "start": 1155.2
+              },
+              {
+                "id": "sec6-f24",
+                "english": "Like the tone.",
+                "japanese": "トーンのような、ということですね。",
+                "start": 1158.8
+              },
+              {
+                "id": "sec6-f25",
+                "english": "Exactly. The interviewees frequently mention using a deliberately higher pitched voice or offering highly exaggerated, drawn out verbal responses.",
+                "japanese": "その通り。インタビュー対象者は、意図的に高めの声を使ったり、非常に誇張して引き伸ばした言葉の反応をしたりすることを、頻繁に挙げました。",
+                "start": 1159.5
+              },
+              {
+                "id": "sec6-f26",
+                "english": "Oh, like, ooh.",
+                "japanese": "ああ、『えぇ〜』みたいな。",
+                "start": 1167.8
+              },
+              {
+                "id": "sec6-f27",
+                "english": "Exactly. In human behavioral psychology, intentionally raising the pitch of the voice mimics juvenile vocal tracks, subconsciously signaling approachability, submission, and a lack of physical threat.",
+                "japanese": "その通り。人間の行動心理学では、意図的に声のピッチを上げることは幼い声帯を模倣し、近づきやすさ・服従・身体的脅威のなさを無意識に発信します。",
+                "start": 1168.8
+              },
+              {
+                "id": "sec6-f28",
+                "english": "Interesting. OK, the third cue is the upward gaze.",
+                "japanese": "興味深い。では、第三の手がかりは『上目遣い（upward gaze）』です。",
+                "start": 1180.0
+              },
+              {
+                "id": "sec6-f29",
+                "english": "This is the classic behavior of tilting the chin down and looking up at the other person through the eyelashes.",
+                "japanese": "これは、顎を下げて、まつげ越しに相手を見上げるという、典型的な行動です。",
+                "start": 1183.2
+              },
+              {
+                "id": "sec6-f30",
+                "english": "Right. Very common.",
+                "japanese": "そうです。とてもよくあるものですね。",
+                "start": 1188.1
+              },
+              {
+                "id": "sec6-f31",
+                "english": "It forces the performer to appear physically smaller and structurally vulnerable.",
+                "japanese": "それは演じ手を、身体的により小さく、構造的に無防備に見せます。",
+                "start": 1189.6
+              },
+              {
+                "id": "sec6-f32",
+                "english": "And it actually taps into the exact same biological caregiving response we talked about with the baby schema, but it achieves it through a dynamic, temporary behavior rather than a permanently molded plastic face.",
+                "japanese": "そして実は、ベビースキーマのところで話したのとまったく同じ生物学的な養育反応に訴えかけるのですが、永久に成形されたプラスチックの顔ではなく、動的で一時的な行動を通じてそれを達成します。",
+                "start": 1195.4
+              },
+              {
+                "id": "sec6-f33",
+                "english": "It is a conscious performance of vulnerability.",
+                "japanese": "それは無防備さの意識的なパフォーマンスなのです。",
+                "start": 1208.0
+              },
+              {
+                "id": "sec6-f34",
+                "english": "Yes. Then we have the fourth cue, labeled uninhibited expression.",
+                "japanese": "そうです。次に第四の手がかり、『抑制のない表現（uninhibited expression）』があります。",
+                "start": 1210.3
+              },
+              {
+                "id": "sec6-f35",
+                "english": "This involves performing highly exaggerated emotional reactions, acting incredibly innocent, feigning massive surprise over something mundane, or displaying unfiltered joy.",
+                "japanese": "これは、非常に誇張された感情的な反応を演じたり、ものすごく無邪気にふるまったり、ありふれたことに大げさな驚きを装ったり、フィルターのない喜びを示したりすることを含みます。",
+                "start": 1214.7
+              },
+              {
+                "id": "sec6-f36",
+                "english": "Just overreacting, basically.",
+                "japanese": "要するに、ただ大げさに反応する、ということですね。",
+                "start": 1224.8
+              },
+              {
+                "id": "sec6-f37",
+                "english": "Basically. By presenting the center as totally unguarded and lacking emotional filters, it actively lowers the defensive guard of the interaction partner.",
+                "japanese": "基本的にはそうです。自分を完全に無防備で感情のフィルターを欠いた存在として提示することで、相手の防御の構えを積極的に下げさせるのです。",
+                "start": 1226.1
+              },
+              {
+                "id": "sec6-f38",
+                "english": "Got it. Now, the fifth cue moves into the realm of verbal strategy.",
+                "japanese": "なるほど。さて、第五の手がかりは、言語的な戦略の領域に入ります。",
+                "start": 1234.3
+              },
+              {
+                "id": "sec6-f39",
+                "english": "They call it indirect interest.",
+                "japanese": "彼らはそれを『間接的な関心（indirect interest）』と呼びます。",
+                "start": 1238.4
+              },
+              {
+                "id": "sec6-f40",
+                "english": "The students described using language to drop subtle, indirect hints, or phrasing things in a way that implies the person they're talking to is receiving special exclusive treatment.",
+                "japanese": "学生たちは、さりげなく間接的なほのめかしを落とすために言葉を使ったり、相手が特別で独占的な扱いを受けていると示唆するような言い回しをしたりすることを説明しました。",
+                "start": 1240.7
+              },
+              {
+                "id": "sec6-f41",
+                "english": "Right. It's playing to the receiver's ego by making them feel uniquely valued without ever stating it directly.",
+                "japanese": "そうです。それを直接口にすることなく、相手に『自分は特別に大切にされている』と感じさせることで、受け手の自尊心をくすぐるのです。",
+                "start": 1251.2
+              },
+              {
+                "id": "sec6-f42",
+                "english": "And finally, we arrive at the sixth cue.",
+                "japanese": "そしてついに、第六の手がかりにたどり着きます。",
+                "start": 1257.4
+              },
+              {
+                "id": "sec6-f43",
+                "english": "And from the perspective of translating human sociology into robot design, this is undoubtedly the most unique and counterintuitive finding in the entire study.",
+                "japanese": "そして人間の社会学をロボット設計へと翻訳する観点から見ると、これは間違いなく研究全体で最もユニークで、直感に反する発見です。",
+                "start": 1260.1
+              },
+              {
+                "id": "sec6-f44",
+                "english": "Totally. The cue is simply called intentional errors.",
+                "japanese": "まったくです。その手がかりは、単純に『意図的なミス（intentional errors）』と呼ばれます。",
+                "start": 1268.5
+              },
+              {
+                "id": "sec6-f45",
+                "english": "This is the one that completely stopped me when I was reading the paper.",
+                "japanese": "これは、論文を読んでいて私の手を完全に止めさせたものです。",
+                "start": 1272.9
+              },
+              {
+                "id": "sec6-f46",
+                "english": "The study defines intentional errors as deliberate acts of mild incompetence.",
+                "japanese": "研究は、意図的なミスを『軽度の無能をわざと演じる行為』と定義しています。",
+                "start": 1276.1
+              },
+              {
+                "id": "sec6-f47",
+                "english": "Right. The examples they give from the human interviews are things like deliberately getting food on one's face while eating, or pretending to completely ignore something that is glaringly obvious.",
+                "japanese": "そうです。人間のインタビューから挙げられた例は、食べている最中にわざと顔に食べ物を付けたり、明白すぎることを完全に無視するふりをしたり、といったものです。",
+                "start": 1280.2
+              },
+              {
+                "id": "sec6-f48",
+                "english": "Why in the world would messing up on purpose be perceived by the receiver as a cue of calculated cuteness?",
+                "japanese": "いったいなぜ、わざと失敗することが、受け手から計算された可愛さの手がかりとして受け取られるのでしょうか？",
+                "start": 1290.5
+              },
+              {
+                "id": "sec6-f49",
+                "english": "So to understand why a mistake can be charming, we have to look at the second half of their formative study.",
+                "japanese": "ミスがなぜ魅力的になりうるのかを理解するには、彼らの形成的研究の後半を見なければなりません。",
+                "start": 1296.9
+              },
+              {
+                "id": "sec6-f50",
+                "english": "They didn't just isolate the six cues.",
+                "japanese": "彼らは6つの手がかりを切り出しただけではありませんでした。",
+                "start": 1303.6
+              },
+              {
+                "id": "sec6-f51",
+                "english": "They also analyzed the specific effects the performers were trying to achieve when they deployed them.",
+                "japanese": "演じ手がそれらを繰り出すときに達成しようとしていた、具体的な効果も分析したのです。",
+                "start": 1306.0
+              },
+              {
+                "id": "sec6-f52",
+                "english": "The goals. Right.",
+                "japanese": "その目的を、ということですね。そうです。",
+                "start": 1311.2
+              },
+              {
+                "id": "sec6-f53",
+                "english": "The researchers categorized five main goals, eliciting communication, attracting attention, gaining favor, request acceptance, and softening criticism.",
+                "japanese": "研究者たちは5つの主な目的を分類しました——コミュニケーションの誘発、注意の獲得、好意の獲得、要求の受諾、そして批判の緩和です。",
+                "start": 1312.7
+              },
+              {
+                "id": "sec6-f54",
+                "english": "So depending on what you want from the interaction, you deploy a different combination of cues.",
+                "japanese": "つまり、その相互作用から何を望むかに応じて、異なる手がかりの組み合わせを繰り出すわけですね。",
+                "start": 1323.0
+              },
+              {
+                "id": "sec6-f55",
+                "english": "Exactly. Like if you want to favor, you might use exaggerated proximity and indirect interest.",
+                "japanese": "その通り。たとえば好意を得たいなら、誇張された近接と間接的な関心を使うかもしれません。",
+                "start": 1327.5
+              },
+              {
+                "id": "sec6-f56",
+                "english": "If you've messed up at work and want to soften the criticism from your boss, you might use an upward gaze and an uninhibited expression of sorrow.",
+                "japanese": "職場でミスをして上司からの批判を和らげたいなら、上目遣いと、悲しみの抑制のない表現を使うかもしれません。",
+                "start": 1332.7
+              },
+              {
+                "id": "sec6-f57",
+                "english": "But how do intentional errors map onto these goals?",
+                "japanese": "でも、意図的なミスはこれらの目的にどう対応するのでしょうか？",
+                "start": 1340.3
+              },
+              {
+                "id": "sec6-f58",
+                "english": "Well, the researchers found a very specific, highly potent linkage here.",
+                "japanese": "研究者たちはここで、非常に特定的で強力な結びつきを見つけました。",
+                "start": 1343.1
+              },
+              {
+                "id": "sec6-f59",
+                "english": "They discovered that intentional errors are most directly and effectively linked to the goal of eliciting communication.",
+                "japanese": "彼らは、意図的なミスが『コミュニケーションの誘発』という目的に最も直接的かつ効果的に結びついていることを発見したのです。",
+                "start": 1347.2
+              },
+              {
+                "id": "sec6-f60",
+                "english": "OK, walk me through that.",
+                "japanese": "なるほど、それを説明してください。",
+                "start": 1353.3
+              },
+              {
+                "id": "sec6-f61",
+                "english": "If we break down the psychology of a mild intentional mistake, it is brilliant.",
+                "japanese": "軽度の意図的なミスの心理を分解してみると、それは見事です。",
+                "start": 1354.4
+              },
+              {
+                "id": "sec6-f62",
+                "english": "By intentionally presenting the other person with a minor, completely harmless flaw, like a smudge on your cheek, you are actively creating a vacuum in the interaction.",
+                "japanese": "頬の汚れのような、ささいでまったく無害な欠点を相手にわざと提示することで、あなたは相互作用の中に積極的に『空白』を作り出しているのです。",
+                "start": 1360.1
+              },
+              {
+                "id": "sec6-f63",
+                "english": "A vacuum. You are presenting them with a low-stakes puzzle to solve or a tiny mess to clean up.",
+                "japanese": "空白、ですね。あなたは相手に、解くべき低リスクのパズルや、片付けるべき小さな乱れを提示しているのです。",
+                "start": 1369.8
+              },
+              {
+                "id": "sec6-f64",
+                "english": "In doing so, you are essentially forcing an interaction, but framing it entirely as their choice to step in and help.",
+                "japanese": "そうすることで、あなたは本質的に相互作用を強制しているのに、それを完全に『相手が助けに入ることを選んだ』こととして枠づけているのです。",
+                "start": 1375.6
+              },
+              {
+                "id": "sec6-f65",
+                "english": "It's incredible when you frame it like that.",
+                "japanese": "そう枠づけると、本当に見事ですね。",
+                "start": 1382.6
+              },
+              {
+                "id": "sec6-f66",
+                "english": "You aren't awkwardly asking them to pay attention to you.",
+                "japanese": "あなたはぎこちなく『私に注目して』と頼んでいるのではありません。",
+                "start": 1385.0
+              },
+              {
+                "id": "sec6-f67",
+                "english": "You are creating an environmental scenario where the most natural, socially fluid response is for them to initiate the contact.",
+                "japanese": "あなたは、最も自然で社会的になめらかな反応が、相手の方から接触を始めることになるような、環境的なシナリオを作り出しているのです。",
+                "start": 1388.2
+              },
+              {
+                "id": "sec6-f68",
+                "english": "Precisely. A manufacturer of vulnerability that demands a response.",
+                "japanese": "まさに。応答を要求する『無防備さの製造装置』です。",
+                "start": 1395.4
+              },
+              {
+                "id": "sec6-f69",
+                "english": "Think about a toddler who knows they aren't supposed to touch something.",
+                "japanese": "何かに触ってはいけないと分かっている幼児を思い浮かべてください。",
+                "start": 1398.7
+              },
+              {
+                "id": "sec6-f70",
+                "english": "They reach for it, look right at you, and wait for you to react.",
+                "japanese": "彼らはそれに手を伸ばし、まっすぐあなたを見て、あなたが反応するのを待ちます。",
+                "start": 1402.9
+              },
+              {
+                "id": "sec6-f71",
+                "english": "It's a calculated provocation.",
+                "japanese": "それは計算された挑発なのです。",
+                "start": 1406.6
+              },
+              {
+                "id": "sec6-f72",
+                "english": "That's a great example.",
+                "japanese": "それは素晴らしい例ですね。",
+                "start": 1407.9
+              },
+              {
+                "id": "sec6-f73",
+                "english": "So having isolated these incredibly nuanced, highly manipulative human variables, the researchers faced the ultimate test.",
+                "japanese": "そこで、こうした極めて繊細で操作的な人間の変数を切り出したうえで、研究者たちは究極の試練に直面しました。",
+                "start": 1409.0
+              },
+              {
+                "id": "sec6-f74",
+                "english": "They had to build a physical demonstration.",
+                "japanese": "彼らは物理的なデモンストレーションを作らなければなりませんでした。",
+                "start": 1415.9
+              },
+              {
+                "id": "sec6-f75",
+                "english": "They had to take these human quirks, translate them into hard lines of code, and test the cue utilization phase of the lens model on real human beings in real time.",
+                "japanese": "こうした人間の癖を、堅いコードの行へと翻訳し、レンズモデルの『手がかりの利用』段階を、本物の人間に対してリアルタイムで検証しなければならなかったのです。",
+                "start": 1418.1
+              },
+              {
+                "id": "sec6-f76",
+                "english": "And for this physical demonstration, they utilized a specific robotic platform known as StackChan.",
+                "japanese": "そしてこの物理的なデモのために、彼らは『Stack-chan（スタックチャン）』として知られる特定のロボットプラットフォームを使いました。",
+                "start": 1428.2
+              },
+              {
+                "id": "sec6-f77",
+                "english": "StackChan. Yes.",
+                "japanese": "Stack-chan。そうです。",
+                "start": 1434.1
+              }
             ]
           },
           {
@@ -9681,6 +11409,572 @@
                 "meaning": "参加型の展示",
                 "id": "sec7-v8"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec7-f1",
+                "english": "Based on the detailed descriptions and source images in the paper, StackChan is an open source, tabletop social robot.",
+                "japanese": "論文の詳細な記述と掲載画像によれば、Stack-chan はオープンソースの卓上ソーシャルロボットです。",
+                "start": 1435.5
+              },
+              {
+                "id": "sec7-f2",
+                "english": "It's a very simple, blocky design.",
+                "japanese": "とてもシンプルで、四角いデザインです。",
+                "start": 1442.7
+              },
+              {
+                "id": "sec7-f3",
+                "english": "It looks a bit like a small, white cube perched on tiny rudimentary legs.",
+                "japanese": "小さな白い立方体が、ごく簡素な小さい脚の上にちょこんと乗っているような見た目です。",
+                "start": 1445.2
+              },
+              {
+                "id": "sec7-f4",
+                "english": "It doesn't sound very human.",
+                "japanese": "あまり人間的には聞こえませんね。",
+                "start": 1449.4
+              },
+              {
+                "id": "sec7-f5",
+                "english": "It isn't.",
+                "japanese": "そうではありません。",
+                "start": 1450.8
+              },
+              {
+                "id": "sec7-f6",
+                "english": "It doesn't have a physical face with molded features.",
+                "japanese": "成形された造作を持つ物理的な顔はありません。",
+                "start": 1451.4
+              },
+              {
+                "id": "sec7-f7",
+                "english": "Instead, the front of the cube is a digital LCD screen that displays animated eyes and a mouth.",
+                "japanese": "その代わり、立方体の正面はデジタルのLCD画面で、アニメーションする目と口を表示します。",
+                "start": 1454.2
+              },
+              {
+                "id": "sec7-f8",
+                "english": "Crucially, the head is mounted on servo motors, allowing it to physically pan and tilt.",
+                "japanese": "重要なのは、頭部がサーボモーターに取り付けられていて、物理的に左右に振ったり傾けたりできる点です。",
+                "start": 1460.2
+              },
+              {
+                "id": "sec7-f9",
+                "english": "So it's physically very small and completely stationary.",
+                "japanese": "つまり、物理的にはとても小さく、完全に据え置きです。",
+                "start": 1464.9
+              },
+              {
+                "id": "sec7-f10",
+                "english": "It's not walking around the room.",
+                "japanese": "部屋を歩き回ったりはしません。",
+                "start": 1467.4
+              },
+              {
+                "id": "sec7-f11",
+                "english": "No, it just sits on a table.",
+                "japanese": "ええ、ただテーブルの上に座っているだけです。",
+                "start": 1468.6
+              },
+              {
+                "id": "sec7-f12",
+                "english": "So the engineers take this blueprint of human azutoid behaviors.",
+                "japanese": "そこでエンジニアたちは、この人間のあざとい行動の設計図を取り上げます。",
+                "start": 1470.0
+              },
+              {
+                "id": "sec7-f13",
+                "english": "They program them into StackChan's servos and LCD screen.",
+                "japanese": "それらを Stack-chan のサーボとLCD画面にプログラムします。",
+                "start": 1474.3
+              },
+              {
+                "id": "sec7-f14",
+                "english": "And they pack this robot up and take it to the Dis-International Conference in Singapore.",
+                "japanese": "そしてこのロボットを梱包し、シンガポールのDIS国際会議へ持って行くのです。",
+                "start": 1477.6
+              },
+              {
+                "id": "sec7-f15",
+                "english": "This is where they construct their participatory exhibition to gather data.",
+                "japanese": "ここで彼らは、データを集めるための参加型展示を構築します。",
+                "start": 1482.0
+              },
+              {
+                "id": "sec7-f16",
+                "english": "And the physical setup of the booth at the conference is absolutely crucial to understanding how they collected their data.",
+                "japanese": "そして会議でのこのブースの物理的なセットアップが、彼らがどうデータを集めたのかを理解する上で、決定的に重要です。",
+                "start": 1485.4
+              },
+              {
+                "id": "sec7-f17",
+                "english": "Paid the picture for us.",
+                "japanese": "その様子を私たちに描いてみせてください。",
+                "start": 1491.8
+              },
+              {
+                "id": "sec7-f18",
+                "english": "OK. Attendees walking through the conference center step up to a designated table.",
+                "japanese": "わかりました。会議場を歩く来場者が、指定されたテーブルに歩み寄ります。",
+                "start": 1492.9
+              },
+              {
+                "id": "sec7-f19",
+                "english": "On the table sits the StackChan robot and a digital tablet for the user to interact with.",
+                "japanese": "テーブルの上には Stack-chan ロボットと、ユーザーが操作するためのデジタルタブレットが置かれています。",
+                "start": 1498.6
+              },
+              {
+                "id": "sec7-f20",
+                "english": "But the most prominent feature of the exhibition isn't on the table.",
+                "japanese": "しかしこの展示の最も目立つ特徴は、テーブルの上にはありません。",
+                "start": 1504.5
+              },
+              {
+                "id": "sec7-f21",
+                "english": "It is a massive dynamic projection mapping displayed on the wall directly behind the robot.",
+                "japanese": "それは、ロボットの真後ろの壁に映し出された、巨大で動的なプロジェクションマッピングです。",
+                "start": 1508.2
+              },
+              {
+                "id": "sec7-f22",
+                "english": "Let's vividly walk through exactly what happens when a human steps up to that table.",
+                "japanese": "人間がそのテーブルに歩み寄ったときに何が起こるのか、正確に、生き生きと追ってみましょう。",
+                "start": 1514.6
+              },
+              {
+                "id": "sec7-f23",
+                "english": "Because the source material meticulously details a specific interaction they designed called the chicken rice scenario.",
+                "japanese": "なぜなら、資料は彼らが設計した『チキンライス・シナリオ』と呼ばれる特定の相互作用を、綿密に詳述しているからです。",
+                "start": 1519.4
+              },
+              {
+                "id": "sec7-f24",
+                "english": "The chicken rice scenario.",
+                "japanese": "チキンライス・シナリオ。",
+                "start": 1525.5
+              },
+              {
+                "id": "sec7-f25",
+                "english": "Yeah. This scenario was specifically engineered from the ground up to test the eliciting communication effect by deploying the intentional error queue.",
+                "japanese": "ええ。このシナリオは、意図的なミスの手がかりを繰り出すことで『コミュニケーションの誘発』効果を検証するために、一から特別に設計されました。",
+                "start": 1526.6
+              },
+              {
+                "id": "sec7-f26",
+                "english": "So the scenario begins the moment the conference visitor approaches the table.",
+                "japanese": "シナリオは、会議の来場者がテーブルに近づいた瞬間に始まります。",
+                "start": 1534.1
+              },
+              {
+                "id": "sec7-f27",
+                "english": "The researchers actually hand the visitor a physical object, a real plastic bowl containing a serving of chicken rice along with a spoon.",
+                "japanese": "研究者たちは実際に、物理的な物体——スプーンを添えた、一人前のチキンライスが入った本物のプラスチックの器——を来場者に手渡します。",
+                "start": 1538.2
+              },
+              {
+                "id": "sec7-f28",
+                "english": "Imagine the absurdity of this for a second.",
+                "japanese": "このばかばかしさを少し想像してみてください。",
+                "start": 1545.9
+              },
+              {
+                "id": "sec7-f29",
+                "english": "You were a professional at a tech conference.",
+                "japanese": "あなたはテックカンファレンスのプロフェッショナルです。",
+                "start": 1548.5
+              },
+              {
+                "id": "sec7-f30",
+                "english": "And suddenly you're standing in front of a little blocky robot holding a bowl of actual chicken rice.",
+                "japanese": "そして突然、本物のチキンライスの器を持って、小さな四角いロボットの前に立っているのです。",
+                "start": 1550.8
+              },
+              {
+                "id": "sec7-f31",
+                "english": "It's very surreal.",
+                "japanese": "とてもシュールですね。",
+                "start": 1555.7
+              },
+              {
+                "id": "sec7-f32",
+                "english": "The scenario begins.",
+                "japanese": "シナリオが始まります。",
+                "start": 1557.1
+              },
+              {
+                "id": "sec7-f33",
+                "english": "Stackshank immediately deploys the first queue, the upward gaze.",
+                "japanese": "Stack-chan はすぐに第一の手がかり、『上目遣い』を繰り出します。",
+                "start": 1558.8
+              },
+              {
+                "id": "sec7-f34",
+                "english": "The servos engage.",
+                "japanese": "サーボが作動します。",
+                "start": 1563.2
+              },
+              {
+                "id": "sec7-f35",
+                "english": "The robot tilts its physical body slightly down while the digital eyes on its LCD screen shift upwards to look directly into your eyes, mimicking that physical vulnerability.",
+                "japanese": "ロボットは物理的な体をわずかに下に傾けながら、LCD画面のデジタルの目を上に動かしてあなたの目をまっすぐ見つめ、あの身体的な無防備さを模倣します。",
+                "start": 1564.8
+              },
+              {
+                "id": "sec7-f36",
+                "english": "Instantly following that, it deploys a perlinguistic queue.",
+                "japanese": "その直後、パラ言語的な手がかりを繰り出します。",
+                "start": 1575.5
+              },
+              {
+                "id": "sec7-f37",
+                "english": "Using a synthesized, artificially high-pitched voice, the robot looks at the bowl in your hand and says, that looks delicious.",
+                "japanese": "合成された人工的に高いピッチの声で、ロボットはあなたの手の中の器を見て、『おいしそう』と言います。",
+                "start": 1579.0
+              },
+              {
+                "id": "sec7-f38",
+                "english": "And at this exact moment, the human visitor is prompted by the social queues to respond.",
+                "japanese": "そしてまさにこの瞬間、人間の来場者は社会的な手がかりに促されて応答します。",
+                "start": 1585.5
+              },
+              {
+                "id": "sec7-f39",
+                "english": "The vast majority of participants naturally reach out with the spoon and mime the action of physically feeding the digital robot.",
+                "japanese": "参加者の大多数は、自然とスプーンを差し出し、デジタルのロボットに物理的に食べさせる動作を真似ます。",
+                "start": 1590.2
+              },
+              {
+                "id": "sec7-f40",
+                "english": "The moment the spoon gets close to its face, Stackshank responds by deploying the uninhibited expression queue.",
+                "japanese": "スプーンがその顔に近づいた瞬間、Stack-chan は『抑制のない表現』の手がかりを繰り出して応えます。",
+                "start": 1596.2
+              },
+              {
+                "id": "sec7-f41",
+                "english": "The simple digital eyes on the screen suddenly transform into wildly exaggerated sparkling stars.",
+                "japanese": "画面上のシンプルなデジタルの目が、突然、ものすごく誇張されたキラキラ輝く星に変わります。",
+                "start": 1602.1
+              },
+              {
+                "id": "sec7-f42",
+                "english": "And the robot loudly and enthusiastically exclaims, yummy.",
+                "japanese": "そしてロボットは大きく、熱狂的に『おいしい！』と叫びます。",
+                "start": 1607.6
+              },
+              {
+                "id": "sec7-f43",
+                "english": "The interaction seems straightforward so far.",
+                "japanese": "ここまでの相互作用は、一見ありふれて見えます。",
+                "start": 1611.1
+              },
+              {
+                "id": "sec7-f44",
+                "english": "It's just a cute robot reacting to being fed.",
+                "japanese": "ただ可愛いロボットが、餌をもらって反応しているだけ、と。",
+                "start": 1613.3
+              },
+              {
+                "id": "sec7-f45",
+                "english": "But here's the critical twist.",
+                "japanese": "しかしここに決定的なひねりがあります。",
+                "start": 1616.2
+              },
+              {
+                "id": "sec7-f46",
+                "english": "This is the precise moment the calculated cuteness, the azitoy, is executed.",
+                "japanese": "これこそが、計算された可愛さ、すなわち『あざとさ』が実行される、まさにその瞬間です。",
+                "start": 1618.0
+              },
+              {
+                "id": "sec7-f47",
+                "english": "Right as the robot says, yummy, an intentional error queue is triggered in the code.",
+                "japanese": "ロボットが『おいしい！』と言うちょうどそのとき、コードの中で意図的なミスの手がかりが発動します。",
+                "start": 1623.7
+              },
+              {
+                "id": "sec7-f48",
+                "english": "A small digital graphic of a single grain of rice appears on the LCD screen, perfectly placed, so it looks like it is stuck to the corner of Stackshank's digital mouth.",
+                "japanese": "一粒の米の小さなデジタルグラフィックがLCD画面に現れ、絶妙な位置に置かれて、Stack-chan のデジタルの口の端に付いているように見えるのです。",
+                "start": 1629.3
+              },
+              {
+                "id": "sec7-f49",
+                "english": "The robot just deliberately faked making a mess.",
+                "japanese": "ロボットは、わざと『汚してしまった』ふりをしたのです。",
+                "start": 1640.2
+              },
+              {
+                "id": "sec7-f50",
+                "english": "It deployed a calculated error.",
+                "japanese": "計算されたミスを繰り出したのです。",
+                "start": 1643.2
+              },
+              {
+                "id": "sec7-f51",
+                "english": "And the psychological impact of this on the human participant is just profound.",
+                "japanese": "そしてこれが人間の参加者に与える心理的な影響は、実に深いものです。",
+                "start": 1645.3
+              },
+              {
+                "id": "sec7-f52",
+                "english": "It really is.",
+                "japanese": "本当にそうですね。",
+                "start": 1649.6
+              },
+              {
+                "id": "sec7-f53",
+                "english": "The visitor, still holding the spoon, sees this digital grain of rice stuck to the screen.",
+                "japanese": "スプーンをまだ持ったままの来場者は、画面に付いたこのデジタルの米粒を目にします。",
+                "start": 1650.6
+              },
+              {
+                "id": "sec7-f54",
+                "english": "The natural, almost entirely reflexive human response to seeing a smudge on a face, even a digital face, is to reach out and fix it.",
+                "japanese": "顔——たとえデジタルの顔であっても——に付いた汚れを見たときの、自然でほとんど反射的な人間の反応は、手を伸ばしてそれを直すことです。",
+                "start": 1655.3
+              },
+              {
+                "id": "sec7-f55",
+                "english": "Right. The participant reaches out their finger, touches the LCD screen, and physically wipes the digital grain of rice away.",
+                "japanese": "そうです。参加者は指を伸ばし、LCD画面に触れ、デジタルの米粒を物理的に拭き取るのです。",
+                "start": 1662.5
+              },
+              {
+                "id": "sec7-f56",
+                "english": "Now, think about what just happened in that sequence.",
+                "japanese": "さて、今のその一連の流れで何が起きたのかを考えてみてください。",
+                "start": 1668.5
+              },
+              {
+                "id": "sec7-f57",
+                "english": "By wiping that screen, the human being has just engaged in direct physical communication and touch.",
+                "japanese": "その画面を拭くことで、その人間は、直接的な身体的コミュニケーションと接触をたった今行ったのです。",
+                "start": 1670.7
+              },
+              {
+                "id": "sec7-f58",
+                "english": "And that physical touch was elicited entirely by a calculated intentional error generated by a machine.",
+                "japanese": "そしてその身体的接触は、機械が生成した計算された意図的なミスによって、完全に引き出されたものでした。",
+                "start": 1676.4
+              },
+              {
+                "id": "sec7-f59",
+                "english": "The robot successfully manipulated the human into initiating an intimate, helpful physical contact that the human believed was their own spontaneous idea.",
+                "japanese": "ロボットは、人間が自分の自発的な思いつきだと信じる、親密で手助け的な身体的接触を、人間に開始させることに成功したのです。",
+                "start": 1683.9
+              },
+              {
+                "id": "sec7-f60",
+                "english": "It's wild.",
+                "japanese": "とんでもないことです。",
+                "start": 1693.0
+              },
+              {
+                "id": "sec7-f61",
+                "english": "And the moment the human touches the screen, the scenario ends, and the rigorous data collection immediately begins.",
+                "japanese": "そして人間が画面に触れた瞬間、シナリオは終わり、厳密なデータ収集がただちに始まります。",
+                "start": 1694.4
+              },
+              {
+                "id": "sec7-f62",
+                "english": "The visitor is instructed to look down at the tablet on the table.",
+                "japanese": "来場者は、テーブルの上のタブレットを見るよう指示されます。",
+                "start": 1701.3
+              },
+              {
+                "id": "sec7-f63",
+                "english": "The tablet displays a list of all the specific behavioral cues they just experienced during the chicken rice interaction.",
+                "japanese": "タブレットには、チキンライスの相互作用の間に体験したばかりの、特定の行動の手がかりすべての一覧が表示されます。",
+                "start": 1704.6
+              },
+              {
+                "id": "sec7-f64",
+                "english": "The physical upward gaze, the high-pitched voice, the sparkling eyes, the intentional digital mess.",
+                "japanese": "物理的な上目遣い、高いピッチの声、キラキラした目、意図的なデジタルの汚れ。",
+                "start": 1711.7
+              },
+              {
+                "id": "sec7-f65",
+                "english": "All of it.",
+                "japanese": "そのすべてです。",
+                "start": 1715.9
+              },
+              {
+                "id": "sec7-f66",
+                "english": "The visitor is asked to vote on which specific cues they consciously felt contributed to a sense of calculated cuteness.",
+                "japanese": "来場者は、どの特定の手がかりが計算された可愛さの感覚に寄与したと意識的に感じたかを、投票するよう求められます。",
+                "start": 1716.5
+              },
+              {
+                "id": "sec7-f67",
+                "english": "And this voting mechanic is the literal execution of the cue utilization phase of Brunswick's lens model.",
+                "japanese": "そしてこの投票の仕組みこそ、ブルンスウィックのレンズモデルの『手がかりの利用』段階を、文字どおり実行したものなのです。",
+                "start": 1722.6
+              },
+              {
+                "id": "sec7-f68",
+                "english": "Ah, circling back to the model.",
+                "japanese": "ああ、モデルに話が戻ってくるわけですね。",
+                "start": 1728.8
+              },
+              {
+                "id": "sec7-f69",
+                "english": "Exactly. The researchers already possess the cue validity.",
+                "japanese": "その通り。研究者たちはすでに『手がかりの妥当性』を握っています。",
+                "start": 1730.7
+              },
+              {
+                "id": "sec7-f70",
+                "english": "They know exactly what lines of code they executed.",
+                "japanese": "どの行のコードを実行したかを、正確に知っているからです。",
+                "start": 1734.3
+              },
+              {
+                "id": "sec7-f71",
+                "english": "But this tablet vote allows them to measure exactly what the human observer actually noticed, interpreted, and prioritized when they felt charmed by the interaction.",
+                "japanese": "しかしこのタブレットの投票によって、人間の観察者が、その相互作用に魅了されたとき、実際に何に気づき、解釈し、優先したのかを正確に測定できるのです。",
+                "start": 1737.2
+              },
+              {
+                "id": "sec7-f72",
+                "english": "And the visual representation of this data collection is incredible.",
+                "japanese": "そしてこのデータ収集の視覚的な表現が、見事なのです。",
+                "start": 1746.2
+              },
+              {
+                "id": "sec7-f73",
+                "english": "While the visitor is looking down at the tablet, casting their vote, that massive projection mapping on the wall behind the robot is updating live.",
+                "japanese": "来場者がタブレットを見下ろして投票している間、ロボットの背後の壁にあるあの巨大なプロジェクションマッピングが、ライブで更新されていきます。",
+                "start": 1750.0
+              },
+              {
+                "id": "sec7-f74",
+                "english": "The whole room can see it.",
+                "japanese": "部屋にいる全員がそれを見ることができます。",
+                "start": 1758.3
+              },
+              {
+                "id": "sec7-f75",
+                "english": "Yeah, the projection is a literal visual manifestation of the lens model.",
+                "japanese": "ええ、その投影は、レンズモデルの文字どおりの視覚的な顕現です。",
+                "start": 1759.6
+              },
+              {
+                "id": "sec7-f76",
+                "english": "On the left side of the wall, you have an icon representing the robot's coded intentions.",
+                "japanese": "壁の左側には、ロボットの符号化された意図を表すアイコンがあります。",
+                "start": 1763.7
+              },
+              {
+                "id": "sec7-f77",
+                "english": "On the right side, you have an icon representing the human's perception.",
+                "japanese": "右側には、人間の知覚を表すアイコンがあります。",
+                "start": 1768.5
+              },
+              {
+                "id": "sec7-f78",
+                "english": "And sitting between them is a giant visual representation of the lens.",
+                "japanese": "そしてその間に座しているのが、レンズの巨大な視覚的表現です。",
+                "start": 1772.3
+              },
+              {
+                "id": "sec7-f79",
+                "english": "And as the visitor taps their choices on the tablet, glowing, colorful lines shoot across the projection, visually connecting the specific robot cues to the human's interpretation.",
+                "japanese": "そして来場者がタブレットで選択をタップするたびに、輝く色とりどりの線が投影を駆け抜け、特定のロボットの手がかりと人間の解釈とを視覚的に結びつけます。",
+                "start": 1776.3
+              },
+              {
+                "id": "sec7-f80",
+                "english": "Dynamic bar graphs accumulate the votes in real time.",
+                "japanese": "動的な棒グラフが、リアルタイムで票を積み上げていきます。",
+                "start": 1786.8
+              },
+              {
+                "id": "sec7-f81",
+                "english": "It's amazing.",
+                "japanese": "驚くべきことです。",
+                "start": 1789.9
+              },
+              {
+                "id": "sec7-f82",
+                "english": "The exhibition is taking an entirely invisible, subconscious, psychological process, how we interpret manipulative charm and making it massively, publicly visible to the entire conference.",
+                "japanese": "この展示は、まったく目に見えない、無意識の心理的プロセス——私たちが操作的な魅力をどう解釈するか——を取り上げ、それを会議全体に向けて大規模に、公に可視化しているのです。",
+                "start": 1790.4
+              },
+              {
+                "id": "sec7-f83",
+                "english": "Everyone in the room can watch the data aggregate and see exactly which calculated behaviors are proving most devastatingly effective at charming the attendees.",
+                "japanese": "部屋にいる誰もが、データが集約されていくのを見守り、どの計算された行動が来場者を魅了するのに最も恐ろしく効果的かを、正確に見ることができます。",
+                "start": 1803.2
+              },
+              {
+                "id": "sec7-f84",
+                "english": "It's an interactive data visualization on a grand scale.",
+                "japanese": "それは壮大なスケールのインタラクティブなデータ可視化です。",
+                "start": 1812.0
+              },
+              {
+                "id": "sec7-f85",
+                "english": "But it's vital to recognize that this wasn't just a fun, gamified, parlor trick to entertain tech professionals.",
+                "japanese": "しかし、これがテックの専門家を楽しませるための、単なる遊び心のあるゲーム的な座興ではなかったことを認識するのは重要です。",
+                "start": 1815.5
+              },
+              {
+                "id": "sec7-f86",
+                "english": "No, not at all.",
+                "japanese": "ええ、まったく違います。",
+                "start": 1821.7
+              },
+              {
+                "id": "sec7-f87",
+                "english": "This participatory exhibition was a highly engineered methodology designed to gather massive amounts of cross-cultural data and to force a real-time reckoning regarding the ethics of robot design we discussed earlier.",
+                "japanese": "この参加型展示は、大量の異文化データを集め、先ほど議論したロボット設計の倫理についてリアルタイムの再考を迫るために設計された、高度に練り上げられた方法論でした。",
+                "start": 1822.8
+              },
+              {
+                "id": "sec7-f88",
+                "english": "Let's delve into the cross-cultural implications because they are a cornerstone of the paper.",
+                "japanese": "その異文化的な含意に踏み込んでみましょう。なぜなら、それは論文の礎石だからです。",
+                "start": 1834.6
+              },
+              {
+                "id": "sec7-f89",
+                "english": "The physical location of this exhibition, the Disconference in Singapore, was entirely intentional.",
+                "japanese": "この展示の物理的な開催地、シンガポールのDIS会議は、完全に意図的なものでした。",
+                "start": 1838.9
+              },
+              {
+                "id": "sec7-f90",
+                "english": "Because it's an international hub.",
+                "japanese": "国際的なハブだからですね。",
+                "start": 1844.0
+              },
+              {
+                "id": "sec7-f91",
+                "english": "Exactly. Singapore is a massive international crossroads.",
+                "japanese": "その通り。シンガポールは巨大な国際的交差点です。",
+                "start": 1845.3
+              },
+              {
+                "id": "sec7-f92",
+                "english": "Remember, the foundational behavioral blueprint, the six cues of azatoy, was derived strictly from interviews with East Asian university students.",
+                "japanese": "思い出してください。土台となる行動の設計図、あざとさの6つの手がかりは、厳密に東アジアの大学生へのインタビューから導き出されたものでした。",
+                "start": 1849.3
+              },
+              {
+                "id": "sec7-f93",
+                "english": "Right, from Japan, China, and Korea.",
+                "japanese": "そうです、日本・中国・韓国から。",
+                "start": 1857.0
+              },
+              {
+                "id": "sec7-f94",
+                "english": "Yes. But the exhibition at Dis allowed the researchers to pest these exact same cues on a globally diverse audience of international attendees.",
+                "japanese": "ええ。しかしDISでの展示によって、研究者たちは、まさにこの同じ手がかりを、世界中から集まる多様な国際的来場者に対して試すことができたのです。",
+                "start": 1859.3
+              }
             ]
           },
           {
@@ -9769,6 +12063,296 @@
                 "meaning": "魅了された",
                 "id": "sec8-v6"
               }
+            ],
+            "fullText": [
+              {
+                "id": "sec8-f1",
+                "english": "So they are actively testing whether azatoy functions as a universal human language, or if it is strictly a culturally siloed phenomenon.",
+                "japanese": "そうして彼らは、あざとさが普遍的な人間の言語として機能するのか、それとも厳密に文化的に孤立した現象なのかを、積極的に検証しているのです。",
+                "start": 1868.4
+              },
+              {
+                "id": "sec8-f2",
+                "english": "That's the goal.",
+                "japanese": "それが目的です。",
+                "start": 1876.7
+              },
+              {
+                "id": "sec8-f3",
+                "english": "The researchers didn't just ask for votes on the tablet.",
+                "japanese": "研究者たちは、タブレットでの投票を求めただけではありませんでした。",
+                "start": 1877.7
+              },
+              {
+                "id": "sec8-f4",
+                "english": "They included a space for visitors to leave detailed, qualitative comments.",
+                "japanese": "来場者が詳細な定性的コメントを残せるスペースも設けました。",
+                "start": 1880.7
+              },
+              {
+                "id": "sec8-f5",
+                "english": "They specifically ask attendees if similar concepts of calculated cuteness exist in their own home cultures.",
+                "japanese": "特に、計算された可愛さに似た概念が、自国の文化に存在するかどうかを来場者に尋ねたのです。",
+                "start": 1885.4
+              },
+              {
+                "id": "sec8-f6",
+                "english": "Right. They want to know, does a software engineer from Germany or a designer from Brazil react to a digital grain of rice on a robot's face with the same psychological susceptibility as someone from Tokyo?",
+                "japanese": "そうです。彼らが知りたいのは——ドイツのソフトウェアエンジニアやブラジルのデザイナーは、ロボットの顔に付いたデジタルの米粒に対して、東京の人と同じ心理的な感受性で反応するのか？という点です。",
+                "start": 1891.8
+              },
+              {
+                "id": "sec8-f7",
+                "english": "Gathering this global data allows the researchers to begin mapping the cultural boundaries of calculated cuteness perception.",
+                "japanese": "このグローバルなデータを集めることで、研究者たちは、計算された可愛さの知覚の文化的な境界を、地図に描き始めることができます。",
+                "start": 1903.6
+              },
+              {
+                "id": "sec8-f8",
+                "english": "But on a much deeper level, the entire exhibition serves as a physical forum to force the attendees to confront that dark pattern debate we explored earlier.",
+                "japanese": "しかしもっと深いレベルでは、この展示全体が、先ほど探った『ダークパターン』論争に来場者を直面させるための、物理的な議論の場として機能しているのです。",
+                "start": 1910.1
+              },
+              {
+                "id": "sec8-f9",
+                "english": "Let's bring that completely full circle.",
+                "japanese": "それを完全に一周させて元に戻しましょう。",
+                "start": 1918.5
+              },
+              {
+                "id": "sec8-f10",
+                "english": "We established that traditional cuteness using big static baby eyes to unconsciously trigger a human's biological caregiving instinct without their knowledge is heavily debated as a manipulative dark pattern.",
+                "japanese": "私たちは、大きく静的な赤ちゃんのような目を使って、人間の生物学的な養育本能を本人の知らないうちに無意識に引き起こす従来の可愛さが、操作的なダークパターンとして激しく議論されている、ということを確認しました。",
+                "start": 1920.4
+              },
+              {
+                "id": "sec8-f11",
+                "english": "The crucial question is, is azitoy, this new behavioral approach, actually any better ethically?",
+                "japanese": "重要な問いはこうです——この新しい行動的アプローチである『あざとさ』は、倫理的に実際のところ少しでもましなのか？",
+                "start": 1933.7
+              },
+              {
+                "id": "sec8-f12",
+                "english": "This is where the paper forces a really complex discussion regarding the nuance between persuasion and manipulation.",
+                "japanese": "ここで論文は、説得と操作の間のニュアンスに関する、実に複雑な議論を迫ります。",
+                "start": 1941.0
+              },
+              {
+                "id": "sec8-f13",
+                "english": "The study explicitly references prior psychological research that highlights a deeply concerning trend regarding digital interfaces.",
+                "japanese": "研究は、デジタルインターフェースに関する深く憂慮すべき傾向を浮き彫りにする先行心理学研究を、明確に引用しています。",
+                "start": 1947.5
+              },
+              {
+                "id": "sec8-f14",
+                "english": "What's the trend?",
+                "japanese": "その傾向とは？",
+                "start": 1955.2
+              },
+              {
+                "id": "sec8-f15",
+                "english": "Human users often lack the cognitive ability to resist dark patterns, even when they are completely aware that the pattern is being used against them.",
+                "japanese": "人間のユーザーは、そのパターンが自分に対して使われていると完全に気づいているときでさえ、ダークパターンに抵抗する認知能力をしばしば欠いているのです。",
+                "start": 1956.1
+              },
+              {
+                "id": "sec8-f16",
+                "english": "Wait, really? Just knowing you were being manipulated doesn't break the spell?",
+                "japanese": "待ってください、本当に？操作されていると知るだけでは、その呪文は解けないのですか？",
+                "start": 1964.2
+              },
+              {
+                "id": "sec8-f17",
+                "english": "Not consistently. Awareness is not automatically equate to immunity.",
+                "japanese": "一貫してはそうです。気づきは、自動的に耐性を意味するわけではありません。",
+                "start": 1967.9
+              },
+              {
+                "id": "sec8-f18",
+                "english": "Simply knowing that a slot machine is designed to addict you doesn't necessarily stop the dopamine rush when the lights flash.",
+                "japanese": "スロットマシンが自分を中毒にさせるよう設計されていると知っているだけでは、ライトが光ったときのドーパミンの高まりが必ずしも止まるわけではないのです。",
+                "start": 1972.2
+              },
+              {
+                "id": "sec8-f19",
+                "english": "Wow, which brings us to the core paradox of this entire deep dive.",
+                "japanese": "なるほど、それがこのディープダイブ全体の核心的なパラドックスへとつながります。",
+                "start": 1977.7
+              },
+              {
+                "id": "sec8-f20",
+                "english": "It does. Imagine you are the visitor standing at that booth in Singapore.",
+                "japanese": "その通り。あなたがシンガポールのあのブースに立っている来場者だと想像してください。",
+                "start": 1981.1
+              },
+              {
+                "id": "sec8-f21",
+                "english": "You are a highly educated professional.",
+                "japanese": "あなたは高度な教育を受けたプロフェッショナルです。",
+                "start": 1985.8
+              },
+              {
+                "id": "sec8-f22",
+                "english": "You are fully, completely aware that the little plastic cube on the table is a machine.",
+                "japanese": "あなたは、テーブルの上の小さなプラスチックの立方体が機械であることを、完全に、はっきりと認識しています。",
+                "start": 1988.9
+              },
+              {
+                "id": "sec8-f23",
+                "english": "Right. You know with absolute certainty that it does not actually possess a digestive system to eat chicken rice.",
+                "japanese": "そうです。それがチキンライスを食べるための消化器系を実際には持っていないことを、絶対の確信をもって知っています。",
+                "start": 1994.9
+              },
+              {
+                "id": "sec8-f24",
+                "english": "You know the digital grain of rice is a pre-programmed sequence of pixels designed by an engineer.",
+                "japanese": "そのデジタルの米粒が、エンジニアによって設計された、あらかじめプログラムされたピクセルの並びにすぎないことを知っています。",
+                "start": 2001.5
+              },
+              {
+                "id": "sec8-f25",
+                "english": "You know the whole trick.",
+                "japanese": "あなたは仕掛けのすべてを知っています。",
+                "start": 2006.9
+              },
+              {
+                "id": "sec8-f26",
+                "english": "You know the trick.",
+                "japanese": "あなたはその仕掛けを知っているのです。",
+                "start": 2007.8
+              },
+              {
+                "id": "sec8-f27",
+                "english": "You are entirely aware that the machine is actively trying to manipulate you into touching its screen.",
+                "japanese": "あなたは、機械があなたを画面に触れさせるよう積極的に操作しようとしていることを、完全に認識しています。",
+                "start": 2008.5
+              },
+              {
+                "id": "sec8-f28",
+                "english": "But despite knowing all of that, you still reach out.",
+                "japanese": "しかしそのすべてを知っていながら、それでもあなたは手を伸ばします。",
+                "start": 2013.4
+              },
+              {
+                "id": "sec8-f29",
+                "english": "You still wipe the screen.",
+                "japanese": "それでも画面を拭きます。",
+                "start": 2016.8
+              },
+              {
+                "id": "sec8-f30",
+                "english": "You still smile.",
+                "japanese": "それでも微笑みます。",
+                "start": 2018.2
+              },
+              {
+                "id": "sec8-f31",
+                "english": "And you still feel genuinely charmed by the interaction.",
+                "japanese": "そしてそれでも、その相互作用に心から魅了されたと感じるのです。",
+                "start": 2019.4
+              },
+              {
+                "id": "sec8-f32",
+                "english": "It still works.",
+                "japanese": "それでも効いてしまうのです。",
+                "start": 2022.6
+              },
+              {
+                "id": "sec8-f33",
+                "english": "If the manipulation is entirely successful, despite your complete awareness of it, is it unethical?",
+                "japanese": "もしその操作が、あなたが完全に気づいているにもかかわらず、完全に成功してしまうのなら、それは非倫理的なのでしょうか？",
+                "start": 2023.6
+              },
+              {
+                "id": "sec8-f34",
+                "english": "Well, the researchers propose a truly fascinating hypothesis to answer that.",
+                "japanese": "研究者たちは、それに答えるために、実に魅力的な仮説を提案しています。",
+                "start": 2029.2
+              },
+              {
+                "id": "sec8-f35",
+                "english": "They suggest that the transparent quality of calculated cuteness, the sheer undeniable fact that the robot's manipulative intent is proudly, clearly, and visibly displayed, might not be a bug that needs fixing.",
+                "japanese": "彼らは、計算された可愛さの透明性という性質——ロボットの操作的な意図が、誇らしげに、明確に、目に見える形で示されているという、まったく否定しようのない事実——は、修正すべきバグではないかもしれない、と示唆しています。",
+                "start": 2033.6
+              },
+              {
+                "id": "sec8-f36",
+                "english": "It might be the exact mechanism that generates the charm and affinity in the first place.",
+                "japanese": "それこそが、そもそも魅力と親近感を生み出している、まさにそのメカニズムなのかもしれません。",
+                "start": 2046.8
+              },
+              {
+                "id": "sec8-f37",
+                "english": "That is wild.",
+                "japanese": "それはとんでもないことです。",
+                "start": 2051.3
+              },
+              {
+                "id": "sec8-f38",
+                "english": "By refusing to hide the trick, the trick itself becomes the feature.",
+                "japanese": "仕掛けを隠すことを拒むことによって、仕掛けそのものが『機能』になるのです。",
+                "start": 2053.7
+              },
+              {
+                "id": "sec8-f39",
+                "english": "It completely blurs the rigid boundary between deceptive design and a mutually agreed upon social game.",
+                "japanese": "それは、欺瞞的な設計と、互いに合意された社会的ゲームとの間の、堅固な境界を完全にぼやけさせます。",
+                "start": 2058.0
+              },
+              {
+                "id": "sec8-f40",
+                "english": "Exactly. You aren't being biologically tricked into caring for a piece of plastic.",
+                "japanese": "その通り。あなたは生物学的に騙されてプラスチックの塊を気にかけさせられているのではありません。",
+                "start": 2064.0
+              },
+              {
+                "id": "sec8-f41",
+                "english": "You are being openly invited to play along with its performance.",
+                "japanese": "あなたは、その演技に一緒に乗るよう、おおっぴらに招かれているのです。",
+                "start": 2069.0
+              },
+              {
+                "id": "sec8-f42",
+                "english": "You become a willing co-conspirator in the illusion.",
+                "japanese": "あなたはその幻想に進んで加担する『共犯者』になるのです。",
+                "start": 2073.2
+              },
+              {
+                "id": "sec8-f43",
+                "english": "That's a great way to say it.",
+                "japanese": "それは見事な言い方ですね。",
+                "start": 2076.1
+              },
+              {
+                "id": "sec8-f44",
+                "english": "It represents a fundamental philosophical shift in how we might view autonomy, consent, and emotional engagement in human-computer interaction moving forward.",
+                "japanese": "それは、今後の人間とコンピュータの相互作用において、自律性・同意・感情的関与をどう捉えるかについての、根本的な哲学的転換を表しています。",
+                "start": 2077.2
+              },
+              {
+                "id": "sec8-f45",
+                "english": "It is an incredibly compelling argument for the future of the industry.",
+                "japanese": "それは、この業界の未来にとって、極めて説得力のある主張です。",
+                "start": 2087.1
+              },
+              {
+                "id": "sec8-f46",
+                "english": "But to their credit, the researchers are deeply grounded in the reality of their scientific process.",
+                "japanese": "しかし彼らの名誉のために言えば、研究者たちは自分たちの科学的プロセスの現実に深く根ざしています。",
+                "start": 2090.9
+              },
+              {
+                "id": "sec8-f47",
+                "english": "They are very clear about the limitations of the specific study, acknowledging that the dis-exhibition is merely the first step in a very long journey.",
+                "japanese": "彼らはこの特定の研究の限界について非常に明確で、DIS展示があくまで非常に長い旅の最初の一歩にすぎないことを認めています。",
+                "start": 2095.3
+              },
+              {
+                "id": "sec8-f48",
+                "english": "Let's talk about those constraints, because we have to keep the reality of the hardware in perspective.",
+                "japanese": "その制約について話しましょう。なぜなら、私たちはハードウェアの現実を見失わないようにしなければならないからです。",
+                "start": 2102.8
+              }
             ]
           },
           {
@@ -9856,6 +12440,242 @@
                 "term": "tightrope walk",
                 "meaning": "綱渡り(危ういバランス)",
                 "id": "sec9-v6"
+              }
+            ],
+            "fullText": [
+              {
+                "id": "sec9-f1",
+                "english": "First and foremost, StackChan is strictly a tabletop robot.",
+                "japanese": "何よりもまず、Stack-chan はあくまで卓上ロボットです。",
+                "start": 2108.1
+              },
+              {
+                "id": "sec9-f2",
+                "english": "It possesses absolutely no mobility.",
+                "japanese": "移動能力をまったく持っていません。",
+                "start": 2112.2
+              },
+              {
+                "id": "sec9-f3",
+                "english": "It just sits anchored to a single spot.",
+                "japanese": "ただ一か所に固定されて座っているだけです。",
+                "start": 2114.6
+              },
+              {
+                "id": "sec9-f4",
+                "english": "Which presents a significant testing limitation.",
+                "japanese": "これは、検証上の大きな限界をもたらします。",
+                "start": 2116.8
+              },
+              {
+                "id": "sec9-f5",
+                "english": "It means the very first behavioral cue they identified in their formative study.",
+                "japanese": "それはつまり、彼らが形成的研究で特定したまさに最初の行動の手がかり——",
+                "start": 2119.5
+              },
+              {
+                "id": "sec9-f6",
+                "english": "Exaggerated proximity, the human act of physically closing the distance and invading personal space, could only be tested via proxy.",
+                "japanese": "『誇張された近接』、すなわち物理的に距離を縮めてパーソナルスペースに踏み込むという人間の行為は、代理的にしか検証できなかった、ということです。",
+                "start": 2124.4
+              },
+              {
+                "id": "sec9-f7",
+                "english": "The robot had to rely on linguistic prompts, asking the visitor to step closer, rather than physically driving its own body into the visitor's space.",
+                "japanese": "ロボットは、自分の体を物理的に来場者の空間へ押し進めるのではなく、来場者にもっと近づくよう頼む言語的な促しに頼らざるを得ませんでした。",
+                "start": 2133.8
+              },
+              {
+                "id": "sec9-f8",
+                "english": "And the psychological dynamics of that interaction would change entirely if the machine had physical agency.",
+                "japanese": "そしてその相互作用の心理的な力学は、もし機械が物理的な主体性（agency）を持っていたら、まったく変わってしまうでしょう。",
+                "start": 2142.2
+              },
+              {
+                "id": "sec9-f9",
+                "english": "Like a cute blocky cube sitting passively on a table asking you to come closer is one thing.",
+                "japanese": "可愛い四角い立方体がテーブルの上に受動的に座って『近づいて』とお願いするのは一つのことです。",
+                "start": 2147.3
+              },
+              {
+                "id": "sec9-f10",
+                "english": "A physical machine actively rolling across the floor, bypassing your personal bubble, and driving itself into your physical space to perform calculated cuteness, that might not feel charming.",
+                "japanese": "物理的な機械が積極的に床を転がって移動し、あなたのパーソナルな領域を突破し、計算された可愛さを演じるために自らあなたの物理的空間へ突き進んでくる——それは魅力的には感じられないかもしれません。",
+                "start": 2152.7
+              },
+              {
+                "id": "sec9-f11",
+                "english": "Now it might feel deeply intrusive.",
+                "japanese": "今度は、深く侵襲的に感じられるかもしれません。",
+                "start": 2162.4
+              },
+              {
+                "id": "sec9-f12",
+                "english": "Or even threatening.",
+                "japanese": "あるいは脅威にさえ感じられるかもしれません。",
+                "start": 2164.5
+              },
+              {
+                "id": "sec9-f13",
+                "english": "Furthermore, every single interaction at the disbooth was strictly short-term.",
+                "japanese": "さらに、DISブースでのあらゆる相互作用は、厳密に短期的なものでした。",
+                "start": 2165.9
+              },
+              {
+                "id": "sec9-f14",
+                "english": "A visitor walks up, plays the chicken rice game for maybe two minutes, votes, and walks away forever.",
+                "japanese": "来場者が歩み寄り、せいぜい2分ほどチキンライスのゲームをして、投票し、そして永遠に去っていきます。",
+                "start": 2170.6
+              },
+              {
+                "id": "sec9-f15",
+                "english": "Which means the ultimate goal testing for true long-term emotional attachment wasn't actually addressed in this specific demonstration.",
+                "japanese": "つまり、真の長期的な感情的愛着を検証するという究極の目標は、この特定のデモンストレーションでは実際には扱われなかった、ということです。",
+                "start": 2177.3
+              },
+              {
+                "id": "sec9-f16",
+                "english": "It raises massive behavioral questions.",
+                "japanese": "それは、大きな行動上の問いを投げかけます。",
+                "start": 2185.0
+              },
+              {
+                "id": "sec9-f17",
+                "english": "If a robot fakes an intentional error every single day in your kitchen, does the charm eventually wear off?",
+                "japanese": "もしロボットがあなたのキッチンで毎日毎日、意図的なミスを装ったら、その魅力はやがて薄れてしまうのか？",
+                "start": 2187.8
+              },
+              {
+                "id": "sec9-f18",
+                "english": "Does the performance degrade from enduring social game to infuriatingly repetitive annoyance over the course of six months?",
+                "japanese": "そのパフォーマンスは、半年の間に、長続きする社会的ゲームから、苛立たしいほど反復的な煩わしさへと劣化してしまうのか？",
+                "start": 2194.4
+              },
+              {
+                "id": "sec9-f19",
+                "english": "I would probably get pretty annoyed.",
+                "japanese": "私ならおそらく、かなりイライラするでしょうね。",
+                "start": 2201.7
+              },
+              {
+                "id": "sec9-f20",
+                "english": "Right. These unresolved questions are exactly what dictate the future trajectories the researchers point toward at the end of the paper.",
+                "japanese": "そうです。こうした未解決の問いこそが、論文の終わりで研究者たちが指し示す今後の方向性を、まさに決定づけているのです。",
+                "start": 2203.0
+              },
+              {
+                "id": "sec9-f21",
+                "english": "They clearly outline the necessary next steps for this field.",
+                "japanese": "彼らは、この分野に必要な次のステップを明確に概説しています。",
+                "start": 2210.3
+              },
+              {
+                "id": "sec9-f22",
+                "english": "They need to apply these complex azitoy behavioral cues to fully mobile robots.",
+                "japanese": "彼らは、これら複雑なあざとさの行動の手がかりを、完全に移動可能なロボットに適用する必要があります。",
+                "start": 2213.8
+              },
+              {
+                "id": "sec9-f23",
+                "english": "They need to deploy these machines into long-term relationship-building scenarios to see if the transparent manipulation holds up over years, not minutes.",
+                "japanese": "彼らは、透明な操作が数分ではなく数年にわたって持ちこたえるかを見るために、これらの機械を長期的な関係構築のシナリオに投入する必要があります。",
+                "start": 2219.0
+              },
+              {
+                "id": "sec9-f24",
+                "english": "Imagine this specific behavioral technology applied to the field of elder care, or integrated into robots designed to serve as daily, constant companions for deeply isolated individuals.",
+                "japanese": "この特定の行動技術が、高齢者ケアの分野に適用されたり、深く孤立した個人のための日々の絶え間ない伴侶として機能するよう設計されたロボットに組み込まれたりすることを想像してみてください。",
+                "start": 2227.3
+              },
+              {
+                "id": "sec9-f25",
+                "english": "Mistakes are huge.",
+                "japanese": "その意味は計り知れません。",
+                "start": 2238.4
+              },
+              {
+                "id": "sec9-f26",
+                "english": "And crucially, they intend to use the massive global voting data they collected at the conference to develop culturally adaptive designs.",
+                "japanese": "そして決定的に重要なのは、彼らが会議で集めた膨大なグローバルな投票データを使って、文化適応型のデザインを開発しようとしている点です。",
+                "start": 2239.5
+              },
+              {
+                "id": "sec9-f27",
+                "english": "The ultimate goal isn't a single robot that acts the same way everywhere.",
+                "japanese": "究極の目標は、どこでも同じように振る舞う単一のロボットではありません。",
+                "start": 2247.8
+              },
+              {
+                "id": "sec9-f28",
+                "english": "A one-size-fits-all approach.",
+                "japanese": "画一的な『万能型』のアプローチではないのです。",
+                "start": 2251.8
+              },
+              {
+                "id": "sec9-f29",
+                "english": "Exactly. They don't want that.",
+                "japanese": "その通り。彼らはそれを望んでいません。",
+                "start": 2253.2
+              },
+              {
+                "id": "sec9-f30",
+                "english": "It's a robot that dynamically adjusts its behavioral performance based on what is subconsciously considered cute and acceptable in the specific cultural region it is deployed in.",
+                "japanese": "目指すのは、配備された特定の文化圏で無意識に可愛い・受け入れられると見なされるものに基づいて、自らの行動的パフォーマンスを動的に調整するロボットです。",
+                "start": 2254.9
+              },
+              {
+                "id": "sec9-f31",
+                "english": "The potential applications for this are vast, and they will impact almost every sector of society that integrates robotics.",
+                "japanese": "これの潜在的な応用範囲は広大で、ロボティクスを取り入れる社会のほぼあらゆる分野に影響を与えるでしょう。",
+                "start": 2265.3
+              },
+              {
+                "id": "sec9-f32",
+                "english": "But all of these future applications hinge entirely on mastering this incredibly delicate, highly precarious balance of transparent manipulation.",
+                "japanese": "しかしこれら未来の応用はすべて、この極めて繊細で、非常に危ういバランスの『透明な操作』を習得できるかに、完全にかかっています。",
+                "start": 2271.8
+              },
+              {
+                "id": "sec9-f33",
+                "english": "It's a tightrope walk.",
+                "japanese": "それは綱渡りです。",
+                "start": 2281.0
+              },
+              {
+                "id": "sec9-f34",
+                "english": "It is. If designers can actually master this, if they can perfect the algorithm of the deliberate flaw, we are looking at a future where machines don't just communicate with us through sterile data readouts.",
+                "japanese": "そうです。もし設計者が本当にこれを習得できたら、もし『意図的な欠点』のアルゴリズムを完成させられたら、私たちが見ているのは、機械が無味乾燥なデータの表示を通じてだけ私たちとコミュニケーションするのではない未来です。",
+                "start": 2282.2
+              },
+              {
+                "id": "sec9-f35",
+                "english": "They will communicate with us using the exact same complex, slightly manipulative, but ultimately endearing social dances that human beings have used to charm each other for millennia.",
+                "japanese": "彼らは、人間が何千年もの間、互いを魅了するために使ってきたのとまったく同じ、複雑で、少し操作的でありながら、最終的には愛おしい社会的な舞踊を使って、私たちとコミュニケーションするようになるでしょう。",
+                "start": 2295.2
+              },
+              {
+                "id": "sec9-f36",
+                "english": "It suggests a future where our relationship with technology is far less about utility and far more about negotiated emotional performance.",
+                "japanese": "それは、テクノロジーとの私たちの関係が、有用性をめぐるものでははるかに少なくなり、交渉された感情的なパフォーマンスをめぐるものへとはるかに大きく傾く、そんな未来を示唆しています。",
+                "start": 2305.8
+              },
+              {
+                "id": "sec9-f37",
+                "english": "And that leads me to a final thought, something I really want you to mull over as we wrap up this deep dive.",
+                "japanese": "そしてそれが、私を最後の問いへと導きます。このディープダイブを締めくくるにあたり、ぜひじっくり考えてほしいことです。",
+                "start": 2313.2
+              },
+              {
+                "id": "sec9-f38",
+                "english": "We've spent this entire time unpacking how humans can program machines to perfectly mimic the calculated charm of human interaction.",
+                "japanese": "私たちはこの間ずっと、人間がどうやって機械をプログラムして、人間の相互作用の計算された魅力を完璧に模倣させられるかを、解きほぐしてきました。",
+                "start": 2318.2
+              },
+              {
+                "id": "sec9-f39",
+                "english": "But based on all the implications of this research, if designers truly perfect the art of transparent manipulation and these robots become absolute flawless masters of azitoy, will there come a day when we actually prefer the clean, calculated, reliably delightful affection of a machine over the messy, unpredictable, and often difficult affection of real human beings?",
+                "japanese": "しかしこの研究のあらゆる含意を踏まえると——もし設計者が透明な操作の技を本当に完成させ、これらのロボットがあざとさの完全無欠な達人になったとしたら、いつか私たちは、現実の人間の、厄介で、予測不能で、しばしば難しい愛情よりも、機械の、整った、計算された、信頼できるほど心地よい愛情の方を、実際に好む日が来るのでしょうか？",
+                "start": 2326.1
               }
             ]
           }

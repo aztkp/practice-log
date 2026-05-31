@@ -912,6 +912,15 @@
       color: var(--english, #60a5fa); font-size: 11px; padding: 0;
     }
 
+    .mz-fulltext { margin-top: 6px; }
+    .mz-fulltext > summary {
+      cursor: pointer; list-style: none;
+      font-size: 12px; font-weight: 700; color: var(--english, #60a5fa);
+      padding: 4px 0;
+    }
+    .mz-fulltext > summary::-webkit-details-marker { display: none; }
+    .mz-fulltext-body { margin-top: 6px; }
+
     .dictation-controls {
       display: flex;
       align-items: center;

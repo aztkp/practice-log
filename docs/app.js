@@ -1876,19 +1876,20 @@
     return !!(practiceData.english.memorizeProgress || {})[id];
   }
 
-  function memorizeDeckStats(deck) {
+  function memorizeSectionStats(s) {
     let total = 0, done = 0;
-    deck.sections.forEach(s => {
-      (s.expressions || []).forEach(e => { total++; if (isMastered(e.id)) done++; });
-      (s.vocabulary || []).forEach(v => { total++; if (isMastered(v.id)) done++; });
+    ['fullText', 'expressions', 'vocabulary'].forEach(key => {
+      (s[key] || []).forEach(item => { total++; if (isMastered(item.id)) done++; });
     });
     return { total, done };
   }
 
-  function memorizeSectionStats(s) {
+  function memorizeDeckStats(deck) {
     let total = 0, done = 0;
-    (s.expressions || []).forEach(e => { total++; if (isMastered(e.id)) done++; });
-    (s.vocabulary || []).forEach(v => { total++; if (isMastered(v.id)) done++; });
+    deck.sections.forEach(s => {
+      const ss = memorizeSectionStats(s);
+      total += ss.total; done += ss.done;
+    });
     return { total, done };
   }
 
@@ -1909,7 +1910,7 @@
       const ss = memorizeSectionStats(s);
       const outline = (s.outline || []).map(o => `<li>${escapeHtml(o)}</li>`).join('');
 
-      const exprs = (s.expressions || []).map(e => {
+      const cardHtml = (e) => {
         const m = isMastered(e.id);
         const seconds = Math.max(6, (e.english.split(/\s+/).length) * 0.45);
         const playBtn = (e.start != null && deck.audioFile)
@@ -1927,7 +1928,10 @@
             </div>
             <button class="mz-reveal" onclick="window.toggleMemorizeReveal('${e.id}')">英文を見る ▾</button>
           </div>`;
-      }).join('');
+      };
+
+      const fullText = (s.fullText || []).map(cardHtml).join('');
+      const exprs = (s.expressions || []).map(cardHtml).join('');
 
       const vocab = (s.vocabulary || []).map(v => {
         const m = isMastered(v.id);
@@ -1953,6 +1957,7 @@
           <div class="mz-sec-body">
             ${outline ? `<div class="mz-block-label">📋 アウトライン</div><ul class="mz-outline">${outline}</ul>` : ''}
             ${exprs ? `<div class="mz-block-label">⭐ 重要表現</div>${exprs}` : ''}
+            ${fullText ? `<details class="mz-fulltext"><summary>📖 全文 (${(s.fullText || []).length})</summary><div class="mz-fulltext-body">${fullText}</div></details>` : ''}
             ${vocab ? `<div class="mz-block-label">📚 語彙</div><div class="mz-vocab-list">${vocab}</div>` : ''}
           </div>
         </details>`;
