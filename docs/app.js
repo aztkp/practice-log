@@ -1919,14 +1919,14 @@
           <div class="mz-card ${m ? 'mastered' : ''}">
             <div class="mz-card-head">
               <button class="mz-master" onclick="window.toggleMemorizeMastered('${e.id}', this)" title="暗記した">${m ? '✅' : '⬜'}</button>
-              <div class="mz-ja">${escapeHtml(e.japanese)}</div>
+              <div class="mz-en-head">${escapeHtml(e.english)}</div>
               ${playBtn}
             </div>
-            <div class="mz-en" id="mz-en-${e.id}" style="display:none;">
-              <div class="mz-en-text">${escapeHtml(e.english)}</div>
+            <div class="mz-ja-reveal" id="mz-ja-${e.id}" style="display:none;">
+              <div class="mz-ja-text">${escapeHtml(e.japanese)}</div>
               ${e.situation ? `<div class="mz-situation">💬 ${escapeHtml(e.situation)}</div>` : ''}
             </div>
-            <button class="mz-reveal" onclick="window.toggleMemorizeReveal('${e.id}')">英文を見る ▾</button>
+            <button class="mz-reveal" onclick="window.toggleMemorizeReveal('${e.id}')">日本語を見る ▾</button>
           </div>`;
       };
 
@@ -1979,7 +1979,7 @@
   }
 
   window.toggleMemorizeReveal = function(id, kind) {
-    const el = document.getElementById(kind === 'mean' ? `mz-mean-${id}` : `mz-en-${id}`);
+    const el = document.getElementById(kind === 'mean' ? `mz-mean-${id}` : `mz-ja-${id}`);
     if (!el) return;
     const showing = el.style.display !== 'none';
     el.style.display = showing ? 'none' : (kind === 'mean' ? 'inline' : 'block');
