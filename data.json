@@ -12679,7 +12679,8 @@
               }
             ]
           }
-        ]
+        ],
+        "audioDir": "memorize/robotazatoi"
       }
     ],
     "memorizeProgress": {}

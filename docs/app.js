@@ -1913,8 +1913,13 @@
       const cardHtml = (e) => {
         const m = isMastered(e.id);
         const seconds = Math.max(6, (e.english.split(/\s+/).length) * 0.45);
-        const playBtn = (e.start != null && deck.audioFile)
-          ? `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)})" title="この箇所を再生">🔊</button>` : '';
+        let playBtn = '';
+        if (deck.audioDir) {
+          // Per-item Polly file: instant playback
+          playBtn = `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDir}/${e.id}.mp3')" title="再生">🔊</button>`;
+        } else if (e.start != null && deck.audioFile) {
+          playBtn = `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)})" title="この箇所を再生">🔊</button>`;
+        }
         return `
           <div class="mz-card ${m ? 'mastered' : ''}">
             <div class="mz-card-head">
@@ -2019,6 +2024,14 @@
       renderMemorize();
     }
     await saveData();
+  };
+
+  // Play a standalone per-item audio file (instant, no seeking into a large mp3)
+  let memorizeFileAudio = null;
+  window.playMemorizeFile = function(path) {
+    if (memorizeFileAudio) { memorizeFileAudio.pause(); }
+    memorizeFileAudio = new Audio(path);
+    memorizeFileAudio.play();
   };
 
   window.playMemorizeSegment = function(start, seconds) {
