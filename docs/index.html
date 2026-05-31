@@ -836,6 +836,82 @@
       white-space: pre-wrap;
     }
 
+    /* ===== Memorize (発表暗記) ===== */
+    .mz-header { margin-bottom: 12px; }
+    .mz-title { font-size: 17px; font-weight: 700; }
+    .mz-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .mz-progress-wrap { margin-bottom: 16px; }
+    .mz-progress-bar {
+      height: 8px; border-radius: 4px;
+      background: var(--bg-tertiary, rgba(255,255,255,0.08)); overflow: hidden;
+    }
+    .mz-progress-fill {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      transition: width 0.3s ease;
+    }
+    .mz-progress-text { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+    .mz-section {
+      background: var(--bg-secondary); border-radius: 10px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    .mz-section > summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 14px; font-weight: 600;
+    }
+    .mz-section > summary::-webkit-details-marker { display: none; }
+    .mz-sec-title { flex: 1; }
+    .mz-sec-prog {
+      font-size: 12px; color: var(--text-muted);
+      background: var(--bg-tertiary, rgba(255,255,255,0.06));
+      border-radius: 10px; padding: 2px 8px; white-space: nowrap;
+    }
+    .mz-sec-body { padding: 0 14px 14px; }
+    .mz-block-label {
+      font-size: 12px; font-weight: 700; color: var(--english, #60a5fa);
+      margin: 14px 0 6px;
+    }
+    .mz-outline { margin: 0 0 4px; padding-left: 18px; }
+    .mz-outline li { font-size: 13px; line-height: 1.6; margin-bottom: 3px; }
+
+    .mz-card {
+      background: var(--bg-tertiary, rgba(255,255,255,0.04));
+      border-radius: 8px; padding: 10px 12px; margin-bottom: 8px;
+    }
+    .mz-card.mastered { opacity: 0.65; }
+    .mz-card-head { display: flex; align-items: flex-start; gap: 8px; }
+    .mz-ja { flex: 1; font-size: 14px; line-height: 1.5; }
+    .mz-master, .mz-play {
+      background: none; border: none; cursor: pointer;
+      font-size: 16px; padding: 0; line-height: 1;
+    }
+    .mz-en { margin-top: 8px; }
+    .mz-en-text {
+      font-size: 15px; line-height: 1.6; font-weight: 600;
+      border-left: 3px solid var(--accent, #6366f1); padding-left: 8px;
+    }
+    .mz-situation { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .mz-reveal {
+      background: none; border: none; cursor: pointer;
+      color: var(--english, #60a5fa); font-size: 12px;
+      padding: 4px 0 0; margin-top: 4px;
+    }
+
+    .mz-vocab-list { display: flex; flex-direction: column; gap: 4px; }
+    .mz-vocab {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      font-size: 13px; padding: 4px 0;
+    }
+    .mz-vocab.mastered { opacity: 0.6; }
+    .mz-term { font-weight: 600; }
+    .mz-meaning { color: var(--text-muted); }
+    .mz-reveal-inline {
+      background: none; border: none; cursor: pointer;
+      color: var(--english, #60a5fa); font-size: 11px; padding: 0;
+    }
+
     .dictation-controls {
       display: flex;
       align-items: center;
@@ -2735,6 +2811,7 @@
       <button class="sub-tab active" data-subtab="dictation">👂 Dictation</button>
       <button class="sub-tab" data-subtab="phrases">📝 Phrases</button>
       <button class="sub-tab" data-subtab="study">📖 Study</button>
+      <button class="sub-tab" data-subtab="memorize">🧠 暗記</button>
       <button class="sub-tab" data-subtab="meeting">💼 Meeting</button>
       <button class="sub-tab" data-subtab="pronunciation">🎤 Pronunciation</button>
     </div>
@@ -2980,6 +3057,15 @@
 
       <!-- Study mode container -->
       <div class="study-mode-container" id="study-study-container" style="display: none;"></div>
+    </div>
+
+    <!-- English: Memorize (発表暗記) Section -->
+    <div class="english-section" id="memorize-section">
+      <div class="section-header">
+        <div class="section-title">🧠 発表暗記</div>
+      </div>
+      <p class="section-desc">音声教材をトピック別に構造化。重要表現・語彙を音声付きで暗記しよう</p>
+      <div id="memorize-content"></div>
     </div>
 
     <!-- Piano Section -->

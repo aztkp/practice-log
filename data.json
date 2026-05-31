@@ -9025,6 +9025,843 @@
         "context": "期待を表現する時",
         "mastered": false
       }
-    ]
+    ],
+    "memorizeDecks": [
+      {
+        "id": "robotazatoi",
+        "title": "Why we love calculatedly cute robots",
+        "subtitle": "研究発表用 / Can Robots Be Asatoy? (UTokyo, DIS 2026)",
+        "audioFile": "dictation_robots.mp3",
+        "createdAt": "2026-05-31T00:00:00.000Z",
+        "sections": [
+          {
+            "id": "sec1",
+            "title": "導入：知っていても効く操作のパラドックス",
+            "start": 4.7,
+            "outline": [
+              "フック：機械に意図的に操作され、それに気づいていても、むしろその機械を好きになる",
+              "通常の操作は「仕掛けが見えないこと」で成立する → 見えた瞬間に信頼が壊れる",
+              "本研究はあえて「仕掛けを見せる」ロボット設計を扱う（deliberately, calculatedly cute）",
+              "対象：東京大学の2026年論文（DIS Singapore 発表）"
+            ],
+            "expressions": [
+              {
+                "english": "What if a machine manipulated you on purpose, and you were completely aware it was doing it?",
+                "japanese": "もし機械が意図的にあなたを操作し、しかもあなたがそれに完全に気づいていたら？",
+                "situation": "発表の冒頭フックとして。問いかけで聴衆を引き込む。",
+                "start": 4.7,
+                "id": "sec1-e1"
+              },
+              {
+                "english": "That knowledge actually made you like the machine more.",
+                "japanese": "その「気づき」が、むしろその機械をより好きにさせた。",
+                "situation": "逆説を提示する一文。意外性を強調したいとき。",
+                "start": 11.9,
+                "id": "sec1-e2"
+              },
+              {
+                "english": "It fundamentally breaks how we think about manipulation.",
+                "japanese": "それは私たちの「操作」に対する考え方を根本から覆す。",
+                "situation": "研究の意義を大きく主張するとき。",
+                "start": 15.6,
+                "id": "sec1-e3"
+              },
+              {
+                "english": "For a trick to work, the mark has to be completely in the dark.",
+                "japanese": "仕掛けが効くには、ターゲットが完全に何も知らない必要がある。",
+                "situation": "従来の前提を説明する導入。the mark=標的、in the dark=何も知らない。",
+                "start": 20.9,
+                "id": "sec1-e4"
+              },
+              {
+                "english": "The illusion only holds up as long as the strings are invisible.",
+                "japanese": "その幻想は、操り糸が見えない間だけ保たれる。",
+                "situation": "比喩(操り人形の糸)で従来手法の前提を語るとき。",
+                "start": 25.8,
+                "id": "sec1-e5"
+              },
+              {
+                "english": "They're programming them to be deliberately, calculatedly cute, right to your face.",
+                "japanese": "彼らはロボットを、意図的・計算ずくで可愛くなるようプログラムしている、それも面と向かって堂々と。",
+                "situation": "研究テーマを一言で言うコア表現。",
+                "start": 55.0,
+                "id": "sec1-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "manipulate / manipulation",
+                "meaning": "(人を)操作する／操作・誘導",
+                "id": "sec1-v1"
+              },
+              {
+                "term": "the mark",
+                "meaning": "(詐欺などの)標的・カモ",
+                "id": "sec1-v2"
+              },
+              {
+                "term": "in the dark",
+                "meaning": "何も知らされていない状態",
+                "id": "sec1-v3"
+              },
+              {
+                "term": "hold up",
+                "meaning": "(理論・幻想などが)持ちこたえる・成立し続ける",
+                "id": "sec1-v4"
+              },
+              {
+                "term": "calculatedly cute",
+                "meaning": "計算ずくで可愛い(本研究のキー表現)",
+                "id": "sec1-v5"
+              }
+            ]
+          },
+          {
+            "id": "sec2",
+            "title": "従来手法：ベビースキーマとその限界",
+            "start": 193.9,
+            "outline": [
+              "従来の標準は baby schema（幼児的特徴：大きな目・大きな頭・丸い頬）",
+              "進化的に組み込まれた養育本能を引き出す「生物学的ハック」",
+              "限界1：デザインの単一化（monoculture）— どのロボットも同じ見た目になる",
+              "限界2：静的な可愛さは長期的な愛着を生まない（honeymoon phase が終わる）"
+            ],
+            "expressions": [
+              {
+                "english": "The current standard relies on something behavioral scientists call the baby schema.",
+                "japanese": "現在の標準は、行動科学者が『ベビースキーマ』と呼ぶものに依存している。",
+                "situation": "従来手法を導入するとき。",
+                "start": 193.9,
+                "id": "sec2-e1"
+              },
+              {
+                "english": "These are specific visual triggers that are biologically hardwired into our evolutionary history.",
+                "japanese": "これらは、進化の歴史の中に生物学的に組み込まれた特定の視覚的トリガーだ。",
+                "situation": "ベビースキーマの仕組みを説明するとき。hardwired=生得的に組み込まれた。",
+                "start": 223.6,
+                "id": "sec2-e2"
+              },
+              {
+                "english": "It's essentially a biological hack.",
+                "japanese": "それは本質的に『生物学的ハック』だ。",
+                "situation": "仕組みを一言でまとめるとき。",
+                "start": 235.7,
+                "id": "sec2-e3"
+              },
+              {
+                "english": "Static cute appearances alone are completely incapable of generating long-term emotional attachment.",
+                "japanese": "静的な可愛い見た目だけでは、長期的な感情的愛着を生み出すことは全くできない。",
+                "situation": "従来手法の機能的欠陥を述べる重要文。",
+                "start": 324.0,
+                "id": "sec2-e4"
+              },
+              {
+                "english": "The biological hack wears off. The honeymoon phase ends.",
+                "japanese": "生物学的ハックは効果が薄れる。蜜月期は終わる。",
+                "situation": "効果の減衰を端的に言うとき。wear off=効き目が切れる。",
+                "start": 333.7,
+                "id": "sec2-e5"
+              },
+              {
+                "english": "You completely limit design diversity.",
+                "japanese": "デザインの多様性を完全に制限してしまう。",
+                "situation": "単一化の問題を指摘するとき。",
+                "start": 300.2,
+                "id": "sec2-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "baby schema",
+                "meaning": "ベビースキーマ(幼児図式)：養育反応を引き出す幼児的特徴",
+                "id": "sec2-v1"
+              },
+              {
+                "term": "hardwired",
+                "meaning": "生得的に組み込まれた・配線された",
+                "id": "sec2-v2"
+              },
+              {
+                "term": "elicit",
+                "meaning": "(反応・感情を)引き出す",
+                "id": "sec2-v3"
+              },
+              {
+                "term": "oxytocin",
+                "meaning": "オキシトシン(愛着・養育に関わるホルモン)",
+                "id": "sec2-v4"
+              },
+              {
+                "term": "monoculture",
+                "meaning": "単一化・画一化",
+                "id": "sec2-v5"
+              },
+              {
+                "term": "wear off",
+                "meaning": "(効果が)次第に薄れる",
+                "id": "sec2-v6"
+              },
+              {
+                "term": "honeymoon phase",
+                "meaning": "蜜月期(初期の好意的な時期)",
+                "id": "sec2-v7"
+              }
+            ]
+          },
+          {
+            "id": "sec3",
+            "title": "倫理的問題：ダークパターン",
+            "start": 367.6,
+            "outline": [
+              "従来の静的な可愛さは「ダークパターン」になりうる",
+              "ダークパターン＝ユーザーを欺く設計（例：可愛いマスコットの裏でデータ収集）",
+              "問題の核心：ユーザーの主体性(agency)を回避して無意識に反応させる",
+              "「無害な説得」と「操作」の境界はどこか、という倫理的議論"
+            ],
+            "expressions": [
+              {
+                "english": "The text refers to this traditional static form of cuteness as a potential dark pattern.",
+                "japanese": "この文献は、従来の静的な可愛さを潜在的な『ダークパターン』と呼んでいる。",
+                "situation": "倫理的論点を導入するとき。",
+                "start": 367.6,
+                "id": "sec3-e1"
+              },
+              {
+                "english": "The mascot isn't there to entertain you. It's there to disarm you.",
+                "japanese": "そのマスコットはあなたを楽しませるためではなく、警戒を解かせるためにいる。",
+                "situation": "ダークパターンの本質を説明する印象的な対比。disarm=警戒を解く。",
+                "start": 388.7,
+                "id": "sec3-e2"
+              },
+              {
+                "english": "Where does harmless persuasion end and actual manipulation begin?",
+                "japanese": "無害な説得はどこで終わり、本当の操作はどこから始まるのか？",
+                "situation": "倫理的な問いを投げかけるとき。発表での論点提示に有効。",
+                "start": 397.0,
+                "id": "sec3-e3"
+              },
+              {
+                "english": "It actively bypasses user agency.",
+                "japanese": "それはユーザーの主体性を積極的に回避する。",
+                "situation": "ダークパターンが問題である理由を述べるとき。agency=主体性・自律性。",
+                "start": 410.6,
+                "id": "sec3-e4"
+              },
+              {
+                "english": "Your biology reacts a fraction of a second before your conscious, rational mind can process it.",
+                "japanese": "あなたの生理反応は、意識的・理性的な心が処理するより一瞬早く反応してしまう。",
+                "situation": "無意識の反応を説明するとき。a fraction of a second=ほんの一瞬。",
+                "start": 422.5,
+                "id": "sec3-e5"
+              },
+              {
+                "english": "I want to be clear that we are just reporting on the ethical tensions highlighted in these sources.",
+                "japanese": "誤解のないように言うと、私たちはこれらの資料で示された倫理的緊張を報告しているだけだ。",
+                "situation": "倫理的に踏み込みすぎないよう留保するとき。発表での慎重な言い回し。",
+                "start": 469.1,
+                "id": "sec3-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "dark pattern",
+                "meaning": "ダークパターン：利用者を欺く設計手法",
+                "id": "sec3-v1"
+              },
+              {
+                "term": "disarm",
+                "meaning": "警戒を解く・武装解除する",
+                "id": "sec3-v2"
+              },
+              {
+                "term": "user agency",
+                "meaning": "ユーザーの主体性・自律的な選択",
+                "id": "sec3-v3"
+              },
+              {
+                "term": "bypass",
+                "meaning": "回避する・迂回する",
+                "id": "sec3-v4"
+              },
+              {
+                "term": "ulterior motive",
+                "meaning": "隠れた動機・下心",
+                "id": "sec3-v5"
+              },
+              {
+                "term": "persuasion",
+                "meaning": "説得",
+                "id": "sec3-v6"
+              }
+            ]
+          },
+          {
+            "id": "sec4",
+            "title": "新概念：あざとい（calculated cuteness）",
+            "start": 529.6,
+            "outline": [
+              "西洋の生物学的心理から離れ、東アジアの文化的枠組みに注目",
+              "中心概念は日本語の「あざとい(azatoi)」＝意図的で計算された可愛さ",
+              "韓国の aegyo、中国の sajiao にも対応する行動現象",
+              "鍵は「意図が見えていること」＝受け手が意図を知覚する必要がある（ダークパターンとの決定的な違い）",
+              "比喩：スリ(covert)と舞台マジシャン(transparent) の違い"
+            ],
+            "expressions": [
+              {
+                "english": "The researchers turned away from Western biological psychology and looked into East Asian cultural frameworks.",
+                "japanese": "研究者たちは西洋の生物学的心理から離れ、東アジアの文化的枠組みに目を向けた。",
+                "situation": "研究のアプローチ転換を説明するとき。",
+                "start": 529.6,
+                "id": "sec4-e1"
+              },
+              {
+                "english": "Azatoi translates to an intentional, highly calculated form of cuteness.",
+                "japanese": "『あざとい』は、意図的で高度に計算された可愛さを意味する。",
+                "situation": "中心概念を定義するとき。",
+                "start": 541.5,
+                "id": "sec4-e2"
+              },
+              {
+                "english": "It is cuteness as a strategic social action.",
+                "japanese": "それは戦略的な社会的行為としての可愛さだ。",
+                "situation": "あざとさの本質を一言で言うとき。",
+                "start": 591.4,
+                "id": "sec4-e3"
+              },
+              {
+                "english": "Unlike the hidden manipulation of the big plastic eyes, azatoi requires the receiver to perceive the intention behind it.",
+                "japanese": "大きなプラスチックの目による隠れた操作と違い、あざとさは受け手がその背後の意図を知覚することを必要とする。",
+                "situation": "従来手法との決定的な違いを述べるコア文。",
+                "start": 600.0,
+                "id": "sec4-e4"
+              },
+              {
+                "english": "The intent is not disguised, it is highly visible.",
+                "japanese": "意図は隠されておらず、はっきりと見えている。",
+                "situation": "透明性を強調するとき。disguise=偽装する。",
+                "start": 628.3,
+                "id": "sec4-e5"
+              },
+              {
+                "english": "It shifts the paradigm from covert deception to a kind of interactive, mutually understood play.",
+                "japanese": "それは、隠れた欺瞞から、双方が理解し合うインタラクティブな『遊び』へとパラダイムを転換する。",
+                "situation": "概念の意義を述べる重要文。covert=隠れた。",
+                "start": 711.0,
+                "id": "sec4-e6"
+              },
+              {
+                "english": "It's like the difference between a pickpocket and a stage magician.",
+                "japanese": "それはスリと舞台マジシャンの違いのようなものだ。",
+                "situation": "わかりやすい比喩を導入するとき。発表で効果的。",
+                "start": 728.5,
+                "id": "sec4-e7"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "azatoi (あざとい)",
+                "meaning": "意図的で計算された可愛さ(本研究の中心概念)",
+                "id": "sec4-v1"
+              },
+              {
+                "term": "aegyo / sajiao",
+                "meaning": "韓国/中国における類似の「あざとさ」概念",
+                "id": "sec4-v2"
+              },
+              {
+                "term": "deliberate",
+                "meaning": "意図的な・計算された",
+                "id": "sec4-v3"
+              },
+              {
+                "term": "covert",
+                "meaning": "隠れた・秘密の (⇔ overt)",
+                "id": "sec4-v4"
+              },
+              {
+                "term": "deception",
+                "meaning": "欺瞞・ごまかし",
+                "id": "sec4-v5"
+              },
+              {
+                "term": "disguise",
+                "meaning": "偽装する・隠す",
+                "id": "sec4-v6"
+              },
+              {
+                "term": "co-conspirator",
+                "meaning": "共犯者(ここでは「一緒に遊びに乗る人」)",
+                "id": "sec4-v7"
+              }
+            ]
+          },
+          {
+            "id": "sec5",
+            "title": "理論枠組み：ブルンスウィックのレンズモデル",
+            "start": 787.6,
+            "outline": [
+              "人間社会の概念をどう機械のコードに落とすか、という課題",
+              "1956年の Brunswik's Lens Model を理論的支柱に採用",
+              "3段階：cue validity(送り手の意図→観測可能な手がかり) → cue utilization(受け手が何に注目するか) → achievement(意図が伝わり効果が出たか)",
+              "日常例：同僚の作り笑いを見抜くプロセスと同じ"
+            ],
+            "expressions": [
+              {
+                "english": "The monumental challenge is figuring out how to program a human sociological concept into a machine.",
+                "japanese": "最大の課題は、人間の社会学的概念をどうやって機械にプログラムするかを解明することだ。",
+                "situation": "実装上の課題を述べるとき。monumental=途方もない。",
+                "start": 787.6,
+                "id": "sec5-e1"
+              },
+              {
+                "english": "A robot doesn't have intuition. It only has code.",
+                "japanese": "ロボットには直感がない。あるのはコードだけだ。",
+                "situation": "課題を端的に言うとき。対比が効く。",
+                "start": 804.3,
+                "id": "sec5-e2"
+              },
+              {
+                "english": "They needed a rigorous scientific framework to measure how these behaviors are sent and perceived.",
+                "japanese": "彼らは、これらの行動がどう送られ知覚されるかを測る厳密な科学的枠組みを必要とした。",
+                "situation": "枠組み導入の理由を説明するとき。rigorous=厳密な。",
+                "start": 812.2,
+                "id": "sec5-e3"
+              },
+              {
+                "english": "The first phase is called cue validity. This is the sender's intention being encoded into observable behaviors.",
+                "japanese": "第1段階は『手がかりの妥当性(cue validity)』。送り手の意図が観測可能な行動に符号化される段階だ。",
+                "situation": "レンズモデルの第1段階を説明するとき。",
+                "start": 858.6,
+                "id": "sec5-e4"
+              },
+              {
+                "english": "The second phase is cue utilization. What does the human user actually notice and prioritize?",
+                "japanese": "第2段階は『手がかりの利用(cue utilization)』。人間は実際に何に気づき、何を優先するのか？",
+                "situation": "第2段階を説明するとき。",
+                "start": 900.0,
+                "id": "sec5-e5"
+              },
+              {
+                "english": "The third phase is achievement. Was the original intention successfully communicated and did it result in the desired effect?",
+                "japanese": "第3段階は『達成(achievement)』。元の意図がうまく伝わり、望んだ効果が得られたか？",
+                "situation": "第3段階を説明するとき。",
+                "start": 915.7,
+                "id": "sec5-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "Brunswik's Lens Model",
+                "meaning": "ブルンスウィックのレンズモデル(1956)",
+                "id": "sec5-v1"
+              },
+              {
+                "term": "cue validity",
+                "meaning": "手がかりの妥当性(意図→行動への符号化)",
+                "id": "sec5-v2"
+              },
+              {
+                "term": "cue utilization",
+                "meaning": "手がかりの利用(受け手が何に注目するか)",
+                "id": "sec5-v3"
+              },
+              {
+                "term": "achievement",
+                "meaning": "達成(意図が伝わり効果が出たか)",
+                "id": "sec5-v4"
+              },
+              {
+                "term": "encode",
+                "meaning": "符号化する・コード化する",
+                "id": "sec5-v5"
+              },
+              {
+                "term": "rigorous",
+                "meaning": "厳密な・厳格な",
+                "id": "sec5-v6"
+              },
+              {
+                "term": "monumental",
+                "meaning": "途方もない・記念碑的な",
+                "id": "sec5-v7"
+              }
+            ]
+          },
+          {
+            "id": "sec6",
+            "title": "形成的研究：インタビューと6つの手がかり",
+            "start": 1036.0,
+            "outline": [
+              "日中韓の大学生9名に半構造化インタビュー（具体的な実体験を想起させる）",
+              "6つの多モーダル行動手がかりを抽出（声・動き・言語にまたがる）",
+              "6 cues: exaggerated proximity / paralinguistic / upward gaze / uninhibited expression / indirect interest / intentional errors",
+              "5つの目的：communication誘発, 注意獲得, 好意獲得, 要求受諾, 批判の緩和",
+              "最も独創的な発見：intentional errors（わざとの小さなミス）"
+            ],
+            "expressions": [
+              {
+                "english": "They conducted in-depth, semi-structured interviews with nine university students from Japan, China, and Korea.",
+                "japanese": "彼らは日本・中国・韓国の大学生9名に、詳細な半構造化インタビューを行った。",
+                "situation": "研究方法を述べるとき。semi-structured=半構造化の。",
+                "start": 1036.0,
+                "id": "sec6-e1"
+              },
+              {
+                "english": "The study identified six distinct multimodal behavioral cues.",
+                "japanese": "研究は6つの異なる多モーダルな行動手がかりを特定した。",
+                "situation": "主要な発見を述べるとき。multimodal=複数の様式にまたがる。",
+                "start": 1096.5,
+                "id": "sec6-e2"
+              },
+              {
+                "english": "The first cue is exaggerated proximity: collapsing physical boundaries to create playful intimacy.",
+                "japanese": "第1の手がかりは『誇張された近接』：物理的境界をあえて崩し、遊び心のある親密さを作る。",
+                "situation": "手がかり1を説明。proximity=近接、collapse=崩す。",
+                "start": 1138.4,
+                "id": "sec6-e3"
+              },
+              {
+                "english": "The sixth cue is intentional errors, defined as deliberate acts of mild incompetence.",
+                "japanese": "第6の手がかりは『意図的なミス』、つまり軽度の無能をわざと演じる行為だ。",
+                "situation": "最も独創的な手がかりを紹介するとき。incompetence=無能。",
+                "start": 1274.7,
+                "id": "sec6-e4"
+              },
+              {
+                "english": "By presenting a minor, harmless flaw, you are creating a vacuum in the interaction.",
+                "japanese": "ささいで無害な欠点を見せることで、やりとりの中に『空白』を作り出す。",
+                "situation": "intentional errors の心理を説明するとき。flaw=欠点、vacuum=空白。",
+                "start": 1364.5,
+                "id": "sec6-e5"
+              },
+              {
+                "english": "You are forcing an interaction, but framing it entirely as their choice to step in and help.",
+                "japanese": "やりとりを強制しているのに、それを完全に『相手が助けに入る選択』として枠づけしている。",
+                "situation": "巧妙さを説明する重要文。frame=枠づけする。",
+                "start": 1375.6,
+                "id": "sec6-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "semi-structured interview",
+                "meaning": "半構造化インタビュー",
+                "id": "sec6-v1"
+              },
+              {
+                "term": "multimodal",
+                "meaning": "多モーダルな(声・動作・言語など複数様式)",
+                "id": "sec6-v2"
+              },
+              {
+                "term": "exaggerated proximity",
+                "meaning": "誇張された近接(手がかり1)",
+                "id": "sec6-v3"
+              },
+              {
+                "term": "paralinguistic",
+                "meaning": "パラ言語的な(声の高さ・調子など語以外)",
+                "id": "sec6-v4"
+              },
+              {
+                "term": "upward gaze",
+                "meaning": "上目遣い(手がかり3)",
+                "id": "sec6-v5"
+              },
+              {
+                "term": "uninhibited expression",
+                "meaning": "抑制のない表現・大げさな反応(手がかり4)",
+                "id": "sec6-v6"
+              },
+              {
+                "term": "intentional errors",
+                "meaning": "意図的なミス(手がかり6)",
+                "id": "sec6-v7"
+              },
+              {
+                "term": "incompetence",
+                "meaning": "無能・不手際",
+                "id": "sec6-v8"
+              }
+            ]
+          },
+          {
+            "id": "sec7",
+            "title": "ロボット実装：Stack-chan と「チキンライス」シナリオ",
+            "start": 1435.5,
+            "outline": [
+              "プラットフォーム：Stack-chan（オープンソースの卓上ソーシャルロボット、LCDの目とサーボ）",
+              "DIS(シンガポール)で参加型展示。背後の壁に巨大なプロジェクションマッピング",
+              "チキンライス・シナリオ：来場者が餌やり→ロボットが yummy→米粒が口に付く(intentional error)→人が画面を拭く",
+              "人は「自分の自発的な行動」と信じて、機械に促された接触を行う",
+              "投票でどの手がかりが効いたかを測定＝cue utilization の実行"
+            ],
+            "expressions": [
+              {
+                "english": "They utilized an open source, tabletop social robot known as Stack-chan.",
+                "japanese": "彼らは Stack-chan というオープンソースの卓上ソーシャルロボットを用いた。",
+                "situation": "実装プラットフォームを紹介するとき。tabletop=卓上の。",
+                "start": 1435.5,
+                "id": "sec7-e1"
+              },
+              {
+                "english": "The robot tilts its body down while the digital eyes shift upwards, mimicking physical vulnerability.",
+                "japanese": "ロボットは体をやや下に傾け、デジタルの目を上に動かして、身体的な弱さを模倣する。",
+                "situation": "上目遣いの実装を説明するとき。mimic=模倣する、vulnerability=弱さ。",
+                "start": 1561.4,
+                "id": "sec7-e2"
+              },
+              {
+                "english": "Right as the robot says 'yummy', an intentional error cue is triggered in the code.",
+                "japanese": "ロボットが『yummy』と言うまさにその瞬間、コード内で意図的なミスの手がかりが発動する。",
+                "situation": "シナリオの核心を説明するとき。trigger=発動させる。",
+                "start": 1621.4,
+                "id": "sec7-e3"
+              },
+              {
+                "english": "The robot successfully manipulated the human into initiating physical contact that they believed was their own idea.",
+                "japanese": "ロボットは、人間が自分の発案だと信じる物理的接触を、人間に開始させることに成功した。",
+                "situation": "結果の本質を述べるコア文。initiate=開始する。",
+                "start": 1679.8,
+                "id": "sec7-e4"
+              },
+              {
+                "english": "This voting mechanic is the literal execution of the cue utilization phase of the lens model.",
+                "japanese": "この投票の仕組みは、レンズモデルの『手がかりの利用』段階を文字どおり実行したものだ。",
+                "situation": "理論と実装を結びつけるとき。",
+                "start": 1722.6,
+                "id": "sec7-e5"
+              },
+              {
+                "english": "The exhibition takes an invisible, subconscious psychological process and makes it publicly visible.",
+                "japanese": "この展示は、目に見えない無意識の心理プロセスを、公に可視化する。",
+                "situation": "展示の意義を述べるとき。subconscious=潜在意識の。",
+                "start": 1790.4,
+                "id": "sec7-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "Stack-chan",
+                "meaning": "オープンソースの卓上ソーシャルロボット",
+                "id": "sec7-v1"
+              },
+              {
+                "term": "tabletop",
+                "meaning": "卓上の・据え置きの",
+                "id": "sec7-v2"
+              },
+              {
+                "term": "servo motor",
+                "meaning": "サーボモーター(首の旋回・傾きを制御)",
+                "id": "sec7-v3"
+              },
+              {
+                "term": "projection mapping",
+                "meaning": "プロジェクションマッピング",
+                "id": "sec7-v4"
+              },
+              {
+                "term": "mimic",
+                "meaning": "模倣する・真似る",
+                "id": "sec7-v5"
+              },
+              {
+                "term": "trigger",
+                "meaning": "(動作を)発動させる・引き起こす",
+                "id": "sec7-v6"
+              },
+              {
+                "term": "initiate",
+                "meaning": "開始する・口火を切る",
+                "id": "sec7-v7"
+              },
+              {
+                "term": "participatory exhibition",
+                "meaning": "参加型の展示",
+                "id": "sec7-v8"
+              }
+            ]
+          },
+          {
+            "id": "sec8",
+            "title": "異文化検証とコアのパラドックス",
+            "start": 1868.4,
+            "outline": [
+              "DIS(シンガポール)は国際的なハブ → 多様な来場者であざとさが普遍か文化固有かを検証",
+              "自由記述で「自国にも同様の概念があるか」を収集",
+              "コアのパラドックス：操作だと完全に分かっていても、人は手を伸ばし、拭き、魅了される",
+              "先行研究：awareness（気づき）は immunity（耐性）を意味しない",
+              "仮説：透明性こそが魅力の源泉かもしれない（バグではなく機能）"
+            ],
+            "expressions": [
+              {
+                "english": "They are testing whether azatoi functions as a universal human language, or if it is a culturally siloed phenomenon.",
+                "japanese": "彼らは、あざとさが普遍的な人間の言語として機能するのか、それとも文化的に孤立した現象なのかを検証している。",
+                "situation": "異文化検証の目的を述べるとき。siloed=サイロ化した・孤立した。",
+                "start": 1868.4,
+                "id": "sec8-e1"
+              },
+              {
+                "english": "Human users often lack the cognitive ability to resist dark patterns, even when they are aware of them.",
+                "japanese": "人間のユーザーは、ダークパターンに気づいていてさえ、それに抵抗する認知能力を欠くことが多い。",
+                "situation": "重要な先行研究の知見を引くとき。",
+                "start": 1953.6,
+                "id": "sec8-e2"
+              },
+              {
+                "english": "Awareness does not automatically equate to immunity.",
+                "japanese": "気づきは、自動的に耐性を意味するわけではない。",
+                "situation": "核心的な主張。端的で発表向き。equate to=～と等しい。",
+                "start": 1967.9,
+                "id": "sec8-e3"
+              },
+              {
+                "english": "Despite knowing the whole trick, you still reach out, you still wipe the screen, and you still feel charmed.",
+                "japanese": "仕掛けを全部知っていても、人はやはり手を伸ばし、画面を拭き、魅了される。",
+                "situation": "パラドックスを生々しく描写するとき。",
+                "start": 2010.7,
+                "id": "sec8-e4"
+              },
+              {
+                "english": "By refusing to hide the trick, the trick itself becomes the feature.",
+                "japanese": "仕掛けを隠さないことで、仕掛けそのものが『機能』になる。",
+                "situation": "研究のキーメッセージ。印象的な締め表現。",
+                "start": 2051.3,
+                "id": "sec8-e5"
+              },
+              {
+                "english": "You become a willing co-conspirator in the illusion.",
+                "japanese": "あなたはその幻想に進んで加担する『共犯者』になる。",
+                "situation": "概念を魅力的に言い換えるとき。willing=進んで～する。",
+                "start": 2073.2,
+                "id": "sec8-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "siloed",
+                "meaning": "サイロ化した・孤立した",
+                "id": "sec8-v1"
+              },
+              {
+                "term": "cognitive ability",
+                "meaning": "認知能力",
+                "id": "sec8-v2"
+              },
+              {
+                "term": "equate to",
+                "meaning": "～と等しい・同義である",
+                "id": "sec8-v3"
+              },
+              {
+                "term": "immunity",
+                "meaning": "耐性・免疫",
+                "id": "sec8-v4"
+              },
+              {
+                "term": "paradox",
+                "meaning": "パラドックス・逆説",
+                "id": "sec8-v5"
+              },
+              {
+                "term": "charmed",
+                "meaning": "魅了された",
+                "id": "sec8-v6"
+              }
+            ]
+          },
+          {
+            "id": "sec9",
+            "title": "限界と今後の展望",
+            "start": 2104.7,
+            "outline": [
+              "限界1：Stack-chan は卓上据え置きで移動不可 → exaggerated proximity は代理的にしか検証できず",
+              "限界2：全インタラクションが短期的（2分・投票・退場）→ 長期的愛着は未検証",
+              "今後：移動ロボットへの適用、長期的な関係構築シナリオ(高齢者ケア・孤立者の伴侶)",
+              "今後：収集した世界規模の投票データから文化適応型デザインへ",
+              "結びの問い：いつか人は、機械の整った愛情を、人間の厄介な愛情より好むようになるのか？"
+            ],
+            "expressions": [
+              {
+                "english": "We have to keep the reality of the hardware in perspective.",
+                "japanese": "ハードウェアの現実を見失わないようにしなければならない。",
+                "situation": "限界を述べる前置きとして。keep ... in perspective=大局的に捉える。",
+                "start": 2104.7,
+                "id": "sec9-e1"
+              },
+              {
+                "english": "Exaggerated proximity could only be tested via proxy.",
+                "japanese": "『誇張された近接』は代理的にしか検証できなかった。",
+                "situation": "限界1を述べるとき。via proxy=代理で。",
+                "start": 2129.0,
+                "id": "sec9-e2"
+              },
+              {
+                "english": "Does the performance degrade from an enduring social game to an infuriatingly repetitive annoyance?",
+                "japanese": "そのパフォーマンスは、長続きする社会的ゲームから、苛立たしいほど反復的な煩わしさへと劣化するのか？",
+                "situation": "長期使用の懸念を述べるとき。degrade=劣化する、annoyance=煩わしさ。",
+                "start": 2192.2,
+                "id": "sec9-e3"
+              },
+              {
+                "english": "They intend to use the global voting data to develop culturally adaptive designs.",
+                "japanese": "彼らは世界規模の投票データを使って、文化適応型のデザインを開発するつもりだ。",
+                "situation": "今後の展望を述べるとき。culturally adaptive=文化適応型の。",
+                "start": 2239.5,
+                "id": "sec9-e4"
+              },
+              {
+                "english": "All of this hinges on mastering this delicate balance of transparent manipulation. It's a tightrope walk.",
+                "japanese": "これらすべては、透明な操作という繊細なバランスを習得できるかにかかっている。それは綱渡りだ。",
+                "situation": "全体を締める比喩。hinge on=～次第である。",
+                "start": 2273.8,
+                "id": "sec9-e5"
+              },
+              {
+                "english": "Will there come a day when we prefer the clean, calculated affection of a machine over the messy, unpredictable affection of real human beings?",
+                "japanese": "いつか私たちは、機械の整った計算された愛情を、人間の厄介で予測不能な愛情より好む日が来るのだろうか？",
+                "situation": "発表の締めの問い。聴衆に余韻を残す。",
+                "start": 2334.2,
+                "id": "sec9-e6"
+              }
+            ],
+            "vocabulary": [
+              {
+                "term": "in perspective",
+                "meaning": "大局的に・正しい視点で",
+                "id": "sec9-v1"
+              },
+              {
+                "term": "via proxy",
+                "meaning": "代理を介して",
+                "id": "sec9-v2"
+              },
+              {
+                "term": "degrade",
+                "meaning": "劣化する・低下する",
+                "id": "sec9-v3"
+              },
+              {
+                "term": "culturally adaptive",
+                "meaning": "文化適応型の",
+                "id": "sec9-v4"
+              },
+              {
+                "term": "hinge on",
+                "meaning": "～にかかっている・～次第である",
+                "id": "sec9-v5"
+              },
+              {
+                "term": "tightrope walk",
+                "meaning": "綱渡り(危ういバランス)",
+                "id": "sec9-v6"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "memorizeProgress": {}
   }
 }

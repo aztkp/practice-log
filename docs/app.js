@@ -213,6 +213,8 @@
       if (!practiceData.english.dictationMaterials) practiceData.english.dictationMaterials = [];
       if (!practiceData.english.dictationLog) practiceData.english.dictationLog = [];
       if (!practiceData.english.meetingPhrases) practiceData.english.meetingPhrases = [];
+      if (!practiceData.english.memorizeDecks) practiceData.english.memorizeDecks = [];
+      if (!practiceData.english.memorizeProgress) practiceData.english.memorizeProgress = {};
 
       // Initialize Piano learning data
       if (!practiceData.piano) practiceData.piano = {};
@@ -312,6 +314,12 @@
             remoteLog.forEach(l => { logMap[l.id] = l; });
             localLog.forEach(l => { logMap[l.id] = l; });
             remoteData.english.dictationLog = Object.values(logMap);
+
+            // Merge memorizeProgress (per-item mastery; local wins). Deck content stays from remote.
+            remoteData.english.memorizeProgress = {
+              ...(remoteData.english.memorizeProgress || {}),
+              ...(practiceData.english.memorizeProgress || {})
+            };
           }
 
           // Merge records
@@ -1103,6 +1111,7 @@
     const dictationSection = document.getElementById('dictation-section');
     const meetingSection = document.getElementById('meeting-section');
     const studySection = document.getElementById('study-section');
+    const memorizeSection = document.getElementById('memorize-section');
 
     // Hide all sections first (hide Today section for English)
     [statsRow, contribGraph, todaySection, calendarHeader, calendarGrid, recentTitle, practiceList].forEach(el => {
@@ -1113,6 +1122,7 @@
     dictationSection?.classList.remove('show');
     meetingSection?.classList.remove('show');
     studySection?.classList.remove('show');
+    memorizeSection?.classList.remove('show');
 
     // Update subtab active state
     document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
@@ -1137,6 +1147,9 @@
     } else if (subtab === 'study') {
       studySection?.classList.add('show');
       renderStudyTab();
+    } else if (subtab === 'memorize') {
+      memorizeSection?.classList.add('show');
+      renderMemorize();
     }
   }
 
@@ -1847,6 +1860,173 @@
       });
     });
   }
+
+  // ==================== MEMORIZE (発表暗記) ====================
+  // Topic-sectioned memorization deck built from a transcript.
+  // Content lives in english.memorizeDecks; mastery in english.memorizeProgress (id -> true).
+  let memorizeAudio = null;
+  let memorizeStopTimer = null;
+
+  function getMemorizeDeck() {
+    const decks = practiceData.english.memorizeDecks || [];
+    return decks[0] || null;
+  }
+
+  function isMastered(id) {
+    return !!(practiceData.english.memorizeProgress || {})[id];
+  }
+
+  function memorizeDeckStats(deck) {
+    let total = 0, done = 0;
+    deck.sections.forEach(s => {
+      (s.expressions || []).forEach(e => { total++; if (isMastered(e.id)) done++; });
+      (s.vocabulary || []).forEach(v => { total++; if (isMastered(v.id)) done++; });
+    });
+    return { total, done };
+  }
+
+  function memorizeSectionStats(s) {
+    let total = 0, done = 0;
+    (s.expressions || []).forEach(e => { total++; if (isMastered(e.id)) done++; });
+    (s.vocabulary || []).forEach(v => { total++; if (isMastered(v.id)) done++; });
+    return { total, done };
+  }
+
+  function renderMemorize() {
+    const container = document.getElementById('memorize-content');
+    if (!container || !practiceData) return;
+
+    const deck = getMemorizeDeck();
+    if (!deck) {
+      container.innerHTML = '<p class="empty">暗記用の教材がありません</p>';
+      return;
+    }
+
+    const stats = memorizeDeckStats(deck);
+    const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+
+    const sectionsHtml = deck.sections.map(s => {
+      const ss = memorizeSectionStats(s);
+      const outline = (s.outline || []).map(o => `<li>${escapeHtml(o)}</li>`).join('');
+
+      const exprs = (s.expressions || []).map(e => {
+        const m = isMastered(e.id);
+        const seconds = Math.max(6, (e.english.split(/\s+/).length) * 0.45);
+        const playBtn = (e.start != null && deck.audioFile)
+          ? `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)})" title="この箇所を再生">🔊</button>` : '';
+        return `
+          <div class="mz-card ${m ? 'mastered' : ''}">
+            <div class="mz-card-head">
+              <button class="mz-master" onclick="window.toggleMemorizeMastered('${e.id}', this)" title="暗記した">${m ? '✅' : '⬜'}</button>
+              <div class="mz-ja">${escapeHtml(e.japanese)}</div>
+              ${playBtn}
+            </div>
+            <div class="mz-en" id="mz-en-${e.id}" style="display:none;">
+              <div class="mz-en-text">${escapeHtml(e.english)}</div>
+              ${e.situation ? `<div class="mz-situation">💬 ${escapeHtml(e.situation)}</div>` : ''}
+            </div>
+            <button class="mz-reveal" onclick="window.toggleMemorizeReveal('${e.id}')">英文を見る ▾</button>
+          </div>`;
+      }).join('');
+
+      const vocab = (s.vocabulary || []).map(v => {
+        const m = isMastered(v.id);
+        return `
+          <div class="mz-vocab ${m ? 'mastered' : ''}">
+            <button class="mz-master" onclick="window.toggleMemorizeMastered('${v.id}', this)" title="覚えた">${m ? '✅' : '⬜'}</button>
+            <span class="mz-term">${escapeHtml(v.term)}</span>
+            <span class="mz-meaning" id="mz-mean-${v.id}" style="display:none;">${escapeHtml(v.meaning)}</span>
+            <button class="mz-reveal-inline" onclick="window.toggleMemorizeReveal('${v.id}', 'mean')">意味 ▾</button>
+          </div>`;
+      }).join('');
+
+      const playSection = (s.start != null && deck.audioFile)
+        ? `<button class="mz-play" onclick="event.stopPropagation(); window.playMemorizeSegment(${s.start}, 0)" title="ここから再生">▶</button>` : '';
+
+      return `
+        <details class="mz-section" data-sid="${s.id}">
+          <summary>
+            <span class="mz-sec-title">${escapeHtml(s.title)}</span>
+            ${playSection}
+            <span class="mz-sec-prog">${ss.done}/${ss.total}</span>
+          </summary>
+          <div class="mz-sec-body">
+            ${outline ? `<div class="mz-block-label">📋 アウトライン</div><ul class="mz-outline">${outline}</ul>` : ''}
+            ${exprs ? `<div class="mz-block-label">⭐ 重要表現</div>${exprs}` : ''}
+            ${vocab ? `<div class="mz-block-label">📚 語彙</div><div class="mz-vocab-list">${vocab}</div>` : ''}
+          </div>
+        </details>`;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="mz-header">
+        <div class="mz-title">${escapeHtml(deck.title)}</div>
+        ${deck.subtitle ? `<div class="mz-subtitle">${escapeHtml(deck.subtitle)}</div>` : ''}
+      </div>
+      <div class="mz-progress-wrap">
+        <div class="mz-progress-bar"><div class="mz-progress-fill" style="width:${pct}%"></div></div>
+        <div class="mz-progress-text">暗記 ${stats.done} / ${stats.total} (${pct}%)</div>
+      </div>
+      ${deck.audioFile ? `<audio id="memorize-audio" preload="none" src="audio/${deck.audioFile}"></audio>` : ''}
+      <div class="mz-sections">${sectionsHtml}</div>`;
+
+    memorizeAudio = document.getElementById('memorize-audio');
+  }
+
+  window.toggleMemorizeReveal = function(id, kind) {
+    const el = document.getElementById(kind === 'mean' ? `mz-mean-${id}` : `mz-en-${id}`);
+    if (!el) return;
+    const showing = el.style.display !== 'none';
+    el.style.display = showing ? 'none' : (kind === 'mean' ? 'inline' : 'block');
+  };
+
+  window.toggleMemorizeMastered = async function(id, btn) {
+    if (!practiceData.english.memorizeProgress) practiceData.english.memorizeProgress = {};
+    const prog = practiceData.english.memorizeProgress;
+    const nowMastered = !prog[id];
+    if (nowMastered) prog[id] = true; else delete prog[id];
+
+    // Update DOM in place so open sections / revealed text are preserved
+    if (btn) {
+      btn.textContent = nowMastered ? '✅' : '⬜';
+      const card = btn.closest('.mz-card, .mz-vocab');
+      if (card) card.classList.toggle('mastered', nowMastered);
+
+      const deck = getMemorizeDeck();
+      const section = btn.closest('details.mz-section');
+      if (deck && section) {
+        const s = deck.sections.find(x => x.id === section.dataset.sid);
+        if (s) {
+          const ss = memorizeSectionStats(s);
+          const badge = section.querySelector('.mz-sec-prog');
+          if (badge) badge.textContent = `${ss.done}/${ss.total}`;
+        }
+      }
+      if (deck) {
+        const stats = memorizeDeckStats(deck);
+        const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+        const fill = document.querySelector('.mz-progress-fill');
+        const txt = document.querySelector('.mz-progress-text');
+        if (fill) fill.style.width = pct + '%';
+        if (txt) txt.textContent = `暗記 ${stats.done} / ${stats.total} (${pct}%)`;
+      }
+    } else {
+      renderMemorize();
+    }
+    await saveData();
+  };
+
+  window.playMemorizeSegment = function(start, seconds) {
+    const audio = document.getElementById('memorize-audio');
+    if (!audio) return;
+    if (memorizeStopTimer) { clearTimeout(memorizeStopTimer); memorizeStopTimer = null; }
+    audio.currentTime = start;
+    audio.play();
+    // seconds <= 0 means "play freely from here" (no auto-stop)
+    if (seconds && seconds > 0) {
+      memorizeStopTimer = setTimeout(() => { audio.pause(); }, seconds * 1000);
+    }
+  };
 
   // ==================== PHRASES FUNCTIONS ====================
 
