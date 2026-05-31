@@ -1910,7 +1910,7 @@
       const ss = memorizeSectionStats(s);
       const outline = (s.outline || []).map(o => `<li>${escapeHtml(o)}</li>`).join('');
 
-      const cardHtml = (e) => {
+      const cardHtml = (e, num) => {
         const m = isMastered(e.id);
         const seconds = Math.max(6, (e.english.split(/\s+/).length) * 0.45);
         let playBtn = '';
@@ -1929,6 +1929,7 @@
           <div class="mz-card ${m ? 'mastered' : ''}">
             <div class="mz-card-head">
               <button class="mz-master" onclick="window.toggleMemorizeMastered('${e.id}', this)" title="暗記した">${m ? '✅' : '⬜'}</button>
+              ${num ? `<span class="mz-num">${num}</span>` : ''}
               <div class="mz-en-head">${escapeHtml(e.english)}</div>
               ${playBtn}
             </div>
@@ -1940,8 +1941,10 @@
           </div>`;
       };
 
-      const fullText = (s.fullText || []).map(cardHtml).join('');
-      const exprs = (s.expressions || []).map(cardHtml).join('');
+      const fullText = (s.fullText || []).map((e, i) => cardHtml(e, i + 1)).join('');
+      const exprs = (s.expressions || []).map((e, i) => cardHtml(e, i + 1)).join('');
+      const ftDone = (s.fullText || []).filter(e => isMastered(e.id)).length;
+      const ftTotal = (s.fullText || []).length;
 
       const vocab = (s.vocabulary || []).map(v => {
         const m = isMastered(v.id);
@@ -1967,7 +1970,7 @@
           <div class="mz-sec-body">
             ${outline ? `<div class="mz-block-label">📋 アウトライン</div><ul class="mz-outline">${outline}</ul>` : ''}
             ${exprs ? `<div class="mz-block-label">⭐ 重要表現</div>${exprs}` : ''}
-            ${fullText ? `<details class="mz-fulltext"><summary>📖 全文 (${(s.fullText || []).length})</summary><div class="mz-fulltext-body">${fullText}</div></details>` : ''}
+            ${fullText ? `<details class="mz-fulltext" data-sid="${s.id}"><summary>📖 全文 <span class="mz-ft-count">(${ftDone}/${ftTotal})</span></summary><div class="mz-fulltext-body">${fullText}</div></details>` : ''}
             ${vocab ? `<div class="mz-block-label">📚 語彙</div><div class="mz-vocab-list">${vocab}</div>` : ''}
           </div>
         </details>`;
@@ -2015,6 +2018,12 @@
           const ss = memorizeSectionStats(s);
           const badge = section.querySelector('.mz-sec-prog');
           if (badge) badge.textContent = `${ss.done}/${ss.total}`;
+          // Update 全文 (fullText) progress count
+          const ftCount = section.querySelector('.mz-ft-count');
+          if (ftCount && s.fullText) {
+            const ftDone = s.fullText.filter(x => isMastered(x.id)).length;
+            ftCount.textContent = `(${ftDone}/${s.fullText.length})`;
+          }
         }
       }
       if (deck) {
