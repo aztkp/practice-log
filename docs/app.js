@@ -1914,10 +1914,15 @@
         const m = isMastered(e.id);
         const seconds = Math.max(6, (e.english.split(/\s+/).length) * 0.45);
         let playBtn = '';
+        if (deck.audioDirOrig) {
+          // Original podcast voice (sliced clip)
+          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDirOrig}/${e.id}.mp3')" title="元音声">🎙️</button>`;
+        }
         if (deck.audioDir) {
-          // Per-item Polly file: instant playback
-          playBtn = `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDir}/${e.id}.mp3')" title="再生">🔊</button>`;
-        } else if (e.start != null && deck.audioFile) {
+          // Polly TTS (clear single narration)
+          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDir}/${e.id}.mp3')" title="TTS音声">🔊</button>`;
+        }
+        if (!playBtn && e.start != null && deck.audioFile) {
           playBtn = `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)})" title="この箇所を再生">🔊</button>`;
         }
         return `
