@@ -8818,6 +8818,428 @@
         "practiceCount": 1,
         "lastPracticed": "2026-06-01",
         "createdAt": "2026-06-01T16:02:48.994Z"
+      },
+      {
+        "id": "1780330524450",
+        "title": "Teaching technical and societal aspects of IoT - A case study using the Orbit IoT Kit",
+        "url": "https://www.youtube.com/watch?v=35NPXuzc0_k",
+        "segments": [
+          {
+            "start": 0,
+            "text": "Hi, my name is Mariana."
+          },
+          {
+            "start": 0,
+            "text": "I couldn't be in person."
+          },
+          {
+            "start": 0,
+            "text": "So I'm recording this video to\nshare with you this work on teaching\ntechnical and societal aspects of IoT."
+          },
+          {
+            "start": 0,
+            "text": "A case study using the orbit IoT kit."
+          },
+          {
+            "start": 0,
+            "text": "So that was a work that was a\ncollaboration between many people."
+          },
+          {
+            "start": 0,
+            "text": "Mostly from the center for\ncomputational thinking and design\nand also the department of electrical\nand computer engineer, both in\nAarhus University in Denmark."
+          },
+          {
+            "start": 0,
+            "text": "What is the Orbit IoT kit?"
+          },
+          {
+            "start": 0,
+            "text": "As you can see in this picture is a\nmicro:bit based kit that allows students\nto control household items, such as\nlamps or smart speakers and other\nobjects through internet connection."
+          },
+          {
+            "start": 0,
+            "text": "This is a more detailed picture of\nwhat are the components of the kit."
+          },
+          {
+            "start": 0,
+            "text": "We have the micro:bits that go inside\nthe extension board that was developed\nin the engineering department."
+          },
+          {
+            "start": 0,
+            "text": "And we have the relay that allows things\nsuch as lamps that normally wouldn't\nconnect directly to the micro:bit."
+          },
+          {
+            "start": 0,
+            "text": "So the relay that's what enables it."
+          },
+          {
+            "start": 0,
+            "text": "And here are the main\nfunctionalities of the kit."
+          },
+          {
+            "start": 0,
+            "text": "Besides having the micro:bit with\nall the sensors and motors and\ncontrolling the apps and devices,\nsuch as  Spotify, the smart speakers."
+          },
+          {
+            "start": 0,
+            "text": "We also have the custom block\nthat allows the devices to send\nand receive data in Make Code."
+          },
+          {
+            "start": 0,
+            "text": "So you can see in the different\nchannels, which messages are\nbeing sent to which devices."
+          },
+          {
+            "start": 0,
+            "text": "And we also have this dashboard that\nallows the visualization of the data."
+          },
+          {
+            "start": 0,
+            "text": "Our research question is how does the\norbit IoT kit support  educators to\nteach students about the technical\nand societal elements of IoT?"
+          },
+          {
+            "start": 0,
+            "text": "And for that study, we had\n20 students as participants."
+          },
+          {
+            "start": 0,
+            "text": "They were seventh graders, ages 12 and 13."
+          },
+          {
+            "start": 0,
+            "text": "And we also had three teachers that\nwere part of this participatory\ndesign process in which we were\ndesigning the activities with them."
+          },
+          {
+            "start": 0,
+            "text": "As learning goals, we have mainly\ntwo: first to have notions of how\nthe data flow of the IoT system\nworks and reflect on the societal\nimplications of internet of things."
+          },
+          {
+            "start": 0,
+            "text": "We had this two research propositions:\nthe first one related to internet\ncommunication so the internet\ncommunication between the different\ndevices can support teachers in\nexplaining IoT concepts based\non situated student experiences."
+          },
+          {
+            "start": 0,
+            "text": "And the proposition two is about\nvisualizing data flows that can help\nteachers and students to discuss\nhow internet of things works and\nits potential security issues ."
+          },
+          {
+            "start": 0,
+            "text": "So\nthat's one of the societal elements\nthat we were talking about."
+          },
+          {
+            "start": 0,
+            "text": "As an overview of the activities,\nwe had two days of activities."
+          },
+          {
+            "start": 0,
+            "text": "And in the first day we had an\nintroduction video to introduce\nthe activities to the students."
+          },
+          {
+            "start": 0,
+            "text": "And that was a fictional hacker character\nthat was inviting students to prank\ntheir teachers using internet of things."
+          },
+          {
+            "start": 0,
+            "text": "And we had some discussion about\nhacking, like what is a hacker\nand what are the types of hacker?"
+          },
+          {
+            "start": 0,
+            "text": "How does it relate to IOT?"
+          },
+          {
+            "start": 0,
+            "text": "And then we had this hands on tutorials\nthat the students would control\nlamps and fans using the kids and\nthen make code coding environment."
+          },
+          {
+            "start": 0,
+            "text": "And for the second day we had\nthe students create their project\nabout pranking the teachers."
+          },
+          {
+            "start": 0,
+            "text": "All the projects were really not harmful\nand it was really light, fun, playful way."
+          },
+          {
+            "start": 0,
+            "text": "And I'll give an example in a moment."
+          },
+          {
+            "start": 0,
+            "text": "But after that, we had a formative\nassessment activity that was to\nsee how the students were seeing\ntheir own learning process."
+          },
+          {
+            "start": 0,
+            "text": "And finally we had this ethical\ndiscussions supported by some videos\ncreated,  in Denmark about security\nand teenagers and how the students,\nmight relate to those topics."
+          },
+          {
+            "start": 0,
+            "text": "As an example of one of the projects."
+          },
+          {
+            "start": 0,
+            "text": "A group of students made\nthis a remote controlled fan."
+          },
+          {
+            "start": 0,
+            "text": "That when a teacher would approach\nthe book, the fan would turn on."
+          },
+          {
+            "start": 0,
+            "text": "So the pages, would it be flipping."
+          },
+          {
+            "start": 0,
+            "text": "About the results."
+          },
+          {
+            "start": 0,
+            "text": "The first one was how allowing students\nto personally and collectively experienced\nthe security issues in the classroom\nsupported  teachers to discuss the\nethics of hacking with the students."
+          },
+          {
+            "start": 0,
+            "text": "That was something that we were\nnot planning in the activity for\nthe students to hack each other,\nbut that ended up happening in\na very organic and emergent way."
+          },
+          {
+            "start": 0,
+            "text": "And that was really fascinating to\nsee how teachers they were so open to\nit and very excited about it, because\nthen they could see the opportunity to\nlink back to these ethical discussions."
+          },
+          {
+            "start": 0,
+            "text": "What happened was."
+          },
+          {
+            "start": 0,
+            "text": "Some of the students that started\nto see in the dashboard, the name\nof the channel, which means that\nthey could control basically the\nother projects of the other groups."
+          },
+          {
+            "start": 0,
+            "text": "And that went, when that was\nhappening, it was really fun."
+          },
+          {
+            "start": 0,
+            "text": "And then they were really excited\nand they were being mischievous and\nthey were like, oh, this is so cool."
+          },
+          {
+            "start": 0,
+            "text": "But when other groups started to do\nwith them, then you get this quote\nof it's so annoying to be hacked."
+          },
+          {
+            "start": 0,
+            "text": "So in this situation, They were feeling\nand really experiencing both the role\nof the hacker and the, the other end of\nit, of the consequences of that action."
+          },
+          {
+            "start": 0,
+            "text": "As a second part of the results,\nwe had data visualization as a tool\nfor supporting teachers and students\ntroubleshooting and reflecting\non securities issues of IoT."
+          },
+          {
+            "start": 0,
+            "text": "As I mentioned in the first,\nresults, we all like the data\nvisualization would obviously used\nfor that kind of hacking moment."
+          },
+          {
+            "start": 0,
+            "text": "But also throughout the activities."
+          },
+          {
+            "start": 0,
+            "text": "It was really important for also the\nteachers to see if the messages were\nbeing sent to where, so that was a really\ngood way to just visualize and have\nthis conversation and this facilitation\nbetween the teachers and the students."
+          },
+          {
+            "start": 0,
+            "text": "About what was happening in that\nmoment, especially with something\nwas wrong and then they were\ntroubleshooting it together."
+          },
+          {
+            "start": 0,
+            "text": "And as the third part of this\nresults, we had the teachers dilemmas\nregarding students struggles."
+          },
+          {
+            "start": 0,
+            "text": "Obviously this approach or how\nwe designed this activities."
+          },
+          {
+            "start": 0,
+            "text": "They're not very traditional."
+          },
+          {
+            "start": 0,
+            "text": "So it was not that the teachers were\njust explaining about IoT and the\nstudents were receiving that information."
+          },
+          {
+            "start": 0,
+            "text": "There was a lot going on."
+          },
+          {
+            "start": 0,
+            "text": "And in the materials that we\ngave to the students in order\nfor them to do the assignments."
+          },
+          {
+            "start": 0,
+            "text": "Sometimes the teachers described as\nin the students, they didn't have\nthe patience or they were just a bit\nlost in what they're supposed to do."
+          },
+          {
+            "start": 0,
+            "text": "So there was something about..."
+          },
+          {
+            "start": 0,
+            "text": "some confusion in understanding what\nwas in the materials and what was the\nprompt that they were giving to do?"
+          },
+          {
+            "start": 0,
+            "text": "There were very interesting conversations\nin our debrief sessions with the\nteachers that they were discussing."
+          },
+          {
+            "start": 0,
+            "text": "For example, in that short amount of\ntime, In that type of activity, how much\nthe coding part we should already give\nto the students, or they should just\nremix something that was already made."
+          },
+          {
+            "start": 0,
+            "text": "In this quote of \"what\ndo I need this for?"
+          },
+          {
+            "start": 0,
+            "text": "\"\nIs one of the students asking this\nquestion because in the teaching\nmaterials, they were unsure what to\nuse that information in that activity."
+          },
+          {
+            "start": 0,
+            "text": "From all this experience, we were trying\nto draw out some design recommendations\nfor IoT kits that support teachers."
+          },
+          {
+            "start": 0,
+            "text": "So for other fellow researchers and\ndesigners and educators that are\ninterested in teaching IoT, especially\nthis also societal aspect of it, we were\ntrying to provide some, guidelines that\nwould hopefully stir some conversation\nabout the design of this kits."
+          },
+          {
+            "start": 0,
+            "text": "The first one is about connectivity."
+          },
+          {
+            "start": 0,
+            "text": "So \"provide realistic elements\nand internet connection to support\ndiscussions about security\"."
+          },
+          {
+            "start": 0,
+            "text": "Maybe if you are designing one\nof those kits, you might ask\nyourself, is my tool kit supporting\nteachers to create authentic\nexpediential learning experiences."
+          },
+          {
+            "start": 0,
+            "text": "What type of societal implication my\ntoolkit is exposing the students to?"
+          },
+          {
+            "start": 0,
+            "text": "And in our case, we focused\non is security, but you might\nthink about transparency."
+          },
+          {
+            "start": 0,
+            "text": "You may think about maybe other\nethical situations or dilemmas that\nyou want the students to explore."
+          },
+          {
+            "start": 0,
+            "text": "As a second design recommendation,\nwe have visualization."
+          },
+          {
+            "start": 0,
+            "text": "Glass box the data flow to support\nexplanations and troubleshooting."
+          },
+          {
+            "start": 0,
+            "text": "And by glass boxing we mean the opposite\nprocess of black boxing, which is,  just\nmaking sure like that complex parts of the\ntechnology they are not really seen, or\nyou're not going to explore that and much."
+          },
+          {
+            "start": 0,
+            "text": "So the opposite of that would be\nthis glass boxing, right ?"
+          },
+          {
+            "start": 0,
+            "text": "And in\na very intentional way, just to\nexpose a bit this visualization."
+          },
+          {
+            "start": 0,
+            "text": "How this communication between\nthe devices through the\ninternet is actually happening?"
+          },
+          {
+            "start": 0,
+            "text": "And if you were designing one of this\nkits or any other IoT kits, you might\nask yourself, do I know which aspects\nof the technology I want to glass box?"
+          },
+          {
+            "start": 0,
+            "text": "Like does my toolkits have features\nthat help students and teachers\nto visualize the aspects of the\ntechnology I want to glass box?"
+          },
+          {
+            "start": 0,
+            "text": "And does my toolkits give enough\nfeedback information so students and\nteachers can troubleshoot when needed."
+          },
+          {
+            "start": 0,
+            "text": "And as the third design\nrecommendation, we have openness."
+          },
+          {
+            "start": 0,
+            "text": "So allow unanticipated use of the\ntool to support flexible teaching."
+          },
+          {
+            "start": 0,
+            "text": "And if you are designing and thinking\nabout how this, that recommendation\nkind of gets in a more concrete way."
+          },
+          {
+            "start": 0,
+            "text": "You might ask yourself, does my\ntoolkit support only a specific and\npredetermined tasks or also it support\nand expect a task that teachers\nmight create doing the lesson."
+          },
+          {
+            "start": 0,
+            "text": "And that one was related to that\nemergent, organic hacking part, right?"
+          },
+          {
+            "start": 0,
+            "text": "Even though the it's really important for\nthe teachers to be open for this moment."
+          },
+          {
+            "start": 0,
+            "text": "But also if our kit was not robust\nenough to support that, type of\ninteraction, that a moment would\nalso wouldn't have happened."
+          },
+          {
+            "start": 0,
+            "text": "And if you're interested or curious,\nor just want to know more about the\nactivities that we created with this kits."
+          },
+          {
+            "start": 0,
+            "text": "Those activities are\navailable to the public."
+          },
+          {
+            "start": 0,
+            "text": "And you can access them through our\nwebsite, the center for computational\nthinking and design website."
+          },
+          {
+            "start": 0,
+            "text": "So if you go to cctd."
+          },
+          {
+            "start": 0,
+            "text": "au."
+          },
+          {
+            "start": 0,
+            "text": "dk,  and\non the left part of the menu,\nyou go on teaching materials."
+          },
+          {
+            "start": 0,
+            "text": "You can see here all like the internet\nof things, materials, the, so we have\na teacher's guide as students guide."
+          },
+          {
+            "start": 0,
+            "text": "And slides just to support his activities."
+          },
+          {
+            "start": 0,
+            "text": "Please feel free to reach out."
+          },
+          {
+            "start": 0,
+            "text": "For any questions, comments, and feedback."
+          },
+          {
+            "start": 0,
+            "text": "Thank you."
+          }
+        ],
+        "practiceCount": 0,
+        "lastPracticed": null,
+        "createdAt": "2026-06-01T16:15:24.450Z"
       }
     ],
     "dictationLog": [],
