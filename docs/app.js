@@ -1916,14 +1916,14 @@
         let playBtn = '';
         if (deck.audioDirOrig) {
           // Original podcast voice (sliced clip)
-          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDirOrig}/${e.id}.mp3')" title="元音声">🎙️</button>`;
+          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDirOrig}/${e.id}.mp3', this)" title="元音声">🎙️</button>`;
         }
         if (deck.audioDir) {
           // Polly TTS (clear single narration)
-          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDir}/${e.id}.mp3')" title="TTS音声">🔊</button>`;
+          playBtn += `<button class="mz-play" onclick="window.playMemorizeFile('audio/${deck.audioDir}/${e.id}.mp3', this)" title="TTS音声">🔊</button>`;
         }
         if (!playBtn && e.start != null && deck.audioFile) {
-          playBtn = `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)})" title="この箇所を再生">🔊</button>`;
+          playBtn = `<button class="mz-play" onclick="window.playMemorizeSegment(${e.start}, ${seconds.toFixed(1)}, this)" title="この箇所を再生">🔊</button>`;
         }
         return `
           <div class="mz-card ${m ? 'mastered' : ''}">
@@ -1958,7 +1958,7 @@
       }).join('');
 
       const playSection = (s.start != null && deck.audioFile)
-        ? `<button class="mz-play" onclick="event.stopPropagation(); window.playMemorizeSegment(${s.start}, 0)" title="ここから再生">▶</button>` : '';
+        ? `<button class="mz-play" onclick="event.stopPropagation(); window.playMemorizeSegment(${s.start}, 0, this)" title="ここから再生">▶</button>` : '';
 
       return `
         <details class="mz-section" data-sid="${s.id}">
@@ -2042,21 +2042,93 @@
 
   // Play a standalone per-item audio file (instant, no seeking into a large mp3)
   let memorizeFileAudio = null;
-  window.playMemorizeFile = function(path) {
-    if (memorizeFileAudio) { memorizeFileAudio.pause(); }
+  let memorizeFileBtn = null;
+  let memorizeFileBtnLabel = '';
+
+  function resetMemorizeFileBtn() {
+    if (memorizeFileBtn) {
+      memorizeFileBtn.textContent = memorizeFileBtnLabel;
+      memorizeFileBtn = null;
+      memorizeFileBtnLabel = '';
+    }
+  }
+
+  function stopMemorizeFile() {
+    if (memorizeFileAudio) {
+      memorizeFileAudio.pause();
+      memorizeFileAudio = null;
+    }
+    resetMemorizeFileBtn();
+  }
+
+  window.playMemorizeFile = function(path, btn) {
+    // Same button clicked while playing → stop
+    if (memorizeFileAudio && memorizeFileBtn === btn && !memorizeFileAudio.paused) {
+      stopMemorizeFile();
+      return;
+    }
+    // Stop any in-progress audio (both per-item and segment)
+    stopMemorizeFile();
+    stopMemorizeSegment();
+
     memorizeFileAudio = new Audio(path);
-    memorizeFileAudio.play();
+    if (btn) {
+      memorizeFileBtn = btn;
+      memorizeFileBtnLabel = btn.textContent;
+      btn.textContent = '⏹';
+    }
+    const onDone = () => resetMemorizeFileBtn();
+    memorizeFileAudio.addEventListener('ended', onDone);
+    memorizeFileAudio.addEventListener('error', onDone);
+    memorizeFileAudio.play().catch(onDone);
   };
 
-  window.playMemorizeSegment = function(start, seconds) {
+  let memorizeSegmentBtn = null;
+  let memorizeSegmentBtnLabel = '';
+
+  function resetMemorizeSegmentBtn() {
+    if (memorizeSegmentBtn) {
+      memorizeSegmentBtn.textContent = memorizeSegmentBtnLabel;
+      memorizeSegmentBtn = null;
+      memorizeSegmentBtnLabel = '';
+    }
+  }
+
+  function stopMemorizeSegment() {
+    const audio = document.getElementById('memorize-audio');
+    if (audio) audio.pause();
+    if (memorizeStopTimer) { clearTimeout(memorizeStopTimer); memorizeStopTimer = null; }
+    resetMemorizeSegmentBtn();
+  }
+
+  window.playMemorizeSegment = function(start, seconds, btn) {
     const audio = document.getElementById('memorize-audio');
     if (!audio) return;
-    if (memorizeStopTimer) { clearTimeout(memorizeStopTimer); memorizeStopTimer = null; }
+
+    // Same button clicked while playing → stop
+    if (memorizeSegmentBtn === btn && !audio.paused) {
+      stopMemorizeSegment();
+      return;
+    }
+    // Stop any in-progress audio (both per-item and segment)
+    stopMemorizeSegment();
+    stopMemorizeFile();
+
     audio.currentTime = start;
+    if (btn) {
+      memorizeSegmentBtn = btn;
+      memorizeSegmentBtnLabel = btn.textContent;
+      btn.textContent = '⏹';
+    }
+    audio.onended = () => resetMemorizeSegmentBtn();
+
     audio.play();
     // seconds <= 0 means "play freely from here" (no auto-stop)
     if (seconds && seconds > 0) {
-      memorizeStopTimer = setTimeout(() => { audio.pause(); }, seconds * 1000);
+      memorizeStopTimer = setTimeout(() => {
+        audio.pause();
+        resetMemorizeSegmentBtn();
+      }, seconds * 1000);
     }
   };
 
