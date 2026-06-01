@@ -1930,14 +1930,13 @@
             <div class="mz-card-head">
               <button class="mz-master" onclick="window.toggleMemorizeMastered('${e.id}', this)" title="暗記した">${m ? '✅' : '⬜'}</button>
               ${num ? `<span class="mz-num">${num}</span>` : ''}
-              <div class="mz-en-head">${escapeHtml(e.english)}</div>
+              <div class="mz-en-head">${renderEnglishWithKeyPhrases(e.english, e.keyPhrases)}</div>
               ${playBtn}
             </div>
-            <div class="mz-ja-reveal" id="mz-ja-${e.id}" style="display:none;">
+            <div class="mz-ja-reveal">
               <div class="mz-ja-text">${escapeHtml(e.japanese)}</div>
               ${e.situation ? `<div class="mz-situation">💬 ${escapeHtml(e.situation)}</div>` : ''}
             </div>
-            <button class="mz-reveal" onclick="window.toggleMemorizeReveal('${e.id}')">日本語を見る ▾</button>
           </div>`;
       };
 
@@ -1952,8 +1951,7 @@
           <div class="mz-vocab ${m ? 'mastered' : ''}">
             <button class="mz-master" onclick="window.toggleMemorizeMastered('${v.id}', this)" title="覚えた">${m ? '✅' : '⬜'}</button>
             <span class="mz-term">${escapeHtml(v.term)}</span>
-            <span class="mz-meaning" id="mz-mean-${v.id}" style="display:none;">${escapeHtml(v.meaning)}</span>
-            <button class="mz-reveal-inline" onclick="window.toggleMemorizeReveal('${v.id}', 'mean')">意味 ▾</button>
+            <span class="mz-meaning">${escapeHtml(v.meaning)}</span>
           </div>`;
       }).join('');
 
@@ -1991,12 +1989,26 @@
     memorizeAudio = document.getElementById('memorize-audio');
   }
 
-  window.toggleMemorizeReveal = function(id, kind) {
-    const el = document.getElementById(kind === 'mean' ? `mz-mean-${id}` : `mz-ja-${id}`);
-    if (!el) return;
-    const showing = el.style.display !== 'none';
-    el.style.display = showing ? 'none' : (kind === 'mean' ? 'inline' : 'block');
-  };
+  function renderEnglishWithKeyPhrases(english, keyPhrases) {
+    if (!english) return '';
+    const phrases = (Array.isArray(keyPhrases) ? keyPhrases : [])
+      .filter(p => p && typeof p === 'string')
+      .sort((a, b) => b.length - a.length);
+    if (phrases.length === 0) return escapeHtml(english);
+
+    const matches = [];
+    let text = english;
+    phrases.forEach(p => {
+      const safe = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      text = text.replace(new RegExp(safe, 'gi'), m => {
+        const i = matches.length;
+        matches.push(m);
+        return `${i}`;
+      });
+    });
+    return escapeHtml(text).replace(/(\d+)/g,
+      (_, i) => `<span class="mz-keyphrase">${escapeHtml(matches[+i])}</span>`);
+  }
 
   window.toggleMemorizeMastered = async function(id, btn) {
     if (!practiceData.english.memorizeProgress) practiceData.english.memorizeProgress = {};

@@ -894,15 +894,18 @@
       font-size: 16px; padding: 0; line-height: 1;
     }
     .mz-ja-reveal {
-      margin-top: 8px;
-      border-left: 3px solid var(--accent, #6366f1); padding-left: 8px;
+      margin-top: 6px;
+      border-left: 2px solid var(--accent, #6366f1); padding-left: 8px;
+      opacity: 0.75;
     }
-    .mz-ja-text { font-size: 14px; line-height: 1.6; color: var(--text-muted); }
-    .mz-situation { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-    .mz-reveal {
-      background: none; border: none; cursor: pointer;
-      color: var(--english, #60a5fa); font-size: 12px;
-      padding: 4px 0 0; margin-top: 4px;
+    .mz-ja-text { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+    .mz-situation { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .mz-keyphrase {
+      background: rgba(250, 204, 21, 0.18);
+      color: #fde68a;
+      padding: 0 2px;
+      border-radius: 3px;
+      font-weight: 600;
     }
 
     .mz-vocab-list { display: flex; flex-direction: column; gap: 4px; }
@@ -912,11 +915,7 @@
     }
     .mz-vocab.mastered { opacity: 0.6; }
     .mz-term { font-weight: 600; }
-    .mz-meaning { color: var(--text-muted); }
-    .mz-reveal-inline {
-      background: none; border: none; cursor: pointer;
-      color: var(--english, #60a5fa); font-size: 11px; padding: 0;
-    }
+    .mz-meaning { color: var(--text-muted); font-size: 11px; opacity: 0.85; }
 
     .mz-fulltext { margin-top: 6px; }
     .mz-fulltext > summary {

@@ -9064,42 +9064,66 @@
                 "japanese": "もし機械が意図的にあなたを操作し、しかもあなたがそれに完全に気づいていたら？",
                 "situation": "発表の冒頭フックとして。問いかけで聴衆を引き込む。",
                 "start": 4.7,
-                "id": "sec1-e1"
+                "id": "sec1-e1",
+                "keyPhrases": [
+                  "What if",
+                  "on purpose",
+                  "completely aware"
+                ]
               },
               {
                 "english": "That knowledge actually made you like the machine more.",
                 "japanese": "その「気づき」が、むしろその機械をより好きにさせた。",
                 "situation": "逆説を提示する一文。意外性を強調したいとき。",
                 "start": 11.9,
-                "id": "sec1-e2"
+                "id": "sec1-e2",
+                "keyPhrases": [
+                  "actually"
+                ]
               },
               {
                 "english": "It fundamentally breaks how we think about manipulation.",
                 "japanese": "それは私たちの「操作」に対する考え方を根本から覆す。",
                 "situation": "研究の意義を大きく主張するとき。",
                 "start": 15.6,
-                "id": "sec1-e3"
+                "id": "sec1-e3",
+                "keyPhrases": [
+                  "fundamentally",
+                  "how we think about"
+                ]
               },
               {
                 "english": "For a trick to work, the mark has to be completely in the dark.",
                 "japanese": "仕掛けが効くには、ターゲットが完全に何も知らない必要がある。",
                 "situation": "従来の前提を説明する導入。the mark=標的、in the dark=何も知らない。",
                 "start": 20.9,
-                "id": "sec1-e4"
+                "id": "sec1-e4",
+                "keyPhrases": [
+                  "For a trick to work",
+                  "in the dark"
+                ]
               },
               {
                 "english": "The illusion only holds up as long as the strings are invisible.",
                 "japanese": "その幻想は、操り糸が見えない間だけ保たれる。",
                 "situation": "比喩(操り人形の糸)で従来手法の前提を語るとき。",
                 "start": 25.8,
-                "id": "sec1-e5"
+                "id": "sec1-e5",
+                "keyPhrases": [
+                  "holds up",
+                  "as long as"
+                ]
               },
               {
                 "english": "They're programming them to be deliberately, calculatedly cute, right to your face.",
                 "japanese": "彼らはロボットを、意図的・計算ずくで可愛くなるようプログラムしている、それも面と向かって堂々と。",
                 "situation": "研究テーマを一言で言うコア表現。",
                 "start": 55,
-                "id": "sec1-e6"
+                "id": "sec1-e6",
+                "keyPhrases": [
+                  "deliberately",
+                  "right to your face"
+                ]
               }
             ],
             "vocabulary": [
@@ -9400,42 +9424,62 @@
                 "japanese": "現在の標準は、行動科学者が『ベビースキーマ』と呼ぶものに依存している。",
                 "situation": "従来手法を導入するとき。",
                 "start": 193.9,
-                "id": "sec2-e1"
+                "id": "sec2-e1",
+                "keyPhrases": [
+                  "relies on"
+                ]
               },
               {
                 "english": "These are specific visual triggers that are biologically hardwired into our evolutionary history.",
                 "japanese": "これらは、進化の歴史の中に生物学的に組み込まれた特定の視覚的トリガーだ。",
                 "situation": "ベビースキーマの仕組みを説明するとき。hardwired=生得的に組み込まれた。",
                 "start": 223.6,
-                "id": "sec2-e2"
+                "id": "sec2-e2",
+                "keyPhrases": [
+                  "hardwired into"
+                ]
               },
               {
                 "english": "It's essentially a biological hack.",
                 "japanese": "それは本質的に『生物学的ハック』だ。",
                 "situation": "仕組みを一言でまとめるとき。",
                 "start": 235.7,
-                "id": "sec2-e3"
+                "id": "sec2-e3",
+                "keyPhrases": [
+                  "essentially"
+                ]
               },
               {
                 "english": "Static cute appearances alone are completely incapable of generating long-term emotional attachment.",
                 "japanese": "静的な可愛い見た目だけでは、長期的な感情的愛着を生み出すことは全くできない。",
                 "situation": "従来手法の機能的欠陥を述べる重要文。",
                 "start": 324,
-                "id": "sec2-e4"
+                "id": "sec2-e4",
+                "keyPhrases": [
+                  "incapable of",
+                  "long-term"
+                ]
               },
               {
                 "english": "The biological hack wears off. The honeymoon phase ends.",
                 "japanese": "生物学的ハックは効果が薄れる。蜜月期は終わる。",
                 "situation": "効果の減衰を端的に言うとき。wear off=効き目が切れる。",
                 "start": 333.7,
-                "id": "sec2-e5"
+                "id": "sec2-e5",
+                "keyPhrases": [
+                  "wears off",
+                  "honeymoon phase"
+                ]
               },
               {
                 "english": "You completely limit design diversity.",
                 "japanese": "デザインの多様性を完全に制限してしまう。",
                 "situation": "単一化の問題を指摘するとき。",
                 "start": 300.2,
-                "id": "sec2-e6"
+                "id": "sec2-e6",
+                "keyPhrases": [
+                  "completely"
+                ]
               }
             ],
             "vocabulary": [
@@ -9722,42 +9766,67 @@
                 "japanese": "この文献は、従来の静的な可愛さを潜在的な『ダークパターン』と呼んでいる。",
                 "situation": "倫理的論点を導入するとき。",
                 "start": 367.6,
-                "id": "sec3-e1"
+                "id": "sec3-e1",
+                "keyPhrases": [
+                  "refers to",
+                  "as a potential"
+                ]
               },
               {
                 "english": "The mascot isn't there to entertain you. It's there to disarm you.",
                 "japanese": "そのマスコットはあなたを楽しませるためではなく、警戒を解かせるためにいる。",
                 "situation": "ダークパターンの本質を説明する印象的な対比。disarm=警戒を解く。",
                 "start": 388.7,
-                "id": "sec3-e2"
+                "id": "sec3-e2",
+                "keyPhrases": [
+                  "isn't there to",
+                  "It's there to"
+                ]
               },
               {
                 "english": "Where does harmless persuasion end and actual manipulation begin?",
                 "japanese": "無害な説得はどこで終わり、本当の操作はどこから始まるのか？",
                 "situation": "倫理的な問いを投げかけるとき。発表での論点提示に有効。",
                 "start": 397,
-                "id": "sec3-e3"
+                "id": "sec3-e3",
+                "keyPhrases": [
+                  "Where does",
+                  "end and",
+                  "begin"
+                ]
               },
               {
                 "english": "It actively bypasses user agency.",
                 "japanese": "それはユーザーの主体性を積極的に回避する。",
                 "situation": "ダークパターンが問題である理由を述べるとき。agency=主体性・自律性。",
                 "start": 410.6,
-                "id": "sec3-e4"
+                "id": "sec3-e4",
+                "keyPhrases": [
+                  "actively",
+                  "bypasses"
+                ]
               },
               {
                 "english": "Your biology reacts a fraction of a second before your conscious, rational mind can process it.",
                 "japanese": "あなたの生理反応は、意識的・理性的な心が処理するより一瞬早く反応してしまう。",
                 "situation": "無意識の反応を説明するとき。a fraction of a second=ほんの一瞬。",
                 "start": 422.5,
-                "id": "sec3-e5"
+                "id": "sec3-e5",
+                "keyPhrases": [
+                  "a fraction of a second",
+                  "before"
+                ]
               },
               {
                 "english": "I want to be clear that we are just reporting on the ethical tensions highlighted in these sources.",
                 "japanese": "誤解のないように言うと、私たちはこれらの資料で示された倫理的緊張を報告しているだけだ。",
                 "situation": "倫理的に踏み込みすぎないよう留保するとき。発表での慎重な言い回し。",
                 "start": 469.1,
-                "id": "sec3-e6"
+                "id": "sec3-e6",
+                "keyPhrases": [
+                  "I want to be clear that",
+                  "just reporting on"
+                ]
               }
             ],
             "vocabulary": [
@@ -9986,49 +10055,76 @@
                 "japanese": "研究者たちは西洋の生物学的心理から離れ、東アジアの文化的枠組みに目を向けた。",
                 "situation": "研究のアプローチ転換を説明するとき。",
                 "start": 529.6,
-                "id": "sec4-e1"
+                "id": "sec4-e1",
+                "keyPhrases": [
+                  "turned away from",
+                  "looked into"
+                ]
               },
               {
                 "english": "Azatoi translates to an intentional, highly calculated form of cuteness.",
                 "japanese": "『あざとい』は、意図的で高度に計算された可愛さを意味する。",
                 "situation": "中心概念を定義するとき。",
                 "start": 541.5,
-                "id": "sec4-e2"
+                "id": "sec4-e2",
+                "keyPhrases": [
+                  "translates to",
+                  "highly calculated"
+                ]
               },
               {
                 "english": "It is cuteness as a strategic social action.",
                 "japanese": "それは戦略的な社会的行為としての可愛さだ。",
                 "situation": "あざとさの本質を一言で言うとき。",
                 "start": 591.4,
-                "id": "sec4-e3"
+                "id": "sec4-e3",
+                "keyPhrases": [
+                  "strategic"
+                ]
               },
               {
                 "english": "Unlike the hidden manipulation of the big plastic eyes, azatoi requires the receiver to perceive the intention behind it.",
                 "japanese": "大きなプラスチックの目による隠れた操作と違い、あざとさは受け手がその背後の意図を知覚することを必要とする。",
                 "situation": "従来手法との決定的な違いを述べるコア文。",
                 "start": 600,
-                "id": "sec4-e4"
+                "id": "sec4-e4",
+                "keyPhrases": [
+                  "Unlike",
+                  "requires",
+                  "to perceive"
+                ]
               },
               {
                 "english": "The intent is not disguised, it is highly visible.",
                 "japanese": "意図は隠されておらず、はっきりと見えている。",
                 "situation": "透明性を強調するとき。disguise=偽装する。",
                 "start": 628.3,
-                "id": "sec4-e5"
+                "id": "sec4-e5",
+                "keyPhrases": [
+                  "is not",
+                  "it is"
+                ]
               },
               {
                 "english": "It shifts the paradigm from covert deception to a kind of interactive, mutually understood play.",
                 "japanese": "それは、隠れた欺瞞から、双方が理解し合うインタラクティブな『遊び』へとパラダイムを転換する。",
                 "situation": "概念の意義を述べる重要文。covert=隠れた。",
                 "start": 711,
-                "id": "sec4-e6"
+                "id": "sec4-e6",
+                "keyPhrases": [
+                  "shifts the paradigm from",
+                  "to a kind of"
+                ]
               },
               {
                 "english": "It's like the difference between a pickpocket and a stage magician.",
                 "japanese": "それはスリと舞台マジシャンの違いのようなものだ。",
                 "situation": "わかりやすい比喩を導入するとき。発表で効果的。",
                 "start": 728.5,
-                "id": "sec4-e7"
+                "id": "sec4-e7",
+                "keyPhrases": [
+                  "It's like the difference between"
+                ]
               }
             ],
             "vocabulary": [
@@ -10381,42 +10477,61 @@
                 "japanese": "最大の課題は、人間の社会学的概念をどうやって機械にプログラムするかを解明することだ。",
                 "situation": "実装上の課題を述べるとき。monumental=途方もない。",
                 "start": 787.6,
-                "id": "sec5-e1"
+                "id": "sec5-e1",
+                "keyPhrases": [
+                  "monumental",
+                  "figuring out how to"
+                ]
               },
               {
                 "english": "A robot doesn't have intuition. It only has code.",
                 "japanese": "ロボットには直感がない。あるのはコードだけだ。",
                 "situation": "課題を端的に言うとき。対比が効く。",
                 "start": 804.3,
-                "id": "sec5-e2"
+                "id": "sec5-e2",
+                "keyPhrases": [
+                  "doesn't have"
+                ]
               },
               {
                 "english": "They needed a rigorous scientific framework to measure how these behaviors are sent and perceived.",
                 "japanese": "彼らは、これらの行動がどう送られ知覚されるかを測る厳密な科学的枠組みを必要とした。",
                 "situation": "枠組み導入の理由を説明するとき。rigorous=厳密な。",
                 "start": 812.2,
-                "id": "sec5-e3"
+                "id": "sec5-e3",
+                "keyPhrases": [
+                  "rigorous"
+                ]
               },
               {
                 "english": "The first phase is called cue validity. This is the sender's intention being encoded into observable behaviors.",
                 "japanese": "第1段階は『手がかりの妥当性(cue validity)』。送り手の意図が観測可能な行動に符号化される段階だ。",
                 "situation": "レンズモデルの第1段階を説明するとき。",
                 "start": 858.6,
-                "id": "sec5-e4"
+                "id": "sec5-e4",
+                "keyPhrases": [
+                  "encoded into"
+                ]
               },
               {
                 "english": "The second phase is cue utilization. What does the human user actually notice and prioritize?",
                 "japanese": "第2段階は『手がかりの利用(cue utilization)』。人間は実際に何に気づき、何を優先するのか？",
                 "situation": "第2段階を説明するとき。",
                 "start": 900,
-                "id": "sec5-e5"
+                "id": "sec5-e5",
+                "keyPhrases": [
+                  "actually notice"
+                ]
               },
               {
                 "english": "The third phase is achievement. Was the original intention successfully communicated and did it result in the desired effect?",
                 "japanese": "第3段階は『達成(achievement)』。元の意図がうまく伝わり、望んだ効果が得られたか？",
                 "situation": "第3段階を説明するとき。",
                 "start": 915.7,
-                "id": "sec5-e6"
+                "id": "sec5-e6",
+                "keyPhrases": [
+                  "result in"
+                ]
               }
             ],
             "vocabulary": [
@@ -10782,42 +10897,65 @@
                 "japanese": "彼らは日本・中国・韓国の大学生9名に、詳細な半構造化インタビューを行った。",
                 "situation": "研究方法を述べるとき。semi-structured=半構造化の。",
                 "start": 1036,
-                "id": "sec6-e1"
+                "id": "sec6-e1",
+                "keyPhrases": [
+                  "in-depth",
+                  "semi-structured"
+                ]
               },
               {
                 "english": "The study identified six distinct multimodal behavioral cues.",
                 "japanese": "研究は6つの異なる多モーダルな行動手がかりを特定した。",
                 "situation": "主要な発見を述べるとき。multimodal=複数の様式にまたがる。",
                 "start": 1096.5,
-                "id": "sec6-e2"
+                "id": "sec6-e2",
+                "keyPhrases": [
+                  "distinct"
+                ]
               },
               {
                 "english": "The first cue is exaggerated proximity: collapsing physical boundaries to create playful intimacy.",
                 "japanese": "第1の手がかりは『誇張された近接』：物理的境界をあえて崩し、遊び心のある親密さを作る。",
                 "situation": "手がかり1を説明。proximity=近接、collapse=崩す。",
                 "start": 1138.4,
-                "id": "sec6-e3"
+                "id": "sec6-e3",
+                "keyPhrases": [
+                  "collapsing",
+                  "to create"
+                ]
               },
               {
                 "english": "The sixth cue is intentional errors, defined as deliberate acts of mild incompetence.",
                 "japanese": "第6の手がかりは『意図的なミス』、つまり軽度の無能をわざと演じる行為だ。",
                 "situation": "最も独創的な手がかりを紹介するとき。incompetence=無能。",
                 "start": 1274.7,
-                "id": "sec6-e4"
+                "id": "sec6-e4",
+                "keyPhrases": [
+                  "defined as",
+                  "deliberate"
+                ]
               },
               {
                 "english": "By presenting a minor, harmless flaw, you are creating a vacuum in the interaction.",
                 "japanese": "ささいで無害な欠点を見せることで、やりとりの中に『空白』を作り出す。",
                 "situation": "intentional errors の心理を説明するとき。flaw=欠点、vacuum=空白。",
                 "start": 1364.5,
-                "id": "sec6-e5"
+                "id": "sec6-e5",
+                "keyPhrases": [
+                  "harmless",
+                  "creating a vacuum"
+                ]
               },
               {
                 "english": "You are forcing an interaction, but framing it entirely as their choice to step in and help.",
                 "japanese": "やりとりを強制しているのに、それを完全に『相手が助けに入る選択』として枠づけしている。",
                 "situation": "巧妙さを説明する重要文。frame=枠づけする。",
                 "start": 1375.6,
-                "id": "sec6-e6"
+                "id": "sec6-e6",
+                "keyPhrases": [
+                  "framing",
+                  "step in and help"
+                ]
               }
             ],
             "vocabulary": [
@@ -11344,42 +11482,66 @@
                 "japanese": "彼らは Stack-chan というオープンソースの卓上ソーシャルロボットを用いた。",
                 "situation": "実装プラットフォームを紹介するとき。tabletop=卓上の。",
                 "start": 1435.5,
-                "id": "sec7-e1"
+                "id": "sec7-e1",
+                "keyPhrases": [
+                  "utilized",
+                  "known as"
+                ]
               },
               {
                 "english": "The robot tilts its body down while the digital eyes shift upwards, mimicking physical vulnerability.",
                 "japanese": "ロボットは体をやや下に傾け、デジタルの目を上に動かして、身体的な弱さを模倣する。",
                 "situation": "上目遣いの実装を説明するとき。mimic=模倣する、vulnerability=弱さ。",
                 "start": 1561.4,
-                "id": "sec7-e2"
+                "id": "sec7-e2",
+                "keyPhrases": [
+                  "mimicking"
+                ]
               },
               {
                 "english": "Right as the robot says 'yummy', an intentional error cue is triggered in the code.",
                 "japanese": "ロボットが『yummy』と言うまさにその瞬間、コード内で意図的なミスの手がかりが発動する。",
                 "situation": "シナリオの核心を説明するとき。trigger=発動させる。",
                 "start": 1621.4,
-                "id": "sec7-e3"
+                "id": "sec7-e3",
+                "keyPhrases": [
+                  "Right as",
+                  "is triggered"
+                ]
               },
               {
                 "english": "The robot successfully manipulated the human into initiating physical contact that they believed was their own idea.",
                 "japanese": "ロボットは、人間が自分の発案だと信じる物理的接触を、人間に開始させることに成功した。",
                 "situation": "結果の本質を述べるコア文。initiate=開始する。",
                 "start": 1679.8,
-                "id": "sec7-e4"
+                "id": "sec7-e4",
+                "keyPhrases": [
+                  "manipulated",
+                  "into",
+                  "believed was their own idea"
+                ]
               },
               {
                 "english": "This voting mechanic is the literal execution of the cue utilization phase of the lens model.",
                 "japanese": "この投票の仕組みは、レンズモデルの『手がかりの利用』段階を文字どおり実行したものだ。",
                 "situation": "理論と実装を結びつけるとき。",
                 "start": 1722.6,
-                "id": "sec7-e5"
+                "id": "sec7-e5",
+                "keyPhrases": [
+                  "literal execution of"
+                ]
               },
               {
                 "english": "The exhibition takes an invisible, subconscious psychological process and makes it publicly visible.",
                 "japanese": "この展示は、目に見えない無意識の心理プロセスを、公に可視化する。",
                 "situation": "展示の意義を述べるとき。subconscious=潜在意識の。",
                 "start": 1790.4,
-                "id": "sec7-e6"
+                "id": "sec7-e6",
+                "keyPhrases": [
+                  "takes",
+                  "makes",
+                  "publicly visible"
+                ]
               }
             ],
             "vocabulary": [
@@ -12008,42 +12170,63 @@
                 "japanese": "彼らは、あざとさが普遍的な人間の言語として機能するのか、それとも文化的に孤立した現象なのかを検証している。",
                 "situation": "異文化検証の目的を述べるとき。siloed=サイロ化した・孤立した。",
                 "start": 1868.4,
-                "id": "sec8-e1"
+                "id": "sec8-e1",
+                "keyPhrases": [
+                  "whether",
+                  "or if"
+                ]
               },
               {
                 "english": "Human users often lack the cognitive ability to resist dark patterns, even when they are aware of them.",
                 "japanese": "人間のユーザーは、ダークパターンに気づいていてさえ、それに抵抗する認知能力を欠くことが多い。",
                 "situation": "重要な先行研究の知見を引くとき。",
                 "start": 1953.6,
-                "id": "sec8-e2"
+                "id": "sec8-e2",
+                "keyPhrases": [
+                  "lack the cognitive ability",
+                  "even when"
+                ]
               },
               {
                 "english": "Awareness does not automatically equate to immunity.",
                 "japanese": "気づきは、自動的に耐性を意味するわけではない。",
                 "situation": "核心的な主張。端的で発表向き。equate to=～と等しい。",
                 "start": 1967.9,
-                "id": "sec8-e3"
+                "id": "sec8-e3",
+                "keyPhrases": [
+                  "does not automatically equate to"
+                ]
               },
               {
                 "english": "Despite knowing the whole trick, you still reach out, you still wipe the screen, and you still feel charmed.",
                 "japanese": "仕掛けを全部知っていても、人はやはり手を伸ばし、画面を拭き、魅了される。",
                 "situation": "パラドックスを生々しく描写するとき。",
                 "start": 2010.7,
-                "id": "sec8-e4"
+                "id": "sec8-e4",
+                "keyPhrases": [
+                  "Despite knowing",
+                  "still"
+                ]
               },
               {
                 "english": "By refusing to hide the trick, the trick itself becomes the feature.",
                 "japanese": "仕掛けを隠さないことで、仕掛けそのものが『機能』になる。",
                 "situation": "研究のキーメッセージ。印象的な締め表現。",
                 "start": 2051.3,
-                "id": "sec8-e5"
+                "id": "sec8-e5",
+                "keyPhrases": [
+                  "By refusing to"
+                ]
               },
               {
                 "english": "You become a willing co-conspirator in the illusion.",
                 "japanese": "あなたはその幻想に進んで加担する『共犯者』になる。",
                 "situation": "概念を魅力的に言い換えるとき。willing=進んで～する。",
                 "start": 2073.2,
-                "id": "sec8-e6"
+                "id": "sec8-e6",
+                "keyPhrases": [
+                  "willing"
+                ]
               }
             ],
             "vocabulary": [
@@ -12386,42 +12569,68 @@
                 "japanese": "ハードウェアの現実を見失わないようにしなければならない。",
                 "situation": "限界を述べる前置きとして。keep ... in perspective=大局的に捉える。",
                 "start": 2104.7,
-                "id": "sec9-e1"
+                "id": "sec9-e1",
+                "keyPhrases": [
+                  "keep",
+                  "in perspective"
+                ]
               },
               {
                 "english": "Exaggerated proximity could only be tested via proxy.",
                 "japanese": "『誇張された近接』は代理的にしか検証できなかった。",
                 "situation": "限界1を述べるとき。via proxy=代理で。",
                 "start": 2129,
-                "id": "sec9-e2"
+                "id": "sec9-e2",
+                "keyPhrases": [
+                  "via proxy"
+                ]
               },
               {
                 "english": "Does the performance degrade from an enduring social game to an infuriatingly repetitive annoyance?",
                 "japanese": "そのパフォーマンスは、長続きする社会的ゲームから、苛立たしいほど反復的な煩わしさへと劣化するのか？",
                 "situation": "長期使用の懸念を述べるとき。degrade=劣化する、annoyance=煩わしさ。",
                 "start": 2192.2,
-                "id": "sec9-e3"
+                "id": "sec9-e3",
+                "keyPhrases": [
+                  "degrade from",
+                  "to an",
+                  "enduring",
+                  "infuriatingly"
+                ]
               },
               {
                 "english": "They intend to use the global voting data to develop culturally adaptive designs.",
                 "japanese": "彼らは世界規模の投票データを使って、文化適応型のデザインを開発するつもりだ。",
                 "situation": "今後の展望を述べるとき。culturally adaptive=文化適応型の。",
                 "start": 2239.5,
-                "id": "sec9-e4"
+                "id": "sec9-e4",
+                "keyPhrases": [
+                  "intend to",
+                  "culturally adaptive"
+                ]
               },
               {
                 "english": "All of this hinges on mastering this delicate balance of transparent manipulation. It's a tightrope walk.",
                 "japanese": "これらすべては、透明な操作という繊細なバランスを習得できるかにかかっている。それは綱渡りだ。",
                 "situation": "全体を締める比喩。hinge on=～次第である。",
                 "start": 2273.8,
-                "id": "sec9-e5"
+                "id": "sec9-e5",
+                "keyPhrases": [
+                  "hinges on",
+                  "tightrope walk"
+                ]
               },
               {
                 "english": "Will there come a day when we prefer the clean, calculated affection of a machine over the messy, unpredictable affection of real human beings?",
                 "japanese": "いつか私たちは、機械の整った計算された愛情を、人間の厄介で予測不能な愛情より好む日が来るのだろうか？",
                 "situation": "発表の締めの問い。聴衆に余韻を残す。",
                 "start": 2334.2,
-                "id": "sec9-e6"
+                "id": "sec9-e6",
+                "keyPhrases": [
+                  "Will there come a day when",
+                  "prefer",
+                  "over"
+                ]
               }
             ],
             "vocabulary": [
