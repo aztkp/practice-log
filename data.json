@@ -7365,7 +7365,7 @@
         "audioFile": "dictation_robots.mp3",
         "segments": [
           {
-            "start": 0.0,
+            "start": 0,
             "text": "So, think about this for a second."
           },
           {
@@ -7549,7 +7549,7 @@
             "text": "But the researchers point out a massive design trap inherent in this approach."
           },
           {
-            "start": 286.0,
+            "start": 286,
             "text": "I'd imagine the most obvious trap is that you just end up with an incredibly boring monoculture of design."
           },
           {
@@ -7569,7 +7569,7 @@
             "text": "It presumes that one specific manifestation of cute works for every application and every culture, which is honestly incredibly limiting."
           },
           {
-            "start": 324.0,
+            "start": 324,
             "text": "But the paper points out an even deeper functional flaw."
           },
           {
@@ -7617,7 +7617,7 @@
             "text": "The mascot isn't there to entertain you. It's there to disarm you, so you click agree on the terms of service."
           },
           {
-            "start": 397.0,
+            "start": 397,
             "text": "And the paper seems to be asking, where does harmless persuasion end and actual manipulation begin when we talk about robot design?"
           },
           {
@@ -7717,7 +7717,7 @@
             "text": "Let's break down what these concepts actually look like in practice because this isn't just about like someone wearing a cute outfit."
           },
           {
-            "start": 566.0,
+            "start": 566,
             "text": "No, it is entirely behavioral. While they all have distinct cultural nuances, azatoi, ajo and sajiao share a very similar structural foundation."
           },
           {
@@ -7941,7 +7941,7 @@
             "text": "Now, I know it might seem strange to rely heavily on a psychological model from 1956 for a cutting edge 2026 robotics paper."
           },
           {
-            "start": 940.0,
+            "start": 940,
             "text": "A little bit, yeah. But the framework is incredibly resilient because it describes something we all do constantly every single day."
           },
           {
@@ -7953,7 +7953,7 @@
             "text": "Right. Walking into an office and trying to figure out if your passive-aggressive co-worker is actually happy to see you, or just faking a polite, professional smile."
           },
           {
-            "start": 963.0,
+            "start": 963,
             "text": "Perfect example. The cue validity is the objective physical reality of their face."
           },
           {
@@ -8045,7 +8045,7 @@
             "text": "Multimodal meanings. Meaning these aren't just facial expressions."
           },
           {
-            "start": 1105.0,
+            "start": 1105,
             "text": "They span across voice, physical movement, and language."
           },
           {
@@ -8165,7 +8165,7 @@
             "text": "The goals. Right. The researchers categorized five main goals, eliciting communication, attracting attention, gaining favor, request acceptance, and softening criticism."
           },
           {
-            "start": 1323.0,
+            "start": 1323,
             "text": "So depending on what you want from the interaction, you deploy a different combination of cues."
           },
           {
@@ -8269,7 +8269,7 @@
             "text": "And they pack this robot up and take it to the Dis-International Conference in Singapore."
           },
           {
-            "start": 1482.0,
+            "start": 1482,
             "text": "This is where they construct their participatory exhibition to gather data."
           },
           {
@@ -8409,7 +8409,7 @@
             "text": "The robot successfully manipulated the human into initiating an intimate, helpful physical contact that the human believed was their own spontaneous idea."
           },
           {
-            "start": 1693.0,
+            "start": 1693,
             "text": "It's wild. And the moment the human touches the screen, the scenario ends, and the rigorous data collection immediately begins."
           },
           {
@@ -8445,7 +8445,7 @@
             "text": "And the visual representation of this data collection is incredible."
           },
           {
-            "start": 1750.0,
+            "start": 1750,
             "text": "While the visitor is looking down at the tablet, casting their vote, that massive projection mapping on the wall behind the robot is updating live."
           },
           {
@@ -8481,7 +8481,7 @@
             "text": "Everyone in the room can watch the data aggregate and see exactly which calculated behaviors are proving most devastatingly effective at charming the attendees."
           },
           {
-            "start": 1812.0,
+            "start": 1812,
             "text": "It's an interactive data visualization on a grand scale."
           },
           {
@@ -8557,7 +8557,7 @@
             "text": "The crucial question is, is azitoy, this new behavioral approach, actually any better ethically?"
           },
           {
-            "start": 1941.0,
+            "start": 1941,
             "text": "This is where the paper forces a really complex discussion regarding the nuance between persuasion and manipulation."
           },
           {
@@ -8637,11 +8637,11 @@
             "text": "That is wild. By refusing to hide the trick, the trick itself becomes the feature."
           },
           {
-            "start": 2058.0,
+            "start": 2058,
             "text": "It completely blurs the rigid boundary between deceptive design and a mutually agreed upon social game."
           },
           {
-            "start": 2064.0,
+            "start": 2064,
             "text": "Exactly. You aren't being biologically tricked into caring for a piece of plastic."
           },
           {
@@ -8773,7 +8773,7 @@
             "text": "But all of these future applications hinge entirely on mastering this incredibly delicate, highly precarious balance of transparent manipulation."
           },
           {
-            "start": 2281.0,
+            "start": 2281,
             "text": "It's a tightrope walk. It is. If designers can actually master this, if they can perfect the algorithm of the deliberate flaw, we are looking at a future where machines don't just communicate with us through sterile data readouts."
           },
           {
@@ -8804,6 +8804,20 @@
         "practiceCount": 0,
         "lastPracticed": null,
         "createdAt": "2026-05-30T00:00:00.000Z"
+      },
+      {
+        "id": "1780329768994",
+        "title": "Creating Design Resources to Scaffold the Ideation of AI Concepts",
+        "url": "https://www.youtube.com/watch?v=32O8ClueB_Q",
+        "segments": [
+          {
+            "start": 0,
+            "text": "I'm no realtor and I'll be presenting\nour work on creating design resources to\nscaffold the ideation of AI Concepts\ndesigning I have products is challenging\nresearch shows that most AI products\nfail pre-deployment due to selecting and\nworking on the wrong problem current\nresources such as human AI guidelines\nand design patterns mostly help with\nprototyping and designing the thing\nright whereas practitioners ask for\nresources that support early phase\nideation to discover what is the right\nthing to design with AI\nOne Challenge is that designers struggle\nto understand what AI can do and they\ntend to Envision AI systems that can't\nbe built data scientists on the other\nhand find it difficult to elicit what\nusers need so they tend to Envision AI\nsystems that no one wants so there's\nthis Gap and recent work highlighted\nthat AI capabilities and examples might\nhelp but we know little about what these\nresources might look like and how they\ncan be used to ideate AI Concepts\nwe set out to tackle this challenge by\nengaging in a research tour design\nprocess we conducted three design\nexperiments where outcomes of each\nexperiment inform the next one first we\nlooked at how can we create a resource\nthat captures AI capabilities we then\nasked how do we integrate this into the\ndesign process and that revealed\nadditional challenges which led us to\nask how can we blend user-centered and\ntech-centered Innovation approaches\nso starting with the first design\nexperiment can we develop resources that\ncapture AI capabilities\nhow do we go about doing that\nif you look at existing resources on AI\nmost of these detail how AI Works\ninstead of describing what AI can do\nand building on the best practices we\ntook an examples based approach so we\nlooked at common AI product features\nsuch as spam filter text generation\nmeeting summarization Medical Imaging\nanalysis and so on\nand we analyze these bottom up to derive\nhigh-level capabilities\nso take biometric security as an example\nhere AI is detecting if there is a face\nin this image and then it's identifying\nif this is Jane's face those are two\nseparate capabilities\nso we listed each unique capability for\neach AI example then we abstracted these\nto arrive at the high level capability\ndetecting a phase and detecting a voice\nis ultimately about detecting a person\nso all of these led to detect as the\nhigh level capability\nwe've done this for 40 AI examples\nacross 14 different domains spanning\nconsumer facing and business to business\napplications\nand we worked our way through a large\nSlinky diagram to gradually abstract\nmore than 200 unique capabilities\nwhich led us to eight high-level\ncapabilities\nthese are estimate forecast compare\ndetect identify discover generate an act\nonce we have this collection of examples\nand the breakdown of individual\ncapabilities the question then became\nhow do we integrate these into the\ndesign process when and how this\nresource might be useful\nso we started out by sketching some\ncommunicative forms we created a table\nlisting all the capabilities their\nsynonyms definitions and examples where\nthey typically show up\nwe also created a set of slides that\nprovide an overview of each capability\nnext we designed a pilot study to assess\nthese we created two design briefs a\nrental vacation service and a\nright-hailing service and we prepared a\nFEMA board detailing each brief Persona\nuser journey and the pain points as well\nas the available data sources and then\nwe asked design students to ideate AI\nenabled features first without the\nslides for the first design brief and\nthen with the slides for the second\ndesign brief foreign\nthat using the resource helped ideate\nusing a broader range of AI capabilities\nbut the quality of ideas didn't seem to\nimprove most ideas were not buildable\noften because they require near perfect\nAI performance to be useful\nso on a surface level our pilot study\nfailed but its surfaced AI model\nperformance as a key consideration for\nideation\nwith this in mind we went back to our\ncollection of examples and captured the\nlevel of AI performance as well as the\nlevel of expertise needed for each task\nfor example workout detection can detect\nand count the number of steps and it\ndoesn't have to be super accurate to be\nuseful\nhaving some count is better than having\nno account whereas with medical imaging\nidentifying cancer requires a highway\nspecialized expertise and it has to have\nnear perfect performance to be actually\nuseful\nonce we mapped all the examples\nwe realized that more than half used\nmodern AI performance to create value in\nthe world so there were only a few\nexamples in the real world where AI had\nto have an excellent performance to be\nuseful\nwe think of the task expertise AI\nperformance Matrix as ai's opportunity\nspace\nwhen ideating we notice that students\nseem to focus on the right hand side\nwhere ideas require near perfect model\nperformance to be useful as opposed to\ncovering this entire space and we also\nnoticed that following a user-centered\napproach that is identifying pain points\nbefore considering what AI can do\nunintentionally limited the ideation\ntowards the upper right corner where\nthere is high uncertainty for people\nso from design Experiment 2 we learned\nthat capabilities and examples alone are\nnot enough\nand innovators should also consider\nsituations where moderate AI performance\ncan create value\nall of this made us realize that we\nneeded a new design process for AI one\nthat blends user-centered and\ntech-centered approaches such as\nmatchmaking\nso we started to explore how we can\nsimultaneously consider both AI\ncapabilities and user needs\nin design experiment 3 we incorporated\nour resource into a healthcare project\nwhere we had data science and clinician\ncollaborators and our design team worked\nto facilitate ideation we had a rich\ndata set coming from nearly 40 hospitals\nand we wanted to explore what are some\nAI opportunities to help clinicians in\nthe Intensive carrying it\nwe conducted two ideation workshops\nthe first one followed a traditional\nuser-centered design process where we\nprobed clinicians pain points and asked\nthe team how AI can help\nand in the second Workshop we first\nreviewed a subset of AI capabilities and\nexamples and then asked clinicians if\nthey recognize a situation where AI\ncapabilities might be useful\nso most of the examples we created had\nmoderate AI performance for example we\nshowed a spam filter classifying email\nas spam or not spam and asked if\nclassifying things as urgent or not\nurgent or important or not important\nwould be useful\nwe assessed the ideas using an impact\neffort Matrix\nthe ideas from the first Workshop were\nmostly difficult to build and only about\nhealth was valuable\nthe second workshop on the other hand\nled to low effort high impact ideas so\nclinicians were able to take an example\nand transfer it to their own context for\nexample predicting if a patient is busy\nto help assign nurses or predicting and\npre-ordering medications from the\npharmacy based on patient trends\nwe also moved away from envisioning\nideas that required High AI performance\nto ideas where moderate AI performance\ncould be valuable which overall led to a\nbetter coverage of ai's design space\nso moving forward we need more research\nto understand how to innovate with AI\ndesigning new AI features for an\nexisting product might require a\ndifferent design process compared to say\nexploring potential value in a novel\ndata set or even designing a data set\nwith domain stakeholders from scratch so\nfeature research should explore these\nnew innovation processes along this\nspectrum between user-centered and Tech\ncentered design and see what kind of\nresources design resources could support\nthis\nfor more information please check out\nour full paper and visit the project\nwebsite to access the resources thanks\nforeign"
+          }
+        ],
+        "practiceCount": 0,
+        "lastPracticed": null,
+        "createdAt": "2026-06-01T16:02:48.994Z"
       }
     ],
     "dictationLog": [],
@@ -9084,7 +9098,7 @@
                 "english": "They're programming them to be deliberately, calculatedly cute, right to your face.",
                 "japanese": "彼らはロボットを、意図的・計算ずくで可愛くなるようプログラムしている、それも面と向かって堂々と。",
                 "situation": "研究テーマを一言で言うコア表現。",
-                "start": 55.0,
+                "start": 55,
                 "id": "sec1-e6"
               }
             ],
@@ -9120,7 +9134,7 @@
                 "id": "sec1-f1",
                 "english": "So, think about this for a second.",
                 "japanese": "ちょっとこれについて考えてみてください。",
-                "start": 0.0
+                "start": 0
               },
               {
                 "id": "sec1-f2",
@@ -9168,7 +9182,7 @@
                 "id": "sec1-f9",
                 "english": "Exactly. You realize you're being played, your defenses instantly shoot up, and well, the trust is gone.",
                 "japanese": "その通り。自分が操られていると気づき、防御が一気に高まり、そして信頼は消え去ります。",
-                "start": 33.0
+                "start": 33
               },
               {
                 "id": "sec1-f10",
@@ -9270,7 +9284,7 @@
                 "id": "sec1-f26",
                 "english": "Right, what's the underlying problem?",
                 "japanese": "そうですね、根底にある問題は何なのか？",
-                "start": 104.0
+                "start": 104
               },
               {
                 "id": "sec1-f27",
@@ -9406,7 +9420,7 @@
                 "english": "Static cute appearances alone are completely incapable of generating long-term emotional attachment.",
                 "japanese": "静的な可愛い見た目だけでは、長期的な感情的愛着を生み出すことは全くできない。",
                 "situation": "従来手法の機能的欠陥を述べる重要文。",
-                "start": 324.0,
+                "start": 324,
                 "id": "sec2-e4"
               },
               {
@@ -9592,7 +9606,7 @@
                 "id": "sec2-f22",
                 "english": "I'd imagine the most obvious trap is that you just end up with an incredibly boring monoculture of design.",
                 "japanese": "一番分かりやすい罠は、ひどく退屈な『デザインの単一化（モノカルチャー）』に陥ってしまうことだと思います。",
-                "start": 286.0
+                "start": 286
               },
               {
                 "id": "sec2-f23",
@@ -9628,7 +9642,7 @@
                 "id": "sec2-f28",
                 "english": "But the paper points out an even deeper functional flaw.",
                 "japanese": "しかし論文は、さらに根深い機能的な欠陥を指摘しています。",
-                "start": 324.0
+                "start": 324
               },
               {
                 "id": "sec2-f29",
@@ -9721,7 +9735,7 @@
                 "english": "Where does harmless persuasion end and actual manipulation begin?",
                 "japanese": "無害な説得はどこで終わり、本当の操作はどこから始まるのか？",
                 "situation": "倫理的な問いを投げかけるとき。発表での論点提示に有効。",
-                "start": 397.0,
+                "start": 397,
                 "id": "sec3-e3"
               },
               {
@@ -9825,7 +9839,7 @@
                 "id": "sec3-f8",
                 "english": "And the paper seems to be asking, where does harmless persuasion end and actual manipulation begin when we talk about robot design?",
                 "japanese": "そして論文はこう問うているようです——ロボット設計について語るとき、無害な説得はどこで終わり、本当の操作はどこから始まるのか？",
-                "start": 397.0
+                "start": 397
               },
               {
                 "id": "sec3-f9",
@@ -9909,7 +9923,7 @@
                 "id": "sec3-f22",
                 "english": "The robot's static appearance is operating as a smoke screen for the designer's actual intent.",
                 "japanese": "ロボットの静的な見た目は、設計者の本当の意図を覆い隠す『煙幕』として機能しているのです。",
-                "start": 490.0
+                "start": 490
               },
               {
                 "id": "sec3-f23",
@@ -9992,7 +10006,7 @@
                 "english": "Unlike the hidden manipulation of the big plastic eyes, azatoi requires the receiver to perceive the intention behind it.",
                 "japanese": "大きなプラスチックの目による隠れた操作と違い、あざとさは受け手がその背後の意図を知覚することを必要とする。",
                 "situation": "従来手法との決定的な違いを述べるコア文。",
-                "start": 600.0,
+                "start": 600,
                 "id": "sec4-e4"
               },
               {
@@ -10006,7 +10020,7 @@
                 "english": "It shifts the paradigm from covert deception to a kind of interactive, mutually understood play.",
                 "japanese": "それは、隠れた欺瞞から、双方が理解し合うインタラクティブな『遊び』へとパラダイムを転換する。",
                 "situation": "概念の意義を述べる重要文。covert=隠れた。",
-                "start": 711.0,
+                "start": 711,
                 "id": "sec4-e6"
               },
               {
@@ -10089,7 +10103,7 @@
                 "id": "sec4-f6",
                 "english": "No, it is entirely behavioral.",
                 "japanese": "そうです、これは完全に『行動』の話です。",
-                "start": 566.0
+                "start": 566
               },
               {
                 "id": "sec4-f7",
@@ -10167,7 +10181,7 @@
                 "id": "sec4-f19",
                 "english": "It's right there in the open.",
                 "japanese": "それは堂々と表に出ています。",
-                "start": 631.0
+                "start": 631
               },
               {
                 "id": "sec4-f20",
@@ -10269,7 +10283,7 @@
                 "id": "sec4-f36",
                 "english": "Oh, that's good.",
                 "japanese": "おお、それはいい例えですね。",
-                "start": 731.0
+                "start": 731
               },
               {
                 "id": "sec4-f37",
@@ -10394,7 +10408,7 @@
                 "english": "The second phase is cue utilization. What does the human user actually notice and prioritize?",
                 "japanese": "第2段階は『手がかりの利用(cue utilization)』。人間は実際に何に気づき、何を優先するのか？",
                 "situation": "第2段階を説明するとき。",
-                "start": 900.0,
+                "start": 900,
                 "id": "sec5-e5"
               },
               {
@@ -10453,7 +10467,7 @@
                 "id": "sec5-f2",
                 "english": "Right. It's one thing for a human being who grew up in a specific culture to intuitively understand how to perform as a toy.",
                 "japanese": "そうです。特定の文化の中で育った人間が、あざとさをどう演じるかを直感的に理解するのは一つのことです。",
-                "start": 794.0
+                "start": 794
               },
               {
                 "id": "sec5-f3",
@@ -10489,7 +10503,7 @@
                 "id": "sec5-f8",
                 "english": "1956. Yeah, it's an old one, but they used this model as the absolute theoretical backbone for the entire study.",
                 "japanese": "1956年。ええ、古いものですが、彼らはこのモデルを研究全体の絶対的な理論的支柱として使いました。",
-                "start": 827.0
+                "start": 827
               },
               {
                 "id": "sec5-f9",
@@ -10561,7 +10575,7 @@
                 "id": "sec5-f20",
                 "english": "The second phase of the model is cue utilization.",
                 "japanese": "モデルの第二の段階は『手がかりの利用（cue utilization）』です。",
-                "start": 885.0
+                "start": 885
               },
               {
                 "id": "sec5-f21",
@@ -10615,7 +10629,7 @@
                 "id": "sec5-f29",
                 "english": "And did the human receiver interpret that message correctly and respond with the desired positive affection?",
                 "japanese": "そして人間の受け手は、そのメッセージを正しく解釈し、望まれた肯定的な好意で応えたのか？",
-                "start": 926.0
+                "start": 926
               },
               {
                 "id": "sec5-f30",
@@ -10627,7 +10641,7 @@
                 "id": "sec5-f31",
                 "english": "A little bit, yeah.",
                 "japanese": "少しはそうですね。",
-                "start": 940.0
+                "start": 940
               },
               {
                 "id": "sec5-f32",
@@ -10657,7 +10671,7 @@
                 "id": "sec5-f36",
                 "english": "Perfect example. The cue validity is the objective physical reality of their face.",
                 "japanese": "完璧な例です。手がかりの妥当性は、その人の顔の客観的な物理的現実です。",
-                "start": 963.0
+                "start": 963
               },
               {
                 "id": "sec5-f37",
@@ -10699,7 +10713,7 @@
                 "id": "sec5-f43",
                 "english": "They still hate me.",
                 "japanese": "『やっぱり私のことを嫌っている』。",
-                "start": 996.0
+                "start": 996
               },
               {
                 "id": "sec5-f44",
@@ -10735,26 +10749,26 @@
                 "id": "sec5-f49",
                 "english": "No, they had to isolate and quantify the specific measurable human behaviors that constitute calculated cuteness in the real world.",
                 "japanese": "そうです。彼らは、現実世界で計算された可愛さを構成する、特定の測定可能な人間の行動を、切り分けて定量化しなければなりませんでした。",
-                "start": 1018.0
+                "start": 1018
               },
               {
                 "id": "sec5-f50",
                 "english": "This necessity is what led to the first major phase of their research, the formative study.",
                 "japanese": "この必要性こそが、研究の最初の大きな段階、すなわち『形成的研究（formative study）』へとつながりました。",
-                "start": 1027.0
+                "start": 1027
               },
               {
                 "id": "sec5-f51",
                 "english": "So armed with the theoretical framework of the lens model, they went straight to the human source.",
                 "japanese": "そこでレンズモデルという理論的枠組みを携え、彼らはまっすぐ人間という源へと向かいました。",
-                "start": 1033.0
+                "start": 1033
               }
             ]
           },
           {
             "id": "sec6",
             "title": "形成的研究：インタビューと6つの手がかり",
-            "start": 1036.0,
+            "start": 1036,
             "outline": [
               "日中韓の大学生9名に半構造化インタビュー（具体的な実体験を想起させる）",
               "6つの多モーダル行動手がかりを抽出（声・動き・言語にまたがる）",
@@ -10767,7 +10781,7 @@
                 "english": "They conducted in-depth, semi-structured interviews with nine university students from Japan, China, and Korea.",
                 "japanese": "彼らは日本・中国・韓国の大学生9名に、詳細な半構造化インタビューを行った。",
                 "situation": "研究方法を述べるとき。semi-structured=半構造化の。",
-                "start": 1036.0,
+                "start": 1036,
                 "id": "sec6-e1"
               },
               {
@@ -10883,7 +10897,7 @@
                 "id": "sec6-f6",
                 "english": "Like actual memories?",
                 "japanese": "実際の記憶を、ということですか？",
-                "start": 1068.0
+                "start": 1068
               },
               {
                 "id": "sec6-f7",
@@ -10919,7 +10933,7 @@
                 "id": "sec6-f12",
                 "english": "They span across voice, physical movement, and language.",
                 "japanese": "それらは、声・身体の動き・言語にまたがっています。",
-                "start": 1105.0
+                "start": 1105
               },
               {
                 "id": "sec6-f13",
@@ -10979,7 +10993,7 @@
                 "id": "sec6-f22",
                 "english": "The second cue they isolated is categorized as perlinguistic.",
                 "japanese": "彼らが切り出した第二の手がかりは、『パラ言語的（paralinguistic）』なものに分類されます。",
-                "start": 1151.0
+                "start": 1151
               },
               {
                 "id": "sec6-f23",
@@ -11015,7 +11029,7 @@
                 "id": "sec6-f28",
                 "english": "Interesting. OK, the third cue is the upward gaze.",
                 "japanese": "興味深い。では、第三の手がかりは『上目遣い（upward gaze）』です。",
-                "start": 1180.0
+                "start": 1180
               },
               {
                 "id": "sec6-f29",
@@ -11045,7 +11059,7 @@
                 "id": "sec6-f33",
                 "english": "It is a conscious performance of vulnerability.",
                 "japanese": "それは無防備さの意識的なパフォーマンスなのです。",
-                "start": 1208.0
+                "start": 1208
               },
               {
                 "id": "sec6-f34",
@@ -11153,7 +11167,7 @@
                 "id": "sec6-f51",
                 "english": "They also analyzed the specific effects the performers were trying to achieve when they deployed them.",
                 "japanese": "演じ手がそれらを繰り出すときに達成しようとしていた、具体的な効果も分析したのです。",
-                "start": 1306.0
+                "start": 1306
               },
               {
                 "id": "sec6-f52",
@@ -11171,7 +11185,7 @@
                 "id": "sec6-f54",
                 "english": "So depending on what you want from the interaction, you deploy a different combination of cues.",
                 "japanese": "つまり、その相互作用から何を望むかに応じて、異なる手がかりの組み合わせを繰り出すわけですね。",
-                "start": 1323.0
+                "start": 1323
               },
               {
                 "id": "sec6-f55",
@@ -11243,7 +11257,7 @@
                 "id": "sec6-f66",
                 "english": "You aren't awkwardly asking them to pay attention to you.",
                 "japanese": "あなたはぎこちなく『私に注目して』と頼んでいるのではありません。",
-                "start": 1385.0
+                "start": 1385
               },
               {
                 "id": "sec6-f67",
@@ -11285,7 +11299,7 @@
                 "id": "sec6-f73",
                 "english": "So having isolated these incredibly nuanced, highly manipulative human variables, the researchers faced the ultimate test.",
                 "japanese": "そこで、こうした極めて繊細で操作的な人間の変数を切り出したうえで、研究者たちは究極の試練に直面しました。",
-                "start": 1409.0
+                "start": 1409
               },
               {
                 "id": "sec6-f74",
@@ -11481,7 +11495,7 @@
                 "id": "sec7-f12",
                 "english": "So the engineers take this blueprint of human azutoid behaviors.",
                 "japanese": "そこでエンジニアたちは、この人間のあざとい行動の設計図を取り上げます。",
-                "start": 1470.0
+                "start": 1470
               },
               {
                 "id": "sec7-f13",
@@ -11499,7 +11513,7 @@
                 "id": "sec7-f15",
                 "english": "This is where they construct their participatory exhibition to gather data.",
                 "japanese": "ここで彼らは、データを集めるための参加型展示を構築します。",
-                "start": 1482.0
+                "start": 1482
               },
               {
                 "id": "sec7-f16",
@@ -11631,7 +11645,7 @@
                 "id": "sec7-f37",
                 "english": "Using a synthesized, artificially high-pitched voice, the robot looks at the bowl in your hand and says, that looks delicious.",
                 "japanese": "合成された人工的に高いピッチの声で、ロボットはあなたの手の中の器を見て、『おいしそう』と言います。",
-                "start": 1579.0
+                "start": 1579
               },
               {
                 "id": "sec7-f38",
@@ -11685,7 +11699,7 @@
                 "id": "sec7-f46",
                 "english": "This is the precise moment the calculated cuteness, the azitoy, is executed.",
                 "japanese": "これこそが、計算された可愛さ、すなわち『あざとさ』が実行される、まさにその瞬間です。",
-                "start": 1618.0
+                "start": 1618
               },
               {
                 "id": "sec7-f47",
@@ -11769,7 +11783,7 @@
                 "id": "sec7-f60",
                 "english": "It's wild.",
                 "japanese": "とんでもないことです。",
-                "start": 1693.0
+                "start": 1693
               },
               {
                 "id": "sec7-f61",
@@ -11847,7 +11861,7 @@
                 "id": "sec7-f73",
                 "english": "While the visitor is looking down at the tablet, casting their vote, that massive projection mapping on the wall behind the robot is updating live.",
                 "japanese": "来場者がタブレットを見下ろして投票している間、ロボットの背後の壁にあるあの巨大なプロジェクションマッピングが、ライブで更新されていきます。",
-                "start": 1750.0
+                "start": 1750
               },
               {
                 "id": "sec7-f74",
@@ -11913,7 +11927,7 @@
                 "id": "sec7-f84",
                 "english": "It's an interactive data visualization on a grand scale.",
                 "japanese": "それは壮大なスケールのインタラクティブなデータ可視化です。",
-                "start": 1812.0
+                "start": 1812
               },
               {
                 "id": "sec7-f85",
@@ -11949,7 +11963,7 @@
                 "id": "sec7-f90",
                 "english": "Because it's an international hub.",
                 "japanese": "国際的なハブだからですね。",
-                "start": 1844.0
+                "start": 1844
               },
               {
                 "id": "sec7-f91",
@@ -11967,7 +11981,7 @@
                 "id": "sec7-f93",
                 "english": "Right, from Japan, China, and Korea.",
                 "japanese": "そうです、日本・中国・韓国から。",
-                "start": 1857.0
+                "start": 1857
               },
               {
                 "id": "sec7-f94",
@@ -12135,7 +12149,7 @@
                 "id": "sec8-f12",
                 "english": "This is where the paper forces a really complex discussion regarding the nuance between persuasion and manipulation.",
                 "japanese": "ここで論文は、説得と操作の間のニュアンスに関する、実に複雑な議論を迫ります。",
-                "start": 1941.0
+                "start": 1941
               },
               {
                 "id": "sec8-f13",
@@ -12297,19 +12311,19 @@
                 "id": "sec8-f39",
                 "english": "It completely blurs the rigid boundary between deceptive design and a mutually agreed upon social game.",
                 "japanese": "それは、欺瞞的な設計と、互いに合意された社会的ゲームとの間の、堅固な境界を完全にぼやけさせます。",
-                "start": 2058.0
+                "start": 2058
               },
               {
                 "id": "sec8-f40",
                 "english": "Exactly. You aren't being biologically tricked into caring for a piece of plastic.",
                 "japanese": "その通り。あなたは生物学的に騙されてプラスチックの塊を気にかけさせられているのではありません。",
-                "start": 2064.0
+                "start": 2064
               },
               {
                 "id": "sec8-f41",
                 "english": "You are being openly invited to play along with its performance.",
                 "japanese": "あなたは、その演技に一緒に乗るよう、おおっぴらに招かれているのです。",
-                "start": 2069.0
+                "start": 2069
               },
               {
                 "id": "sec8-f42",
@@ -12378,7 +12392,7 @@
                 "english": "Exaggerated proximity could only be tested via proxy.",
                 "japanese": "『誇張された近接』は代理的にしか検証できなかった。",
                 "situation": "限界1を述べるとき。via proxy=代理で。",
-                "start": 2129.0,
+                "start": 2129,
                 "id": "sec9-e2"
               },
               {
@@ -12537,7 +12551,7 @@
                 "id": "sec9-f16",
                 "english": "It raises massive behavioral questions.",
                 "japanese": "それは、大きな行動上の問いを投げかけます。",
-                "start": 2185.0
+                "start": 2185
               },
               {
                 "id": "sec9-f17",
@@ -12561,7 +12575,7 @@
                 "id": "sec9-f20",
                 "english": "Right. These unresolved questions are exactly what dictate the future trajectories the researchers point toward at the end of the paper.",
                 "japanese": "そうです。こうした未解決の問いこそが、論文の終わりで研究者たちが指し示す今後の方向性を、まさに決定づけているのです。",
-                "start": 2203.0
+                "start": 2203
               },
               {
                 "id": "sec9-f21",
@@ -12579,7 +12593,7 @@
                 "id": "sec9-f23",
                 "english": "They need to deploy these machines into long-term relationship-building scenarios to see if the transparent manipulation holds up over years, not minutes.",
                 "japanese": "彼らは、透明な操作が数分ではなく数年にわたって持ちこたえるかを見るために、これらの機械を長期的な関係構築のシナリオに投入する必要があります。",
-                "start": 2219.0
+                "start": 2219
               },
               {
                 "id": "sec9-f24",
@@ -12639,7 +12653,7 @@
                 "id": "sec9-f33",
                 "english": "It's a tightrope walk.",
                 "japanese": "それは綱渡りです。",
-                "start": 2281.0
+                "start": 2281
               },
               {
                 "id": "sec9-f34",
