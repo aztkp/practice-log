@@ -9558,6 +9558,328 @@
         "practiceCount": 0,
         "lastPracticed": null,
         "createdAt": "2026-06-02T04:21:50.037Z"
+      },
+      {
+        "id": "1780374169587",
+        "title": "Loci Stories: Exploring Design for Polyvocality",
+        "url": "https://www.youtube.com/watch?v=AVRGP30qpx4&list=PLqhXYFYmZ-Vcig0Jl_U7Zu7DavtBJw_J2&index=5",
+        "segments": [
+          {
+            "start": 0,
+            "text": "Hello and welcome to the full paper presentation of\nLoci Stories: Exploring design for Polyvocality\nMy name is Dr Violeta Tsenova and it is\nmy pleasure to discuss this work that was\nconducted in collaboration with my colleagues\nDr Gavin Wood and Professor David Kirk\nSo, in our paper, we discuss\nthe design and the exhibition of Loci Stories -\na networked interactive cabinet that\nplays video and audio stories to visitors\nat a heritage site in the UK."
+          },
+          {
+            "start": 0,
+            "text": "And by describing our design, we think through\nimplications for polyvocal designs and use\nthese to imagine future approaches when working\nwith interactive displays in heritage settings."
+          },
+          {
+            "start": 0,
+            "text": "We're inspired by music theory and\npropose four \"textures\" of polyvocality."
+          },
+          {
+            "start": 0,
+            "text": "Those are: monophony, homophony,\npolyphony and cacophony\nThe underlying theory of our research is that\nof polyvocality, which is the presence of\nmany voices, or many perspectives, as opposed\nto a single one."
+          },
+          {
+            "start": 0,
+            "text": "This idea originated in literature\ntheory,\ntheory that challenge singular authorship\nand actually resonated with the\ncritical heritage studies opposition to\nthe authorised heritage discourse."
+          },
+          {
+            "start": 0,
+            "text": "The authorised discourse is characterised\nby creating an authoritative,\n\"correct\", typically exclusionary, although\nnot always, narrative of heritage."
+          },
+          {
+            "start": 0,
+            "text": "And it champions unified and universal experiences\nof past and present."
+          },
+          {
+            "start": 0,
+            "text": "However, we know that heritage is a process,\nit's a performance,\nthrough which we identify the values and memories\nand the cultural and social meanings that actually\nallow us to make sense of the president, of\nour identities and of the sense of physical\nand social place."
+          },
+          {
+            "start": 0,
+            "text": "So, polyvocality provides a framework of\na pluralistic outlook on heritage, encompassing\nsocial, economic, political contexts that lead\nto the divergent experiences of being in the\nworld."
+          },
+          {
+            "start": 0,
+            "text": "And since cultural venues are recognising\nthat they need to diversify their approaches\nto narrative representation, they have started\nadopting the idea of polyvocality."
+          },
+          {
+            "start": 0,
+            "text": "This has then led to quite a fruitful turn\nto exploring the theme of polyvocality in\nHCI and design literature."
+          },
+          {
+            "start": 0,
+            "text": "And here we are highlighting a couple of collaborations\nthat came out in the recent years."
+          },
+          {
+            "start": 0,
+            "text": "And by reviewing them and building on what\nthey've done, we are\nthinking even further how we might juxtapose\nthe experiences, expectations, and interactions\nto help us discuss diverse narratives."
+          },
+          {
+            "start": 0,
+            "text": "And also, how could the interactions foster\nengagement with the multiple perspectives?"
+          },
+          {
+            "start": 0,
+            "text": "We then were inspired by this notion of literal voice\nand turned to voice interaction literature\nand to listening."
+          },
+          {
+            "start": 0,
+            "text": "So, key for us here is making a distinction\nbetween attentive and holistic listening so in heritage\ndesign there is more focus on attentive\nso that we we understand that one specific narrative."
+          },
+          {
+            "start": 0,
+            "text": "And we still also focus on attentive listening,\nbut we put it in this wider space of much\nmore busy soundscapes that heritage sites have\nWe then also focus on the emotive qualities\nof the human voice\nAnd we're also considering the difference\nbetween private and share listening."
+          },
+          {
+            "start": 0,
+            "text": "So between audio guides and this idea of\nsimulating a conversation."
+          },
+          {
+            "start": 0,
+            "text": "This then led us to, um, our seconds and key question, which is how might we use voice and listening,\nvoice and listening to\nnavigate between telling stories and experimenting\nwith interaction modalities, that foster polyvocality?"
+          },
+          {
+            "start": 0,
+            "text": "We explore all of these questions by designing\nLoci Stories and that's our networked\nand voice-activated storytelling cabinet."
+          },
+          {
+            "start": 0,
+            "text": "In the full paper we outline\nthe activities that led to its creation\nBut here we focus on its design."
+          },
+          {
+            "start": 0,
+            "text": "Still the design took place in the United\nKingdom, in the North East\nof England with a property..."
+          },
+          {
+            "start": 0,
+            "text": ", 18th century\nproperty called Seaton Delaval Hall, and we collaborated\nwith staff and volunteers to envision different\ninterpretations and interventions that were\ninspired by contemporary art and fore-\nfore-fronted the present day experiences of those\nwho work on site."
+          },
+          {
+            "start": 0,
+            "text": "So, we created our conceptual direction, informing\nit by the literature and by the collaboration."
+          },
+          {
+            "start": 0,
+            "text": "And we identified four sensitising concepts."
+          },
+          {
+            "start": 0,
+            "text": "That was: to encourage engagement with the,\nwith the interactive display."
+          },
+          {
+            "start": 0,
+            "text": "To layer the voices - those that were heard\nin the stories with the visitors' voices, also\nto listen harder."
+          },
+          {
+            "start": 0,
+            "text": "And here it was about introducing interactions\nthat encouraged visitors to tune into the\nindividual voices, into the individual stories,\nand to leverage the emotive language."
+          },
+          {
+            "start": 0,
+            "text": "that was also used by our collaborators."
+          },
+          {
+            "start": 0,
+            "text": "The actual cabinet contains 3 low-cost and small\nfrom-factor media PCs uh, and they were connected\non a low-power,  private wifi network."
+          },
+          {
+            "start": 0,
+            "text": "So the application actually waits on the visitors\nto say specific word on the specific computer\nand audiences were prompted to say out loud\n1 of 2 words."
+          },
+          {
+            "start": 0,
+            "text": "So, for example, \"discovery\" an\n\"morning\" on side 1, \"fire\" and \"muses\" on side 2,\nand \"memory\" and \"change\" on side 3."
+          },
+          {
+            "start": 0,
+            "text": "Using\nspeech recognition\neach of these words triggered then a specific\nstory that was co-created with our collaborators."
+          },
+          {
+            "start": 0,
+            "text": "And audiences were also able\nto end the videos by saying \"stop\"."
+          },
+          {
+            "start": 0,
+            "text": "And actually, the use of the separate computers\nmeant that we could play different videos\nand different ambient sounds simultaneously."
+          },
+          {
+            "start": 0,
+            "text": "Multiple visitors could stay around the cabinet\nand trigger the videos, using their voice and\nthe networked computers received all these events\nhappening on the other computers."
+          },
+          {
+            "start": 0,
+            "text": "So, including whether a sound is being played, or\nwhether a video had finished playing and so on."
+          },
+          {
+            "start": 0,
+            "text": "So, this meant that we could start other ambient\naudio on one machine that was being keyed by\na video being played on another machine."
+          },
+          {
+            "start": 0,
+            "text": "And these ambient sounds were not just random."
+          },
+          {
+            "start": 0,
+            "text": "They were also taken from the workshops in\nwhich our collaborators were discussing their\nexperiences of heritage."
+          },
+          {
+            "start": 0,
+            "text": "They [the ambient audios] also aimed\nto encourage visitors to walk around the cabinet\nand explore the different stories."
+          },
+          {
+            "start": 0,
+            "text": "So, the display was exhibited for a month\nin, at Seaton Delaval hall in 2021and over that\nmonth, we collected data via, via audience\nobservations,\nand also discussions in person and through\nan online survey for the visitors."
+          },
+          {
+            "start": 0,
+            "text": "We analysed the data with a mix of deductive and\ninductive thematic analysis, associating the\nthemes based on what we knew about heritage theory and how we saw as respon-..."
+          },
+          {
+            "start": 0,
+            "text": "What we saw as responses to the interactions."
+          },
+          {
+            "start": 0,
+            "text": "I'll go through the 3 main themes so\nthe 1st one is that the voice interaction facilitates\na public performance."
+          },
+          {
+            "start": 0,
+            "text": "So we observed that based on how familiar\nor unfamiliar audiences were with voice interaction,\nthey acted with the display in a different\nway."
+          },
+          {
+            "start": 0,
+            "text": "Some were more curious."
+          },
+          {
+            "start": 0,
+            "text": "Others were a little bit more apprehensive\nthat they would create a cultural scene by\nspeaking to this display."
+          },
+          {
+            "start": 0,
+            "text": "Then we also observe that digital installations\ncan create useful positions, which meant that\nwe could find ways to."
+          },
+          {
+            "start": 0,
+            "text": "To link the physical Hall with interpretation\nin better ways and that short bouts of information,\nwere preferred - they didn't distract from the\nrest of the experience."
+          },
+          {
+            "start": 0,
+            "text": "And overall that, by spreading out these network\nstorytelling cabinets, maybe that could tie\ntogether the performance aspects of engaging\nwith the place."
+          },
+          {
+            "start": 0,
+            "text": "By looking for different stories, by engaging\nwith them in different locations."
+          },
+          {
+            "start": 0,
+            "text": "And, of course, our findings also affirm that\ndifferent stories speak to different people."
+          },
+          {
+            "start": 0,
+            "text": "And in many cases, the visitors were paying\nmore attention to the content."
+          },
+          {
+            "start": 0,
+            "text": "They were commenting on their personal experiences,\ntheir own memories as there were many local\nvisitors."
+          },
+          {
+            "start": 0,
+            "text": "But also for those who weren't local\nhow they perceived the balance between historical\nfacts and personal experiences as something\nthat was igniting their curiosity."
+          },
+          {
+            "start": 0,
+            "text": "We took these findings and our understanding\nof the literature looking for the synergies\nand points of crossover and dissonance between\nheritage and the visitors' engagement with\nour interactive display."
+          },
+          {
+            "start": 0,
+            "text": "And we came up with the four textures for polyvocality."
+          },
+          {
+            "start": 0,
+            "text": "In the full paper, we actually also critic\nour design through these textures, but here,\nI'll just quickly present them."
+          },
+          {
+            "start": 0,
+            "text": "So, monophony is a primary melody without a\nsecondary melody or an accompaniment and\nwe link this to how typically according to authorised discourses\nof heritage mean that there is 1 accepted\nstory that is presented."
+          },
+          {
+            "start": 0,
+            "text": "And, um."
+          },
+          {
+            "start": 0,
+            "text": "Um, people would typically want to go and\nlook for some historical, uh, a certain, clear,\nuh, historical narrative, rather than a complex one."
+          },
+          {
+            "start": 0,
+            "text": "At the same time, there is homophony, which\nis a dominant melody accompanied by other\ncourts in harmony,\nand we link this to how polyvocality is sometimes appropriated\nto introduce stories and perspectives that\ndo not challenge and actually diversify the\ndominant narratives\nbut end up complimenting them."
+          },
+          {
+            "start": 0,
+            "text": "So, in the end, it's they can negate this\nidea of divergent heritage experiences."
+          },
+          {
+            "start": 0,
+            "text": "With polyphony, we already move to this idea..."
+          },
+          {
+            "start": 0,
+            "text": "Polyphony is composed of several independent\nparts, each forming a melody of its own rights\nhat can be listened to simultaneously or\nindependently."
+          },
+          {
+            "start": 0,
+            "text": "So, here we can think about polyvocality in\nterms of how independent,\nand valid in their own right but interlinked perspectives\ncome together to create a more complex narrative\nAnd in designing\nfor polyvocality, we should be capturing these\nconnections between historical perspectives\nand diverse experiences and how they interweave the pres-..."
+          },
+          {
+            "start": 0,
+            "text": "interweave in the present and polyphony can help us\ndo that."
+          },
+          {
+            "start": 0,
+            "text": "Cacophony, on the other side, can be seen as a mix of discordant sounds that\ncreate dissonance and it's typically perceived\nas jarring or harsh."
+          },
+          {
+            "start": 0,
+            "text": "But similarly, the many different perspectives\nand stories can overlap, contradict or affirm\none another and then creating a cacophony."
+          },
+          {
+            "start": 0,
+            "text": "And visitors may experience that dissonance."
+          },
+          {
+            "start": 0,
+            "text": "Um, so that's in the literal sense of cacophony, especially\nin our case where we worked with voice, but\nthere is a potential in this idea of figurative cacophony\nAnd the affordances to account for visitors'\nexisting interaction vocabulary, actually,\nand create a cultural scene in which they\ncould partake and navigate this busy soundscape."
+          },
+          {
+            "start": 0,
+            "text": "So, for example, when applying textures, we\ncan imagine starting from the authorised discourses,\nallowing for a plurality of diverse\nperspectives to speak over a monophony,\nand these perspectives could be presented\nas a polyphony, to then become again a harsher\ncacophony and ease back into a more comprehensive\nnarrative."
+          },
+          {
+            "start": 0,
+            "text": "So, people may find listening to these many\nvoices - as in in narratives - difficult\nand perceive a cacophony of experiences, but others\nmight perceive much busier narrative-scapes."
+          },
+          {
+            "start": 0,
+            "text": "So, we do think that textures can be used\nacross these different components of designing:\nthe aesthetic, the content, the interaction, the medium, the context."
+          },
+          {
+            "start": 0,
+            "text": "They're not separate."
+          },
+          {
+            "start": 0,
+            "text": "They need to be thought through and actually\ndesigners can use their own practice to\nevaluate the texture of each element and\nthen come up\nwith new ways, and new interactions, uh, that\ncould present the stories that we're looking\nto be telling and to create a textured landscape\nof polyvocality."
+          },
+          {
+            "start": 0,
+            "text": "Thank you!"
+          }
+        ],
+        "practiceCount": 0,
+        "lastPracticed": null,
+        "createdAt": "2026-06-02T04:22:49.587Z"
       }
     ],
     "dictationLog": [],
