@@ -9240,6 +9240,324 @@
         "practiceCount": 0,
         "lastPracticed": null,
         "createdAt": "2026-06-01T16:15:24.450Z"
+      },
+      {
+        "id": "1780374110037",
+        "title": "Mindful Moments: Exploring On-the-go Mindfulness Practice On Smart-glasses",
+        "url": "https://www.youtube.com/watch?v=6alsUcoUcpI&list=PLqhXYFYmZ-Vcig0Jl_U7Zu7DavtBJw_J2&index=5",
+        "segments": [
+          {
+            "start": 0,
+            "text": "Hello everyone, I'm Felicia Tan from the National\nUniversity of Singapore’s HCI lab."
+          },
+          {
+            "start": 0,
+            "text": "On behalf of my co-authors Ashwin Ram, Chloe\nHaigh and Dr Zhao Shengdong, I'm thrilled\nto share about our research which investigates\nthe use of Heads-Up Displays in facilitating\nmindfulness practices for everyday users."
+          },
+          {
+            "start": 0,
+            "text": "Mindfulness is a multidimensional construct\nthat has been conceptualized as “the awareness\nthat emerges through paying attention on purpose,\nin the present moment, and nonjudgmentally\nto the unfolding of experience moment by moment\"."
+          },
+          {
+            "start": 0,
+            "text": "We can make a distinction between mindfulness\nas a momentary state, and mindfulness as a\nlonger-term trait."
+          },
+          {
+            "start": 0,
+            "text": "While most mindfulness techniques aim firstly\nat improving the mindfulness state, regular\npractice usually results in building on the\npractitioner’s long-term capacity and mindfulness\nas a way of being."
+          },
+          {
+            "start": 0,
+            "text": "However, adoption barriers exist."
+          },
+          {
+            "start": 0,
+            "text": "Common mindfulness tools, whether run through\ndesktops, smartphone or smartwatches require\nusers to dedicate a chunk of time away from\ntheir daily schedules, which many may find\nhard to carve out."
+          },
+          {
+            "start": 0,
+            "text": "Similarly, meditation is also best practiced\nin a quiet conducive environment, and such\na space may not always be readily accessible."
+          },
+          {
+            "start": 0,
+            "text": "Thus, we asked the question of how we may\nbe able to more seamlessly fuse mindfulness\npractice with common daily tasks and introduce\nthem into idle moments of the day, such as\nwhile someone is walking casually from one\nplace to another\nWe found an opportunity with the emergence\nof Optical Head Mounted Displays, OHMDs as\nour assisted reality wearable platform."
+          },
+          {
+            "start": 0,
+            "text": "It’s heads up display has a transparent\nscreen that presents visuals to the wearer\nwhile their external environment remains in\nview."
+          },
+          {
+            "start": 0,
+            "text": "Recent research has also demonstrated the potential of OHMDs for supporting on-the-go tasks,\nwithout  compromising on our presence in the physical world\nMindful Moments approaches delivery from a “casual practice” point\nof view, aiming to blend breath-based practice\ninto everyday life, during opportunistic moments\nin realistic settings."
+          },
+          {
+            "start": 0,
+            "text": "We believe that this not only removes barriers\nto consistent mindfulness practice, but emphasizes\nthe importance of building mindful capacity\nin daily contexts, rather than only in controlled\nmeditation spaces."
+          },
+          {
+            "start": 0,
+            "text": "First, we conducted a series of exploratory\npilots to narrow down on prominent visual\nand auditory design elements."
+          },
+          {
+            "start": 0,
+            "text": "The objective\nwas to identify a design that can sufficiently\nengage the user in mindful breathing without\naffecting their walking ability."
+          },
+          {
+            "start": 0,
+            "text": "Combining user-preferred attributes from the\npilots, we evaluated Mindful Moments against\ntwo comparison groups:\na baseline\nand a conventional Walking Meditation\nFinally, we assessed whether Mindful Moments\nsupports mindfulness states, by\nevaluating its use in a realistic field setting."
+          },
+          {
+            "start": 0,
+            "text": "We focused on the use of Mindful Moments at the office and work-from-home settings\ngiven that these places are where individuals\nspend a substantial amount of their daily\ntime undertaking a range of activities\nIn Pilots 1 & 2, we focused on visuals."
+          },
+          {
+            "start": 0,
+            "text": "We tested multiple visuals animated with the\nexpand-contract animation, which served as\nbreath-guidance."
+          },
+          {
+            "start": 0,
+            "text": "Participants had to breathe along with the\nshape, inhaling as the shape expands, and exhaling\nas the shape contracts."
+          },
+          {
+            "start": 0,
+            "text": "Pilot 1 compared between realistic and abstract\nrepresentations of objects, and we found that\nabstract figures were preferred given their\nsimplicity and clear visual guidance."
+          },
+          {
+            "start": 0,
+            "text": "Realistic forms on the other hand reinforced\ninterpretive tendencies of the mind as there\nwere more literal associations."
+          },
+          {
+            "start": 0,
+            "text": "Pilot 2 varied dimensionality and complexity\nof the chosen abstract figure, the Geometric\nfigure."
+          },
+          {
+            "start": 0,
+            "text": "Prior investigations have shown that the dimensionality\nand complexity of visuals have an impact on\nour emotions."
+          },
+          {
+            "start": 0,
+            "text": "Participant​​s preferred the 2D version,\nthat is detailed as it struck the right levels\nbetween immersion and distraction during mindfulness\npractice."
+          },
+          {
+            "start": 0,
+            "text": "Once we narrowed down on a visual that was\nsuitable for our objective, Pilot 3 & 4 explored\naudio elements that can complement the visuals."
+          },
+          {
+            "start": 0,
+            "text": "Pilot 3 compared between Rhythmic and."
+          },
+          {
+            "start": 0,
+            "text": "Non-rhythmic\naudio as well as Natural sounds and Man-made music."
+          },
+          {
+            "start": 0,
+            "text": "Participants found Binaural music and Ocean\nwaves to be calming but also provides a sense\nof movement."
+          },
+          {
+            "start": 0,
+            "text": "They also found that rhythmic\nmusic helps if synchronised with visuals\nFinally in Pilot 4, we tested the rhythmic\nfunction of sound."
+          },
+          {
+            "start": 0,
+            "text": "For each sound, we created cue sounds, which are synchronised sounds that signal points of breathing."
+          },
+          {
+            "start": 0,
+            "text": "And sustained sounds which are smooth and continuous sounds in the\nbackground."
+          },
+          {
+            "start": 0,
+            "text": "We also created the combination of both."
+          },
+          {
+            "start": 0,
+            "text": "Participants preferred the combination of\nboth as it provided a sense of smooth continuity\nwhile also signalling and reinforcing deep\nbreathing patterns."
+          },
+          {
+            "start": 0,
+            "text": "Ultimately, we converged on a formative solution\nwhich we named Mindful Moments."
+          },
+          {
+            "start": 0,
+            "text": "We evaluated Mindful Moments against 2 comparison\ngroups:\na control walking condition, which is walking\nwithout any mindfulness-based guidance\nand another walking mindfulness intervention,\nthe Walking Meditation."
+          },
+          {
+            "start": 0,
+            "text": "We considered this\nto be the state-of-the-art, and based our\ninstructions on what was devised by Jon Kabat-Zinn,\nthe founder of Mindfulness Based Stress Reduction\ntherapy."
+          },
+          {
+            "start": 0,
+            "text": "Existing literature suggests that mindfulness\ntechniques reduce mind-wandering, lead to\ncalmer physiological states and attention\ntask performance."
+          },
+          {
+            "start": 0,
+            "text": "With that, we included\nelectrodermal activity (EDA) as a measure,\nthe Sustained Attention to Response Task (SART),\nfor which response accuracy and time\nvariability were the performance markers we\nlooked at."
+          },
+          {
+            "start": 0,
+            "text": "Finally, we measured self-reported state mindfulness\nvia the Mindful Attention Awareness Scale\nExceeding our expectations,\nMindful Moments either achieved comparable\neffects or outperformed the Walking Meditation."
+          },
+          {
+            "start": 0,
+            "text": "There was a 10."
+          },
+          {
+            "start": 0,
+            "text": "7% lower response time variability\non the SART attention test, indicating improved\nmindfulness and less mind-wandering."
+          },
+          {
+            "start": 0,
+            "text": "Based on the self-reported mindfulness scale,\nMindful Moments and Walking Meditation resulted\nin significantly better mindfulness states\nthan the Control."
+          },
+          {
+            "start": 0,
+            "text": "Mindful Moments and Walking Meditation performed\ncomparably to each other\nand overall, about 56% of participants indicated\nthat they preferred their Mindful Moments\nto Walking Meditation session."
+          },
+          {
+            "start": 0,
+            "text": "It’s worthy noting here that\ngiven its “casual” use case, Mindful Moments\ncan largely be considered a success since\nit is as effectiveness, or if not more, than\nthe Walking Meditation, which is usually practiced\nin a controlled environment."
+          },
+          {
+            "start": 0,
+            "text": "Furthermore,\nmindful moments provides the additional advantage\nof a lowered barrier of entry for beginners\nto enjoy the benefits of mindfulness practice."
+          },
+          {
+            "start": 0,
+            "text": "To understand how Mindful Moments can be practically\napplied and blended into everyday life, we\nconducted a study in realistic office and\nwork-from-home settings."
+          },
+          {
+            "start": 0,
+            "text": "The study elicited insights relating to when\nusers prefer using Mindful Moments, how it\nbenefits them in different situations, as\nwell as the challenges they encounter with\nMindful Moments sessions."
+          },
+          {
+            "start": 0,
+            "text": "The office and work-from-home settings were\nchosen for two reasons."
+          },
+          {
+            "start": 0,
+            "text": "Firstly, while Mindful Moments is intended\nfor a digital future wherein smart-glasses are widely\nadopted by mass consumers, the current setup is such that participants\ndo not wear them throughout the day."
+          },
+          {
+            "start": 0,
+            "text": "Hence, the apparatus was placed at a “mindfulness\nstation” in the office or home, such that\nparticipants could conveniently access and\nrun Mindful Moments at their own time and\npreference."
+          },
+          {
+            "start": 0,
+            "text": "Secondly, these settings are where users spend\na substantial amount of time."
+          },
+          {
+            "start": 0,
+            "text": "The study was conducted over 3 days, such that users could access and experience Mindful Moments\nat different times of the day, either at home or in the office."
+          },
+          {
+            "start": 0,
+            "text": "For each working day, they were instructed to run 3 or more Mindful Moments sessions."
+          },
+          {
+            "start": 0,
+            "text": "They had the freedom to pick their own session\ntimings, but were encouraged to spread out\ntheir timings such that they could experience\nit under a variety of situations."
+          },
+          {
+            "start": 0,
+            "text": "Immediately after each session, participants filled in a Google forms survey on their own device."
+          },
+          {
+            "start": 0,
+            "text": "We also held a final interview upon completion of all 3 days."
+          },
+          {
+            "start": 0,
+            "text": "We found that Mindful Moments benefits the user after a short single session as well as from continued practice over several\ndays."
+          },
+          {
+            "start": 0,
+            "text": "This includes improved attention and self-reported mindfulness states, improved energy, relaxation, mood and\nfocus levels."
+          },
+          {
+            "start": 0,
+            "text": "Each channel, namely, visual\nand auditory channels, came in useful at different\nstages."
+          },
+          {
+            "start": 0,
+            "text": "They found that the animated visuals were\nespecially useful at the start of every session,\nas it eased them into the practice, and guided\nthem to breathe according to the rhythm."
+          },
+          {
+            "start": 0,
+            "text": "Once their breathing pattern was established\nand regulated, they had less need to focus\ntheir attention on the visuals."
+          },
+          {
+            "start": 0,
+            "text": "Instead, they would naturally turn to the\naudio as a guide for maintaining their breathing\npattern."
+          },
+          {
+            "start": 0,
+            "text": "This allowed them to focus\ntheir visual attention on the external environment\nas they walked."
+          },
+          {
+            "start": 0,
+            "text": "Mindful Moments also appeared most beneficial\nin two situations:\nafter mentally draining tasks, and\nafter prolonged periods in sedentary positions."
+          },
+          {
+            "start": 0,
+            "text": "Both situations are common experiences during\na work day, which typically involves sitting\nin front of a computer for stretches of time."
+          },
+          {
+            "start": 0,
+            "text": "On the other hand, when participants had urgent\nor unfinished tasks ahead, Mindful Moments\nseemed to be interruptive in nature."
+          },
+          {
+            "start": 0,
+            "text": "Participants also alluded to Mindful Moments\nas a potential intervention for behavioral\nchange."
+          },
+          {
+            "start": 0,
+            "text": "For instance, one participant found over multiple\nsessions that Mindful Moments replaced her\npreviously automatic habit of social media\nscrolling in her free time."
+          },
+          {
+            "start": 0,
+            "text": "She expressed that the 5-min activity supported\nher in “breaking out of her night time routine\nof watching TikTok videos”, and in turn improving\nher sleep quality."
+          },
+          {
+            "start": 0,
+            "text": "Based on these insights, we provided recommendations\nfor future breath-based mindfulness designs\non OHMD."
+          },
+          {
+            "start": 0,
+            "text": "We also share about the best times to use\nMindful Moments."
+          },
+          {
+            "start": 0,
+            "text": "Mindful Moments offers an opportunity to integrate\nbreath-based mindfulness practice into one's\ndaily life, freeing them of space and time\nrestrictions."
+          },
+          {
+            "start": 0,
+            "text": "Our study has found that Mindful Moments is\neasier for beginners to implement when compared\nto the traditional Walking Meditation, with\ncomparable mindfulness benefits."
+          },
+          {
+            "start": 0,
+            "text": "We envision that future iterations provide\na more seamless experience, where a context-sensitive\nsystem can automatically start the application\nat opportunistic moments for the user."
+          },
+          {
+            "start": 0,
+            "text": "A natural next step would also be to track\nlong-term changes over regular usage."
+          },
+          {
+            "start": 0,
+            "text": "This ensures that mindfulness designs truly\nbuilds on the user’s mindfulness capacity\nas a long-term trait."
+          },
+          {
+            "start": 0,
+            "text": "It is our hope that more people are able to\nmaintain higher levels of mindfulness and\nwell-being as they go about their daily lives."
+          },
+          {
+            "start": 0,
+            "text": "Thank you."
+          }
+        ],
+        "practiceCount": 0,
+        "lastPracticed": null,
+        "createdAt": "2026-06-02T04:21:50.037Z"
       }
     ],
     "dictationLog": [],
